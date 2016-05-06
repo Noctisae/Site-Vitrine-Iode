@@ -1,0 +1,89 @@
+body {
+	padding: 0;
+	margin: 0;
+}
+
+.form-holder {
+	background: rgba(255,255,255,0.2);
+	margin-top: 10%;
+	border-radius: 3px;
+}
+
+.form-head {
+	font-size: 30px;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	color: #fff;
+	text-shadow: 0 0 30px #000;
+	margin: 15px auto 30px auto;
+}
+
+
+.ui.inverted.menu:hover{
+	transition-property: background;
+	transition-duration: 1s;
+	background: #E0E7EF;
+}
+
+.ui.inverted.menu:hover > a.item{
+	transition-property: color;
+	transition-duration: 1s;
+	color:black;
+}
+
+.cinquo{
+	width :20%!important;
+	text-align: justify;
+	display: flex!important;
+}
+
+.paragraphe{
+	margin:auto!important;
+}
+
+.remember-me {
+	text-align: left;
+}
+
+.ui.checkbox label {
+	color: #ddd;
+}
+
+.ui.grid.main{
+	margin-top: 70px;
+}
+
+
+.mobile.row{
+	padding-top: 0px !important;
+	margin-top: 0px !important;
+}
+
+.mobile.row .ui.inverted.menu{
+	border-radius: 0px !important;
+}
+
+.padding-reset{
+	padding: 0px !important;
+}
+
+.ui.message{
+	padding: 40px !important;
+}
+
+@media (max-width: 767px) {
+	.ui.grid.main{
+		margin-top: 70px;
+	}
+
+.ui.grid { margin: 0 !important; }
+	.ui.vertical.menu.navbar{
+		margin-top: 0px !important;
+	}
+}
+
+.ui.vertical.menu{
+	margin-top: -15px !important;
+	width: 100%;
+	display: none;
+}
