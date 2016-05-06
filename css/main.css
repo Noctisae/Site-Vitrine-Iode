@@ -22,13 +22,20 @@ body {
 .ui.inverted.menu:hover{
 	transition-property: background;
 	transition-duration: 1s;
-	background: #E0E7EF;
+	background: #FFFFFF!important;
 }
 
 .ui.inverted.menu:hover > a.item{
 	transition-property: color;
 	transition-duration: 1s;
-	color:black;
+	color:black!important;
+}
+
+.ui.inverted.menu:hover > a.active{
+	transition-property: background,color;
+	transition-duration: 1s;
+	color:black!important;
+	background: #AAAAAA!important;
 }
 
 .cinquo{
@@ -39,6 +46,18 @@ body {
 
 .paragraphe{
 	margin:auto!important;
+}
+
+.align{
+	text-align: center;
+}
+
+.flex-contain{
+	display: flex;
+}
+
+.align-vertical{
+	margin: auto;
 }
 
 .remember-me {
