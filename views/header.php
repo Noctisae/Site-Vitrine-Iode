@@ -8,7 +8,7 @@
 		<a href="contact.php" class="item contact">Contact</a>
 		<a href="equipe.php" class="item equipe">A propos de nous</a>
 		<div class="right menu">
-		<a href="" class="item">Fixed top</a>
+		<a href="news.xml" class="item"><img src="../img/rss.jpg" style="width:50px;height:50px;"></a>
 		</div>
 	</div>
 	</div>

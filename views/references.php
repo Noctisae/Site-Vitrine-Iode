@@ -21,109 +21,32 @@ include_once("header.php");
 
 ?>
 
-<div class="ui page grid" style="padding-left: 0px;padding-right: 0px;height:100%;">
-		<div class="row" style="padding : 0px;">
-			<div class="cinquo left column" style="background-image: url('../img/1.png');">
-				<div class="paragraphe">
-					<div class="ui huge header align">Header de test</div>
-					<br>
-					<br>
-					<br>
-					<br>				
-					<p class="align">				
-						<a href="">Lien de test</a>
-						<br>
-						<br>
-						<a href="">Lien de test</a>
-						<br>
-						<br>
-						<a href="">Lien de test</a>
-						<br>
-						<br>
-					</p>
-				</div>
-			</div>
-			<div class="cinquo left column" style="background-image: url('../img/2.jpg')";>
-				<div class="paragraphe">
-					<div class="ui huge header align">Header de test</div>
-					<br>
-					<br>
-					<br>
-					<br>				
-					<p class="align">				
-						<a href="">Lien de test</a>
-						<br>
-						<br>
-						<a href="">Lien de test</a>
-						<br>
-						<br>
-						<a href="">Lien de test</a>
-						<br>
-						<br>
-					</p>
-				</div>
-			</div>
-			<div class="cinquo left column" style="background-image: url('../img/3.jpg')";>
-				<div class="paragraphe">
-					<div class="ui huge header align">Header de test</div>
-					<br>
-					<br>
-					<br>
-					<br>				
-					<p class="align">				
-						<a href="">Lien de test</a>
-						<br>
-						<br>
-						<a href="">Lien de test</a>
-						<br>
-						<br>
-						<a href="">Lien de test</a>
-						<br>
-						<br>
-					</p>
-				</div>
-			</div>
-			<div class="cinquo left column" style="background-image: url('../img/4.png');">
-				<div class="paragraphe">
-					<div class="ui huge header align">Header de test</div>
-					<br>
-					<br>
-					<br>
-					<br>				
-					<p class="align">				
-						<a href="">Lien de test</a>
-						<br>
-						<br>
-						<a href="">Lien de test</a>
-						<br>
-						<br>
-						<a href="">Lien de test</a>
-						<br>
-						<br>
-					</p>
-				</div>
-			</div>
-			<div class="cinquo left column" style="background-image: url('../img/5.jpg');">
-				<div class="paragraphe">
-					<div class="ui huge header align">Header de test</div>
-					<br>
-					<br>
-					<br>
-					<br>				
-					<p class="align">				
-						<a href="">Lien de test</a>
-						<br>
-						<br>
-						<a href="">Lien de test</a>
-						<br>
-						<br>
-						<a href="">Lien de test</a>
-						<br>
-						<br>
-					</p>
-				</div>
-			</div>
-		</div>
+<div class="ui raised very padded text container segment flex-contain">
+
+<?php
+
+$references = recupReferences();
+
+foreach ($references as $reference) {
+	echo'
+	<div class="paragraphe">
+	<h1>'.$reference['Nom'].'</h1>
+	<h3>'.$reference['Adresse'].'</h3>
+	
+	';
+	foreach ($reference['Photos'] as $photo) {
+		echo'
+		<img src="'.$photo.'""/>
+		';
+	}
+
+
+	echo'</div>';
+
+}
+
+
+?>
 </div>
 <script type="text/javascript">
 	$(document).ready(function(){

@@ -22,7 +22,7 @@ function jsonErr($errMsg) {
 
 function recupCatalogues(){
 	$db = getDB();
-	$query = $db->prepare('SELECT fichier FROM fournisseurs');
+	$query = $db->prepare('SELECT Catalogue FROM fournisseurs');
 	$query->execute();
 	$temp = $query->fetchAll();
 	return $temp;
@@ -97,7 +97,7 @@ function removeActualite($id){
 
 function update_RSS(){
 	$db = getDB();
-	$query = $db->prepare("SELECT * FROM Actualites");
+	$query = $db->prepare("SELECT * FROM Actualites ORDER BY Date Asc");
 	$query->execute();
 	$temp = $query->fetchAll();
 	$chaine_xml = '<?xml version="1.0" encoding="UTF-8"?>
