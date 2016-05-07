@@ -2,7 +2,7 @@
 
 function getDB() {
 	$dbHost = 'localhost';
-	$db     = 'Iode';
+	$db	 = 'Iode';
 	$dbUser = 'iode';
 	$dbPass = 'iode29';
 
@@ -75,7 +75,7 @@ function addActualite($titre,$texte,$images){
 	$db = getDB();
 	$query = $db->prepare("INSERT INTO Actualites (Date, Texte, Titre, Images) VALUES (?,?,?,?)");
 	$query->execute(array(new DateTime(),$texte,$titre,$images));
-	update_RSS();
+	updateRSS();
 	return true;
 }
 
@@ -83,7 +83,7 @@ function updateActualite($id,$titre,$texte,$images){
 	$db = getDB();
 	$query = $db->prepare("UPDATE Actualites SET Texte=?, Titre=?, Images=? WHERE ID=?");
 	$query->execute(array($texte,$titre,$images,$id));
-	update_RSS();
+	updateRSS();
 	return true;
 }
 
@@ -91,11 +91,11 @@ function removeActualite($id){
 	$db = getDB();
 	$query = $db->prepare("DELETE FROM Actualites WHERE ID=?");
 	$query->execute(array($id));
-	update_RSS();
+	updateRSS();
 	return true;
 }
 
-function update_RSS(){
+function updateRSS(){
 	$db = getDB();
 	$query = $db->prepare("SELECT * FROM Actualites ORDER BY Date Asc");
 	$query->execute();
@@ -126,4 +126,59 @@ function update_RSS(){
 	fclose($file);
 }
 
+function isAdmin($id, $mdp){
+	$db = getDB();
+	$query = $db->prepare("SELECT mdp FROM Admin WHERE id=?");
+	$query->execute(array($id));
+	$temp = $query->fetch();
+	if(!empty($temp)){
+		if(password_verify($mdp, $temp['mdp'])){
+			$_SESSION["authentifie"]=true;
+			return True;
+		}
+		else{
+			return False;
+		}
+	}
+}
+
+
+//FONCTION D'AJOUT D'UN ADMIN DANS LA BASE
+function addAdmin($identifiant,$mdp){
+	$mdp = password_hash($mdp,PASSWORD_DEFAULT);
+	$query = $GLOBALS["bdd"]->prepare("INSERT INTO Admin VALUES(?,?)");
+	$query->bind_param('ss',$identifiant,$mdp);
+	$query->execute();
+	$query->close();
+	return true;
+}
+
+//FONCTION DE SUPPRESSION D'UN ADMIN DANS LA BASE
+function supprAdmin($identifiant){
+	$query = $GLOBALS["bdd"]->prepare("DELETE FROM Admin WHERE identifiant=?");
+	$query->bind_param('s',$identifiant);
+	$query->execute();
+	$query->close();
+	return true;
+}
+
+//FONCTION DE CHANGEMENT DE MOT DE PASSE POUR L'ADMINISTRATEUR COURANT
+function modifMDP($identifiant, $mdp, $oldMDP){
+	$query = $GLOBALS["bdd"]->prepare("SELECT mdp FROM Admin WHERE identifiant=?");
+	$query->bind_param("s",$identifiant);
+	$query->execute();
+	$query->store_result();
+	$query->bind_result($hash);
+	$query->fetch();
+	$query->close();
+	if(password_verify($oldMDP, $hash)){
+		$mdp = password_hash($mdp,PASSWORD_DEFAULT);
+		$query = $GLOBALS["bdd"]->prepare("UPDATE Admin SET mdp=? WHERE identifiant=?");
+		$query->bind_param('ss',$mdp,$identifiant);
+		$query->execute();
+		$query->close();
+		return true;
+	}
+	return false;
+}
 ?>
