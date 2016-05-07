@@ -9,6 +9,19 @@
 		<a href="equipe.php" class="item equipe">A propos de nous</a>
 		<div class="right menu">
 		<a href="news.xml" class="item"><img src="../img/rss.jpg" style="width:50px;height:50px;"></a>
+		<?php
+		if(!empty($_SESSION['authentifie'])){
+			echo'<div class="ui form">
+						<form method="post" action="admin.php">
+							<div class="field">
+							<input type="hidden" value="true" name="logout" id="logout">
+								<input type="submit" value="Se deconnecter" class="ui button large fluid red">
+							</div>
+						</form>
+					</div>';
+		}
+
+		?>
 		</div>
 	</div>
 	</div>

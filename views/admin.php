@@ -1,6 +1,16 @@
 <?php
 	session_start();
+
+	if(!empty($_POST['logout'])){
+		unset($_SESSION['authentifie']);
+		unset($_SESSION['identifiant']);
+	}
+
 	$admin = False;
+	if(!empty($_SESSION["authentifie"])){
+		$admin = $_SESSION["authentifie"];
+	}
+	include_once('../php/default.php');
 	//Protection contre XSS
 	foreach( $_POST as $cle=>$value )
 	{
@@ -26,9 +36,26 @@
 	}
 
 	if(empty($_SESSION["authentifie"])){
+		error_log('On rentre dans la vérification des infos');
 		if(!empty($_POST["id"]) && !empty($_POST["mdp"])){
 			usleep(200000); // Protection contre brute-force, maximum 5 requetes par seconde
-			$admin = isAdmin($_POST["id"],$_POST["mdp"])
+			error_log('On regarde si les infos envoyées correspondent à un admin');
+			$admin = isAdmin($_POST["id"],$_POST["mdp"]);
+			error_log('maintenant, admin vaut '.$admin);
+		}
+	}
+
+	if(!empty($_SESSION["authentifie"])){
+		if(!empty($_POST['add_admin_id']) && !empty($_POST['add_admin_mdp'])){
+			$temp = addAdmin($_POST['add_admin_id'],$_POST['add_admin_mdp']);
+		}
+
+		if(!empty($_POST['del_admin_id'])){
+			$temp = supprAdmin($_POST['del_admin_id']);
+		}
+
+		if(!empty($_POST['update_admin_id']) && !empty($_POST['update_admin_mdp']) && !empty($_POST['update_admin_old_mdp'])){
+			$temp = modifMDP($_POST['update_admin_id'],$_POST['update_admin_mdp'],$_POST['update_admin_old_mdp']);
 		}
 	}
 
@@ -61,27 +88,91 @@ include_once("header.php");
 <?php
 	//Si l'utilisateur est administrateur
 	if($admin){
-		echo'';
+		echo'<div class="ui one column center aligned grid">
+				<div class="column ten wide form-holder">
+					<h2 class="center aligned header form-head">Ajouter un nouvel administrateur</h2>
+					<div class="ui form">
+						<form method="post" action="admin.php">
+							<div class="field">
+								<label>Identifiant</label>
+								<input type="text" placeholder="identifiant" name="add_admin_id" id="add_admin_id">
+							</div>
+							<div class="field">
+								<label>Mot de passe</label>
+								<input type="password" placeholder="mot de passe" name="add_admin_mdp" id="add_admin_mdp">
+							</div>
+							<div class="field">
+								<input type="submit" value="Ajouter un nouvel administrateur" class="ui button large fluid green">
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="column ten wide form-holder">
+					<h2 class="center aligned header form-head">Supprimer un administrateur</h2>
+					<div class="ui form">
+						<form method="post" action="admin.php">
+							<div class="field">
+								<label>Administrateur</label>
+								<select class="ui search dropdown" id="del_admin_id">
+									';
+
+									$admins = recupAdmins();
+									error_log($admins);
+									foreach ($admins as $admin) {
+										echo('<option value="'.$admin['identifiant'].'">'.$admin['identifiant'].'</option>');
+									}
+									echo '
+								</select>
+							</div>
+							<div class="field">
+								<input type="submit" value="Supprimer cet administrateur" class="ui button large fluid red">
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="column ten wide form-holder">
+					<h2 class="center aligned header form-head">Modifier votre mot de passe</h2>
+					<div class="ui form">
+						<form method="post" action="admin.php">
+							<div class="field">
+								<input type="hidden" value="'.$_SESSION['identifiant'].'" name="update_admin_id" id="update_admin_id">
+							</div>
+							<div class="field">
+								<label>Ancien mot de passe</label>
+								<input type="password" placeholder="mot de passe" name="update_admin_old_mdp" id="update_admin_old_mdp">
+							</div>
+							<div class="field">
+								<label>Nouveau mot de passe</label>
+								<input type="password" placeholder="mot de passe" name="update_admin_mdp" id="update_admin_mdp">
+							</div>
+							<div class="field">
+								<label>Veuillez répéter votre nouveau mot de passe</label>
+								<input type="password" placeholder="mot de passe" name="update_admin_mdp_2" id="update_admin_mdp_2">
+							</div>
+							<div class="field">
+								<input type="submit" value="Modifier mon mot de passe" class="ui button large fluid blue">
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>';
 	}
 	else{
 		echo'<div class="ui one column center aligned grid">
 				<div class="column six wide form-holder">
-					<h2 class="center aligned header form-head">Sign in</h2>
+					<h2 class="center aligned header form-head">Se connecter</h2>
 					<div class="ui form">
-						<div class="field">
-							<input type="text" placeholder="username">
-						</div>
-						<div class="field">
-							<input type="password" placeholder="password">
-						</div>
-						<div class="field">
-							<input type="submit" value="sign in" class="ui button large fluid green">
-						</div>
-						<div class="inline field">
-							<div class="ui checkbox">
-								<input type="checkbox">
-								<label>Remember me</label>
-						</div>
+						<form method="post" action="admin.php">
+							<div class="field">
+								<input type="text" placeholder="identifiant" name="id" id="id">
+							</div>
+							<div class="field">
+								<input type="password" placeholder="mot de passe" name="mdp" id="mdp">
+							</div>
+							<div class="field">
+								<input type="submit" value="Se connecter" class="ui button large fluid green">
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>';
@@ -92,6 +183,9 @@ include_once("header.php");
 
 	<script type="text/javascript">
 		$('.ui.checkbox').checkbox();
+		$('select.dropdown')
+			.dropdown()
+		;
 	</script>
 </body>
 </html>

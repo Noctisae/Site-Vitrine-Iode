@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 function getDB() {
 	$dbHost = 'localhost';
 	$db	 = 'Iode';
@@ -23,6 +23,14 @@ function jsonErr($errMsg) {
 function recupCatalogues(){
 	$db = getDB();
 	$query = $db->prepare('SELECT Catalogue FROM fournisseurs');
+	$query->execute();
+	$temp = $query->fetchAll();
+	return $temp;
+}
+
+function recupAdmins(){
+	$db = getDB();
+	$query = $db->prepare('SELECT identifiant FROM Admin');
 	$query->execute();
 	$temp = $query->fetchAll();
 	return $temp;
@@ -128,55 +136,55 @@ function updateRSS(){
 
 function isAdmin($id, $mdp){
 	$db = getDB();
-	$query = $db->prepare("SELECT mdp FROM Admin WHERE id=?");
+	$query = $db->prepare("SELECT mdp FROM Admin WHERE identifiant=?");
 	$query->execute(array($id));
 	$temp = $query->fetch();
+	error_log('On a recup les infos');
 	if(!empty($temp)){
 		if(password_verify($mdp, $temp['mdp'])){
 			$_SESSION["authentifie"]=true;
+			$_SESSION["identifiant"]=$id;
 			return True;
 		}
 		else{
 			return False;
 		}
 	}
+	else{
+		return False;
+	}
 }
 
 
 //FONCTION D'AJOUT D'UN ADMIN DANS LA BASE
 function addAdmin($identifiant,$mdp){
+	$db = getDB();
 	$mdp = password_hash($mdp,PASSWORD_DEFAULT);
-	$query = $GLOBALS["bdd"]->prepare("INSERT INTO Admin VALUES(?,?)");
-	$query->bind_param('ss',$identifiant,$mdp);
-	$query->execute();
-	$query->close();
+	$query = $db->prepare("INSERT INTO Admin VALUES(?,?)");
+	$query->execute(array($identifiant,$mdp));
 	return true;
 }
 
 //FONCTION DE SUPPRESSION D'UN ADMIN DANS LA BASE
 function supprAdmin($identifiant){
-	$query = $GLOBALS["bdd"]->prepare("DELETE FROM Admin WHERE identifiant=?");
-	$query->bind_param('s',$identifiant);
-	$query->execute();
-	$query->close();
+	$db = getDB();
+	$query = $db->prepare("DELETE FROM Admin WHERE identifiant=?");
+	$query->execute(array($identifiant));
 	return true;
 }
 
 //FONCTION DE CHANGEMENT DE MOT DE PASSE POUR L'ADMINISTRATEUR COURANT
 function modifMDP($identifiant, $mdp, $oldMDP){
-	$query = $GLOBALS["bdd"]->prepare("SELECT mdp FROM Admin WHERE identifiant=?");
-	$query->bind_param("s",$identifiant);
-	$query->execute();
+	$db = getDB();
+	$query = $db->prepare("SELECT mdp FROM Admin WHERE identifiant=?");
+	$query->execute(array($identifiant));
 	$query->store_result();
 	$query->bind_result($hash);
 	$query->fetch();
-	$query->close();
 	if(password_verify($oldMDP, $hash)){
 		$mdp = password_hash($mdp,PASSWORD_DEFAULT);
-		$query = $GLOBALS["bdd"]->prepare("UPDATE Admin SET mdp=? WHERE identifiant=?");
-		$query->bind_param('ss',$mdp,$identifiant);
-		$query->execute();
-		$query->close();
+		$query = $db->prepare("UPDATE Admin SET mdp=? WHERE identifiant=?");
+		$query->execute(array($mdp,$identifiant));
 		return true;
 	}
 	return false;
