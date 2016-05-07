@@ -38,6 +38,10 @@ body {
 	background: #AAAAAA!important;
 }
 
+.flex-contain{
+	display: flex!important;
+}
+
 .cinquo{
 	width :20%!important;
 	text-align: justify;

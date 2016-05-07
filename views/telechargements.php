@@ -1,3 +1,8 @@
+<?php
+
+	include_once('../php/default.php');
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,111 +25,28 @@
 include_once("header.php");
 
 ?>
+<div class="ui raised very padded text container segment flex-contain">
 
-<div class="ui page grid" style="padding-left: 0px;padding-right: 0px;height:100%;">
-		<div class="row" style="padding : 0px;">
-			<div class="cinquo left column" style="background-image: url('../img/1.png');">
-				<div class="paragraphe">
-					<div class="ui huge header align">Header de test</div>
-					<br>
-					<br>
-					<br>
-					<br>				
-					<p class="align">				
-						<a href="">Lien de test</a>
-						<br>
-						<br>
-						<a href="">Lien de test</a>
-						<br>
-						<br>
-						<a href="">Lien de test</a>
-						<br>
-						<br>
-					</p>
-				</div>
-			</div>
-			<div class="cinquo left column" style="background-image: url('../img/2.jpg')";>
-				<div class="paragraphe">
-					<div class="ui huge header align">Header de test</div>
-					<br>
-					<br>
-					<br>
-					<br>				
-					<p class="align">				
-						<a href="">Lien de test</a>
-						<br>
-						<br>
-						<a href="">Lien de test</a>
-						<br>
-						<br>
-						<a href="">Lien de test</a>
-						<br>
-						<br>
-					</p>
-				</div>
-			</div>
-			<div class="cinquo left column" style="background-image: url('../img/3.jpg')";>
-				<div class="paragraphe">
-					<div class="ui huge header align">Header de test</div>
-					<br>
-					<br>
-					<br>
-					<br>				
-					<p class="align">				
-						<a href="">Lien de test</a>
-						<br>
-						<br>
-						<a href="">Lien de test</a>
-						<br>
-						<br>
-						<a href="">Lien de test</a>
-						<br>
-						<br>
-					</p>
-				</div>
-			</div>
-			<div class="cinquo left column" style="background-image: url('../img/4.png');">
-				<div class="paragraphe">
-					<div class="ui huge header align">Header de test</div>
-					<br>
-					<br>
-					<br>
-					<br>				
-					<p class="align">				
-						<a href="">Lien de test</a>
-						<br>
-						<br>
-						<a href="">Lien de test</a>
-						<br>
-						<br>
-						<a href="">Lien de test</a>
-						<br>
-						<br>
-					</p>
-				</div>
-			</div>
-			<div class="cinquo left column" style="background-image: url('../img/5.jpg');">
-				<div class="paragraphe">
-					<div class="ui huge header align">Header de test</div>
-					<br>
-					<br>
-					<br>
-					<br>				
-					<p class="align">				
-						<a href="">Lien de test</a>
-						<br>
-						<br>
-						<a href="">Lien de test</a>
-						<br>
-						<br>
-						<a href="">Lien de test</a>
-						<br>
-						<br>
-					</p>
-				</div>
-			</div>
+<?php
+
+$catalogues = recupCatalogues();
+
+foreach ($catalogues as $catalogue) {
+	echo'
+	<div class="paragraphe">
+	<a href="../catalogues/'.$catalogue['fichier'].'"></a>
+		<div>
+			<i class="cloud download icon"></i>
+			<p>Télécharger ce catalogue</p>
 		</div>
+	</div>';
+
+}
+
+
+?>
 </div>
+
 <script type="text/javascript">
 	$(document).ready(function(){
 	$('.right.menu.open').on("click",function(e){
