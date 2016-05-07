@@ -113,7 +113,7 @@ include_once("header.php");
 						<form method="post" action="admin.php">
 							<div class="field">
 								<label>Administrateur</label>
-								<select class="ui search dropdown" id="del_admin_id">
+								<select class="ui search dropdown" id="del_admin_id" name="del_admin_id">
 									';
 
 									$admins = recupAdmins();

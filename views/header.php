@@ -11,7 +11,7 @@
 		<a href="news.xml" class="item"><img src="../img/rss.jpg" style="width:50px;height:50px;"></a>
 		<?php
 		if(!empty($_SESSION['authentifie'])){
-			echo'<div class="ui form">
+			echo'<div class="ui form flex-centered">
 						<form method="post" action="admin.php">
 							<div class="field">
 							<input type="hidden" value="true" name="logout" id="logout">

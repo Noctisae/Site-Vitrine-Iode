@@ -42,6 +42,11 @@ body {
 	display: flex!important;
 }
 
+.flex-centered{
+	display: flex;
+	align-items: center;
+}
+
 .cinquo{
 	width :20%!important;
 	text-align: justify;
