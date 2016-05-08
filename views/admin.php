@@ -171,7 +171,7 @@ include_once("header.php");
 				<div class="column ten wide form-holder">
 					<h2 class="center aligned header form-head">Ajouter un nouveau fournisseur</h2>
 					<div class="ui form">
-						<form method="post" action="admin.php">
+						<form method="post" action="admin.php" enctype="multipart/form-data" >
 							<div class="field">
 								<label>Nom du fournisseur</label>
 								<input type="text" placeholder="nom" name="add_fournisseur_nom" id="add_fournisseur_nom">
@@ -223,7 +223,7 @@ include_once("header.php");
 				<div class="column ten wide form-holder">
 					<h2 class="center aligned header form-head">Modifier un fournisseur</h2>
 					<div class="ui form">
-						<form method="post" action="admin.php">
+						<form method="post" action="admin.php" enctype="multipart/form-data">
 							<div class="field">
 								<label>Fournisseur</label>
 								<select class="ui search dropdown" id="update_fournisseur_id" name="update_fournisseur_id">
@@ -253,7 +253,7 @@ include_once("header.php");
 				<div class="column ten wide form-holder">
 					<h2 class="center aligned header form-head">Ajouter un nouveau projet</h2>
 					<div class="ui form">
-						<form method="post" action="admin.php">
+						<form method="post" action="admin.php" enctype="multipart/form-data">
 							<div class="field">
 								<label>Nom du projet</label>
 								<input type="text" required placeholder="Projet Réverie" name="add_projet_nom" id="add_projet_nom">
@@ -297,7 +297,7 @@ include_once("header.php");
 				<div class="column ten wide form-holder">
 					<h2 class="center aligned header form-head">Modifier un projet</h2>
 					<div class="ui form">
-						<form method="post" action="admin.php">
+						<form method="post" action="admin.php" enctype="multipart/form-data">
 							<div class="field">
 								<label>Projets</label>
 								<select class="ui search dropdown" id="update_projet_id" name="update_projet_id">
