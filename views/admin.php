@@ -90,6 +90,9 @@ include_once("header.php");
 	if($admin){
 		echo'<div class="ui one column center aligned grid">
 				<div class="column ten wide form-holder">
+					<h1>Gestion des administrateurs</h1>
+				</div>
+				<div class="column ten wide form-holder">
 					<h2 class="center aligned header form-head">Ajouter un nouvel administrateur</h2>
 					<div class="ui form">
 						<form method="post" action="admin.php">
@@ -102,7 +105,7 @@ include_once("header.php");
 								<input type="password" placeholder="mot de passe" name="add_admin_mdp" id="add_admin_mdp">
 							</div>
 							<div class="field">
-								<input type="submit" value="Ajouter un nouvel administrateur" class="ui button large fluid green">
+								<button value="Ajouter un nouvel administrateur" class="ui button large fluid green">
 							</div>
 						</form>
 					</div>
@@ -125,7 +128,7 @@ include_once("header.php");
 								</select>
 							</div>
 							<div class="field">
-								<input type="submit" value="Supprimer cet administrateur" class="ui button large fluid red">
+								<button value="Supprimer cet administrateur" class="ui button large fluid red">
 							</div>
 						</form>
 					</div>
@@ -150,7 +153,165 @@ include_once("header.php");
 								<input type="password" placeholder="mot de passe" name="update_admin_mdp_2" id="update_admin_mdp_2">
 							</div>
 							<div class="field">
-								<input type="submit" value="Modifier mon mot de passe" class="ui button large fluid blue">
+								<button value="Modifier mon mot de passe" class="ui button large fluid blue">
+							</div>
+						</form>
+					</div>
+				</div>
+
+
+
+
+
+
+
+				<div class="column ten wide form-holder">
+					<h1>Gestion des fournisseurs</h1>
+				</div>
+				<div class="column ten wide form-holder">
+					<h2 class="center aligned header form-head">Ajouter un nouveau fournisseur</h2>
+					<div class="ui form">
+						<form method="post" action="admin.php">
+							<div class="field">
+								<label>Nom du fournisseur</label>
+								<input type="text" placeholder="nom" name="add_fournisseur_nom" id="add_fournisseur_nom">
+							</div>
+							<div class="field">
+								<label>URL (une ou plusieurs) du (ou des) site(s) du fournisseur</label>
+								<input type="text" multiple="multiple" placeholder="http://example.com" name="add_fournisseur_url[]" id="add_fournisseur_url[]">
+							</div>
+							<div class="field">
+								<label>Catalogue</label>
+								<input type="file" multiple="multiple" name="add_fournisseur_catalogue[]" id="add_fournisseur_catalogue[]">
+							</div>
+							<div class="field">
+								<label>Photos</label>
+								<input type="file" multiple="multiple" name="add_fournisseur_photos[]" id="add_fournisseur_photos[]">
+							</div>
+							<div class="field">
+								<label>Priorité du fournisseur (entre 0 et 100, 100 étant le fournisseur le plus prioritaire)</label>
+								<input type="number" name="add_fournisseur_priorite" id="add_fournisseur_priorite">
+							</div>
+							<div class="field">
+								<button value="Ajouter un nouveau fournisseur" class="ui button large fluid green">
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="column ten wide form-holder">
+					<h2 class="center aligned header form-head">Supprimer un fournisseur</h2>
+					<div class="ui form">
+						<form method="post" action="admin.php">
+							<div class="field">
+								<label>Fournisseur</label>
+								<select class="ui search dropdown" id="del_fournisseur_id" name="del_fournisseur_id">
+									';
+
+									$fournisseurs = recupFournisseurs();
+									foreach ($fournisseurs as $fournisseur) {
+										echo('<option value="'.$fournisseur['Nom'].'">'.$fournisseur['Nom'].'</option>');
+									}
+									echo '
+								</select>
+							</div>
+							<div class="field">
+								<button value="Supprimer ce fournisseur" class="ui button large fluid red">
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="column ten wide form-holder">
+					<h2 class="center aligned header form-head">Modifier un fournisseur</h2>
+					<div class="ui form">
+						<form method="post" action="admin.php">
+							<div class="field">
+								<label>Fournisseur</label>
+								<select class="ui search dropdown" id="update_fournisseur_id" name="update_fournisseur_id">
+									';
+
+									$fournisseurs = recupFournisseurs();
+									foreach ($fournisseurs as $fournisseur) {
+										echo('<option value="'.$fournisseur['Nom'].'">'.$fournisseur['Nom'].'</option>');
+									}
+									echo '
+								</select>
+							</div>
+							<div class="field">
+								<button value="Modifier ce fournisseur" class="ui button large fluid blue">
+							</div>
+						</form>
+					</div>
+				</div>
+
+
+
+
+
+				<div class="column ten wide form-holder">
+					<h1>Gestion des projets et références</h1>
+				</div>
+				<div class="column ten wide form-holder">
+					<h2 class="center aligned header form-head">Ajouter un nouveau projet</h2>
+					<div class="ui form">
+						<form method="post" action="admin.php">
+							<div class="field">
+								<label>Nom du projet</label>
+								<input type="text" required placeholder="Projet Réverie" name="add_projet_nom" id="add_projet_nom">
+							</div>
+							<div class="field">
+								<label>Adresse du projet</label>
+								<input type="text" placeholder="27, rue du Léon, 29200 Brest" name="add_projet_adresse" id="add_projet_adresse">
+							</div>
+							<div class="field">
+								<label>Photos du projet</label>
+								<input type="file" multiple="multiple" name="add_projet_photos[]" id="add_projet_photos[]">
+							</div>
+							<div class="field">
+								<button value="Ajouter un nouveau projet" class="ui button large fluid green">
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="column ten wide form-holder">
+					<h2 class="center aligned header form-head">Supprimer un projet</h2>
+					<div class="ui form">
+						<form method="post" action="admin.php">
+							<div class="field">
+								<label>Projets</label>
+								<select class="ui search dropdown" id="del_projet_id" name="del_projet_id">
+									';
+
+									$projets = recupProjets();
+									foreach ($projets as $projet) {
+										echo('<option value="'.$projet['ID'].'">'.$projet['Nom'].'</option>');
+									}
+									echo '
+								</select>
+							</div>
+							<div class="field">
+								<button value="Supprimer ce projet" class="ui button large fluid red">
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="column ten wide form-holder">
+					<h2 class="center aligned header form-head">Modifier un projet</h2>
+					<div class="ui form">
+						<form method="post" action="admin.php">
+							<div class="field">
+								<label>Projets</label>
+								<select class="ui search dropdown" id="update_projet_id" name="update_projet_id">
+									';
+
+									$fournisseurs = recupFournisseurs();
+									foreach ($fournisseurs as $fournisseur) {
+										echo('<option value="'.$fournisseur['Nom'].'">'.$fournisseur['Nom'].'</option>');
+									}
+									echo '
+								</select>
+							</div>
+							<div class="field">
+								<button value="Modifier mon mot de passe" class="ui button large fluid blue">
 							</div>
 						</form>
 					</div>

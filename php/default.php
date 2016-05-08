@@ -36,6 +36,22 @@ function recupAdmins(){
 	return $temp;
 }
 
+function recupFournisseurs(){
+	$db = getDB();
+	$query = $db->prepare('SELECT Nom FROM Fournisseurs');
+	$query->execute();
+	$temp = $query->fetchAll();
+	return $temp;
+}
+
+function recupProjets(){
+	$db = getDB();
+	$query = $db->prepare('SELECT ID,Nom FROM Projets');
+	$query->execute();
+	$temp = $query->fetchAll();
+	return $temp;
+}
+
 function addFournisseurPrincipal($nom,$priorite,$catalogue,$URL,$images){
 	$db = getDB();
 	$query = $db->prepare("INSERT INTO Fournisseurs VALUES (?,?,?,?,?)");
