@@ -75,6 +75,7 @@
 	<link rel="stylesheet" type="text/css" href="../css/main.css">
 	<script type="text/javascript" src="../semantic/jquery.min.js"></script>
 	<script type="text/javascript" src="../semantic/dist/semantic.min.js"></script>
+	<script type="text/javascript" src="../js/dropzone.js"></script>
 
 
 </head>
