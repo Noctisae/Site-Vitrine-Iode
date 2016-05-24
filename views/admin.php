@@ -105,7 +105,7 @@ include_once("header.php");
 								<input type="password" placeholder="mot de passe" name="add_admin_mdp" id="add_admin_mdp">
 							</div>
 							<div class="field">
-								<button value="Ajouter un nouvel administrateur" class="ui button large fluid green">
+								<button value="Ajouter un nouvel administrateur" id="add_admin" class="ui button large fluid green">
 							</div>
 						</form>
 					</div>
@@ -128,7 +128,7 @@ include_once("header.php");
 								</select>
 							</div>
 							<div class="field">
-								<button value="Supprimer cet administrateur" class="ui button large fluid red">
+								<button value="Supprimer cet administrateur" id="del_admin" class="ui button large fluid red">
 							</div>
 						</form>
 					</div>
@@ -153,7 +153,7 @@ include_once("header.php");
 								<input type="password" placeholder="mot de passe" name="update_admin_mdp_2" id="update_admin_mdp_2">
 							</div>
 							<div class="field">
-								<button value="Modifier mon mot de passe" class="ui button large fluid blue">
+								<button value="Modifier mon mot de passe" id="update_admin" class="ui button large fluid blue">
 							</div>
 						</form>
 					</div>
@@ -193,7 +193,7 @@ include_once("header.php");
 								<input type="number" name="add_fournisseur_priorite" id="add_fournisseur_priorite">
 							</div>
 							<div class="field">
-								<button value="Ajouter un nouveau fournisseur" class="ui button large fluid green">
+								<button value="Ajouter un nouveau fournisseur" id="add_fournisseur" class="ui button large fluid green">
 							</div>
 						</form>
 					</div>
@@ -215,7 +215,7 @@ include_once("header.php");
 								</select>
 							</div>
 							<div class="field">
-								<button value="Supprimer ce fournisseur" class="ui button large fluid red">
+								<button value="Supprimer ce fournisseur" id="del_fournisseur" class="ui button large fluid red">
 							</div>
 						</form>
 					</div>
@@ -237,7 +237,7 @@ include_once("header.php");
 								</select>
 							</div>
 							<div class="field">
-								<button value="Modifier ce fournisseur" class="ui button large fluid blue">
+								<button value="Modifier ce fournisseur" id="update_fournisseur" class="ui button large fluid blue">
 							</div>
 						</form>
 					</div>
@@ -267,7 +267,7 @@ include_once("header.php");
 								<input type="file" multiple="multiple" name="add_projet_photos[]" id="add_projet_photos[]">
 							</div>
 							<div class="field">
-								<button value="Ajouter un nouveau projet" class="ui button large fluid green">
+								<button value="Ajouter un nouveau projet" id="add_projet" class="ui button large fluid green">
 							</div>
 						</form>
 					</div>
@@ -289,7 +289,7 @@ include_once("header.php");
 								</select>
 							</div>
 							<div class="field">
-								<button value="Supprimer ce projet" class="ui button large fluid red">
+								<button value="Supprimer ce projet" id="del_projet" class="ui button large fluid red">
 							</div>
 						</form>
 					</div>
@@ -311,7 +311,7 @@ include_once("header.php");
 								</select>
 							</div>
 							<div class="field">
-								<button value="Modifier mon mot de passe" class="ui button large fluid blue">
+								<button value="Modifier mon mot de passe" id="update_projet" class="ui button large fluid blue">
 							</div>
 						</form>
 					</div>
@@ -347,6 +347,168 @@ include_once("header.php");
 		$('select.dropdown')
 			.dropdown()
 		;
+	</script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+			$("#add_admin").click(function{
+
+				$.post(
+					'../php/upload_admin.php', // Un script PHP que l'on va créer juste après
+					{
+
+						add_admin_id : $("#add_admin_id").val(),
+						add_admin_mdp : $("#add_admin_mdp").val()
+
+					},
+					function(data){ // Cette fonction ne fait rien encore, nous la mettrons à jour plus tard
+
+					},
+					'text' // Nous souhaitons recevoir "Success" ou "Failed", donc on indique text !
+				);
+			});
+
+			$("#del_admin").click(function{
+
+				$.post(
+					'../php/upload_admin.php', // Un script PHP que l'on va créer juste après
+					{
+
+						del_admin_id : $("#del_admin_id").val()
+
+					},
+					function(data){ // Cette fonction ne fait rien encore, nous la mettrons à jour plus tard
+
+					},
+					'text' // Nous souhaitons recevoir "Success" ou "Failed", donc on indique text !
+				);
+			});
+
+			$("#update_admin").click(function{
+
+				$.post(
+					'../php/upload_admin.php', // Un script PHP que l'on va créer juste après
+					{
+
+						update_admin_id : $("#update_admin_id").val(),
+						update_admin_mdp : $("#update_admin_mdp").val(),
+						update_admin_old_mdp : $("#update_admin_old_mdp").val()
+
+					},
+					function(data){ // Cette fonction ne fait rien encore, nous la mettrons à jour plus tard
+
+					},
+					'text' // Nous souhaitons recevoir "Success" ou "Failed", donc on indique text !
+				);
+			});
+
+			$("#add_fournisseur").click(function{
+
+				$.post(
+					'../php/upload_admin.php', // Un script PHP que l'on va créer juste après
+					{
+
+						add_fournisseur_nom : $("#add_fournisseur_nom").val(),
+						add_fournisseur_url : $("#add_fournisseur_url").val(),
+						add_fournisseur_catalogue : $("#add_fournisseur_catalogue").val(),
+						add_fournisseur_photos : $("#add_fournisseur_photos").val(),
+						add_fournisseur_priorite : $("#add_fournisseur_priorite").val()
+					},
+					function(data){ // Cette fonction ne fait rien encore, nous la mettrons à jour plus tard
+
+					},
+					'text' // Nous souhaitons recevoir "Success" ou "Failed", donc on indique text !
+				);
+			});
+
+			$("#del_fournisseur").click(function{
+
+				$.post(
+					'../php/upload_admin.php', // Un script PHP que l'on va créer juste après
+					{
+
+						del_fournisseur_id : $("#del_fournisseur_id").val()
+						
+					},
+					function(data){ // Cette fonction ne fait rien encore, nous la mettrons à jour plus tard
+
+					},
+					'text' // Nous souhaitons recevoir "Success" ou "Failed", donc on indique text !
+				);
+			});
+
+			$("#update_fournisseur").click(function{
+
+				$.post(
+					'../php/upload_admin.php', // Un script PHP que l'on va créer juste après
+					{
+
+						update_fournisseur_id : $("#update_fournisseur_id").val(),
+						update_fournisseur_nom : $("#update_fournisseur_nom").val(),
+						update_fournisseur_url : $("#update_fournisseur_url").val(),
+						update_fournisseur_catalogue : $("#update_fournisseur_catalogue").val(),
+						update_fournisseur_photos : $("#update_fournisseur_photos").val(),
+						update_fournisseur_priorite : $("#update_fournisseur_priorite").val()
+					},
+					function(data){ // Cette fonction ne fait rien encore, nous la mettrons à jour plus tard
+
+					},
+					'text' // Nous souhaitons recevoir "Success" ou "Failed", donc on indique text !
+				);
+			});
+
+			$("#add_projet").click(function{
+
+				$.post(
+					'../php/upload_admin.php', // Un script PHP que l'on va créer juste après
+					{
+
+						add_projet_photos : $("#add_projet_photos").val(),
+						add_projet_nom : $("#add_projet_nom").val(),
+						add_projet_adresse : $("#add_projet_adresse").val()
+					},
+					function(data){ // Cette fonction ne fait rien encore, nous la mettrons à jour plus tard
+
+					},
+					'text' // Nous souhaitons recevoir "Success" ou "Failed", donc on indique text !
+				);
+			});
+
+			$("#del_projet").click(function{
+
+				$.post(
+					'../php/upload_admin.php', // Un script PHP que l'on va créer juste après
+					{
+
+						del_projet_id : $("#del_projet_id").val()
+						
+					},
+					function(data){ // Cette fonction ne fait rien encore, nous la mettrons à jour plus tard
+
+					},
+					'text' // Nous souhaitons recevoir "Success" ou "Failed", donc on indique text !
+				);
+			});
+
+			$("#update_projet").click(function{
+
+				$.post(
+					'../php/upload_admin.php', // Un script PHP que l'on va créer juste après
+					{
+
+						update_projet_id : $("#update_projet_id").val(),
+						update_projet_nom : $("#update_projet_nom").val(),
+						update_projet_adresse : $("#update_projet_adresse").val(),
+						update_projet_photos : $("#update_projet_photos").val()
+					},
+					function(data){ // Cette fonction ne fait rien encore, nous la mettrons à jour plus tard
+
+					},
+					'text' // Nous souhaitons recevoir "Success" ou "Failed", donc on indique text !
+				);
+			});
+		});
+	
 	</script>
 </body>
 </html>
