@@ -73,6 +73,7 @@
 	<title>Agence Iode Administration</title>
 	<link rel="stylesheet" type="text/css" href="../semantic/dist/semantic.min.css">
 	<link rel="stylesheet" type="text/css" href="../css/main.css">
+	<link rel="stylesheet" type="text/css" href="../css/dropzone.css">
 	<script type="text/javascript" src="../semantic/jquery.min.js"></script>
 	<script type="text/javascript" src="../semantic/dist/semantic.min.js"></script>
 	<script type="text/javascript" src="../js/dropzone.js"></script>
@@ -185,6 +186,11 @@ include_once("header.php");
 								<label>Catalogue</label>
 								<input type="file" multiple="multiple" name="add_fournisseur_catalogue[]" id="add_fournisseur_catalogue[]">
 							</div>
+							<form action="/file-upload" class="dropzone">
+								<div class="fallback">
+									<input name="file" type="file" multiple />
+								</div>
+							</form>
 							<div class="field">
 								<label>Photos</label>
 								<input type="file" multiple="multiple" name="add_fournisseur_photos[]" id="add_fournisseur_photos[]">
