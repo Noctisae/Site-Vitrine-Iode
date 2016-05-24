@@ -185,15 +185,20 @@ include_once("header.php");
 							<div class="field">
 								<label>Catalogue</label>
 								<input type="file" multiple="multiple" name="add_fournisseur_catalogue[]" id="add_fournisseur_catalogue[]">
+								<form action="../php/upload_admin_catalogues_fournisseurs.php" class="dropzone">
+									<div class="fallback">
+										<input name="file" type="file" multiple />
+									</div>
+								</form>
 							</div>
-							<form action="/file-upload" class="dropzone">
-								<div class="fallback">
-									<input name="file" type="file" multiple />
-								</div>
-							</form>
 							<div class="field">
 								<label>Photos</label>
 								<input type="file" multiple="multiple" name="add_fournisseur_photos[]" id="add_fournisseur_photos[]">
+								<form action="../php/upload_admin_photos_fournisseurs.php" class="dropzone">
+									<div class="fallback">
+										<input name="file" type="file" multiple />
+									</div>
+								</form>
 							</div>
 							<div class="field">
 								<label>Priorité du fournisseur (entre 0 et 100, 100 étant le fournisseur le plus prioritaire)</label>
@@ -272,6 +277,11 @@ include_once("header.php");
 							<div class="field">
 								<label>Photos du projet</label>
 								<input type="file" multiple="multiple" name="add_projet_photos[]" id="add_projet_photos[]">
+								<form action="../php/upload_admin_photos_projets.php" class="dropzone">
+									<div class="fallback">
+										<input name="file" type="file" multiple />
+									</div>
+								</form>
 							</div>
 							<div class="field">
 								<button value="Ajouter un nouveau projet" id="add_projet" class="ui button large fluid green">
