@@ -157,6 +157,7 @@ function isAdmin($id, $mdp){
 	$temp = $query->fetch();
 	error_log('On a recup les infos');
 	if(!empty($temp)){
+		error_log($temp["mdp"]);
 		if(password_verify($mdp, $temp['mdp'])){
 			$_SESSION["authentifie"]=true;
 			$_SESSION["identifiant"]=$id;

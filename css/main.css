@@ -47,6 +47,10 @@ body {
 	align-items: center;
 }
 
+.mid{
+	margin-top: 10%;
+}
+
 .cinquo{
 	width :20%!important;
 	text-align: justify;
