@@ -108,7 +108,7 @@ include_once("header.php");
 								<button id="add_admin" class="ui button large fluid green">Ajouter un nouvel administrateur</button>
 							</div>
 					</div>
-					<div style="display:hidden;margin-top:20px;" class="ui large fluid" id="return_add_admin_div">
+					<div style="height:0px;margin-top:20px;transition: height 2s;" class="ui large fluid" id="return_add_admin_div">
 						<p id="return_add_admin_para"></p>
 					</div>
 				</div>
@@ -133,7 +133,7 @@ include_once("header.php");
 							</div>
 						</form>
 					</div>
-					<div style="display:hidden;margin-top:20px;" class="ui large fluid" id="return_del_admin_div">
+					<div style="height:0px;margin-top:20px;transition: height 2s;" class="ui large fluid" id="return_del_admin_div">
 						<p id="return_del_admin_para"></p>
 					</div>
 				</div>
@@ -161,7 +161,7 @@ include_once("header.php");
 							</div>
 						</form>
 					</div>
-					<div style="display:hidden;margin-top:20px;" class="ui large fluid" id="return_update_admin_div">
+					<div style="height:0px;margin-top:20px;transition: height 2s;" class="ui large fluid" id="return_update_admin_div">
 						<p id="return_update_admin_para"></p>
 					</div>
 				</div>
@@ -188,33 +188,33 @@ include_once("header.php");
 								<input type="text" multiple="multiple" placeholder="http://example.com" name="add_fournisseur_url[]" id="add_fournisseur_url[]">
 							</div>
 							<div class="field">
-								<label>Catalogue</label>
-								<input type="text" name="add_fournisseur_catalogue" id="add_fournisseur_catalogue">
-								<form action="../php/upload_admin_catalogues_fournisseurs.php" class="dropzone" id="dropzone_catalogues_add">
-									<div class="fallback">
-										<input name="file" type="file" multiple />
-									</div>
-								</form>
+								<input type="hidden" name="add_fournisseur_catalogue" id="add_fournisseur_catalogue">
 							</div>
 							<div class="field">
-								<label>Photos</label>
-								<input type="text" name="add_fournisseur_photos" id="add_fournisseur_photos">
-								<form action="../php/upload_admin_photos_fournisseurs.php" class="dropzone" id="dropzone_photos_fournisseurs_add">
-									<div class="fallback">
-										<input name="file" type="file" multiple />
-									</div>
-								</form>
+								<input type="hidden" name="add_fournisseur_photos" id="add_fournisseur_photos">
 							</div>
 							<div class="field">
 								<label>Priorité du fournisseur (entre 0 et 100, 100 étant le fournisseur le plus prioritaire)</label>
 								<input type="number" name="add_fournisseur_priorite" id="add_fournisseur_priorite">
 							</div>
-							<div class="field">
-								<button id="add_fournisseur" class="ui button large fluid green">Ajouter un nouveau fournisseur</button>
+						</form>
+						<label>Catalogue</label>
+						<form action="../php/upload_admin_catalogues_fournisseurs.php" class="dropzone" id="dropzone_catalogues_add">
+							<div class="fallback">
+								<input name="file" type="file" multiple />
 							</div>
 						</form>
+						<label>Photos</label>
+						<form action="../php/upload_admin_photos_fournisseurs.php" class="dropzone" id="dropzone_photos_fournisseurs_add">
+							<div class="fallback">
+								<input name="file" type="file" multiple />
+							</div>
+						</form>
+						<div class="field">
+							<button id="add_fournisseur" class="ui button large fluid green">Ajouter un nouveau fournisseur</button>
+						</div>
 					</div>
-					<div style="display:hidden;margin-top:20px;" class="ui large fluid" id="return_add_fournisseur_div">
+					<div style="height:0px;margin-top:20px;transition: height 2s;" class="ui large fluid" id="return_add_fournisseur_div">
 						<p id="return_add_fournisseur_para"></p>
 					</div>
 				</div>
@@ -239,7 +239,7 @@ include_once("header.php");
 							</div>
 						</form>
 					</div>
-					<div style="display:hidden;margin-top:20px;" class="ui large fluid" id="return_del_fournisseur_div">
+					<div style="height:0px;margin-top:20px;transition: height 2s;" class="ui large fluid" id="return_del_fournisseur_div">
 						<p id="return_del_fournisseur_para"></p>
 					</div>
 				</div>
@@ -264,7 +264,7 @@ include_once("header.php");
 							</div>
 						</form>
 					</div>
-					<div style="display:hidden;margin-top:20px;" class="ui large fluid" id="return_update_fournisseur_div">
+					<div style="height:0px;margin-top:20px;transition: height 2s;" class="ui large fluid" id="return_update_fournisseur_div">
 						<p id="return_update_fournisseur_para"></p>
 					</div>
 				</div>
@@ -289,20 +289,20 @@ include_once("header.php");
 								<input type="text" placeholder="27, rue du Léon, 29200 Brest" name="add_projet_adresse" id="add_projet_adresse">
 							</div>
 							<div class="field">
-								<label>Photos du projet</label>
-								<input type="text" multiple="multiple" name="add_projet_photos" id="add_projet_photos">
-								<form action="../php/upload_admin_photos_projets.php" class="dropzone" id="dropzone_photos_projets_add">
-									<div class="fallback">
-										<input name="file" type="file" multiple />
-									</div>
-								</form>
-							</div>
-							<div class="field">
-								<button id="add_projet" class="ui button large fluid green">Ajouter un nouveau projet</button>
+								<input type="hidden" name="add_projet_photos" id="add_projet_photos">
 							</div>
 						</form>
+						<label>Photos du projet</label>
+						<form action="../php/upload_admin_photos_projets.php" class="dropzone" id="dropzone_photos_projets_add">
+							<div class="fallback">
+								<input name="file" type="file" multiple />
+							</div>
+						</form>
+						<div class="field">
+							<button id="add_projet" class="ui button large fluid green">Ajouter un nouveau projet</button>
+						</div>
 					</div>
-					<div style="display:hidden;margin-top:20px;" class="ui large fluid" id="return_add_projet_div">
+					<div style="height:0px;margin-top:20px;transition: height 2s;" class="ui large fluid" id="return_add_projet_div">
 						<p id="return_add_projet_para"></p>
 					</div>
 				</div>
@@ -327,7 +327,7 @@ include_once("header.php");
 							</div>
 						</form>
 					</div>
-					<div style="display:hidden;margin-top:20px;" class="ui large fluid" id="return_del_projet_div">
+					<div style="height:0px;margin-top:20px;transition: height 2s;" class="ui large fluid" id="return_del_projet_div">
 						<p id="return_del_projet_para"></p>
 					</div>
 				</div>
@@ -352,7 +352,7 @@ include_once("header.php");
 							</div>
 						</form>
 					</div>
-					<div style="display:hidden;margin-top:20px;" class="ui large fluid" id="return_update_fournisseur_div">
+					<div style="height:0px;margin-top:20px;transition: height 2s;"class="ui large fluid" id="return_update_fournisseur_div">
 						<p id="return_update_fournisseur_para"></p>
 					</div>
 				</div>
@@ -413,8 +413,8 @@ include_once("header.php");
 						}
 						alert(json.msg);
 						$("#return_add_admin_para").text(json.msg);
-						$("#return_add_admin_div").css("display", "block");
-						setTimeout(function(){$("#return_add_admin_div").css("display", "none")}, 10000);
+						$("#return_add_admin_div").css("height", "150px");
+						setTimeout(function(){$("#return_add_admin_div").css("height", "0px")}, 10000);
 					},
 					'text' 
 				);
@@ -441,8 +441,8 @@ include_once("header.php");
 						}
 						alert(json.msg);
 						$("#return_del_admin_para").text(json.msg);
-						$("#return_del_admin_div").css("display", "block");
-						setTimeout(function(){$("#return_del_admin_div").css("display", "none")}, 10000);
+						$("#return_del_admin_div").css("height", "150px");
+						setTimeout(function(){$("#return_del_admin_div").css("height", "0px")}, 10000);
 					},
 					'text' 
 				);
@@ -471,8 +471,8 @@ include_once("header.php");
 						}
 						alert(json.msg);
 						$("#return_update_admin_para").text(json.msg);
-						$("#return_update_admin_div").css("display", "block");
-						setTimeout(function(){$("#return_update_admin_div").css("display", "none")}, 10000);
+						$("#return_update_admin_div").css("height", "150px");
+						setTimeout(function(){$("#return_update_admin_div").css("height", "0px")}, 10000);
 					},
 					'text' 
 				);
@@ -502,8 +502,8 @@ include_once("header.php");
 						}
 						alert(json.msg);
 						$("#return_add_fournisseur_para").text(json.msg);
-						$("#return_add_fournisseur_div").css("display", "block");
-						setTimeout(function(){$("#return_add_fournisseur_div").css("display", "none")}, 10000);
+						$("#return_add_fournisseur_div").css("height", "150px");
+						setTimeout(function(){$("#return_add_fournisseur_div").css("height", "0px")}, 10000);
 					},
 					'text' 
 				);
@@ -530,8 +530,8 @@ include_once("header.php");
 						}
 						alert(json.msg);
 						$("#return_del_fournisseur_para").text(json.msg);
-						$("#return_del_fournisseur_div").css("display", "block");
-						setTimeout(function(){$("#return_del_fournisseur_div").css("display", "none")}, 10000);
+						$("#return_del_fournisseur_div").css("height", "150px");
+						setTimeout(function(){$("#return_del_fournisseur_div").css("height", "0px")}, 10000);
 					},
 					'text' 
 				);
@@ -562,8 +562,8 @@ include_once("header.php");
 						}
 						alert(json.msg);
 						$("#return_update_fournisseur_para").text(json.msg);
-						$("#return_update_fournisseur_div").css("display", "block");
-						setTimeout(function(){$("#return_update_fournisseur_div").css("display", "none")}, 10000);
+						$("#return_update_fournisseur_div").css("height", "150px");
+						setTimeout(function(){$("#return_update_fournisseur_div").css("height", "0px")}, 10000);
 					},
 					'text' 
 				);
@@ -591,8 +591,8 @@ include_once("header.php");
 						}
 						alert(json.msg);
 						$("#return_add_projet_para").text(json.msg);
-						$("#return_add_projet_div").css("display", "block");
-						setTimeout(function(){$("#return_add_projet_div").css("display", "none")}, 10000);
+						$("#return_add_projet_div").css("height", "150px");
+						setTimeout(function(){$("#return_add_projet_div").css("height", "0px")}, 10000);
 					},
 					'text' 
 				);
@@ -619,8 +619,8 @@ include_once("header.php");
 						}
 						alert(json.msg);
 						$("#return_del_projet_para").text(json.msg);
-						$("#return_del_projet_div").css("display", "block");
-						setTimeout(function(){$("#return_del_projet_div").css("display", "none")}, 10000);
+						$("#return_del_projet_div").css("height", "150px");
+						setTimeout(function(){$("#return_del_projet_div").css("height", "0px")}, 10000);
 					},
 					'text' 
 				);
@@ -649,53 +649,13 @@ include_once("header.php");
 						}
 						alert(json.msg);
 						$("#return_update_projet_para").text(json.msg);
-						$("#return_update_projet_div").css("display", "block");
-						setTimeout(function(){$("#return_update_projet_div").css("display", "none")}, 10000);
+						$("#return_update_projet_div").css("height", "150px");
+						setTimeout(function(){$("#return_update_projet_div").css("height", "0px")}, 10000);
 					},
 					'text' 
 				);
 			});
 
-			new Dropzone("#dropzone_catalogues_add", { 
-				maxFilesize: 2, // MB
-				init: function() {
-					this.on("success", function(file, response) {
-						if($("add_fournisseur_catalogue").val() != ''){
-							$("add_fournisseur_catalogue").val() = $("add_fournisseur_catalogue").val() +','+ response;
-						}
-						else{
-							$("add_fournisseur_catalogue").val() = response;
-						}
-					});
-				}
-			});
-
-			new Dropzone("#dropzone_photos_projets_add", { 
-				maxFilesize: 2, // MB
-				init: function() {
-					this.on("success", function(file, response) {
-						if($("add_projet_photos").val() != ''){
-							$("add_projet_photos").val() = $("add_projet_photos").val() +','+ response;
-						}
-						else{
-							$("add_projet_photos").val() = response;
-						}
-					});
-				}
-			});
-
-			new Dropzone("#dropzone_photos_fournisseurs_add", { 
-				maxFilesize: 2, // MB
-				init: function() {
-					this.on("success", function(file, response) {
-						if($("add_fournisseur_photos").val() != ''){
-							$("add_fournisseur_photos").val() = $("add_fournisseur_photos").val() +','+ response;
-						}
-						else{
-							$("add_fournisseur_photos").val() = response;
-						}					});
-				}
-			});
 		});
 	
 
