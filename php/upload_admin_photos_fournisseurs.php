@@ -28,6 +28,7 @@ if($_SERVER['HTTP_REFERER'] == 'https://francoistoquer.com/iode/views/admin.php'
 				if(move_uploaded_file($tempFile,$targetFile))
 				{
 					// Si upload OK alors on affiche le message de réussite
+					error_log("fichier correctement uploadé");
 					return $targetFile;				
 				}
 				else
@@ -50,5 +51,4 @@ if($_SERVER['HTTP_REFERER'] == 'https://francoistoquer.com/iode/views/admin.php'
 		}
 	}
 }
-?>
 ?>

@@ -1,3 +1,9 @@
+<?php
+	session_start();
+	include_once('../php/default.php');
+	$references = recupReferences();
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +16,10 @@
 	<title>Agence Iode</title>
 	<link rel="stylesheet" type="text/css" href="../semantic/dist/semantic.min.css">
 	<link rel="stylesheet" type="text/css" href="../css/main.css">
-	<script type="text/javascript" src="../semantic/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../slick/slick.css"/>
+	<link rel="stylesheet" type="text/css" href="../slick/slick-theme.css"/>
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/jquery-migrate.min.js"></script>
 	<script type="text/javascript" src="../semantic/dist/semantic.min.js"></script>
 
 </head>
@@ -24,30 +33,29 @@ include_once("header.php");
 <div class="ui raised very padded text container segment flex-contain">
 
 <?php
-
-$references = recupReferences();
-
 foreach ($references as $reference) {
 	echo'
 	<div class="paragraphe">
 	<h1>'.$reference['Nom'].'</h1>
 	<h3>'.$reference['Adresse'].'</h3>
-	
+	<div class="slickey">
 	';
 	foreach ($reference['Photos'] as $photo) {
 		echo'
-		<img src="'.$photo.'""/>
+		<div src="'.$photo.'""></div>
 		';
 	}
 
 
-	echo'</div>';
+	echo'</div></div>';
 
 }
 
 
 ?>
 </div>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../slick/slick.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 	$('.right.menu.open').on("click",function(e){
@@ -58,7 +66,15 @@ foreach ($references as $reference) {
 	$('.ui.dropdown').dropdown();
 });
 </script>
-
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.slickey').slick({
+			infinite: true,
+			slidesToShow: 5,
+			slidesToScroll: 1
+		});
+	});
+</script>
 <?php
 
 include_once("footer.php");

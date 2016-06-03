@@ -1,3 +1,12 @@
+	<?php
+	session_start();
+	include_once('../php/default.php');
+	$un = recupFournisseurUn();
+	$deux = recupFournisseurDeux();
+	$trois = recupFournisseurTrois();
+	$quatre = recupFournisseurQuatre();
+	$cinq = recupFournisseurCinq();
+	?>
 	<!DOCTYPE html>
 	<html>
 	<head>
@@ -10,8 +19,12 @@
 		<title>Agence Iode</title>
 		<link rel="stylesheet" type="text/css" href="../semantic/dist/semantic.min.css">
 		<link rel="stylesheet" type="text/css" href="../css/main.css">
-		<script type="text/javascript" src="../semantic/jquery.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="../slick/slick.css">
+		<link rel="stylesheet" type="text/css" href="../slick/slick-theme.css">
+		<script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../js/jquery-migrate.min.js"></script>
 		<script type="text/javascript" src="../semantic/dist/semantic.min.js"></script>
+		<script type="text/javascript" src="../slick/slick.min.js"></script>
 
 	</head>
 	<body>
@@ -23,106 +36,105 @@
 
 	<div class="ui page grid" style="padding-left: 0px;padding-right: 0px;height:100%;">
 			<div class="row" style="padding : 0px;">
-				<div class="cinquo left column" style="background-image: url('../img/1.png');">
+			<?php
+			foreach ($un as $fournisseur) {
+				echo '<div class="cinquo left column" style="background-image: url("'.$fournisseur['logo'].'");">
 					<div class="paragraphe">
-						<div class="ui huge header align">Header de test</div>
+						<div class="ui huge header align">'.$fournisseur["nom"].'</div>
 						<br>
 						<br>
 						<br>
 						<br>				
-						<p class="align">				
-							<a href="">Lien de test</a>
-							<br>
-							<br>
-							<a href="">Lien de test</a>
-							<br>
-							<br>
-							<a href="">Lien de test</a>
-							<br>
-							<br>
-						</p>
+						<p class="align">
+							';
+
+				foreach ($fournisseur['secondaire'] as $secondaire) {
+					echo'<a href="'.$secondaire["url"].'"><img src="'.$secondaire["logo"].'"></a><br><br>';	
+				}
+				echo'</p>
 					</div>
-				</div>
-				<div class="cinquo left column" style="background-image: url('../img/2.jpg')";>
+				</div>';
+			}
+
+			foreach ($deux as $fournisseur) {
+				echo '<div class="cinquo left column" style="background-image: url("'.$fournisseur['logo'].'");">
 					<div class="paragraphe">
-						<div class="ui huge header align">Header de test</div>
+						<div class="ui huge header align">'.$fournisseur["nom"].'</div>
 						<br>
 						<br>
 						<br>
 						<br>				
-						<p class="align">				
-							<a href="">Lien de test</a>
-							<br>
-							<br>
-							<a href="">Lien de test</a>
-							<br>
-							<br>
-							<a href="">Lien de test</a>
-							<br>
-							<br>
-						</p>
+						<p class="align">
+							';
+
+				foreach ($fournisseur['secondaire'] as $secondaire) {
+					echo'<a href="'.$secondaire["url"].'"><img src="'.$secondaire["logo"].'"></a><br><br>';	
+				}
+				echo'</p>
 					</div>
-				</div>
-				<div class="cinquo left column" style="background-image: url('../img/3.jpg')";>
+				</div>';
+			}
+
+			foreach ($trois as $fournisseur) {
+				echo '<div class="cinquo left column" style="background-image: url("'.$fournisseur['logo'].'");">
 					<div class="paragraphe">
-						<div class="ui huge header align">Header de test</div>
+						<div class="ui huge header align">'.$fournisseur["nom"].'</div>
 						<br>
 						<br>
 						<br>
 						<br>				
-						<p class="align">				
-							<a href="">Lien de test</a>
-							<br>
-							<br>
-							<a href="">Lien de test</a>
-							<br>
-							<br>
-							<a href="">Lien de test</a>
-							<br>
-							<br>
-						</p>
+						<p class="align">
+							';
+
+				foreach ($fournisseur['secondaire'] as $secondaire) {
+					echo'<a href="'.$secondaire["url"].'"><img src="'.$secondaire["logo"].'"></a><br><br>';	
+				}
+				echo'</p>
 					</div>
-				</div>
-				<div class="cinquo left column" style="background-image: url('../img/4.png');">
+				</div>';
+			}
+
+
+			foreach ($quatre as $fournisseur) {
+				echo '<div class="cinquo left column" style="background-image: url("'.$fournisseur['logo'].'");">
 					<div class="paragraphe">
-						<div class="ui huge header align">Header de test</div>
+						<div class="ui huge header align">'.$fournisseur["nom"].'</div>
 						<br>
 						<br>
 						<br>
 						<br>				
-						<p class="align">				
-							<a href="">Lien de test</a>
-							<br>
-							<br>
-							<a href="">Lien de test</a>
-							<br>
-							<br>
-							<a href="">Lien de test</a>
-							<br>
-							<br>
-						</p>
+						<p class="align">
+							';
+
+				foreach ($fournisseur['secondaire'] as $secondaire) {
+					echo'<a href="'.$secondaire["url"].'"><img src="'.$secondaire["logo"].'"></a><br><br>';	
+				}
+				echo'</p>
 					</div>
-				</div>
-				<div class="cinquo left column" style="background-image: url('../img/5.jpg');">
+				</div>';
+			}
+
+
+			foreach ($cinq as $fournisseur) {
+				echo '<div class="cinquo left column" style="background-image: url("'.$fournisseur['logo'].'");">
 					<div class="paragraphe">
-						<div class="ui huge header align">Header de test</div>
+						<div class="ui huge header align">'.$fournisseur["nom"].'</div>
 						<br>
 						<br>
 						<br>
 						<br>				
-						<p class="align">				
-							<a href="">Lien de test</a>
-							<br>
-							<br>
-							<a href="">Lien de test</a>
-							<br>
-							<br>
-							<a href="">Lien de test</a>
-							<br>
-							<br>
-						</p>
+						<p class="align">
+							';
+
+				foreach ($fournisseur['secondaire'] as $secondaire) {
+					echo'<a href="'.$secondaire["url"].'"><img src="'.$secondaire["logo"].'"></a><br><br>';	
+				}
+				echo'</p>
 					</div>
-				</div>
+				</div>';
+			}
+
+			?>
 			</div>
 	</div>
 	<script type="text/javascript">

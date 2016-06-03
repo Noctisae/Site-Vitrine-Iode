@@ -1,6 +1,6 @@
 <?php
 	session_start();
-
+	usleep(200000);
 	if(!empty($_POST['logout'])){
 		unset($_SESSION['authentifie']);
 		unset($_SESSION['identifiant']);
@@ -74,12 +74,13 @@
 	<link rel="stylesheet" type="text/css" href="../semantic/dist/semantic.min.css">
 	<link rel="stylesheet" type="text/css" href="../css/main.css">
 	<link rel="stylesheet" type="text/css" href="../css/dropzone.css">
-	<script type="text/javascript" src="../semantic/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/jquery-migrate.min.js"></script>
 	<script type="text/javascript" src="../semantic/dist/semantic.min.js"></script>
 	<script type="text/javascript" src="../js/dropzone.js"></script>
 
 </head>
-<body style="background-image: url('../img/ad.jpg')">
+<body>
 <?php
 
 include_once("header.php");
@@ -89,12 +90,21 @@ include_once("header.php");
 <?php
 	//Si l'utilisateur est administrateur
 	if($admin){
-		echo'<div class="ui one column center aligned grid" >
+		echo'
+
+		<div class="ui fluid four item tabular menu" style="margin-top:100px;">
+			<a class="item active" data-tab="admin">Administrateurs</a>
+			<a class="item" data-tab="fournisseurs">Fournisseurs</a>
+			<a class="item" data-tab="Projets">Projets</a>
+			<a class="item" data-tab="surmesure">Sur-mesure</a>
+		</div>
+		<div class="ui bottom attached tab segment active" style="text-align:center;" data-tab="admin">
+			<div class="ui main container">
 				<div class="column ten wide form-holder">
 					<h1>Gestion des administrateurs</h1>
 				</div>
 				<div class="column ten wide form-holder">
-					<h2 class="center aligned header form-head">Ajouter un nouvel administrateur</h2>
+					<h2 class="center aligned header form-head" style="color:black;">Ajouter un nouvel administrateur</h2>
 					<div class="ui form">
 						<div class="field">
 								<label>Identifiant</label>
@@ -113,7 +123,7 @@ include_once("header.php");
 					</div>
 				</div>
 				<div class="column ten wide form-holder">
-					<h2 class="center aligned header form-head">Supprimer un administrateur</h2>
+					<h2 class="center aligned header form-head" style="color:black;">Supprimer un administrateur</h2>
 					<div class="ui form">
 						<form method="post" action="admin.php">
 							<div class="field">
@@ -138,7 +148,7 @@ include_once("header.php");
 					</div>
 				</div>
 				<div class="column ten wide form-holder">
-					<h2 class="center aligned header form-head">Modifier votre mot de passe</h2>
+					<h2 class="center aligned header form-head" style="color:black;">Modifier votre mot de passe</h2>
 					<div class="ui form">
 						<form method="post" action="admin.php">
 							<div class="field">
@@ -166,19 +176,17 @@ include_once("header.php");
 					</div>
 				</div>
 
-
-
-
-
-
-
+			</div>
+		</div>
+		<div class="ui bottom attached tab segment" style="text-align:center;" data-tab="fournisseurs">
+			<div class="ui main container">
 				<div class="column ten wide form-holder">
 					<h1>Gestion des fournisseurs</h1>
 				</div>
 				<div class="column ten wide form-holder">
-					<h2 class="center aligned header form-head">Ajouter un nouveau fournisseur</h2>
+					<h2 class="center aligned header form-head" style="color:black;">Ajouter un nouveau fournisseur</h2>
 					<div class="ui form">
-						<form method="post" action="admin.php" enctype="multipart/form-data" >
+						<form method="post" action="admin.php">
 							<div class="field">
 								<label>Nom du fournisseur</label>
 								<input type="text" placeholder="nom" name="add_fournisseur_nom" id="add_fournisseur_nom">
@@ -199,17 +207,11 @@ include_once("header.php");
 							</div>
 						</form>
 						<label>Catalogue</label>
-						<form action="../php/upload_admin_catalogues_fournisseurs.php" class="dropzone" id="dropzone_catalogues_add">
-							<div class="fallback">
-								<input name="file" type="file" multiple />
-							</div>
-						</form>
+						<div class="dropzone" id="dropzone_catalogues_add">
+						</div>
 						<label>Photos</label>
-						<form action="../php/upload_admin_photos_fournisseurs.php" class="dropzone" id="dropzone_photos_fournisseurs_add">
-							<div class="fallback">
-								<input name="file" type="file" multiple />
-							</div>
-						</form>
+						<div class="dropzone" id="dropzone_photos_fournisseurs_add">
+						</div>
 						<div class="field">
 							<button id="add_fournisseur" class="ui button large fluid green">Ajouter un nouveau fournisseur</button>
 						</div>
@@ -219,7 +221,7 @@ include_once("header.php");
 					</div>
 				</div>
 				<div class="column ten wide form-holder">
-					<h2 class="center aligned header form-head">Supprimer un fournisseur</h2>
+					<h2 class="center aligned header form-head" style="color:black;">Supprimer un fournisseur</h2>
 					<div class="ui form">
 						<form method="post" action="admin.php">
 							<div class="field">
@@ -244,7 +246,7 @@ include_once("header.php");
 					</div>
 				</div>
 				<div class="column ten wide form-holder">
-					<h2 class="center aligned header form-head">Modifier un fournisseur</h2>
+					<h2 class="center aligned header form-head" style="color:black;">Modifier un fournisseur</h2>
 					<div class="ui form">
 						<form method="post" action="admin.php" enctype="multipart/form-data">
 							<div class="field">
@@ -268,16 +270,15 @@ include_once("header.php");
 						<p id="return_update_fournisseur_para"></p>
 					</div>
 				</div>
-
-
-
-
-
+			</div>
+		</div>
+		<div class="ui bottom attached tab segment" style="text-align:center;" data-tab="Projets">
+			<div class="ui main container">
 				<div class="column ten wide form-holder">
 					<h1>Gestion des projets et références</h1>
 				</div>
 				<div class="column ten wide form-holder">
-					<h2 class="center aligned header form-head">Ajouter un nouveau projet</h2>
+					<h2 class="center aligned header form-head" style="color:black;">Ajouter un nouveau projet</h2>
 					<div class="ui form">
 						<form method="post" action="admin.php" enctype="multipart/form-data">
 							<div class="field">
@@ -293,11 +294,8 @@ include_once("header.php");
 							</div>
 						</form>
 						<label>Photos du projet</label>
-						<form action="../php/upload_admin_photos_projets.php" class="dropzone" id="dropzone_photos_projets_add">
-							<div class="fallback">
-								<input name="file" type="file" multiple />
-							</div>
-						</form>
+						<div class="dropzone" id="dropzone_photos_projets_add">
+						</div>
 						<div class="field">
 							<button id="add_projet" class="ui button large fluid green">Ajouter un nouveau projet</button>
 						</div>
@@ -307,7 +305,7 @@ include_once("header.php");
 					</div>
 				</div>
 				<div class="column ten wide form-holder">
-					<h2 class="center aligned header form-head">Supprimer un projet</h2>
+					<h2 class="center aligned header form-head" style="color:black;">Supprimer un projet</h2>
 					<div class="ui form">
 						<form method="post" action="admin.php">
 							<div class="field">
@@ -332,7 +330,7 @@ include_once("header.php");
 					</div>
 				</div>
 				<div class="column ten wide form-holder">
-					<h2 class="center aligned header form-head">Modifier un projet</h2>
+					<h2 class="center aligned header form-head" style="color:black;">Modifier un projet</h2>
 					<div class="ui form">
 						<form method="post" action="admin.php" enctype="multipart/form-data">
 							<div class="field">
@@ -356,7 +354,11 @@ include_once("header.php");
 						<p id="return_update_fournisseur_para"></p>
 					</div>
 				</div>
-			</div>';
+			</div>
+		</div>
+		<div class="ui bottom attached tab segment" style="text-align:center;" data-tab="surmesure">
+			Sur-mesure
+		</div>';
 	}
 	else{
 		echo'<div class="ui one column center aligned grid mid">
@@ -387,6 +389,11 @@ include_once("header.php");
 		$('select.dropdown')
 			.dropdown()
 		;
+		$('.menu .item').tab();
+
+		$("div#dropzone_catalogues_add").dropzone({ url: "../php/upload_admin_catalogues_fournisseurs.php" });
+		$("div#dropzone_photos_fournisseurs_add").dropzone({ url: "../php/upload_admin_photos_fournisseurs.php" });
+		$("div#dropzone_photos_projets_add").dropzone({ url: "../php/upload_admin_photos_projets.php" });
 	</script>
 	<script type="text/javascript">
 		$(document).ready(function(){
@@ -404,7 +411,7 @@ include_once("header.php");
 					function(data){
 						true_data = data.split("}");
 						true_data[0] = encode_utf8(true_data[0]) + '}';
-						json  = JSON.parse(true_data[0]);
+						json	= JSON.parse(true_data[0]);
 						if(json.success){
 							$("#return_add_admin_div").css("backgroundColor", "green");
 						}
@@ -432,7 +439,7 @@ include_once("header.php");
 					function(data){ 
 						true_data = data.split("}");
 						true_data[0] = encode_utf8(true_data[0]) + '}';
-						json  = JSON.parse(true_data[0]);
+						json	= JSON.parse(true_data[0]);
 						if(json.success){
 							$("#return_del_admin_div").css("backgroundColor", "green");
 						}
@@ -462,7 +469,7 @@ include_once("header.php");
 					function(data){ 
 						true_data = data.split("}");
 						true_data[0] = encode_utf8(true_data[0]) + '}';
-						json  = JSON.parse(true_data[0]);
+						json	= JSON.parse(true_data[0]);
 						if(json.success){
 							$("#return_update_admin_div").css("backgroundColor", "green");
 						}
@@ -493,7 +500,7 @@ include_once("header.php");
 					function(data){
 						true_data = data.split("}");
 						true_data[0] = encode_utf8(true_data[0]) + '}';
-						json  = JSON.parse(true_data[0]);
+						json	= JSON.parse(true_data[0]);
 						if(json.success){
 							$("#return_add_fournisseur_div").css("backgroundColor", "green");
 						}
@@ -521,7 +528,7 @@ include_once("header.php");
 					function(data){ 
 						true_data = data.split("}");
 						true_data[0] = encode_utf8(true_data[0]) + '}';
-						json  = JSON.parse(true_data[0]);
+						json	= JSON.parse(true_data[0]);
 						if(json.success){
 							$("#return_del_fournisseur_div").css("backgroundColor", "green");
 						}
@@ -553,7 +560,7 @@ include_once("header.php");
 					function(data){ 
 						true_data = data.split("}");
 						true_data[0] = encode_utf8(true_data[0]) + '}';
-						json  = JSON.parse(true_data[0]);
+						json	= JSON.parse(true_data[0]);
 						if(json.success){
 							$("#return_update_fournisseur_div").css("backgroundColor", "green");
 						}
@@ -582,7 +589,7 @@ include_once("header.php");
 					function(data){
 						true_data = data.split("}");
 						true_data[0] = encode_utf8(true_data[0]) + '}';
-						json  = JSON.parse(true_data[0]);
+						json	= JSON.parse(true_data[0]);
 						if(json.success){
 							$("#return_add_projet_div").css("backgroundColor", "green");
 						}
@@ -610,7 +617,7 @@ include_once("header.php");
 					function(data){
 						true_data = data.split("}");
 						true_data[0] = encode_utf8(true_data[0]) + '}';
-						json  = JSON.parse(true_data[0]);
+						json	= JSON.parse(true_data[0]);
 						if(json.success){
 							$("#return_del_projet_div").css("backgroundColor", "green");
 						}
@@ -640,7 +647,7 @@ include_once("header.php");
 					function(data){
 						true_data = data.split("}");
 						true_data[0] = encode_utf8(true_data[0]) + '}';
-						json  = JSON.parse(true_data[0]);
+						json	= JSON.parse(true_data[0]);
 						if(json.success){
 							$("#return_update_projet_div").css("backgroundColor", "green");
 						}
