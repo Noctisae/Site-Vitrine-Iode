@@ -206,4 +206,20 @@ function modifMDP($identifiant, $mdp, $oldMDP){
 	}
 	return false;
 }
+
+
+
+function recupFournisseur($place){
+	$db = getDB();
+	$query = $db->prepare("SELECT nom,image FROM fournisseurs_principaux WHERE priorite=?");
+	$query->execute(array($place));
+	$temp = $query->fetch();
+	$query = $db->prepare("SELECT nom,url,logo,catalogue_tarifs,catalogue,images FROM fournisseurs_secondaires WHERE fournisseur_principal=?");
+	$query->execute(array($temp["nom"]));
+	$temp2 = $query->fetchAll();
+	$final["principal"] = $temp;
+	$final["secondaires"] = $temp2;
+	return $final;
+}
+
 ?>
