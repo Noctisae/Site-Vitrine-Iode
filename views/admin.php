@@ -376,7 +376,7 @@ include_once("header.php");
 
 									$projets = recupProjets();
 									foreach ($projets as $projet) {
-										echo('<option value="'.$projet['ID'].'">'.$projet['Nom'].'</option>');
+										echo('<option value="'.$projet['id'].'">'.$projet['nom'].'</option>');
 									}
 									echo '
 								</select>
@@ -401,7 +401,7 @@ include_once("header.php");
 
 									$projets = recupProjets();
 									foreach ($projets as $projet) {
-										echo('<option value="'.$projet['Nom'].'">'.$projet['Nom'].'</option>');
+										echo('<option value="'.$projet['id'].'">'.$projet['nom'].'</option>');
 									}
 									echo '
 								</select>

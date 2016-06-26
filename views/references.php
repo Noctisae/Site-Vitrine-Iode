@@ -25,13 +25,13 @@
 	include_once("header.php");
 
 	?>
-	<div class="ui raised very padded text segment flex-contain references-container" style="margin-top:150px;">
+	<div class="ui raised very padded text segment flex-contain references-container" style="margin-top:100px;">
 	<h1 class="ui header">Nos références</h1>
 	</div>
-	<div class="ui raised very padded text segment flex-contain references-container">
 	<?php
 	foreach ($references as $reference) {
 		echo'
+		<div class="ui raised very padded text segment flex-contain references-container">
 		<div class="paragraphe" style="width:100%;">
 		<h1 style="font-size:14">'.$reference['nom'].'</h1>
 		<h3 style="font-size:14">'.$reference['adresse'].'</h3>
@@ -63,7 +63,7 @@
 		</div>
 		<p style="margin-top:10px;">'.nl2br($reference['description']).'</p>
 
-		</div>';
+		</div></div>';
 
 	}
 

@@ -46,7 +46,7 @@ function recupFournisseurs(){
 
 function recupProjets(){
 	$db = getDB();
-	$query = $db->prepare('SELECT nom, adresse, photos, description FROM Projets');
+	$query = $db->prepare('SELECT id,nom, adresse, photos, description FROM Projets');
 	$query->execute();
 	$temp = $query->fetchAll();
 	return $temp;
