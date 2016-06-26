@@ -6,6 +6,12 @@
 	$trois = recupFournisseur(3);
 	$quatre = recupFournisseur(4);
 	$cinq = recupFournisseur(5);
+
+	$logo1 = explode(";",$un[0]['images'])[0];
+	$logo2 = explode(";",$deux[0]['images'])[0];
+	$logo3 = explode(";",$trois[0]['images'])[0];
+	$logo4 = explode(";",$quatre[0]['images'])[0];
+	$logo5 = explode(";",$cinq[0]['images'])[0];
 	?>
 	<!DOCTYPE html>
 	<html>
@@ -39,36 +45,42 @@
 	<div class="ui page grid" style="padding-left: 0px;padding-right: 0px;height:100%;">
 			<div class="row" style="padding : 0px;">
 			<?php
+				
+			////////////////////////////////////////////////////////////////////
+			////////////////////////////////////////////////////////////////////
+			////////////////////   	Premiere partie  	////////////////////////
+			////////////////////////////////////////////////////////////////////
+			////////////////////////////////////////////////////////////////////
+				echo '<div class="cinquo left column" style="background-image: url("'.$logo1.'");">';
+
 				//Partie normale
-				echo '<div class="cinquo left column" style="background-image: url("'.$un['principal']['logo'].'");">
+				echo'
 					<div class="paragraphe">
-						<div class="ui huge header align">'.$un['principal']["nom"].'</div>
-						<br>
-						<br>
-						<br>
 						<br>				
 						<p class="align">
 							';
-
-				foreach ($un['secondaires'] as $fournisseur) {
-					echo'<a href="'.$fournisseur["url"].'"><img src="'.$fournisseur["logo"].'"></a><br><br>';	
-				}
-				echo'</p>
-					</div>
-				</div>';
-
-
+						foreach ($un as $fournisseur) {
+							echo'<a href="'.$fournisseur["url"].'"><img src="'.$fournisseur["logo"].'"></a><br><br>';	
+						}
+				echo'	</p>
+					</div>';
+				
 				//partie Hover
 				echo'<div class="hovered_content">
 
 				';
 
-				foreach ($un['secondaires'] as $fournisseur) {
+				foreach ($un as $fournisseur) {
 					echo'<a href="'.$fournisseur["catalogue"].'">Télécharger le catalogue de '.$fournisseur["nom"].'<i class="file text icon"></i></a><br><br>';
 					echo'<a href="'.$fournisseur["catalogue_tarifs"].'">Télécharger le catalogue des tarifs de '.$fournisseur["nom"].'<i class="file text icon"></i></a><br><br>';
 				}
 
 				echo'</div>';
+
+				echo'</div>';
+
+
+
 
 
 				//Modal Gallerie
@@ -80,13 +92,13 @@
 						<div class="content">
 							<div class="fotorama">
 								';
-				foreach ($un['secondaires'] as $fournisseur) {
-					$temp = explode(";",$un['secondaires']['images']);
-					foreach ($temp as $image) {
-						echo '<img src="'.$image.'">';
-					}
+								foreach ($un as $fournisseur) {
+									$temp = explode(";",$fournisseur['images']);
+									foreach ($temp as $image) {
+										echo '<img src="'.$image.'">';
+									}
 
-				}
+								}
 				echo'</div>	
 						</div>
 						<div class="actions">
@@ -94,161 +106,248 @@
 							<div class="ui button">OK</div>
 						</div>
 					</div>';
-			}
 
-			foreach ($deux as $fournisseur) {
-				echo '<div class="cinquo left column" style="background-image: url("'.$fournisseur['logo'].'");">
+
+			////////////////////////////////////////////////////////////////////
+			////////////////////////////////////////////////////////////////////
+			////////////////////	Deuxieme Partie 	////////////////////////
+			////////////////////////////////////////////////////////////////////
+			////////////////////////////////////////////////////////////////////
+				echo '<div class="cinquo left column" style="background-image: url("'.$logo2.'");">';
+
+				//Partie normale
+				echo'
 					<div class="paragraphe">
-						<div class="ui huge header align">'.$fournisseur["nom"].'</div>
-						<br>
-						<br>
-						<br>
 						<br>				
 						<p class="align">
 							';
+						foreach ($deux as $fournisseur) {
+							echo'<a href="'.$fournisseur["url"].'"><img src="'.$fournisseur["logo"].'"></a><br><br>';	
+						}
+				echo'	</p>
+					</div>';
+				
+				//partie Hover
+				echo'<div class="hovered_content">
 
-				foreach ($fournisseur['secondaire'] as $secondaire) {
-					echo'<a href="'.$secondaire["url"].'"><img src="'.$secondaire["logo"].'"></a><br><br>';	
+				';
+
+				foreach ($deux as $fournisseur) {
+					echo'<a href="'.$fournisseur["catalogue"].'">Télécharger le catalogue de '.$fournisseur["nom"].'<i class="file text icon"></i></a><br><br>';
+					echo'<a href="'.$fournisseur["catalogue_tarifs"].'">Télécharger le catalogue des tarifs de '.$fournisseur["nom"].'<i class="file text icon"></i></a><br><br>';
 				}
-				echo'</p>
-					</div>
-				</div>';
 
+				echo'</div>';
+
+				echo'</div>';
+
+
+
+
+
+				//Modal Gallerie
 				echo '<div class="ui modal deux">
 						<i class="close icon"></i>
 						<div class="header">
-							Modal Title
+							Catalogues des fournisseurs
 						</div>
-						<div class="image content">
-							<div class="image">
-								An image can appear on left or an icon
-							</div>
-							<div class="description">
-								A description can appear on the right
-							</div>
+						<div class="content">
+							<div class="fotorama">
+								';
+								foreach ($deux as $fournisseur) {
+									$temp = explode(";",$fournisseur['images']);
+									foreach ($temp as $image) {
+										echo '<img src="'.$image.'">';
+									}
+
+								}
+				echo'</div>	
 						</div>
 						<div class="actions">
 							<div class="ui button">Cancel</div>
 							<div class="ui button">OK</div>
 						</div>
 					</div>';
-			}
+			////////////////////////////////////////////////////////////////////
+			////////////////////////////////////////////////////////////////////
+			////////////////////	Troisieme Partie 	////////////////////////
+			////////////////////////////////////////////////////////////////////
+			////////////////////////////////////////////////////////////////////
+				echo '<div class="cinquo left column" style="background-image: url("'.$logo3.'");">';
 
-			foreach ($trois as $fournisseur) {
-				echo '<div class="cinquo left column" style="background-image: url("'.$fournisseur['logo'].'");">
+				//Partie normale
+				echo'
 					<div class="paragraphe">
-						<div class="ui huge header align">'.$fournisseur["nom"].'</div>
-						<br>
-						<br>
-						<br>
 						<br>				
 						<p class="align">
 							';
+						foreach ($trois as $fournisseur) {
+							echo'<a href="'.$fournisseur["url"].'"><img src="'.$fournisseur["logo"].'"></a><br><br>';	
+						}
+				echo'	</p>
+					</div>';
+				
+				//partie Hover
+				echo'<div class="hovered_content">
 
-				foreach ($fournisseur['secondaire'] as $secondaire) {
-					echo'<a href="'.$secondaire["url"].'"><img src="'.$secondaire["logo"].'"></a><br><br>';	
+				';
+
+				foreach ($trois as $fournisseur) {
+					echo'<a href="'.$fournisseur["catalogue"].'">Télécharger le catalogue de '.$fournisseur["nom"].'<i class="file text icon"></i></a><br><br>';
+					echo'<a href="'.$fournisseur["catalogue_tarifs"].'">Télécharger le catalogue des tarifs de '.$fournisseur["nom"].'<i class="file text icon"></i></a><br><br>';
 				}
-				echo'</p>
-					</div>
-				</div>';
 
+				echo'</div>';
+
+				echo'</div>';
+
+
+
+
+
+				//Modal Gallerie
 				echo '<div class="ui modal trois">
 						<i class="close icon"></i>
 						<div class="header">
-							Modal Title
+							Catalogues des fournisseurs
 						</div>
-						<div class="image content">
-							<div class="image">
-								An image can appear on left or an icon
-							</div>
-							<div class="description">
-								A description can appear on the right
-							</div>
+						<div class="content">
+							<div class="fotorama">
+								';
+								foreach ($trois as $fournisseur) {
+									$temp = explode(";",$fournisseur['images']);
+									foreach ($temp as $image) {
+										echo '<img src="'.$image.'">';
+									}
+
+								}
+				echo'</div>	
 						</div>
 						<div class="actions">
 							<div class="ui button">Cancel</div>
 							<div class="ui button">OK</div>
 						</div>
 					</div>';
-			}
+			////////////////////////////////////////////////////////////////////
+			////////////////////////////////////////////////////////////////////
+			////////////////////	Quatrieme Partie 	////////////////////////
+			////////////////////////////////////////////////////////////////////
+			////////////////////////////////////////////////////////////////////
+				echo '<div class="cinquo left column" style="background-image: url("'.$logo4.'");">';
 
-
-			foreach ($quatre as $fournisseur) {
-				echo '<div class="cinquo left column" style="background-image: url("'.$fournisseur['logo'].'");">
+				//Partie normale
+				echo'
 					<div class="paragraphe">
-						<div class="ui huge header align">'.$fournisseur["nom"].'</div>
-						<br>
-						<br>
-						<br>
 						<br>				
 						<p class="align">
 							';
+						foreach ($quatre as $fournisseur) {
+							echo'<a href="'.$fournisseur["url"].'"><img src="'.$fournisseur["logo"].'"></a><br><br>';	
+						}
+				echo'	</p>
+					</div>';
+				
+				//partie Hover
+				echo'<div class="hovered_content">
 
-				foreach ($fournisseur['secondaire'] as $secondaire) {
-					echo'<a href="'.$secondaire["url"].'"><img src="'.$secondaire["logo"].'"></a><br><br>';	
+				';
+
+				foreach ($quatre as $fournisseur) {
+					echo'<a href="'.$fournisseur["catalogue"].'">Télécharger le catalogue de '.$fournisseur["nom"].'<i class="file text icon"></i></a><br><br>';
+					echo'<a href="'.$fournisseur["catalogue_tarifs"].'">Télécharger le catalogue des tarifs de '.$fournisseur["nom"].'<i class="file text icon"></i></a><br><br>';
 				}
-				echo'</p>
-					</div>
-				</div>';
 
+				echo'</div>';
+
+				echo'</div>';
+
+
+
+
+
+				//Modal Gallerie
 				echo '<div class="ui modal quatre">
 						<i class="close icon"></i>
 						<div class="header">
-							Modal Title
+							Catalogues des fournisseurs
 						</div>
-						<div class="image content">
-							<div class="image">
-								An image can appear on left or an icon
-							</div>
-							<div class="description">
-								A description can appear on the right
-							</div>
+						<div class="content">
+							<div class="fotorama">
+								';
+								foreach ($quatre as $fournisseur) {
+									$temp = explode(";",$fournisseur['images']);
+									foreach ($temp as $image) {
+										echo '<img src="'.$image.'">';
+									}
+
+								}
+				echo'</div>	
 						</div>
 						<div class="actions">
 							<div class="ui button">Cancel</div>
 							<div class="ui button">OK</div>
 						</div>
 					</div>';
-			}
+			////////////////////////////////////////////////////////////////////
+			////////////////////////////////////////////////////////////////////
+			////////////////////	Cinquième Partie 	////////////////////////
+			////////////////////////////////////////////////////////////////////
+			////////////////////////////////////////////////////////////////////
+				echo '<div class="cinquo left column" style="background-image: url("'.$logo5.'");">';
 
-
-			foreach ($cinq as $fournisseur) {
-				echo '<div class="cinquo left column" style="background-image: url("'.$fournisseur['logo'].'");">
+				//Partie normale
+				echo'
 					<div class="paragraphe">
-						<div class="ui huge header align">'.$fournisseur["nom"].'</div>
-						<br>
-						<br>
-						<br>
 						<br>				
 						<p class="align">
 							';
+						foreach ($cinq as $fournisseur) {
+							echo'<a href="'.$fournisseur["url"].'"><img src="'.$fournisseur["logo"].'"></a><br><br>';	
+						}
+				echo'	</p>
+					</div>';
+				
+				//partie Hover
+				echo'<div class="hovered_content">
 
-				foreach ($fournisseur['secondaire'] as $secondaire) {
-					echo'<a href="'.$secondaire["url"].'"><img src="'.$secondaire["logo"].'"></a><br><br>';	
+				';
+
+				foreach ($cinq as $fournisseur) {
+					echo'<a href="'.$fournisseur["catalogue"].'">Télécharger le catalogue de '.$fournisseur["nom"].'<i class="file text icon"></i></a><br><br>';
+					echo'<a href="'.$fournisseur["catalogue_tarifs"].'">Télécharger le catalogue des tarifs de '.$fournisseur["nom"].'<i class="file text icon"></i></a><br><br>';
 				}
-				echo'</p>
-					</div>
-				</div>';
 
+				echo'</div>';
+
+				echo'</div>';
+
+
+
+
+
+				//Modal Gallerie
 				echo '<div class="ui modal cinq">
 						<i class="close icon"></i>
 						<div class="header">
-							Modal Title
+							Catalogues des fournisseurs
 						</div>
-						<div class="image content">
-							<div class="image">
-								An image can appear on left or an icon
-							</div>
-							<div class="description">
-								A description can appear on the right
-							</div>
+						<div class="content">
+							<div class="fotorama">
+								';
+								foreach ($cinq as $fournisseur) {
+									$temp = explode(";",$fournisseur['images']);
+									foreach ($temp as $image) {
+										echo '<img src="'.$image.'">';
+									}
+
+								}
+				echo'</div>	
 						</div>
 						<div class="actions">
 							<div class="ui button">Cancel</div>
 							<div class="ui button">OK</div>
 						</div>
 					</div>';
-			}
 
 			?>
 			</div>

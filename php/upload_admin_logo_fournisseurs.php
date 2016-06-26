@@ -1,19 +1,14 @@
 <?php
-//Début de la procédure d'upload
 session_start();
-error_log("On arrive au moins ici");
+//Début de la procédure d'upload
 if(!empty($_SESSION["authentifie"])){
 	if($_SESSION["authentifie"]){
 		if($_SERVER['HTTP_REFERER'] == 'https://francoistoquer.com/iode/views/admin.php'){
-			error_log("On vient de la bonne URL");
-
 			if(!empty($_FILES))
 			{
-				error_log("Un fichier a été recu");
-
 				$ds = DIRECTORY_SEPARATOR;
 
-				$storeFolder = 'catalogues';
+				$storeFolder = 'logos_fournisseurs';
 
 				$nom_file = $_FILES['file']['name'];
 
@@ -22,23 +17,16 @@ if(!empty($_SESSION["authentifie"])){
 				$infosfichier = pathinfo($_FILES['file']['name']);
 				$extension_upload = $infosfichier['extension'];
 
-				error_log("On récupère les infos du fichier");
-
 				if($nom_file != '')
 				{
-
-					error_log("On vérifie le nom du fichie");
-
 					$targetPath = dirname( __FILE__ ) . $ds. $storeFolder . $ds;
 
 					$targetFile = $targetPath. $_FILES['file']['name'];
 
 					// On vérifie l'extension du fichier
-					$extensions_autorisees = array('pdf','doc','docx');
+					$extensions_autorisees = array('gif', 'png','jpeg','jpg','bmp');
 					if (in_array($extension_upload, $extensions_autorisees))
 					{
-						error_log("On essaie d'uploader le fichier");
-
 						//upload du fichier
 						if(move_uploaded_file($tempFile,$targetFile))
 						{

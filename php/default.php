@@ -22,7 +22,7 @@ function jsonErr($errMsg) {
 
 function recupCatalogues(){
 	$db = getDB();
-	$query = $db->prepare('SELECT Catalogue FROM fournisseurs');
+	$query = $db->prepare('SELECT catalogue FROM Fournisseurs');
 	$query->execute();
 	$temp = $query->fetchAll();
 	return $temp;
@@ -38,7 +38,7 @@ function recupAdmins(){
 
 function recupFournisseurs(){
 	$db = getDB();
-	$query = $db->prepare('SELECT Nom FROM Fournisseurs');
+	$query = $db->prepare('SELECT id,nom FROM Fournisseurs');
 	$query->execute();
 	$temp = $query->fetchAll();
 	return $temp;
@@ -46,51 +46,51 @@ function recupFournisseurs(){
 
 function recupProjets(){
 	$db = getDB();
-	$query = $db->prepare('SELECT ID,Nom FROM Projets');
+	$query = $db->prepare('SELECT id,nom FROM Projets');
 	$query->execute();
 	$temp = $query->fetchAll();
 	return $temp;
 }
 
-function addFournisseurPrincipal($nom,$priorite,$catalogue,$URL,$images){
+function addFournisseur($nom,$priorite,$url,$catalogue,$catalogue_tarifs,$images,$logo){
 	$db = getDB();
-	$query = $db->prepare("INSERT INTO Fournisseurs VALUES (?,?,?,?,?)");
-	$query->execute(array($nom,$catalogue,$priorite,$URL,$images));
+	$query = $db->prepare("INSERT INTO Fournisseurs(nom, priorite, url, catalogue, catalogue_tarifs, images, logo) VALUES (?,?,?,?,?,?,?");
+	$query->execute(array($nom,$priorite,$url,$catalogue,$catalogue_tarifs,$images,$logo));
 	return true;
 }
 
-function updateFournisseurPrincipal($ancien_nom,$nom,$priorite,$catalogue,$URL,$images){
+function updateFournisseur($ancien_nom,$nom,$priorite,$url,$catalogue,$catalogue_tarifs,$images,$logo){
 	$db = getDB();
-	$query = $db->prepare("UPDATE Fournisseurs SET Nom=?, Catalogue=?,Priorité=?, URL=?, Images=? WHERE Nom=?");
-	$query->execute(array($nom,$priorite,$catalogue,$URL,$images,$ancien_nom));
+	$query = $db->prepare("UPDATE Fournisseurs SET nom=?, priorité=?, url=?, catalogue=?, catalogue_tarifs=?, images=?, logo=? WHERE nom=?");
+	$query->execute(array($nom,$priorite,$url,$catalogue,$catalogue_tarifs,$images,$logo,$ancien_nom));
 	return true;
 }
 
-function removeFournisseurPrincipal($nom){
+function removeFournisseur($id){
 	$db = getDB();
-	$query = $db->prepare("DELETE FROM Fournisseurs WHERE Nom=?");
-	$query->execute(array($nom_principal));
+	$query = $db->prepare("DELETE FROM Fournisseurs WHERE id=?");
+	$query->execute(array($id));
 	return true;
 }
 
 
-function addProjet($photos,$nom,$adresse){
+function addProjet($nom,$adresse,$description,$photos){
 	$db = getDB();
-	$query = $db->prepare("INSERT INTO Projets (Photos,Nom,Adresse) VALUES (?,?,?)");
-	$query->execute(array($photos,$nom,$adresse));
+	$query = $db->prepare("INSERT INTO Projets (nom,adresse,description,photos) VALUES (?,?,?,?)");
+	$query->execute(array($nom,$adresse,$description,$photos));
 	return true;
 }
 
 function updateProjet($id,$photos,$nom,$adresse){
 	$db = getDB();
-	$query = $db->prepare("UPDATE Projets SET Photos=?, Nom=?, Adresse=? WHERE ID=?");
-	$query->execute(array($photos,$nom,$adresse,$id));
+	$query = $db->prepare("UPDATE Projets SET nom=?, adresse=?, description=?, photos=? WHERE id=?");
+	$query->execute(array($nom,$adresse,$description,$photos,$id));
 	return true;
 }
 
 function removeProjet($id){
 	$db = getDB();
-	$query = $db->prepare("DELETE FROM Projets WHERE ID=?");
+	$query = $db->prepare("DELETE FROM Projets WHERE id=?");
 	$query->execute(array($id));
 	return true;
 }
@@ -211,15 +211,26 @@ function modifMDP($identifiant, $mdp, $oldMDP){
 
 function recupFournisseur($place){
 	$db = getDB();
-	$query = $db->prepare("SELECT nom,image FROM fournisseurs_principaux WHERE priorite=?");
+	$query = $db->prepare("SELECT nom,url,logo,catalogue,catalogue_tarifs,images FROM fournisseurs WHERE priorite=?");
 	$query->execute(array($place));
+	$temp = $query->fetchAll();
+	return $temp;
+}
+
+function recupFournisseurId($nom){
+	$db = getDB();
+	$query = $db->prepare("SELECT id,nom,url,logo,catalogue,catalogue_tarifs,images FROM fournisseurs WHERE id=?");
+	$query->execute(array($nom));
 	$temp = $query->fetch();
-	$query = $db->prepare("SELECT nom,url,logo,catalogue_tarifs,catalogue,images FROM fournisseurs_secondaires WHERE fournisseur_principal=?");
-	$query->execute(array($temp["nom"]));
-	$temp2 = $query->fetchAll();
-	$final["principal"] = $temp;
-	$final["secondaires"] = $temp2;
-	return $final;
+	return $temp;
+}
+
+function recupProjetId($id){
+	$db = getDB();
+	$query = $db->prepare('SELECT id,nom,adresse,description,images FROM Projets WHERE id=?');
+	$query->execute(array($id));
+	$temp = $query->fetch();
+	return $temp;
 }
 
 ?>

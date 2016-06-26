@@ -62,7 +62,36 @@ include_once("header.php");
 			</form>
 		</div>
 	</div>
-</div>			
+</div>		
+
+<!-- Formulaire de contact récupéré -->
+<div id="cardWrap">
+	<form id="contactForm" action="php/send_email.php" method="post"> 
+		<div class="col50">
+			<div class="mailWrap">
+					<textarea name="message" id="message" required="" placeholder="Schrijf ons een kaartje" rows="11">Votre message</textarea>
+					<input name="email" id="email" required="" type="email" placeholder="Votre adresse mail">
+					<button class="btn submit submitHover" type="submit">Envoyer</button>
+			</div>
+		</div>
+		<div class="col50">
+			<div id="stamp"></div>
+			<img id="stampImg" alt="contact Saus stempel" src="img/stamp.png">
+			<div class="inner">
+				<h3>Iode</h3>
+				<p><span class="icon adresIco"></span>Adresse xxxxx<br>
+				Code postal Ville<br>
+				France</p>
+
+				<p><a class="icon emailIco sprite" href="mailto:mail@saus.co"><span style="display: none;"></span>mail@iode.com</a></p>
+				<p><a class="icon telIco sprite" style="margin-top: 3em;" href="tel:0031432602000"><span style="display: none;"></span>+31&nbsp;(0)&nbsp;43&nbsp;260&nbsp;20&nbsp;00</a></p>
+			</div>
+		</div>
+	</form>
+	<div class="clear"></div>
+</div>	
+
+
 <script type="text/javascript">
 	$(document).ready(function(){
 	$('.right.menu.open').on("click",function(e){

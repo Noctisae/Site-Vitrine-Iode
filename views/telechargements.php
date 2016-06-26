@@ -1,11 +1,17 @@
 	<?php
 	session_start();
 	include_once('../php/default.php');
-	$un = recupFournisseurUn();
-	$deux = recupFournisseurDeux();
-	$trois = recupFournisseurTrois();
-	$quatre = recupFournisseurQuatre();
-	$cinq = recupFournisseurCinq();
+	$un = recupFournisseur(1);
+	$deux = recupFournisseur(2);
+	$trois = recupFournisseur(3);
+	$quatre = recupFournisseur(4);
+	$cinq = recupFournisseur(5);
+
+	$logo1 = explode(";",$un[0]['images'])[0];
+	$logo2 = explode(";",$deux[0]['images'])[0];
+	$logo3 = explode(";",$trois[0]['images'])[0];
+	$logo4 = explode(";",$quatre[0]['images'])[0];
+	$logo5 = explode(";",$cinq[0]['images'])[0];
 	?>
 	<!DOCTYPE html>
 	<html>
@@ -21,10 +27,12 @@
 		<link rel="stylesheet" type="text/css" href="../css/main.css">
 		<link rel="stylesheet" type="text/css" href="../slick/slick.css">
 		<link rel="stylesheet" type="text/css" href="../slick/slick-theme.css">
+		<link rel="stylesheet" type="text/css" href="../css/fotorama.css">
 		<script type="text/javascript" src="../js/jquery.min.js"></script>
 		<script type="text/javascript" src="../js/jquery-migrate.min.js"></script>
 		<script type="text/javascript" src="../semantic/dist/semantic.min.js"></script>
 		<script type="text/javascript" src="../slick/slick.min.js"></script>
+		<script type="text/javascript" src="../js/fotorama.js"></script>
 
 	</head>
 	<body>
@@ -37,105 +45,172 @@
 	<div class="ui page grid" style="padding-left: 0px;padding-right: 0px;height:100%;">
 			<div class="row" style="padding : 0px;">
 			<?php
-			foreach ($un as $fournisseur) {
-				echo '<div class="cinquo left column" style="background-image: url("'.$fournisseur['logo'].'");">
+				
+			////////////////////////////////////////////////////////////////////
+			////////////////////////////////////////////////////////////////////
+			////////////////////   	Premiere partie  	////////////////////////
+			////////////////////////////////////////////////////////////////////
+			////////////////////////////////////////////////////////////////////
+				echo '<div class="cinquo left column" style="background-image: url("'.$logo1.'");">';
+
+				//Partie normale
+				echo'
 					<div class="paragraphe">
-						<div class="ui huge header align">'.$fournisseur["nom"].'</div>
-						<br>
-						<br>
-						<br>
 						<br>				
 						<p class="align">
 							';
+						foreach ($un as $fournisseur) {
+							echo'<a href="'.$fournisseur["url"].'"><img src="'.$fournisseur["logo"].'"></a><br><br>';	
+						}
+				echo'	</p>
+					</div>';
+				
+				//partie Hover
+				echo'<div class="hovered_content">
 
-				foreach ($fournisseur['secondaire'] as $secondaire) {
-					echo'<a href="'.$secondaire["url"].'"><img src="'.$secondaire["logo"].'"></a><br><br>';	
+				';
+
+				foreach ($un as $fournisseur) {
+					echo'<a href="'.$fournisseur["catalogue"].'">Télécharger le catalogue de '.$fournisseur["nom"].'<i class="file text icon"></i></a><br><br>';
+					echo'<a href="'.$fournisseur["catalogue_tarifs"].'">Télécharger le catalogue des tarifs de '.$fournisseur["nom"].'<i class="file text icon"></i></a><br><br>';
 				}
-				echo'</p>
-					</div>
-				</div>';
-			}
 
-			foreach ($deux as $fournisseur) {
-				echo '<div class="cinquo left column" style="background-image: url("'.$fournisseur['logo'].'");">
+				echo'</div>';
+
+				echo'</div>';
+			////////////////////////////////////////////////////////////////////
+			////////////////////////////////////////////////////////////////////
+			////////////////////	Deuxieme Partie 	////////////////////////
+			////////////////////////////////////////////////////////////////////
+			////////////////////////////////////////////////////////////////////
+				echo '<div class="cinquo left column" style="background-image: url("'.$logo2.'");">';
+
+				//Partie normale
+				echo'
 					<div class="paragraphe">
-						<div class="ui huge header align">'.$fournisseur["nom"].'</div>
-						<br>
-						<br>
-						<br>
 						<br>				
 						<p class="align">
 							';
+						foreach ($deux as $fournisseur) {
+							echo'<a href="'.$fournisseur["url"].'"><img src="'.$fournisseur["logo"].'"></a><br><br>';	
+						}
+				echo'	</p>
+					</div>';
+				
+				//partie Hover
+				echo'<div class="hovered_content">
 
-				foreach ($fournisseur['secondaire'] as $secondaire) {
-					echo'<a href="'.$secondaire["url"].'"><img src="'.$secondaire["logo"].'"></a><br><br>';	
+				';
+
+				foreach ($deux as $fournisseur) {
+					echo'<a href="'.$fournisseur["catalogue"].'">Télécharger le catalogue de '.$fournisseur["nom"].'<i class="file text icon"></i></a><br><br>';
+					echo'<a href="'.$fournisseur["catalogue_tarifs"].'">Télécharger le catalogue des tarifs de '.$fournisseur["nom"].'<i class="file text icon"></i></a><br><br>';
 				}
-				echo'</p>
-					</div>
-				</div>';
-			}
 
-			foreach ($trois as $fournisseur) {
-				echo '<div class="cinquo left column" style="background-image: url("'.$fournisseur['logo'].'");">
+				echo'</div>';
+
+				echo'</div>';
+			////////////////////////////////////////////////////////////////////
+			////////////////////////////////////////////////////////////////////
+			////////////////////	Troisieme Partie 	////////////////////////
+			////////////////////////////////////////////////////////////////////
+			////////////////////////////////////////////////////////////////////
+				echo '<div class="cinquo left column" style="background-image: url("'.$logo3.'");">';
+
+				//Partie normale
+				echo'
 					<div class="paragraphe">
-						<div class="ui huge header align">'.$fournisseur["nom"].'</div>
-						<br>
-						<br>
-						<br>
 						<br>				
 						<p class="align">
 							';
+						foreach ($trois as $fournisseur) {
+							echo'<a href="'.$fournisseur["url"].'"><img src="'.$fournisseur["logo"].'"></a><br><br>';	
+						}
+				echo'	</p>
+					</div>';
+				
+				//partie Hover
+				echo'<div class="hovered_content">
 
-				foreach ($fournisseur['secondaire'] as $secondaire) {
-					echo'<a href="'.$secondaire["url"].'"><img src="'.$secondaire["logo"].'"></a><br><br>';	
+				';
+
+				foreach ($trois as $fournisseur) {
+					echo'<a href="'.$fournisseur["catalogue"].'">Télécharger le catalogue de '.$fournisseur["nom"].'<i class="file text icon"></i></a><br><br>';
+					echo'<a href="'.$fournisseur["catalogue_tarifs"].'">Télécharger le catalogue des tarifs de '.$fournisseur["nom"].'<i class="file text icon"></i></a><br><br>';
 				}
-				echo'</p>
-					</div>
-				</div>';
-			}
 
+				echo'</div>';
 
-			foreach ($quatre as $fournisseur) {
-				echo '<div class="cinquo left column" style="background-image: url("'.$fournisseur['logo'].'");">
+				echo'</div>';
+			////////////////////////////////////////////////////////////////////
+			////////////////////////////////////////////////////////////////////
+			////////////////////	Quatrieme Partie 	////////////////////////
+			////////////////////////////////////////////////////////////////////
+			////////////////////////////////////////////////////////////////////
+				echo '<div class="cinquo left column" style="background-image: url("'.$logo4.'");">';
+
+				//Partie normale
+				echo'
 					<div class="paragraphe">
-						<div class="ui huge header align">'.$fournisseur["nom"].'</div>
-						<br>
-						<br>
-						<br>
 						<br>				
 						<p class="align">
 							';
+						foreach ($quatre as $fournisseur) {
+							echo'<a href="'.$fournisseur["url"].'"><img src="'.$fournisseur["logo"].'"></a><br><br>';	
+						}
+				echo'	</p>
+					</div>';
+				
+				//partie Hover
+				echo'<div class="hovered_content">
 
-				foreach ($fournisseur['secondaire'] as $secondaire) {
-					echo'<a href="'.$secondaire["url"].'"><img src="'.$secondaire["logo"].'"></a><br><br>';	
+				';
+
+				foreach ($quatre as $fournisseur) {
+					echo'<a href="'.$fournisseur["catalogue"].'">Télécharger le catalogue de '.$fournisseur["nom"].'<i class="file text icon"></i></a><br><br>';
+					echo'<a href="'.$fournisseur["catalogue_tarifs"].'">Télécharger le catalogue des tarifs de '.$fournisseur["nom"].'<i class="file text icon"></i></a><br><br>';
 				}
-				echo'</p>
-					</div>
-				</div>';
-			}
 
+				echo'</div>';
 
-			foreach ($cinq as $fournisseur) {
-				echo '<div class="cinquo left column" style="background-image: url("'.$fournisseur['logo'].'");">
+				echo'</div>';
+			////////////////////////////////////////////////////////////////////
+			////////////////////////////////////////////////////////////////////
+			////////////////////	Cinquième Partie 	////////////////////////
+			////////////////////////////////////////////////////////////////////
+			////////////////////////////////////////////////////////////////////
+				echo '<div class="cinquo left column" style="background-image: url("'.$logo5.'");">';
+
+				//Partie normale
+				echo'
 					<div class="paragraphe">
-						<div class="ui huge header align">'.$fournisseur["nom"].'</div>
-						<br>
-						<br>
-						<br>
 						<br>				
 						<p class="align">
 							';
+						foreach ($cinq as $fournisseur) {
+							echo'<a href="'.$fournisseur["url"].'"><img src="'.$fournisseur["logo"].'"></a><br><br>';	
+						}
+				echo'	</p>
+					</div>';
+				
+				//partie Hover
+				echo'<div class="hovered_content">
 
-				foreach ($fournisseur['secondaire'] as $secondaire) {
-					echo'<a href="'.$secondaire["url"].'"><img src="'.$secondaire["logo"].'"></a><br><br>';	
+				';
+
+				foreach ($cinq as $fournisseur) {
+					echo'<a href="'.$fournisseur["catalogue"].'">Télécharger le catalogue de '.$fournisseur["nom"].'<i class="file text icon"></i></a><br><br>';
+					echo'<a href="'.$fournisseur["catalogue_tarifs"].'">Télécharger le catalogue des tarifs de '.$fournisseur["nom"].'<i class="file text icon"></i></a><br><br>';
 				}
-				echo'</p>
-					</div>
-				</div>';
-			}
+
+				echo'</div>';
+
+				echo'</div>';
 
 			?>
 			</div>
+
+
 	</div>
 	<script type="text/javascript">
 		$(document).ready(function(){
@@ -145,6 +220,11 @@
 		});
 		
 		$('.ui.dropdown').dropdown();
+		$('.ui.modal.un').modal();
+		$('.ui.modal.deux').modal();
+		$('.ui.modal.trois').modal();
+		$('.ui.modal.quatre').modal();
+		$('.ui.modal.cinq').modal();
 	});
 	</script>
 

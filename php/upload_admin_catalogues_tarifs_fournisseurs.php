@@ -13,7 +13,7 @@ if(!empty($_SESSION["authentifie"])){
 
 				$ds = DIRECTORY_SEPARATOR;
 
-				$storeFolder = 'catalogues';
+				$storeFolder = 'catalogues_tarifs';
 
 				$nom_file = $_FILES['file']['name'];
 
