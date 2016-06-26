@@ -139,7 +139,7 @@ include_once("header.php");
 	 
 	if (($err_formulaire) || (!isset($_POST['envoi'])))
 	{
-		echo'<div class="ui raised very padded text container segment" style="margin:auto;height:660px;margin-top:150px;">
+		echo'<div class="ui raised very padded text segment" style="margin:auto;height:660px;margin-top:150px;">
 			<h1 class="ui header align">Nous contacter</h1>
 			<form action="contact.php" method="post" class="ui form" style="height:100%;">
 				<div class="ui horizontal segments" style="height:540px;">
