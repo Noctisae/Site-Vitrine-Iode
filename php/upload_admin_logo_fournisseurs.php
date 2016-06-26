@@ -21,7 +21,7 @@ if(!empty($_SESSION["authentifie"])){
 				$tempFile = $_FILES['file']['tmp_name'];
 
 				$infosfichier = pathinfo($_FILES['file']['name']);
-				$extension_upload = $infosfichier['extension'];
+				$extension_upload = strtolower($infosfichier['extension']);
 				error_log("Définition des variables d'utilisation");
 				if($nom_file != '')
 				{

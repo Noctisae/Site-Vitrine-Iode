@@ -251,7 +251,7 @@ include_once("header.php");
 
 									$fournisseurs = recupFournisseurs();
 									foreach ($fournisseurs as $fournisseur) {
-										echo('<option value="'.$fournisseur['id'].'">'.$fournisseur['Nom'].'</option>');
+										echo('<option value="'.$fournisseur['id'].'">'.$fournisseur['nom'].'</option>');
 									}
 									echo '
 								</select>
@@ -274,7 +274,7 @@ include_once("header.php");
 
 									$fournisseurs = recupFournisseurs();
 									foreach ($fournisseurs as $fournisseur) {
-										echo('<option value="'.$fournisseur['id'].'">'.$fournisseur['Nom'].'</option>');
+										echo('<option value="'.$fournisseur['id'].'">'.$fournisseur['nom'].'</option>');
 									}
 									echo '
 								</select>

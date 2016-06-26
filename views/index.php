@@ -8,6 +8,7 @@
 	$cinq = recupFournisseur(5);
 
 	$logo1 = explode(";",$un[0]['images'])[0];
+	error_log($logo1);
 	$logo2 = explode(";",$deux[0]['images'])[0];
 	$logo3 = explode(";",$trois[0]['images'])[0];
 	$logo4 = explode(";",$quatre[0]['images'])[0];
@@ -16,8 +17,8 @@
 	<!DOCTYPE html>
 	<html>
 	<head>
-		<!-- Standard Meta -->
-		<meta charset="utf-8" />
+		<!-- Standard Meta -->	
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
@@ -44,7 +45,11 @@
 			////////////////////   	Premiere partie  	////////////////////////
 			////////////////////////////////////////////////////////////////////
 			////////////////////////////////////////////////////////////////////
-				echo '<div class="cinquo cinquo1 left column" style="background-image: url('.$logo1.');width:20%">';
+				echo '<div class="cinquo cinquo1 left column" style="background-image: url(\''.$logo1.'\');-webkit-background-size:cover;
+-moz-background-size:cover;
+-o-background-size:cover;
+background-size:cover;
+background-position:center;width:20%">';
 
 				//Partie normale
 				echo'
@@ -110,7 +115,11 @@
 			////////////////////	Deuxieme Partie 	////////////////////////
 			////////////////////////////////////////////////////////////////////
 			////////////////////////////////////////////////////////////////////
-				echo '<div class="cinquo cinquo2 left column" style="background-image: url('.$logo2.');width:20%">';
+				echo '<div class="cinquo cinquo2 left column" style="background-image: url(\''.$logo2.'\');-webkit-background-size:cover;
+-moz-background-size:cover;
+-o-background-size:cover;
+background-size:cover;
+background-position:center;width:20%">';
 
 				//Partie normale
 				echo'
@@ -176,7 +185,11 @@
 			////////////////////	Troisieme Partie 	////////////////////////
 			////////////////////////////////////////////////////////////////////
 			////////////////////////////////////////////////////////////////////
-				echo '<div class="cinquo cinquo3 left column" style="background-image: url('.$logo3.');width:20%">';
+				echo '<div class="cinquo cinquo3 left column" style="background-image: url(\''.$logo3.'\');-webkit-background-size:cover;
+-moz-background-size:cover;
+-o-background-size:cover;
+background-size:cover;
+background-position:center;width:20%">';
 
 				//Partie normale
 				echo'
@@ -242,7 +255,11 @@
 			////////////////////	Quatrieme Partie 	////////////////////////
 			////////////////////////////////////////////////////////////////////
 			////////////////////////////////////////////////////////////////////
-				echo '<div class="cinquo cinquo4 left column" style="background-image: url('.$logo4.');width:20%">';
+				echo '<div class="cinquo cinquo4 left column" style="background-image: url(\''.$logo4.'\');-webkit-background-size:cover;
+-moz-background-size:cover;
+-o-background-size:cover;
+background-size:cover;
+background-position:center;width:20%">';
 
 				//Partie normale
 				echo'
@@ -308,7 +325,11 @@
 			////////////////////	Cinquième Partie 	////////////////////////
 			////////////////////////////////////////////////////////////////////
 			////////////////////////////////////////////////////////////////////
-				echo '<div class="cinquo cinquo5 left column" style="background-image: url('.$logo5.');width:20%">';
+				echo '<div class="cinquo cinquo5 left column" style="background-image: url(\''.$logo5.'\');-webkit-background-size:cover;
+-moz-background-size:cover;
+-o-background-size:cover;
+background-size:cover;
+background-position:center;width:20%">';
 
 				//Partie normale
 				echo'
@@ -408,7 +429,7 @@
 		$("#paragraphe3").css("display","block");
 		$("#hovered_content4").css("display","none");
 		$("#paragraphe4").css("display","block");
-		$("#.hovered_content5").css("display","none");
+		$("#hovered_content5").css("display","none");
 		$("#paragraphe5").css("display","block");
 	}
 
