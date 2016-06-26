@@ -90,13 +90,18 @@ include_once("header.php");
 <?php
 	//Si l'utilisateur est administrateur
 	if($admin){
+		//////////////////////////////////////////////////////////////////////////////////////////////////
+		//////////////////////////////////////////////////////////////////////////////////////////////////
+		////////////////////////////////	Partie Administrateurs 	//////////////////////////////////////
+		//////////////////////////////////////////////////////////////////////////////////////////////////
+		//////////////////////////////////////////////////////////////////////////////////////////////////
 		echo'
 
 		<div class="ui fluid four item tabular menu" style="margin-top:100px;">
 			<a class="item active" data-tab="admin">Administrateurs</a>
 			<a class="item" data-tab="fournisseurs">Fournisseurs</a>
 			<a class="item" data-tab="Projets">Projets</a>
-			<a class="item" data-tab="surmesure">Sur-mesure</a>
+			<a class="item" data-tab="surmesure">Sur-mesure & Actualités</a>
 		</div>
 		<div class="ui bottom attached tab segment active" style="text-align:center;" data-tab="admin">
 			<div class="ui main container">
@@ -125,10 +130,9 @@ include_once("header.php");
 				<div class="column ten wide form-holder">
 					<h2 class="center aligned header form-head" style="color:black;">Supprimer un administrateur</h2>
 					<div class="ui form">
-						<form method="post" action="admin.php">
-							<div class="field">
-								<label>Administrateur</label>
-								<select class="ui search dropdown" id="del_admin_id" name="del_admin_id">
+						<div class="field">
+							<label>Administrateur</label>
+							<select class="ui search dropdown" id="del_admin_id" name="del_admin_id">
 									';
 
 									$admins = recupAdmins();
@@ -136,12 +140,11 @@ include_once("header.php");
 										echo('<option value="'.$admin['identifiant'].'">'.$admin['identifiant'].'</option>');
 									}
 									echo '
-								</select>
-							</div>
-							<div class="field">
-								<button id="del_admin" class="ui button large fluid red">Supprimer cet administrateur</button>
-							</div>
-						</form>
+							</select>
+						</div>
+						<div class="field">
+							<button id="del_admin" class="ui button large fluid red" onClick="remove_selected_item(#del_admin_id)">Supprimer cet administrateur</button>
+						</div>
 					</div>
 					<div style="height:0px;margin-top:20px;transition: height 2s;" class="ui large fluid" id="return_del_admin_div">
 						<p id="return_del_admin_para"></p>
@@ -150,26 +153,24 @@ include_once("header.php");
 				<div class="column ten wide form-holder">
 					<h2 class="center aligned header form-head" style="color:black;">Modifier votre mot de passe</h2>
 					<div class="ui form">
-						<form method="post" action="admin.php">
+						<div class="field">
+							<input type="hidden" value="'.$_SESSION['identifiant'].'" name="update_admin_id" id="update_admin_id">
+						</div>
+						<div class="field">
+							<label>Ancien mot de passe</label>
+							<input type="password" placeholder="mot de passe" name="update_admin_old_mdp" id="update_admin_old_mdp">
+						</div>
+						<div class="field">
+							<label>Nouveau mot de passe</label>
+							<input type="password" placeholder="mot de passe" name="update_admin_mdp" id="update_admin_mdp">
+						</div>
 							<div class="field">
-								<input type="hidden" value="'.$_SESSION['identifiant'].'" name="update_admin_id" id="update_admin_id">
-							</div>
-							<div class="field">
-								<label>Ancien mot de passe</label>
-								<input type="password" placeholder="mot de passe" name="update_admin_old_mdp" id="update_admin_old_mdp">
-							</div>
-							<div class="field">
-								<label>Nouveau mot de passe</label>
-								<input type="password" placeholder="mot de passe" name="update_admin_mdp" id="update_admin_mdp">
-							</div>
-							<div class="field">
-								<label>Veuillez répéter votre nouveau mot de passe</label>
-								<input type="password" placeholder="mot de passe" name="update_admin_mdp_2" id="update_admin_mdp_2">
-							</div>
-							<div class="field">
-								<button id="update_admin" class="ui button large fluid blue">Modifier mon mot de passe</button>
-							</div>
-						</form>
+							<label>Veuillez répéter votre nouveau mot de passe</label>
+							<input type="password" placeholder="mot de passe" name="update_admin_mdp_2" id="update_admin_mdp_2">
+						</div>
+						<div class="field">
+							<button id="update_admin" class="ui button large fluid blue">Modifier mon mot de passe</button>
+						</div>
 					</div>
 					<div style="height:0px;margin-top:20px;transition: height 2s;" class="ui large fluid" id="return_update_admin_div">
 						<p id="return_update_admin_para"></p>
@@ -177,7 +178,20 @@ include_once("header.php");
 				</div>
 
 			</div>
-		</div>
+		</div>';
+
+
+		//////////////////////////////////////////////////////////////////////////////////////////////////
+		//////////////////////////////////////////////////////////////////////////////////////////////////
+		////////////////////////////////	Partie Fournisseurs 	//////////////////////////////////////
+		//////////////////////////////////////////////////////////////////////////////////////////////////
+		//////////////////////////////////////////////////////////////////////////////////////////////////
+		
+
+
+
+
+		echo'
 		<div class="ui bottom attached tab segment" style="text-align:center;" data-tab="fournisseurs">
 			<div class="ui main container">
 				<div class="column ten wide form-holder">
@@ -186,7 +200,6 @@ include_once("header.php");
 				<div class="column ten wide form-holder">
 					<h2 class="center aligned header form-head" style="color:black;">Ajouter un nouveau fournisseur</h2>
 					<div class="ui form">
-						<form method="post" action="admin.php">
 							<div class="field">
 								<label>Nom du fournisseur</label>
 								<input type="text" placeholder="nom" name="add_fournisseur_nom" id="add_fournisseur_nom">
@@ -209,22 +222,17 @@ include_once("header.php");
 							</div>
 							<div class="field">
 								<label>Priorité du fournisseur (entre 1 et 5, selon le placement sur la page d\'accueil : un fournisseur de priorité 1 sera dans le bloc le plus à gauche de la page d\'accueil, tandis qu\'un fournisseur de priorité 5 sera dans le bloc le plus à droite)</label>
-								<input type="number" name="add_fournisseur_priorite" id="add_fournisseur_priorite">
+								<input type="number" min="1" max="5" name="add_fournisseur_priorite" id="add_fournisseur_priorite">
 							</div>
-						</form>
 
 						<label>Logo du fournisseur</label>
-						<div class="dropzone" id="dropzone_logo_add">
-						</div>
+						<form action="/file-upload" class="dropzone" id="dropzone_logo_add"></form>
 						<label>Catalogue</label>
-						<div class="dropzone" id="dropzone_catalogues_add">
-						</div>
+						<form action="/file-upload" class="dropzone" id="dropzone_catalogues_add"></form>
 						<label>Catalogue des tarifs</label>
-						<div class="dropzone" id="dropzone_catalogues_tarifs_add">
-						</div>
+						<form action="/file-upload" class="dropzone" id="dropzone_catalogues_tarifs_add"></form>
 						<label>Photos</label>
-						<div class="dropzone" id="dropzone_photos_fournisseurs_add">
-						</div>
+						<form action="/file-upload" class="dropzone" id="dropzone_photos_fournisseurs_add"></form>
 						<div class="field">
 							<button id="add_fournisseur" class="ui button large fluid green">Ajouter un nouveau fournisseur</button>
 						</div>
@@ -236,7 +244,6 @@ include_once("header.php");
 				<div class="column ten wide form-holder">
 					<h2 class="center aligned header form-head" style="color:black;">Supprimer un fournisseur</h2>
 					<div class="ui form">
-						<form method="post" action="admin.php">
 							<div class="field">
 								<label>Fournisseur</label>
 								<select class="ui search dropdown" id="del_fournisseur_id" name="del_fournisseur_id">
@@ -250,9 +257,8 @@ include_once("header.php");
 								</select>
 							</div>
 							<div class="field">
-								<button id="del_fournisseur" class="ui button large fluid red">Supprimer ce fournisseur</button>
+								<button id="del_fournisseur" class="ui button large fluid red" onClick="remove_selected_item(#del_fournisseur_id)">Supprimer ce fournisseur</button>
 							</div>
-						</form>
 					</div>
 					<div style="height:0px;margin-top:20px;transition: height 2s;" class="ui large fluid" id="return_del_fournisseur_div">
 						<p id="return_del_fournisseur_para"></p>
@@ -261,8 +267,7 @@ include_once("header.php");
 				<div class="column ten wide form-holder">
 					<h2 class="center aligned header form-head" style="color:black;">Modifier un fournisseur</h2>
 					<div class="ui form">
-						<form method="post" action="admin.php" enctype="multipart/form-data">
-							<div class="field">
+						<div class="field">
 								<label>Fournisseur</label>
 								<select class="ui search dropdown" id="update_fournisseur_id" name="update_fournisseur_id">
 									';
@@ -296,17 +301,37 @@ include_once("header.php");
 								<label>Priorité du fournisseur (entre 1 et 5, selon le placement sur la page d\'accueil : un fournisseur de priorité 1 sera dans le bloc le plus à gauche de la page d\'accueil, tandis qu\'un fournisseur de priorité 5 sera dans le bloc le plus à droite)</label>
 								<input type="number" min="1" max="5" name="update_fournisseur_priorite" id="update_fournisseur_priorite">
 							</div>
-							<div class="field">
+						<label>Logo du fournisseur</label>
+						<form action="/file-upload" class="dropzone" id="dropzone_logo_update"></form>
+						<label>Catalogue</label>
+						<form action="/file-upload" class="dropzone" id="dropzone_catalogues_update"></form>
+						<label>Catalogue des tarifs</label>
+						<form action="/file-upload" class="dropzone" id="dropzone_catalogues_tarifs_update"></form>
+						<label>Photos</label>
+						<form action="/file-upload" class="dropzone" id="dropzone_photos_fournisseurs_update"></form>
+						<div class="field">
 								<button id="update_fournisseur" class="ui button large fluid blue">Modifier ce fournisseur</button>
 							</div>
-						</form>
 					</div>
 					<div style="height:0px;margin-top:20px;transition: height 2s;" class="ui large fluid" id="return_update_fournisseur_div">
 						<p id="return_update_fournisseur_para"></p>
 					</div>
 				</div>
 			</div>
-		</div>
+		</div>';
+
+
+
+
+		//////////////////////////////////////////////////////////////////////////////////////////////////
+		//////////////////////////////////////////////////////////////////////////////////////////////////
+		////////////////////////////////	Partie Projets 	//////////////////////////////////////
+		//////////////////////////////////////////////////////////////////////////////////////////////////
+		//////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+		echo'
 		<div class="ui bottom attached tab segment" style="text-align:center;" data-tab="Projets">
 			<div class="ui main container">
 				<div class="column ten wide form-holder">
@@ -315,7 +340,6 @@ include_once("header.php");
 				<div class="column ten wide form-holder">
 					<h2 class="center aligned header form-head" style="color:black;">Ajouter un nouveau projet</h2>
 					<div class="ui form">
-						<form method="post" action="admin.php" enctype="multipart/form-data">
 							<div class="field">
 								<label>Nom du projet</label>
 								<input type="text" required placeholder="Projet Réverie" name="add_projet_nom" id="add_projet_nom">
@@ -331,10 +355,8 @@ include_once("header.php");
 							<div class="field">
 								<input type="hidden" name="add_projet_photos" id="add_projet_photos">
 							</div>
-						</form>
 						<label>Photos du projet</label>
-						<div class="dropzone" id="dropzone_photos_projets_add">
-						</div>
+						<form action="/file-upload" class="dropzone" id="dropzone_photos_projets_add"></form>
 						<div class="field">
 							<button id="add_projet" class="ui button large fluid green">Ajouter un nouveau projet</button>
 						</div>
@@ -359,10 +381,10 @@ include_once("header.php");
 									echo '
 								</select>
 							</div>
-							<div class="field">
-								<button id="del_projet" class="ui button large fluid red">Supprimer ce projet</button>
-							</div>
 						</form>
+						<div class="field">
+							<button id="del_projet" class="ui button large fluid red" onClick="remove_selected_item(#del_projet_id)">Supprimer ce projet</button>
+						</div>
 					</div>
 					<div style="height:0px;margin-top:20px;transition: height 2s;" class="ui large fluid" id="return_del_projet_div">
 						<p id="return_del_projet_para"></p>
@@ -371,8 +393,7 @@ include_once("header.php");
 				<div class="column ten wide form-holder">
 					<h2 class="center aligned header form-head" style="color:black;">Modifier un projet</h2>
 					<div class="ui form">
-						<form method="post" action="admin.php" enctype="multipart/form-data">
-							<div class="field">
+						<div class="field">
 								<label>Projets</label>
 								<p>Veuillez sélectionner le projet à modifier</p>
 								<select class="ui search dropdown" id="update_projet_id" name="update_projet_id">
@@ -401,10 +422,11 @@ include_once("header.php");
 							<div class="field">
 								<input type="hidden" name="update_projet_photos" id="update_projet_photos">
 							</div>
-							<div class="field">
-								<button value="" id="update_projet" class="ui button large fluid blue">Modifier ce projet</button>
-							</div>
-						</form>
+						<label>Photos du projet</label>
+						<form action="/file-upload" class="dropzone" id="dropzone_photos_projets_update"></form>
+						<div class="field">
+							<button value="" id="update_projet" class="ui button large fluid blue">Modifier ce projet</button>
+						</div>
 					</div>
 					<div style="height:0px;margin-top:20px;transition: height 2s;"class="ui large fluid" id="return_update_fournisseur_div">
 						<p id="return_update_fournisseur_para"></p>
@@ -417,8 +439,10 @@ include_once("header.php");
 		</div>';
 	}
 	else{
-		echo'<div class="ui one column center aligned grid mid">
-				<div class="column six wide form-holder">
+		echo'
+		<div class="ui raised very padded text segment form-holder-connexion marge">
+			<div class="ui one column center aligned grid mid">
+				<div class="column six wide">
 					<h2 class="center aligned header form-head">Se connecter</h2>
 					<div class="ui form">
 						<form method="post" action="admin.php">
@@ -434,7 +458,14 @@ include_once("header.php");
 						</form>
 					</div>
 				</div>
-			</div>';
+			</div>
+		</div>';
+
+
+				if(!empty($_POST["id"]) && !empty($_POST["mdp"])){
+					echo'<div class="ui raised very padded text segment form-holder red-admin">Les informations rentrées n\'ont pas permis de vous authentifier.</div>';
+				}
+
 	}
 
 ?>
@@ -446,161 +477,162 @@ include_once("header.php");
 			.dropdown()
 		;
 		$('.menu .item').tab();
-
+		Dropzone.autoDiscover = false;
 		//Dropzones ajout de fournisseur
-		$("div#dropzone_catalogues_add").dropzone({ 
-    		url: "../php/upload_admin_catalogues_fournisseurs.php", 
-    		success : function(file, response){
-    			if(response.includes("Erreur: ")){
-    				$("#return_add_fournisseur_div").css("backgroundColor", "red");
-    				$("#return_add_fournisseur_para").text(response);
-					$("#return_add_fournisseur_div").css("height", "150px");
-					setTimeout(function(){$("#return_add_fournisseur_div").css("height", "0px")}, 10000);
-    			}
-    			else{
-		       		$("#add_fournisseur_catalogue").val($("#add_fournisseur_catalogue").val()+response);
-    			}
-		    }
+		var myDropzone = new Dropzone("#dropzone_catalogues_add", { 
+			url: "../php/upload_admin_catalogues_fournisseurs.php", 
+			success : function(file, response){
+				if(response.includes("Erreur: ")){
+					$("#return_add_fournisseur_div").css("backgroundColor", "rgba(255,0,0,0.3)");
+					$("#return_add_fournisseur_para").text(response);
+					$("#return_add_fournisseur_div").css("height", "50px");
+					setTimeout(function(){$("#return_add_fournisseur_div").css("height", "0px");$("#return_add_fournisseur_para").text("");}, 10000);
+				}
+				else{
+			   		$("#add_fournisseur_catalogue").val($("#add_fournisseur_catalogue").val()+response);
+				}
+			}
 		});
 
-		$("div#dropzone_catalogues_tarifs_add").dropzone({ 
-    		url: "../php/upload_admin_catalogues_tarifs_fournisseurs.php", 
-    		success : function(file, response){
-    			if(response.includes("Erreur: ")){
-    				$("#return_add_fournisseur_div").css("backgroundColor", "red");
-    				$("#return_add_fournisseur_para").text(response);
-					$("#return_add_fournisseur_div").css("height", "150px");
-					setTimeout(function(){$("#return_add_fournisseur_div").css("height", "0px")}, 10000);
-    			}
-    			else{
-		       		$("#add_fournisseur_catalogue_tarifs").val($("#add_fournisseur_catalogue_tarifs").val()+response);
-    			}
-		    }
+		var myDropzone2 = new Dropzone("#dropzone_catalogues_tarifs_add", { 
+			url: "../php/upload_admin_catalogues_tarifs_fournisseurs.php", 
+			success : function(file, response){
+				if(response.includes("Erreur: ")){
+					$("#return_add_fournisseur_div").css("backgroundColor", "rgba(255,0,0,0.3)");
+					$("#return_add_fournisseur_para").text(response);
+					$("#return_add_fournisseur_div").css("height", "50px");
+					setTimeout(function(){$("#return_add_fournisseur_div").css("height", "0px");$("#return_add_fournisseur_para").text("");}, 10000);
+				}
+				else{
+			   		$("#add_fournisseur_catalogue_tarifs").val($("#add_fournisseur_catalogue_tarifs").val()+response);
+				}
+			}
 		});
 
-
-		$("div#dropzone_logo_add").dropzone({ 
-    		url: "../php/upload_admin_logo_fournisseurs.php", 
-    		success : function(file, response){
-    			if(response.includes("Erreur: ")){
-    				$("#return_add_fournisseur_div").css("backgroundColor", "red");
-    				$("#return_add_fournisseur_para").text(response);
-					$("#return_add_fournisseur_div").css("height", "150px");
-					setTimeout(function(){$("#return_add_fournisseur_div").css("height", "0px")}, 10000);
-    			}
-    			else{
-		       		$("#add_fournisseur_logo").val($("#add_fournisseur_logo").val()+response);
-    			}
-		    }
+		var myDropzone3 = new Dropzone("#dropzone_logo_add", { 
+			url: "../php/upload_admin_logo_fournisseurs.php", 
+			success : function(file, response){
+				alert(response);
+				if(response.includes("Erreur: ")){
+					$("#return_add_fournisseur_div").css("backgroundColor", "rgba(255,0,0,0.3)");
+					$("#return_add_fournisseur_para").text(response);
+					$("#return_add_fournisseur_div").css("height", "50px");
+					setTimeout(function(){$("#return_add_fournisseur_div").css("height", "0px");$("#return_add_fournisseur_para").text("");}, 10000);
+				}
+				else{
+			   		$("#add_fournisseur_logo").val($("#add_fournisseur_logo").val()+response);
+				}
+			}
 		});
 
-		$("div#dropzone_photos_fournisseurs_add").dropzone({ 
-    		url: "../php/upload_admin_photos_fournisseurs.php", 
-    		success : function(file, response){
-    			if(response.includes("Erreur: ")){
-    				$("#return_add_fournisseur_div").css("backgroundColor", "red");
-    				$("#return_add_fournisseur_para").text(response);
-					$("#return_add_fournisseur_div").css("height", "150px");
-					setTimeout(function(){$("#return_add_fournisseur_div").css("height", "0px")}, 10000);
-    			}
-    			else{
-		       		$("#add_fournisseur_photos").val($("#add_fournisseur_photos").val()+response);
-    			}
-		    }
+		var myDropzone4 = new Dropzone("#dropzone_photos_fournisseurs_add", { 
+			url: "../php/upload_admin_photos_fournisseurs.php", 
+			success : function(file, response){
+				if(response.includes("Erreur: ")){
+					$("#return_add_fournisseur_div").css("backgroundColor", "rgba(255,0,0,0.3)");
+					$("#return_add_fournisseur_para").text(response);
+					$("#return_add_fournisseur_div").css("height", "50px");
+					setTimeout(function(){$("#return_add_fournisseur_div").css("height", "0px");$("#return_add_fournisseur_para").text("");}, 10000);
+				}
+				else{
+			   		$("#add_fournisseur_photos").val($("#add_fournisseur_photos").val()+response);
+				}
+			}
 		});
+
 		
 		//Dropzone Update de fournisseurs
-		$("div#dropzone_catalogues_update").dropzone({ 
-    		url: "../php/upload_admin_catalogues_fournisseurs.php", 
-    		success : function(file, response){
-    			if(response.includes("Erreur: ")){
-    				$("#return_update_fournisseur_div").css("backgroundColor", "red");
-    				$("#return_update_fournisseur_para").text(response);
-					$("#return_update_fournisseur_div").css("height", "150px");
-					setTimeout(function(){$("#return_update_fournisseur_div").css("height", "0px")}, 10000);
-    			}
-    			else{
-		       		$("#update_fournisseur_catalogue").val($("#update_fournisseur_catalogue").val()+response);
-    			}
-		    }
+		var myDropzone5 = new Dropzone("#dropzone_catalogues_update", { 
+			url: "../php/upload_admin_catalogues_fournisseurs.php", 
+			success : function(file, response){
+				if(response.includes("Erreur: ")){
+					$("#return_update_fournisseur_div").css("backgroundColor", "rgba(255,0,0,0.3)");
+					$("#return_update_fournisseur_para").text(response);
+					$("#return_update_fournisseur_div").css("height", "50px");
+					setTimeout(function(){$("#return_update_fournisseur_div").css("height", "0px");$("#return_update_fournisseur_para").text("");}, 10000);
+				}
+				else{
+			   		$("#update_fournisseur_catalogue").val($("#update_fournisseur_catalogue").val()+response);
+				}
+			}
 		});
 
-		$("div#dropzone_catalogues_tarifs_update").dropzone({ 
-    		url: "../php/upload_admin_catalogues_tarifs_fournisseurs.php", 
-    		success : function(file, response){
-    			if(response.includes("Erreur: ")){
-    				$("#return_update_fournisseur_div").css("backgroundColor", "red");
-    				$("#return_update_fournisseur_para").text(response);
-					$("#return_update_fournisseur_div").css("height", "150px");
-					setTimeout(function(){$("#return_update_fournisseur_div").css("height", "0px")}, 10000);
-    			}
-    			else{
-		       		$("#update_fournisseur_catalogue_tarifs").val($("#update_fournisseur_catalogue_tarifs").val()+response);
-    			}
-		    }
+		var myDropzone6 = new Dropzone("#dropzone_catalogues_tarifs_update", { 
+			url: "../php/upload_admin_catalogues_tarifs_fournisseurs.php", 
+			success : function(file, response){
+				if(response.includes("Erreur: ")){
+					$("#return_update_fournisseur_div").css("backgroundColor", "rgba(255,0,0,0.3)");
+					$("#return_update_fournisseur_para").text(response);
+					$("#return_update_fournisseur_div").css("height", "50px");
+					setTimeout(function(){$("#return_update_fournisseur_div").css("height", "0px");$("#return_update_fournisseur_para").text("");}, 10000);
+				}
+				else{
+			   		$("#update_fournisseur_catalogue_tarifs").val($("#update_fournisseur_catalogue_tarifs").val()+response);
+				}
+			}
 		});
 
-		$("div#dropzone_logo_update").dropzone({ 
-    		url: "../php/upload_admin_logo_fournisseurs.php", 
-    		success : function(file, response){
-    			if(response.includes("Erreur: ")){
-    				$("#return_update_fournisseur_div").css("backgroundColor", "red");
-    				$("#return_update_fournisseur_para").text(response);
-					$("#return_update_fournisseur_div").css("height", "150px");
-					setTimeout(function(){$("#return_update_fournisseur_div").css("height", "0px")}, 10000);
-    			}
-    			else{
-		       		$("#update_fournisseur_logo").val($("#update_fournisseur_logo").val()+response);
-    			}
-		    }
+		var myDropzone7 = new Dropzone("#dropzone_logo_update", { 
+			url: "../php/upload_admin_logo_fournisseurs.php", 
+			success : function(file, response){
+				if(response.includes("Erreur: ")){
+					$("#return_update_fournisseur_div").css("backgroundColor", "rgba(255,0,0,0.3)");
+					$("#return_update_fournisseur_para").text(response);
+					$("#return_update_fournisseur_div").css("height", "50px");
+					setTimeout(function(){$("#return_update_fournisseur_div").css("height", "0px");$("#return_update_fournisseur_para").text("");}, 10000);
+				}
+				else{
+			   		$("#update_fournisseur_logo").val($("#update_fournisseur_logo").val()+response);
+				}
+			}
 		});
 
-		$("div#dropzone_photos_fournisseurs_update").dropzone({ 
-    		url: "../php/upload_admin_photos_fournisseurs.php", 
-    		success : function(file, response){
-    			if(response.includes("Erreur: ")){
-    				$("#return_update_fournisseur_div").css("backgroundColor", "red");
-    				$("#return_update_fournisseur_para").text(response);
-					$("#return_update_fournisseur_div").css("height", "150px");
-					setTimeout(function(){$("#return_update_fournisseur_div").css("height", "0px")}, 10000);
-    			}
-    			else{
-		       		$("#update_fournisseur_catalogue").val($("#update_fournisseur_catalogue").val()+response);
-    			}
-		    }
+		var myDropzone8 = new Dropzone("#dropzone_photos_fournisseurs_update", { 
+			url: "../php/upload_admin_photos_fournisseurs.php", 
+			success : function(file, response){
+				if(response.includes("Erreur: ")){
+					$("#return_update_fournisseur_div").css("backgroundColor", "rgba(255,0,0,0.3)");
+					$("#return_update_fournisseur_para").text(response);
+					$("#return_update_fournisseur_div").css("height", "50px");
+					setTimeout(function(){$("#return_update_fournisseur_div").css("height", "0px");$("#return_update_fournisseur_para").text("");}, 10000);
+				}
+				else{
+			   		$("#update_fournisseur_catalogue").val($("#update_fournisseur_catalogue").val()+response);
+				}
+			}
 		});
-
 
 		//Dropzone ajout de projets
-		$("div#dropzone_photos_projets_add").dropzone({ 
-    		url: "../php/upload_admin_photos_projets.php", 
-    		success : function(file, response){
-    			if(response.includes("Erreur: ")){
-    				$("#return_add_projet_div").css("backgroundColor", "red");
-    				$("#return_add_projet_para").text(response);
-					$("#return_add_projet_div").css("height", "150px");
-					setTimeout(function(){$("#return_add_projet_div").css("height", "0px")}, 10000);
-    			}
-    			else{
-		       		$("#add_projet_photos").val($("#add_projet_photos").val()+response);
-    			}
-		    }
+		var myDropzone9 = new Dropzone("#dropzone_photos_projets_add", { 
+			url: "../php/upload_admin_photos_projets.php", 
+			success : function(file, response){
+				if(response.includes("Erreur: ")){
+					$("#return_add_projet_div").css("backgroundColor", "rgba(255,0,0,0.3)");
+					$("#return_add_projet_para").text(response);
+					$("#return_add_projet_div").css("height", "50px");
+					setTimeout(function(){$("#return_add_projet_div").css("height", "0px");$("#return_add_projet_para").text("");}, 10000);
+				}
+				else{
+			   		$("#add_projet_photos").val($("#add_projet_photos").val()+response);
+				}
+			}
 		});
 
+
 		//Dropzone update de projets
-		$("div#dropzone_photos_projets_update").dropzone({ 
-    		url: "../php/upload_admin_photos_projets.php", 
-    		success : function(file, response){
-    			if(response.includes("Erreur: ")){
-    				$("#return_update_projet_div").css("backgroundColor", "red");
-    				$("#return_update_projet_para").text(response);
-					$("#return_update_projet_div").css("height", "150px");
-					setTimeout(function(){$("#return_update_projet_div").css("height", "0px")}, 10000);
-    			}
-    			else{
-		       		$("#update_projet_photos").val($("#update_projet_photos").val()+response);
-    			}
-		    }
+		var myDropzone10 = new Dropzone("#dropzone_photos_projets_update", { 
+			url: "../php/upload_admin_photos_projets.php", 
+			success : function(file, response){
+				if(response.includes("Erreur: ")){
+					$("#return_update_projet_div").css("backgroundColor", "rgba(255,0,0,0.3)");
+					$("#return_update_projet_para").text(response);
+					$("#return_update_projet_div").css("height", "50px");
+					setTimeout(function(){$("#return_update_projet_div").css("height", "0px");$("#return_update_projet_para").text("");}, 10000);
+				}
+				else{
+			   		$("#update_projet_photos").val($("#update_projet_photos").val()+response);
+				}
+			}
 		});
 
 		$("#update_fournisseur_id").change(function() {
@@ -616,7 +648,7 @@ include_once("header.php");
 						true_data[0] = encode_utf8(true_data[0]) + '}';
 						json	= JSON.parse(true_data[0]);
 						if(json.success){
-							$("#return_update_fournisseur_div").css("backgroundColor", "green");
+							$("#return_update_fournisseur_div").css("backgroundColor", "rgba(0,255,0,0.3)");
 							$("#update_fournisseur_id").val(json.id);
 							$("#update_fournisseur_nom").val(json.nom);
 							$("#update_fournisseur_url").val(json.url);
@@ -626,12 +658,12 @@ include_once("header.php");
 							$("#update_fournisseur_images").val(json.images);
 						}
 						else{
-							$("#return_update_fournisseur_div").css("backgroundColor", "red");
+							$("#return_update_fournisseur_div").css("backgroundColor", "rgba(255,0,0,0.3)");
 						}
-						alert(json.msg);
 						$("#return_update_fournisseur_para").text(json.msg);
-						$("#return_update_fournisseur_div").css("height", "150px");
-						setTimeout(function(){$("#return_update_fournisseur_div").css("height", "0px")}, 10000);
+						$("#return_update_fournisseur_div").css("height", "50px");
+						$("#return_update_fournisseur_div").css("margin", "auto");
+						setTimeout(function(){$("#return_update_fournisseur_div").css("height", "0px");$("#return_update_fournisseur_para").text("");}, 10000);
 					},
 					'text' 
 				);
@@ -650,16 +682,15 @@ include_once("header.php");
 						true_data[0] = encode_utf8(true_data[0]) + '}';
 						json	= JSON.parse(true_data[0]);
 						if(json.success){
-							$("#return_update_projet_div").css("backgroundColor", "green");
+							$("#return_update_projet_div").css("backgroundColor", "rgba(0,255,0,0.3)");
 							$("#update_projet_id").val(json.id);
 							$("#update_projet_nom").val(json.nom);
 							$("#update_projet_adresse").val(json.adresse);
 							$("#update_projet_description").val(json.description);
 						}
 						else{
-							$("#return_update_projet_div").css("backgroundColor", "red");
+							$("#return_update_projet_div").css("backgroundColor", "rgba(255,0,0,0.3)");
 						}
-						alert(json.msg);
 						$("#return_update_projet_para").text(json.msg);
 						$("#return_update_projet_div").css("height", "150px");
 						setTimeout(function(){$("#return_update_projet_div").css("height", "0px")}, 10000);
@@ -685,14 +716,14 @@ include_once("header.php");
 					function(data){
 						true_data = data.split("}");
 						true_data[0] = encode_utf8(true_data[0]) + '}';
+						alert(true_data[0]);
 						json	= JSON.parse(true_data[0]);
 						if(json.success){
-							$("#return_add_admin_div").css("backgroundColor", "green");
+							$("#return_add_admin_div").css("backgroundColor", "rgba(0,255,0,0.3)");
 						}
 						else{
-							$("#return_add_admin_div").css("backgroundColor", "red");
+							$("#return_add_admin_div").css("backgroundColor", "rgba(255,0,0,0.3)");
 						}
-						alert(json.msg);
 						$("#return_add_admin_para").text(json.msg);
 						$("#return_add_admin_div").css("height", "150px");
 						setTimeout(function(){$("#return_add_admin_div").css("height", "0px")}, 10000);
@@ -715,10 +746,11 @@ include_once("header.php");
 						true_data[0] = encode_utf8(true_data[0]) + '}';
 						json	= JSON.parse(true_data[0]);
 						if(json.success){
-							$("#return_del_admin_div").css("backgroundColor", "green");
+							$("#return_del_admin_div").css("backgroundColor", "rgba(0,255,0,0.3)");
+							$("#del_admin_id").css("backgroundColor", "rgba(0,255,0,0.3)");
 						}
 						else{
-							$("#return_del_admin_div").css("backgroundColor", "red");
+							$("#return_del_admin_div").css("backgroundColor", "rgba(255,0,0,0.3)");
 						}
 						alert(json.msg);
 						$("#return_del_admin_para").text(json.msg);
@@ -745,10 +777,10 @@ include_once("header.php");
 							true_data[0] = encode_utf8(true_data[0]) + '}';
 							json	= JSON.parse(true_data[0]);
 							if(json.success){
-								$("#return_update_admin_div").css("backgroundColor", "green");
+								$("#return_update_admin_div").css("backgroundColor", "rgba(0,255,0,0.3)");
 							}
 							else{
-								$("#return_update_admin_div").css("backgroundColor", "red");
+								$("#return_update_admin_div").css("backgroundColor", "rgba(255,0,0,0.3)");
 							}
 							alert(json.msg);
 							$("#return_update_admin_para").text(json.msg);
@@ -759,7 +791,7 @@ include_once("header.php");
 					);
 				}
 				else{
-					$("#return_update_admin_div").css("backgroundColor", "red");
+					$("#return_update_admin_div").css("backgroundColor", "rgba(255,0,0,0.3)");
 					$("#return_update_admin_para").text("Les deux mots de passe doivent correspondre.");
 					$("#return_update_admin_div").css("height", "150px");
 					setTimeout(function(){$("#return_update_admin_div").css("height", "0px")}, 10000);
@@ -775,18 +807,21 @@ include_once("header.php");
 						add_fournisseur_nom : $("#add_fournisseur_nom").val(),
 						add_fournisseur_url : $("#add_fournisseur_url").val(),
 						add_fournisseur_catalogue : $("#add_fournisseur_catalogue").val(),
+						add_fournisseur_catalogue_tarifs : $("#add_fournisseur_catalogue_tarifs").val(),
+						add_fournisseur_logo : $("#add_fournisseur_logo").val(),
 						add_fournisseur_photos : $("#add_fournisseur_photos").val(),
 						add_fournisseur_priorite : $("#add_fournisseur_priorite").val()
 					},
 					function(data){
+						alert(data);
 						true_data = data.split("}");
 						true_data[0] = encode_utf8(true_data[0]) + '}';
 						json	= JSON.parse(true_data[0]);
 						if(json.success){
-							$("#return_add_fournisseur_div").css("backgroundColor", "green");
+							$("#return_add_fournisseur_div").css("backgroundColor", "rgba(0,255,0,0.3)");
 						}
 						else{
-							$("#return_add_fournisseur_div").css("backgroundColor", "red");
+							$("#return_add_fournisseur_div").css("backgroundColor", "rgba(255,0,0,0.3)");
 						}
 						alert(json.msg);
 						$("#return_add_fournisseur_para").text(json.msg);
@@ -811,10 +846,10 @@ include_once("header.php");
 						true_data[0] = encode_utf8(true_data[0]) + '}';
 						json	= JSON.parse(true_data[0]);
 						if(json.success){
-							$("#return_del_fournisseur_div").css("backgroundColor", "green");
+							$("#return_del_fournisseur_div").css("backgroundColor", "rgba(0,255,0,0.3)");
 						}
 						else{
-							$("#return_del_fournisseur_div").css("backgroundColor", "red");
+							$("#return_del_fournisseur_div").css("backgroundColor", "rgba(255,0,0,0.3)");
 						}
 						alert(json.msg);
 						$("#return_del_fournisseur_para").text(json.msg);
@@ -835,6 +870,8 @@ include_once("header.php");
 						update_fournisseur_nom : $("#update_fournisseur_nom").val(),
 						update_fournisseur_url : $("#update_fournisseur_url").val(),
 						update_fournisseur_catalogue : $("#update_fournisseur_catalogue").val(),
+						update_fournisseur_catalogue_tarifs : $("#update_fournisseur_catalogue_tarifs").val(),
+						update_fournisseur_logo : $("#update_fournisseur_logo").val(),
 						update_fournisseur_photos : $("#update_fournisseur_photos").val(),
 						update_fournisseur_priorite : $("#update_fournisseur_priorite").val()
 					},
@@ -843,10 +880,10 @@ include_once("header.php");
 						true_data[0] = encode_utf8(true_data[0]) + '}';
 						json	= JSON.parse(true_data[0]);
 						if(json.success){
-							$("#return_update_fournisseur_div").css("backgroundColor", "green");
+							$("#return_update_fournisseur_div").css("backgroundColor", "rgba(0,255,0,0.3)");
 						}
 						else{
-							$("#return_update_fournisseur_div").css("backgroundColor", "red");
+							$("#return_update_fournisseur_div").css("backgroundColor", "rgba(255,0,0,0.3)");
 						}
 						alert(json.msg);
 						$("#return_update_fournisseur_para").text(json.msg);
@@ -865,17 +902,18 @@ include_once("header.php");
 
 						add_projet_photos : $("#add_projet_photos").val(),
 						add_projet_nom : $("#add_projet_nom").val(),
-						add_projet_adresse : $("#add_projet_adresse").val()
+						add_projet_adresse : $("#add_projet_adresse").val(),
+						add_projet_description : $("#add_projet_description").val()
 					},
 					function(data){
 						true_data = data.split("}");
 						true_data[0] = encode_utf8(true_data[0]) + '}';
 						json	= JSON.parse(true_data[0]);
 						if(json.success){
-							$("#return_add_projet_div").css("backgroundColor", "green");
+							$("#return_add_projet_div").css("backgroundColor", "rgba(0,255,0,0.3)");
 						}
 						else{
-							$("#return_add_projet_div").css("backgroundColor", "red");
+							$("#return_add_projet_div").css("backgroundColor", "rgba(255,0,0,0.3)");
 						}
 						alert(json.msg);
 						$("#return_add_projet_para").text(json.msg);
@@ -900,10 +938,10 @@ include_once("header.php");
 						true_data[0] = encode_utf8(true_data[0]) + '}';
 						json	= JSON.parse(true_data[0]);
 						if(json.success){
-							$("#return_del_projet_div").css("backgroundColor", "green");
+							$("#return_del_projet_div").css("backgroundColor", "rgba(0,255,0,0.3)");
 						}
 						else{
-							$("#return_del_projet_div").css("backgroundColor", "red");
+							$("#return_del_projet_div").css("backgroundColor", "rgba(255,0,0,0.3)");
 						}
 						alert(json.msg);
 						$("#return_del_projet_para").text(json.msg);
@@ -923,6 +961,7 @@ include_once("header.php");
 						update_projet_id : $("#update_projet_id").val(),
 						update_projet_nom : $("#update_projet_nom").val(),
 						update_projet_adresse : $("#update_projet_adresse").val(),
+						update_projet_description : $("#update_projet_description").val(),
 						update_projet_photos : $("#update_projet_photos").val()
 					},
 					function(data){
@@ -930,10 +969,10 @@ include_once("header.php");
 						true_data[0] = encode_utf8(true_data[0]) + '}';
 						json	= JSON.parse(true_data[0]);
 						if(json.success){
-							$("#return_update_projet_div").css("backgroundColor", "green");
+							$("#return_update_projet_div").css("backgroundColor", "rgba(0,255,0,0.3)");
 						}
 						else{
-							$("#return_update_projet_div").css("backgroundColor", "red");
+							$("#return_update_projet_div").css("backgroundColor", "rgba(255,0,0,0.3)");
 						}
 						alert(json.msg);
 						$("#return_update_projet_para").text(json.msg);
@@ -945,7 +984,19 @@ include_once("header.php");
 			});
 
 		});
-	
+	function remove_selected_item(l1) {
+		do {
+		  flag_delete = false;
+		  for (var i = 0; i < l1.options.length; i++) {
+			 if (l1.options[i].selected == true) {
+				l1.options[i] = null;
+				flag_delete = true;
+			 }
+		  }
+	   } while (flag_delete == true)
+	   return true;
+	}
+	 
 
 	function encode_utf8(s) {
 		return unescape(encodeURIComponent(s));

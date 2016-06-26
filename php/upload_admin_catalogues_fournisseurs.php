@@ -4,7 +4,7 @@ session_start();
 error_log("On arrive au moins ici");
 if(!empty($_SESSION["authentifie"])){
 	if($_SESSION["authentifie"]){
-		if($_SERVER['HTTP_REFERER'] == 'https://francoistoquer.com/iode/views/admin.php'){
+		if($_SERVER['HTTP_REFERER'] == 'https://francoistoquer.com/iode/views/admin.php' | $_SERVER['HTTP_REFERER'] == 'https://francoistoquer.com/iode/views/admin.php?PageSpeed=Off'){
 			error_log("On vient de la bonne URL");
 
 			if(!empty($_FILES))
@@ -12,6 +12,8 @@ if(!empty($_SESSION["authentifie"])){
 				error_log("Un fichier a été recu");
 
 				$ds = DIRECTORY_SEPARATOR;
+
+				$path = "/home/fanch/www/iode";
 
 				$storeFolder = 'catalogues';
 
@@ -29,7 +31,7 @@ if(!empty($_SESSION["authentifie"])){
 
 					error_log("On vérifie le nom du fichie");
 
-					$targetPath = dirname( __FILE__ ) . $ds. $storeFolder . $ds;
+					$targetPath = $path . $ds. $storeFolder . $ds;
 
 					$targetFile = $targetPath. $_FILES['file']['name'];
 
@@ -44,7 +46,7 @@ if(!empty($_SESSION["authentifie"])){
 						{
 							// Si upload OK alors on affiche le message de réussite
 							error_log("fichier correctement uploadé");
-							return $targetFile;				
+							echo '.'.$ds.$storeFolder.$ds.$_FILES['file']['name'].';';				
 						}
 						else
 						{

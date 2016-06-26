@@ -46,7 +46,7 @@ function recupFournisseurs(){
 
 function recupProjets(){
 	$db = getDB();
-	$query = $db->prepare('SELECT id,nom FROM Projets');
+	$query = $db->prepare('SELECT nom, adresse, photos, description FROM Projets');
 	$query->execute();
 	$temp = $query->fetchAll();
 	return $temp;
@@ -54,12 +54,13 @@ function recupProjets(){
 
 function addFournisseur($nom,$priorite,$url,$catalogue,$catalogue_tarifs,$images,$logo){
 	$db = getDB();
-	$query = $db->prepare("INSERT INTO Fournisseurs(nom, priorite, url, catalogue, catalogue_tarifs, images, logo) VALUES (?,?,?,?,?,?,?");
+	error_log($nom.$priorite.$url.$catalogue.$catalogue_tarifs.$images.$logo);
+	$query = $db->prepare("INSERT INTO Fournisseurs(nom, priorite, url, catalogue, catalogue_tarifs, images, logo) VALUES (?,?,?,?,?,?,?)");
 	$query->execute(array($nom,$priorite,$url,$catalogue,$catalogue_tarifs,$images,$logo));
 	return true;
 }
 
-function updateFournisseur($ancien_nom,$nom,$priorite,$url,$catalogue,$catalogue_tarifs,$images,$logo){
+function updateFournisseur($id,$nom,$priorite,$url,$catalogue,$catalogue_tarifs,$images,$logo){
 	$db = getDB();
 	$query = $db->prepare("UPDATE Fournisseurs SET nom=?, priorité=?, url=?, catalogue=?, catalogue_tarifs=?, images=?, logo=? WHERE nom=?");
 	$query->execute(array($nom,$priorite,$url,$catalogue,$catalogue_tarifs,$images,$logo,$ancien_nom));
@@ -81,7 +82,7 @@ function addProjet($nom,$adresse,$description,$photos){
 	return true;
 }
 
-function updateProjet($id,$photos,$nom,$adresse){
+function updateProjet($id,$nom,$adresse,$description,$photos){
 	$db = getDB();
 	$query = $db->prepare("UPDATE Projets SET nom=?, adresse=?, description=?, photos=? WHERE id=?");
 	$query->execute(array($nom,$adresse,$description,$photos,$id));
@@ -211,7 +212,7 @@ function modifMDP($identifiant, $mdp, $oldMDP){
 
 function recupFournisseur($place){
 	$db = getDB();
-	$query = $db->prepare("SELECT nom,url,logo,catalogue,catalogue_tarifs,images FROM fournisseurs WHERE priorite=?");
+	$query = $db->prepare("SELECT nom,url,logo,catalogue,catalogue_tarifs,images FROM Fournisseurs WHERE priorite=?");
 	$query->execute(array($place));
 	$temp = $query->fetchAll();
 	return $temp;
@@ -219,7 +220,7 @@ function recupFournisseur($place){
 
 function recupFournisseurId($nom){
 	$db = getDB();
-	$query = $db->prepare("SELECT id,nom,url,logo,catalogue,catalogue_tarifs,images FROM fournisseurs WHERE id=?");
+	$query = $db->prepare("SELECT id,nom,url,logo,catalogue,catalogue_tarifs,images FROM Fournisseurs WHERE id=?");
 	$query->execute(array($nom));
 	$temp = $query->fetch();
 	return $temp;

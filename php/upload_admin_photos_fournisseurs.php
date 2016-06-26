@@ -3,10 +3,12 @@ session_start();
 //Début de la procédure d'upload
 if(!empty($_SESSION["authentifie"])){
 	if($_SESSION["authentifie"]){
-		if($_SERVER['HTTP_REFERER'] == 'https://francoistoquer.com/iode/views/admin.php'){
+		if($_SERVER['HTTP_REFERER'] == 'https://francoistoquer.com/iode/views/admin.php'| $_SERVER['HTTP_REFERER'] == 'https://francoistoquer.com/iode/views/admin.php?PageSpeed=Off'){
 			if(!empty($_FILES))
 			{
 				$ds = DIRECTORY_SEPARATOR;
+
+				$path = "/home/fanch/www/iode";
 
 				$storeFolder = 'photos_fournisseurs';
 
@@ -19,7 +21,7 @@ if(!empty($_SESSION["authentifie"])){
 
 				if($nom_file != '')
 				{
-					$targetPath = dirname( __FILE__ ) . $ds. $storeFolder . $ds;
+					$targetPath = $path . $ds. $storeFolder . $ds;
 
 					$targetFile = $targetPath. $_FILES['file']['name'];
 
@@ -32,7 +34,7 @@ if(!empty($_SESSION["authentifie"])){
 						{
 							// Si upload OK alors on affiche le message de réussite
 							error_log("fichier correctement uploadé");
-							return $targetFile;				
+							echo '.'.$ds.$storeFolder.$ds.$_FILES['file']['name'].';';				
 						}
 						else
 						{

@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	include_once('../php/default.php');
-	$references = recupReferences();
+	$references = recupProjets();
 
 ?>
 <!DOCTYPE html>
@@ -36,18 +36,21 @@ include_once("header.php");
 foreach ($references as $reference) {
 	echo'
 	<div class="paragraphe">
-	<h1>'.$reference['Nom'].'</h1>
-	<h3>'.$reference['Adresse'].'</h3>
+	<h1>'.$reference['nom'].'</h1>
+	<h3>'.$reference['adresse'].'</h3>
 	<div class="slickey">
 	';
-	foreach ($reference['Photos'] as $photo) {
+	$temp = explode(";",$reference['photos']);
+	foreach ($temp as $photo) {
 		echo'
 		<div src="'.$photo.'""></div>
 		';
 	}
 
 
-	echo'</div></div>';
+	echo'<p>'.$reference['description'].'</p>
+
+	</div></div>';
 
 }
 

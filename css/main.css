@@ -1,16 +1,16 @@
 @font-face {
 	font-family: 'Swiss EX';
-	src: url('swis721_ex_bt_roman.eot');
-	src: url('swis721-ex-bt-roman.ttf') format('truetype'),
-		 url('swis721-ex-bt-roman.woff') format('woff');
+	src: url('../fonts/swis721_ex_bt_roman.eot');
+	src: url('../fonts/swis721-ex-bt-roman.ttf') format('truetype'),
+		 url('../fonts/swis721-ex-bt-roman.woff') format('woff');
 	font-weight: normal;
 	font-style: normal;
 }
 @font-face {
 	font-family: 'Swiss LT';
-	src: url('swis721_lt_bt_light.eot');
-	src: url('swis721-lt-bt-light.ttf') format('truetype'),
-		 url('swis721-lt-bt-light.woff') format('woff');
+	src: url('../fonts/swis721_lt_bt_light.eot');
+	src: url('../fonts/swis721-lt-bt-light.ttf') format('truetype'),
+		 url('../fonts/swis721-lt-bt-light.woff') format('woff');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -22,17 +22,40 @@ body {
 	font-family: 'Swiss EX';
 }
 
+.cut-marge{
+	padding-right: 10px!important;
+	padding-left: 10px!important;
+}
+
+.logo{
+	max-width: 76px!important;
+	max-height:76px!important;
+}
+
+.red-admin{
+	background-color: rgba(255,0,0,0.5)!important;
+	text-align: center;
+}
+
 .form-holder {
 	background: rgba(255,255,255,0.2);
 	margin-top: 10%;
 	border-radius: 3px;
 }
 
+.form-holder-connexion{
+	margin-top: 200px;
+}
+
+.marge{
+	margin-top:300px!important;
+}
+
 .form-head {
 	font-size: 30px;
 	letter-spacing: 2px;
 	text-transform: uppercase;
-	color: #fff;
+	color: black;
 	text-shadow: 0 0 30px #000;
 	margin: 15px auto 30px auto;
 }
@@ -41,20 +64,20 @@ body {
 .ui.inverted.menu:hover{
 	transition-property: background;
 	transition-duration: 1s;
-	background: #FFFFFF!important;
+	background: #000000!important;
 }
 
 .ui.inverted.menu:hover > a.item{
 	transition-property: color;
 	transition-duration: 1s;
-	color:black!important;
+	color:white!important;
 }
 
 .ui.inverted.menu:hover > a.active{
 	transition-property: background,color;
 	transition-duration: 1s;
-	color:black!important;
-	background: #AAAAAA!important;
+	color:white!important;
+	background: #000000!important;
 }
 
 .flex-contain{

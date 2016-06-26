@@ -5,6 +5,7 @@ if(!empty($_SESSION["authentifie"])){
 	if($_SESSION["authentifie"]){
 		//Gestion des administrateurs
 		if(!empty($_POST['add_admin_id']) && !empty($_POST['add_admin_mdp'])){
+			error_log();
 			if(addAdmin($_POST['add_admin_id'],$_POST['add_admin_mdp'])){
 				echo json_encode(array('success' => true, 'msg' => utf8_encode('Cet administrateur a bien ete ajoute !')));
 			}
@@ -34,8 +35,8 @@ if(!empty($_SESSION["authentifie"])){
 		}
 
 		//Gestion des fournisseurs
-		if(!empty($_POST['add_fournisseur_nom']) && !empty($_POST['add_fournisseur_url']) && !empty($_POST['add_fournisseur_catalogue']) && !empty($_POST['add_fournisseur_photos']) && !empty($_POST['add_fournisseur_priorite'])){
-			if(addFournisseurPrincipal($_POST['add_fournisseur_nom'],$_POST['add_fournisseur_url'],$_POST['add_fournisseur_catalogue'],$_POST['add_fournisseur_photos'],$_POST['add_fournisseur_priorite'])){
+		if(!empty($_POST['add_fournisseur_nom']) && !empty($_POST['add_fournisseur_url']) && !empty($_POST['add_fournisseur_catalogue']) && !empty($_POST['add_fournisseur_photos']) && !empty($_POST['add_fournisseur_priorite']) && !empty($_POST['add_fournisseur_catalogue_tarifs']) && !empty($_POST['add_fournisseur_logo'])){
+			if(addFournisseur($_POST['add_fournisseur_nom'],$_POST['add_fournisseur_priorite'],$_POST['add_fournisseur_url'],$_POST['add_fournisseur_catalogue'],$_POST['add_fournisseur_catalogue_tarifs'],$_POST['add_fournisseur_photos'],$_POST['add_fournisseur_logo'])){
 				echo json_encode(array('success' => true, 'msg' => utf8_encode('Ce fournisseur a bien ete ajoute dans la base de donnees')));
 			}
 			else{
@@ -45,7 +46,7 @@ if(!empty($_SESSION["authentifie"])){
 		}
 
 		if(!empty($_POST['del_fournisseur_id'])){
-			if(removeFournisseurPrincipal($_POST['del_fournisseur_id'])){
+			if(removeFournisseur($_POST['del_fournisseur_id'])){
 				echo json_encode(array('success' => true, 'msg' => utf8_encode('Ce fournisseur a bien ete supprime de la base de donnees')));
 			}
 			else{
@@ -54,8 +55,8 @@ if(!empty($_SESSION["authentifie"])){
 
 		}
 
-		if(!empty($_POST['update_fournisseur_id']) && !empty($_POST['update_fournisseur_nom']) && !empty($_POST['update_fournisseur_url']) && !empty($_POST['update_fournisseur_catalogue']) && !empty($_POST['update_fournisseur_photos']) && !empty($_POST['update_fournisseur_priorite'])){
-			if(updateFournisseurPrincipal($_POST['update_fournisseur_id'],$_POST['update_fournisseur_nom'],$_POST['update_fournisseur_url'],$_POST['update_fournisseur_catalogue'],$_POST['update_fournisseur_photos'],$_POST['update_fournisseur_priorite'])){
+		if(!empty($_POST['update_fournisseur_id']) && !empty($_POST['update_fournisseur_nom']) && !empty($_POST['update_fournisseur_url']) && !empty($_POST['update_fournisseur_catalogue']) && !empty($_POST['update_fournisseur_photos']) && !empty($_POST['update_fournisseur_catalogue_tarifs']) && !empty($_POST['update_fournisseur_logo']) && !empty($_POST['update_fournisseur_priorite'])){
+			if(updateFournisseur($_POST['update_fournisseur_id'],$_POST['update_fournisseur_nom'],$_POST['update_fournisseur_priorite'],$_POST['update_fournisseur_url'],$_POST['update_fournisseur_catalogue'],$_POST['update_fournisseur_catalogue_tarifs'],$_POST['update_fournisseur_photos'],$_POST['update_fournisseur_logo'])){
 				echo json_encode(array('success' => true, 'msg' => utf8_encode('Ce fournisseur a bien ete modifie dans la base de donnees')));
 			}
 			else{
@@ -66,8 +67,8 @@ if(!empty($_SESSION["authentifie"])){
 
 
 		//Gestion des projets
-		if(!empty($_POST['add_projet_photos']) && !empty($_POST['add_projet_nom']) && !empty($_POST['add_projet_adresse'])){
-			if(addProjet($_POST['add_projet_photos'],$_POST['add_projet_nom'],$_POST['add_projet_adresse'])){
+		if(!empty($_POST['add_projet_photos']) && !empty($_POST['add_projet_nom']) && !empty($_POST['add_projet_description']) && !empty($_POST['add_projet_adresse'])){
+			if(addProjet($_POST['add_projet_nom'],$_POST['add_projet_adresse'],$_POST['add_projet_description'],$_POST['add_projet_photos'])){
 				echo json_encode(array('success' => true, 'msg' => utf8_encode('Ce projet a bien ete ajoute dans la base de donnees')));
 			}
 			else{
@@ -86,8 +87,8 @@ if(!empty($_SESSION["authentifie"])){
 			
 		}
 
-		if(!empty($_POST['update_projet_id']) && !empty($_POST['update_projet_nom']) && !empty($_POST['update_projet_adresse'])&& !empty($_POST['update_projet_photos'])){
-			if(updateProjet($_POST['update_projet_id'],$_POST['update_projet_nom'],$_POST['update_projet_adresse'],$_POST['update_projet_photos'])){
+		if(!empty($_POST['update_projet_id']) && !empty($_POST['update_projet_nom']) && !empty($_POST['update_projet_adresse']) && !empty($_POST['update_projet_photos']) && !empty($_POST['update_projet_description'])){
+			if(updateProjet($_POST['update_projet_id'],$_POST['update_projet_nom'],$_POST['update_projet_adresse'],$_POST['update_projet_description'],$_POST['update_projet_photos'])){
 				echo json_encode(array('success' => true, 'msg' => utf8_encode('Ce projet a bien ete modifie dans la base de donnees')));
 			}
 			else{

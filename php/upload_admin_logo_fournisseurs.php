@@ -1,12 +1,18 @@
 <?php
 session_start();
 //Début de la procédure d'upload
+error_log("Début de l'upload de fichier");
 if(!empty($_SESSION["authentifie"])){
 	if($_SESSION["authentifie"]){
-		if($_SERVER['HTTP_REFERER'] == 'https://francoistoquer.com/iode/views/admin.php'){
+		error_log("On est authentifie");
+		error_log($_SERVER['HTTP_REFERER']);
+		if($_SERVER['HTTP_REFERER'] == 'https://francoistoquer.com/iode/views/admin.php' | $_SERVER['HTTP_REFERER'] == 'https://francoistoquer.com/iode/views/admin.php?PageSpeed=Off'){
+			error_log("On est authentifie et on vient bien de la bonne adresse");
 			if(!empty($_FILES))
 			{
 				$ds = DIRECTORY_SEPARATOR;
+
+				$path = "/home/fanch/www/iode";
 
 				$storeFolder = 'logos_fournisseurs';
 
@@ -16,10 +22,10 @@ if(!empty($_SESSION["authentifie"])){
 
 				$infosfichier = pathinfo($_FILES['file']['name']);
 				$extension_upload = $infosfichier['extension'];
-
+				error_log("Définition des variables d'utilisation");
 				if($nom_file != '')
 				{
-					$targetPath = dirname( __FILE__ ) . $ds. $storeFolder . $ds;
+					$targetPath = $path . $ds. $storeFolder . $ds;
 
 					$targetFile = $targetPath. $_FILES['file']['name'];
 
@@ -27,12 +33,14 @@ if(!empty($_SESSION["authentifie"])){
 					$extensions_autorisees = array('gif', 'png','jpeg','jpg','bmp');
 					if (in_array($extension_upload, $extensions_autorisees))
 					{
+						error_log("Extension autorisée");
 						//upload du fichier
+						error_log($targetFile);
 						if(move_uploaded_file($tempFile,$targetFile))
 						{
 							// Si upload OK alors on affiche le message de réussite
 							error_log("fichier correctement uploadé");
-							return $targetFile;				
+							echo '.'.$ds.$storeFolder.$ds.$_FILES['file']['name'].';';				
 						}
 						else
 						{
