@@ -46,7 +46,7 @@ if(!empty($_SESSION["authentifie"])){
 						{
 							// Si upload OK alors on affiche le message de réussite
 							error_log("fichier correctement uploadé");
-							echo '.'.$ds.$storeFolder.$ds.$_FILES['file']['name'].';';				
+							echo '..'.$ds.$storeFolder.$ds.$_FILES['file']['name'];				
 						}
 						else
 						{

@@ -51,7 +51,7 @@
 			////////////////////   	Premiere partie  	////////////////////////
 			////////////////////////////////////////////////////////////////////
 			////////////////////////////////////////////////////////////////////
-				echo '<div class="cinquo left column" style="background-image: url("'.$logo1.'");">';
+				echo '<div class="cinquo left column" style="background-image: url('.$logo1.');">';
 
 				//Partie normale
 				echo'
@@ -60,7 +60,7 @@
 						<p class="align">
 							';
 						foreach ($un as $fournisseur) {
-							echo'<a href="'.$fournisseur["url"].'"><img src="'.$fournisseur["logo"].'"></a><br><br>';	
+							echo'<a href="'.$fournisseur["url"].'"><img src="'.$fournisseur["logo"].'" style="width:100%;"></a><br><br>';	
 						}
 				echo'	</p>
 					</div>';
@@ -95,7 +95,7 @@
 								foreach ($un as $fournisseur) {
 									$temp = explode(";",$fournisseur['images']);
 									foreach ($temp as $image) {
-										echo '<img src="'.$image.'">';
+										echo '<img src="'.$image.'" style="width:100%;">';
 									}
 
 								}

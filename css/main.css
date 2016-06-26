@@ -97,10 +97,13 @@ body {
 	width :20%!important;
 	text-align: justify;
 	display: flex!important;
+	padding-left: 0px!important;
+	padding-right: 0px!important;
 }
 
 .paragraphe{
 	margin:auto!important;
+	background-color: rgba(255,255,255,0.2);
 }
 
 .align{
