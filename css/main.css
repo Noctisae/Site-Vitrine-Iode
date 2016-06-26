@@ -139,6 +139,9 @@ body {
 
 .hovered_content{
 	display: none;
+	color:white;
+	background-color: rgba(64,64,64,1.0);
+	z-index:2;
 }
 
 .paragraphe{
@@ -149,6 +152,10 @@ body {
 
 .align{
 	text-align: center;
+}
+
+.alignement{
+	margin-top : 150px;
 }
 
 .flex-contain{

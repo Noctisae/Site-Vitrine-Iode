@@ -48,7 +48,7 @@
 
 				//Partie normale
 				echo'
-					<div class="paragraphe">
+					<div class="paragraphe" id="paragraphe1">
 						<br>				
 						<p class="align">
 							';
@@ -59,16 +59,20 @@
 					</div>';
 				
 				//partie Hover
-				echo'<div class="hovered_content">
-
+				echo'<div class="hovered_content" id="hovered_content1">
+					<div class="alignement">
+					<h3 class="ui header">Les catalogues</h3>
 				';
 
 				foreach ($un as $fournisseur) {
-					echo'<a href="'.$fournisseur["catalogue"].'">Télécharger le catalogue de '.$fournisseur["nom"].'<i class="file text icon"></i></a><br><br>';
-					echo'<a href="'.$fournisseur["catalogue_tarifs"].'">Télécharger le catalogue des tarifs de '.$fournisseur["nom"].'<i class="file text icon"></i></a><br><br>';
+					echo'
+
+						<h4 class="ui header">'.strtoupper($fournisseur["nom"]).'</h4>
+						<a href="'.$fournisseur["catalogue"].'">Catalogue<br><i class="big file text icon"></i></a><br><br>';
+					echo'<a href="'.$fournisseur["catalogue_tarifs"].'">Catalogue des tarifs<br><i class=" big file text icon"></i></a><br><br>';
 				}
 
-				echo'</div>';
+				echo'</div></div>';
 
 				echo'</div>';
 
@@ -110,7 +114,7 @@
 
 				//Partie normale
 				echo'
-					<div class="paragraphe">
+					<div class="paragraphe" id="paragraphe2">
 						<br>				
 						<p class="align">
 							';
@@ -121,16 +125,22 @@
 					</div>';
 				
 				//partie Hover
-				echo'<div class="hovered_content">
-
+				echo'<div class="hovered_content" id="hovered_content2">
+					<div class="alignement">
+					<br>
+					<br>
+					<h3 class="ui header">Les catalogues</h3>
 				';
 
 				foreach ($deux as $fournisseur) {
-					echo'<a href="'.$fournisseur["catalogue"].'">Télécharger le catalogue de '.$fournisseur["nom"].'<i class="file text icon"></i></a><br><br>';
-					echo'<a href="'.$fournisseur["catalogue_tarifs"].'">Télécharger le catalogue des tarifs de '.$fournisseur["nom"].'<i class="file text icon"></i></a><br><br>';
+					echo'
+
+						<h4 class="ui header">'.strtoupper($fournisseur["nom"]).'</h4>
+						<a href="'.$fournisseur["catalogue"].'">Catalogue<br><i class="big file text icon"></i></a><br><br>';
+					echo'<a href="'.$fournisseur["catalogue_tarifs"].'">Catalogue des tarifs<br><i class=" big file text icon"></i></a><br><br>';
 				}
 
-				echo'</div>';
+				echo'</div></div>';
 
 				echo'</div>';
 
@@ -170,7 +180,7 @@
 
 				//Partie normale
 				echo'
-					<div class="paragraphe">
+					<div class="paragraphe" id="paragraphe3">
 						<br>				
 						<p class="align">
 							';
@@ -181,16 +191,22 @@
 					</div>';
 				
 				//partie Hover
-				echo'<div class="hovered_content">
-
+				echo'<div class="hovered_content" id="hovered_content3">
+					<div class="alignement">
+					<br>
+					<br>
+					<h3 class="ui header">Les catalogues</h3>
 				';
 
 				foreach ($trois as $fournisseur) {
-					echo'<a href="'.$fournisseur["catalogue"].'">Télécharger le catalogue de '.$fournisseur["nom"].'<i class="file text icon"></i></a><br><br>';
-					echo'<a href="'.$fournisseur["catalogue_tarifs"].'">Télécharger le catalogue des tarifs de '.$fournisseur["nom"].'<i class="file text icon"></i></a><br><br>';
+					echo'
+
+						<h4 class="ui header">'.strtoupper($fournisseur["nom"]).'</h4>
+						<a href="'.$fournisseur["catalogue"].'">Catalogue<br><i class="big file text icon"></i></a><br><br>';
+					echo'<a href="'.$fournisseur["catalogue_tarifs"].'">Catalogue des tarifs<br><i class=" big file text icon"></i></a><br><br>';
 				}
 
-				echo'</div>';
+				echo'</div></div>';
 
 				echo'</div>';
 
@@ -230,7 +246,7 @@
 
 				//Partie normale
 				echo'
-					<div class="paragraphe">
+					<div class="paragraphe" id="paragraphe4">
 						<br>				
 						<p class="align">
 							';
@@ -241,16 +257,22 @@
 					</div>';
 				
 				//partie Hover
-				echo'<div class="hovered_content">
-
+				echo'<div class="hovered_content" id="hovered_content4">
+					<div class="alignement">
+					<br>
+					<br>
+					<h3 class="ui header">Les catalogues</h3>
 				';
 
 				foreach ($quatre as $fournisseur) {
-					echo'<a href="'.$fournisseur["catalogue"].'">Télécharger le catalogue de '.$fournisseur["nom"].'<i class="file text icon"></i></a><br><br>';
-					echo'<a href="'.$fournisseur["catalogue_tarifs"].'">Télécharger le catalogue des tarifs de '.$fournisseur["nom"].'<i class="file text icon"></i></a><br><br>';
+					echo'
+
+						<h4 class="ui header">'.strtoupper($fournisseur["nom"]).'</h4>
+						<a href="'.$fournisseur["catalogue"].'">Catalogue<br><i class="big file text icon"></i></a><br><br>';
+					echo'<a href="'.$fournisseur["catalogue_tarifs"].'">Catalogue des tarifs<br><i class=" big file text icon"></i></a><br><br>';
 				}
 
-				echo'</div>';
+				echo'</div></div>';
 
 				echo'</div>';
 
@@ -290,7 +312,7 @@
 
 				//Partie normale
 				echo'
-					<div class="paragraphe">
+					<div class="paragraphe" id="paragraphe5">
 						<br>				
 						<p class="align">
 							';
@@ -301,16 +323,22 @@
 					</div>';
 				
 				//partie Hover
-				echo'<div class="hovered_content">
-
+				echo'<div class="hovered_content" id="hovered_content5">
+					<div class="alignement">
+					<br>
+					<br>
+					<h3 class="ui header">Les catalogues</h3>
 				';
 
 				foreach ($cinq as $fournisseur) {
-					echo'<a href="'.$fournisseur["catalogue"].'">Télécharger le catalogue de '.$fournisseur["nom"].'<i class="file text icon"></i></a><br><br>';
-					echo'<a href="'.$fournisseur["catalogue_tarifs"].'">Télécharger le catalogue des tarifs de '.$fournisseur["nom"].'<i class="file text icon"></i></a><br><br>';
+					echo'
+
+						<h4 class="ui header">'.strtoupper($fournisseur["nom"]).'</h4>
+						<a href="'.$fournisseur["catalogue"].'">Catalogue<br><i class="big file text icon"></i></a><br><br>';
+					echo'<a href="'.$fournisseur["catalogue_tarifs"].'">Catalogue des tarifs<br><i class=" big file text icon"></i></a><br><br>';
 				}
 
-				echo'</div>';
+				echo'</div></div>';
 
 				echo'</div>';
 
@@ -366,16 +394,33 @@
 		$('.ui.modal.cinq').modal();
 	});
 
-	var returnToNormal = function(){
+		var returnToNormal = function(){
 		$(".cinquo1").css("width","20%");
 		$(".cinquo2").css("width","20%");
 		$(".cinquo3").css("width","20%");
 		$(".cinquo4").css("width","20%");
 		$(".cinquo5").css("width","20%");
+		$("#hovered_content1").css("display","none");
+		$("#paragraphe1").css("display","block");
+		$("#hovered_content2").css("display","none");
+		$("#paragraphe2").css("display","block");
+		$("#hovered_content3").css("display","none");
+		$("#paragraphe3").css("display","block");
+		$("#hovered_content4").css("display","none");
+		$("#paragraphe4").css("display","block");
+		$("#.hovered_content5").css("display","none");
+		$("#paragraphe5").css("display","block");
 	}
 
 	$(".cinquo1").hover(function(){
 		$(".cinquo1").css("width","100%");
+		$("#hovered_content1").css("display","block");
+		$("#hovered_content1").css("width","20%");
+		$("#hovered_content1").css("height","100%");
+		$("#hovered_content1").css("margin-top","20px");
+		$("#hovered_content1").css("text-align","center");
+		$("#hovered_content1").css("color","white");
+		$("#paragraphe1").css("display","none");
 		$(".cinquo2").css("width","0%");
 		$(".cinquo3").css("width","0%");
 		$(".cinquo4").css("width","0%");
@@ -384,6 +429,13 @@
 	$(".cinquo2").hover(function(){
 		$(".cinquo1").css("width","0%");
 		$(".cinquo2").css("width","100%");
+		$("#hovered_content2").css("display","block");
+		$("#hovered_content2").css("width","20%");
+		$("#hovered_content2").css("height","100%");
+		$("#hovered_content2").css("margin-top","20px");
+		$("#hovered_content2").css("text-align","center");
+		$("#hovered_content2").css("color","white");
+		$("#paragraphe2").css("display","none");
 		$(".cinquo3").css("width","0%");
 		$(".cinquo4").css("width","0%");
 		$(".cinquo5").css("width","0%");
@@ -392,6 +444,13 @@
 		$(".cinquo1").css("width","0%");
 		$(".cinquo2").css("width","0%");
 		$(".cinquo3").css("width","100%");
+		$("#hovered_content3").css("display","block");
+		$("#hovered_content3").css("width","20%");
+		$("#hovered_content3").css("height","100%");
+		$("#hovered_content3").css("margin-top","20px");
+		$("#hovered_content3").css("text-align","center");
+		$("#hovered_content3").css("color","white");
+		$("#paragraphe3").css("display","none");
 		$(".cinquo4").css("width","0%");
 		$(".cinquo5").css("width","0%");
 	},returnToNormal);
@@ -400,6 +459,13 @@
 		$(".cinquo2").css("width","0%");
 		$(".cinquo3").css("width","0%");
 		$(".cinquo4").css("width","100%");
+		$("#hovered_content4").css("display","block");
+		$("#hovered_content4").css("width","20%");
+		$("#hovered_content4").css("height","100%");
+		$("#hovered_content4").css("margin-top","20px");
+		$("#hovered_content4").css("text-align","center");
+		$("#hovered_content4").css("color","white");
+		$("#paragraphe4").css("display","none");
 		$(".cinquo5").css("width","0%");
 	},returnToNormal);
 	$(".cinquo5").hover(function(){
@@ -408,6 +474,13 @@
 		$(".cinquo3").css("width","0%");
 		$(".cinquo4").css("width","0%");
 		$(".cinquo5").css("width","100%");
+		$("#hovered_content5").css("display","block");
+		$("#hovered_content5").css("width","20%");
+		$("#hovered_content5").css("height","100%");
+		$("#hovered_content5").css("margin-top","20px");
+		$("#hovered_content5").css("text-align","center");
+		$("#hovered_content5").css("color","white");
+		$("#paragraphe5").css("display","none");
 	},returnToNormal);
 	</script>
 
