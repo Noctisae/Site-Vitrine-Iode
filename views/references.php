@@ -16,72 +16,93 @@
 	<title>Agence Iode</title>
 	<link rel="stylesheet" type="text/css" href="../semantic/dist/semantic.min.css">
 	<link rel="stylesheet" type="text/css" href="../css/main.css">
-	<link rel="stylesheet" type="text/css" href="../slick/slick.css"/>
-	<link rel="stylesheet" type="text/css" href="../slick/slick-theme.css"/>
-	<script type="text/javascript" src="../js/jquery.min.js"></script>
-	<script type="text/javascript" src="../js/jquery-migrate.min.js"></script>
-	<script type="text/javascript" src="../semantic/dist/semantic.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../swiper/swiper.min.css"/>
 
 </head>
 <body>
-<?php
+	<?php
 
-include_once("header.php");
+	include_once("header.php");
 
-?>
-
-<div class="ui raised very padded text container segment flex-contain">
-
-<?php
-foreach ($references as $reference) {
-	echo'
-	<div class="paragraphe">
-	<h1>'.$reference['nom'].'</h1>
-	<h3>'.$reference['adresse'].'</h3>
-	<div class="slickey">
-	';
-	$temp = explode(";",$reference['photos']);
-	foreach ($temp as $photo) {
+	?>
+	<div class="ui raised very padded text segment flex-contain references-container" style="margin-top:150px;">
+	<h1 class="ui header">Nos références</h1>
+	</div>
+	<div class="ui raised very padded text segment flex-contain references-container">
+	<?php
+	foreach ($references as $reference) {
 		echo'
-		<div src="'.$photo.'""></div>
+		<div class="paragraphe" style="width:100%;">
+		<h1 style="font-size:14">'.$reference['nom'].'</h1>
+		<h3 style="font-size:14">'.$reference['adresse'].'</h3>
+		<div class="swiper-container">
+
+		<div class="swiper-wrapper">
 		';
+		$temp = explode(";",$reference['photos']);
+		foreach ($temp as $photo) {
+			if($photo != ""){
+				echo'
+					<div class="swiper-slide centered"><img src="'.$photo.'" style="height:300px;" /></div>
+				';
+			}
+		}
+
+
+		echo'</div>
+		<!-- If we need pagination -->
+		<div class="swiper-pagination"></div>
+		
+		<!-- If we need navigation buttons -->
+		<div class="swiper-button-prev"></div>
+		<div class="swiper-button-next"></div>
+		
+		<!-- If we need scrollbar -->
+		<div class="swiper-scrollbar"></div>
+
+		</div>
+		<p style="margin-top:10px;">'.nl2br($reference['description']).'</p>
+
+		</div>';
+
 	}
 
 
-	echo'<p>'.$reference['description'].'</p>
-
-	</div></div>';
-
-}
-
-
-?>
-</div>
-<script type="text/javascript" src="../js/jquery.min.js"></script>
-<script type="text/javascript" src="../slick/slick.min.js"></script>
-<script type="text/javascript">
-	$(document).ready(function(){
-	$('.right.menu.open').on("click",function(e){
-	e.preventDefault();
-	$('.ui.vertical.menu').toggle();
-	});
-	
-	$('.ui.dropdown').dropdown();
-});
-</script>
-<script type="text/javascript">
-	$(document).ready(function(){
-		$('.slickey').slick({
-			infinite: true,
-			slidesToShow: 5,
-			slidesToScroll: 1
+	?>
+	</div>
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/jquery-migrate.min.js"></script>
+	<script type="text/javascript" src="../semantic/dist/semantic.min.js"></script>
+	<script type="text/javascript" src="../swiper/swiper.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('.right.menu.open').on("click",function(e){
+			e.preventDefault();
+			$('.ui.vertical.menu').toggle();
+		});
+		var mySwiper = new Swiper ('.swiper-container', {
+				// Optional parameters
+				loop: true,
+				height: '300px',
+				centeredSlides: true,
+				slidesPerView: 3,
+				
+				// If we need pagination
+				pagination: '.swiper-pagination',
+				
+				// Navigation arrows
+				nextButton: '.swiper-button-next',
+				prevButton: '.swiper-button-prev',
+				
+				// And if we need scrollbar
+				scrollbar: '.swiper-scrollbar'
 		});
 	});
-</script>
-<?php
+	</script>
+	<?php
 
-include_once("footer.php");
+	include_once("footer.php");
 
-?>
+	?>
 </body>
 </html>

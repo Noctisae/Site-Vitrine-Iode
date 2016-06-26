@@ -22,9 +22,14 @@ body {
 	font-family: 'Swiss EX';
 }
 
+.total{
+	display: flex;
+	justify-content: center;
+}
 .cut-marge{
 	padding-right: 10px!important;
 	padding-left: 10px!important;
+	z-index:999;
 }
 
 .logo{
@@ -89,21 +94,57 @@ body {
 	align-items: center;
 }
 
+.equipe-container{
+	margin-top:75px!important;
+	background-color: rgba(64,64,64,1.0)!important;
+	color:white!important;
+}
+
+.white-color{
+	color:white!important;
+}
+
+.centered{
+	text-align:center;
+}
+
+.references-container{
+	padding-left:30px;
+	padding-right:30px;
+	width:100%!important;
+	margin-left:10px;
+	margin-right: 10px;
+}
+
 .mid{
 	margin-top: 10%;
 }
 
+.swiper-container{
+	width:100%!important;
+	height:300px!important;
+}
+
 .cinquo{
-	width :20%!important;
+	width :20%;
 	text-align: justify;
 	display: flex!important;
 	padding-left: 0px!important;
 	padding-right: 0px!important;
+	flex-direction: column;
+	transition-duration: 0.5s;
+	transition-property: width;
+	z-index:1;
+}
+
+.hovered_content{
+	display: none;
 }
 
 .paragraphe{
 	margin:auto!important;
-	background-color: rgba(255,255,255,0.2);
+	background-color: rgba(255,255,255,0.4);
+	width:100%;
 }
 
 .align{

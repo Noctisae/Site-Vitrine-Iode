@@ -350,7 +350,7 @@ include_once("header.php");
 							</div>
 							<div class="field">
 								<label>Description du projet</label>
-								<input type="textarea" placeholder="27, rue du Léon, 29200 Brest" name="add_projet_description" id="add_projet_description">
+								<textarea placeholder="27, rue du Léon, 29200 Brest" name="add_projet_description" id="add_projet_description"></textarea>
 							</div>
 							<div class="field">
 								<input type="hidden" name="add_projet_photos" id="add_projet_photos">

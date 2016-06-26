@@ -19,78 +19,168 @@
 <?php
 
 include_once("header.php");
-
-?>
-
-
-<div class="ui raised inverted very padded text container segment" style="margin:auto;">
-	<h1 class="ui inverted header align">Nous contacter</h1>
-	<div class="ui inverted segment">
-		<div class="ui inverted form">
-			<form action="contact.php" method="post" class="ui form">
-				<div class="two fields">
-					<div class="field">
-						<label>Prénom</label>
-						<input placeholder="John" type="text">
+	/*
+		********************************************************************************************
+		CONFIGURATION
+		********************************************************************************************
+	*/
+	// destinataire est votre adresse mail. Pour envoyer à plusieurs à la fois, séparez-les par une virgule
+	$destinataire = 'contact@agenceiode.com';
+	 
+	// copie ? (envoie une copie au visiteur)
+	$copie = 'non';
+	 
+	// Action du formulaire (si votre page a des paramètres dans l'URL)
+	// si cette page est index.php?page=contact alors mettez index.php?page=contact
+	// sinon, laissez vide
+	$form_action = '';
+	 
+	// Messages de confirmation du mail
+	$message_envoye = "Votre message nous est bien parvenu !";
+	$message_non_envoye = "L'envoi du mail a échoué, veuillez réessayer SVP.";
+	 
+	// Message d'erreur du formulaire
+	$message_formulaire_invalide = "Vérifiez que tous les champs soient bien remplis et que l'email soit sans erreur.";
+	 
+	/*
+		********************************************************************************************
+		FIN DE LA CONFIGURATION
+		********************************************************************************************
+	*/
+	 
+	/*
+	 * cette fonction sert à nettoyer et enregistrer un texte
+	 */
+	function Rec($text)
+	{
+		$text = htmlspecialchars(trim($text), ENT_QUOTES);
+		if (1 === get_magic_quotes_gpc())
+		{
+			$text = stripslashes($text);
+		}
+	 
+		$text = nl2br($text);
+		return $text;
+	};
+	 
+	/*
+	 * Cette fonction sert à vérifier la syntaxe d'un email
+	 */
+	function IsEmail($email)
+	{
+		$value = preg_match('/^(?:[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+\.)*[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+@(?:(?:(?:[a-zA-Z0-9_](?:[a-zA-Z0-9_\-](?!\.)){0,61}[a-zA-Z0-9_-]?\.)+[a-zA-Z0-9_](?:[a-zA-Z0-9_\-](?!$)){0,61}[a-zA-Z0-9_]?)|(?:\[(?:(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\.){3}(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\]))$/', $email);
+		return (($value === 0) || ($value === false)) ? false : true;
+	}
+	 
+	// formulaire envoyé, on récupère tous les champs.
+	$raison_sociale   = (isset($_POST['raison_sociale']))   ? Rec($_POST['raison_sociale'])   : '';
+	$nom	 = (isset($_POST['nom']))	 ? Rec($_POST['nom'])	 : '';
+	$email   = (isset($_POST['email']))   ? Rec($_POST['email'])   : '';
+	$telephone   = (isset($_POST['telephone']))   ? Rec($_POST['telephone'])   : '';
+	$message = (isset($_POST['message'])) ? Rec($_POST['message']) : '';
+	 
+	// On va vérifier les variables et l'email ...
+	$email = (IsEmail($email)) ? $email : ''; // soit l'email est vide si erroné, soit il vaut l'email entré
+	$err_formulaire = false; // sert pour remplir le formulaire en cas d'erreur si besoin
+	 
+	if (isset($_POST['envoi']))
+	{
+		if (($nom != '') && ($email != '') && ($telephone != '') && ($message != '') && ($raison_sociale != ''))
+		{
+			$headers  = 'From:'.$nom.' ('.$raison_sociale.') <'.$email.'>' . "\r\n";
+			//$headers .= 'Reply-To: '.$email. "\r\n" ;
+			//$headers .= 'X-Mailer:PHP/'.phpversion();
+	 
+			// envoyer une copie au visiteur ?
+			if ($copie == 'oui')
+			{
+				$cible = $destinataire.';'.$email;
+			}
+			else
+			{
+				$cible = $destinataire;
+			};
+	 
+			// Remplacement de certains caractères spéciaux
+			$message = str_replace("&#039;","'",$message);
+			$message = str_replace("&#8217;","'",$message);
+			$message = str_replace("&quot;",'"',$message);
+			$message = str_replace('&lt;br&gt;','',$message);
+			$message = str_replace('&lt;br /&gt;','',$message);
+			$message = str_replace("&lt;","&lt;",$message);
+			$message = str_replace("&gt;","&gt;",$message);
+			$message = str_replace("&amp;","&",$message);
+	 
+			// Envoi du mail
+			$num_emails = 0;
+			$tmp = explode(';', $cible);
+			foreach($tmp as $email_destinataire)
+			{
+				if (mail($email_destinataire, "Contact du site web : numéro ".$telephone, $message, $headers))
+					$num_emails++;
+			}
+	 
+			if ((($copie == 'oui') && ($num_emails == 2)) || (($copie == 'non') && ($num_emails == 1)))
+			{
+				echo '<p>'.$message_envoye.'</p>';
+			}
+			else
+			{
+				echo '<p>'.$message_non_envoye.'</p>';
+			};
+		}
+		else
+		{
+			// une des 3 variables (ou plus) est vide ...
+			echo '<p>'.$message_formulaire_invalide.'</p>';
+			$err_formulaire = true;
+		};
+	}; // fin du if (!isset($_POST['envoi']))
+	 
+	if (($err_formulaire) || (!isset($_POST['envoi'])))
+	{
+		echo'<div class="ui raised very padded text container segment" style="margin:auto;height:660px;margin-top:150px;">
+			<h1 class="ui header align">Nous contacter</h1>
+			<form action="contact.php" method="post" class="ui form" style="height:100%;">
+				<div class="ui horizontal segments" style="height:540px;">
+					<div class="ui segment" style="width:100%;">
+						<div class="ui form" style="height:100%;">
+							<div class="field" style="height:80%;padding-top:15px;text-align:center;">
+								<label>Message</label>
+								<textarea style="height:100%;" id="message" value="'.stripslashes($message).'" ></textarea>
+							</div>
+							<div class="ui submit button" style="width:100%;">Envoyer</div>
+						</div>
 					</div>
-					<div class="field">
-						<label>Nom</label>
-						<input placeholder="Doe" type="text">
+					<div class="ui segment">
+						<div class="ui form">
+							<div class="field" style="padding-top:75px;">
+								<label>Raison Sociale *</label>
+								<input placeholder="John" type="text" id="raison_sociale" value="'.stripslashes($raison_sociale).'" >
+							</div>
+							<div class="field">
+								<label>Nom *</label>
+								<input placeholder="Doe" type="text" id="nom" value="'.stripslashes($nom).'" >
+							</div>
+							<div class="field">
+								<label>Email * </label>
+								<input placeholder="john.doe@orange.fr" type="text" id="email" value="'.stripslashes($email).'" >
+							</div>
+							<div class="field">
+								<label>Téléphone *</label>
+								<input placeholder="06 00 00 00 00" type="text" id="telephone" value="'.stripslashes($telephone).'" >
+							</div>
+							<div class="field" style="text-align:center;">
+								<img src="../logos/contact.PNG" style="width:85%;height:100%;">
+							</div>
+						</div>
+						<img src="../logos/logo iode.jpeg" style="position:absolute;top:0px;right:0px;width:100px;height:100px;">
 					</div>
 				</div>
-				<div class="two fields">
-					<div class="field">
-						<label>Votre email</label>
-						<input placeholder="john.doe@orange.fr" type="text">
-					</div>
-					<div class="field">
-						<label>Votre téléphone</label>
-						<input placeholder="06 00 00 00 00" type="text">
-					</div>
-				</div>
-				<div class="field">
-					<label>Votre message</label>
-					<textarea></textarea>
-				  </div>
-				<div class="field">
-					<div class="ui checkbox">
-						<input required type="checkbox" tabindex="0" class="required">
-						<label>J'accepte les conditions d'utilisation de ce formulaire</label>
-					</div>
-				</div>
-				<div class="ui submit button">Submit</div>
 			</form>
-		</div>
-	</div>
-</div>		
-
-<!-- Formulaire de contact récupéré -->
-<div id="cardWrap">
-	<form id="contactForm" action="php/send_email.php" method="post"> 
-		<div class="col50">
-			<div class="mailWrap">
-					<textarea name="message" id="message" required="" placeholder="Schrijf ons een kaartje" rows="11">Votre message</textarea>
-					<input name="email" id="email" required="" type="email" placeholder="Votre adresse mail">
-					<button class="btn submit submitHover" type="submit">Envoyer</button>
-			</div>
-		</div>
-		<div class="col50">
-			<div id="stamp"></div>
-			<img id="stampImg" alt="contact Saus stempel" src="img/stamp.png">
-			<div class="inner">
-				<h3>Iode</h3>
-				<p><span class="icon adresIco"></span>Adresse xxxxx<br>
-				Code postal Ville<br>
-				France</p>
-
-				<p><a class="icon emailIco sprite" href="mailto:mail@saus.co"><span style="display: none;"></span>mail@iode.com</a></p>
-				<p><a class="icon telIco sprite" style="margin-top: 3em;" href="tel:0031432602000"><span style="display: none;"></span>+31&nbsp;(0)&nbsp;43&nbsp;260&nbsp;20&nbsp;00</a></p>
-			</div>
-		</div>
-	</form>
-	<div class="clear"></div>
-</div>	
-
+		</div>';
+	}
+?>
 
 <script type="text/javascript">
 	$(document).ready(function(){

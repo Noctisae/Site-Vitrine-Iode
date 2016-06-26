@@ -234,4 +234,12 @@ function recupProjetId($id){
 	return $temp;
 }
 
+function recupActualites(){
+	$db = getDB();
+	$query = $db->prepare('SELECT date,titre,description,images FROM Actualites');
+	$query->execute();
+	$temp = $query->fetchAll();
+	return $temp;
+}
+
 ?>
