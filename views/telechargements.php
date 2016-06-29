@@ -53,7 +53,7 @@ background-position:center;width:20%">';
 
 				//Partie normale
 				echo'
-					<div class="paragraphe" id="paragraphe1">
+					<div class="paragraphe paragraphe_accueil" id="paragraphe1">
 						<br>				
 						<p class="align">
 							';
@@ -123,7 +123,7 @@ background-position:center;width:20%">';
 
 				//Partie normale
 				echo'
-					<div class="paragraphe" id="paragraphe2">
+					<div class="paragraphe paragraphe_accueil" id="paragraphe2">
 						<br>				
 						<p class="align">
 							';
@@ -193,7 +193,7 @@ background-position:center;width:20%">';
 
 				//Partie normale
 				echo'
-					<div class="paragraphe" id="paragraphe3">
+					<div class="paragraphe paragraphe_accueil" id="paragraphe3">
 						<br>				
 						<p class="align">
 							';
@@ -263,7 +263,7 @@ background-position:center;width:20%">';
 
 				//Partie normale
 				echo'
-					<div class="paragraphe" id="paragraphe4">
+					<div class="paragraphe paragraphe_accueil" id="paragraphe4">
 						<br>				
 						<p class="align">
 							';
@@ -333,7 +333,7 @@ background-position:center;width:20%">';
 
 				//Partie normale
 				echo'
-					<div class="paragraphe" id="paragraphe5">
+					<div class="paragraphe paragraphe_accueil" id="paragraphe5">
 						<br>				
 						<p class="align">
 							';

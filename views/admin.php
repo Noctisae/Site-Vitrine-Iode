@@ -433,10 +433,52 @@ include_once("header.php");
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="ui bottom attached tab segment" style="text-align:center;" data-tab="surmesure">
-			Sur-mesure
 		</div>';
+
+////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////       Partie Actualités et sur-mesure 	////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////
+
+
+		echo'<div class="ui bottom attached tab segment" style="text-align:center;" data-tab="surmesure">
+				<div class="ui main container">
+					<div class="column ten wide form-holder">
+						<h1>Gestion des actualités et du sur-mesure</h1>
+					</div>
+					<div class="column ten wide form-holder">
+						<h2 class="center aligned header form-head" style="color:black;">Mettre à jour les actualités</h2>
+						<div class="ui form">
+							<div class="field">
+								<label>Nom de l\'actualité</label>
+								<input type="text" required placeholder="Nouveau séminaire !" name="add_actualite_nom" id="add_actualite_nom">
+							</div>
+							<div class="field">
+								<label>Date de l\'actualité</label>
+								<input type="date" name="add_actualite_date" id="add_actualite_date">
+								<input type="time" name="add_actualite_time" id="add_actualite_time">
+								</div>
+							<div class="field">
+								<label>Description du projet</label>
+								<textarea placeholder="27, rue du Léon, 29200 Brest" name="add_projet_description" id="add_projet_description"></textarea>
+							</div>
+							<div class="field">
+								<input type="hidden" name="add_projet_photos" id="add_projet_photos">
+							</div>
+							<label>Photos du projet</label>
+							<form action="/file-upload" class="dropzone" id="dropzone_photos_projets_add"></form>
+							<div class="field">
+								<button id="add_projet" class="ui button large fluid green">Ajouter un nouveau projet</button>
+							</div>
+						</div>
+						<div style="height:0px;margin-top:20px;transition: height 2s;" class="ui large fluid" id="return_add_projet_div">
+							<p id="return_add_projet_para"></p>
+						</div>
+					</div>
+				</div>
+			</div>
+			';
 	}
 	else{
 		echo'
@@ -635,6 +677,38 @@ include_once("header.php");
 			}
 		});
 
+		//Dropzone ajout sur-mesure
+		var myDropzone11 = new Dropzone("#dropzone_photos_sur_mesure", { 
+			url: "../php/upload_admin_photos_sur_mesure.php", 
+			success : function(file, response){
+				if(response.includes("Erreur: ")){
+					$("#return_update_projet_div").css("backgroundColor", "rgba(255,0,0,0.3)");
+					$("#return_update_projet_para").text(response);
+					$("#return_update_projet_div").css("height", "50px");
+					setTimeout(function(){$("#return_update_projet_div").css("height", "0px");$("#return_update_projet_para").text("");}, 10000);
+				}
+				else{
+			   		$("#update_projet_photos").val($("#update_projet_photos").val()+response);
+				}
+			}
+		});
+
+		//Dropzone Actualités
+		var myDropzone12 = new Dropzone("#dropzone_photos_actualites_add", { 
+			url: "../php/upload_admin_photos_actualites.php", 
+			success : function(file, response){
+				if(response.includes("Erreur: ")){
+					$("#return_update_projet_div").css("backgroundColor", "rgba(255,0,0,0.3)");
+					$("#return_update_projet_para").text(response);
+					$("#return_update_projet_div").css("height", "50px");
+					setTimeout(function(){$("#return_update_projet_div").css("height", "0px");$("#return_update_projet_para").text("");}, 10000);
+				}
+				else{
+			   		$("#update_projet_photos").val($("#update_projet_photos").val()+response);
+				}
+			}
+		});
+
 		$("#update_fournisseur_id").change(function() {
 			$.post(
 					'../php/recup_fournisseur.php',
@@ -701,6 +775,7 @@ include_once("header.php");
 
 	</script>
 	<script type="text/javascript">
+
 		$(document).ready(function(){
 
 			$("#add_admin").click(function(){
@@ -720,6 +795,8 @@ include_once("header.php");
 						json	= JSON.parse(true_data[0]);
 						if(json.success){
 							$("#return_add_admin_div").css("backgroundColor", "rgba(0,255,0,0.3)");
+							$("#add_admin_id").val('');
+							$("#add_admin_mdp").val('');
 						}
 						else{
 							$("#return_add_admin_div").css("backgroundColor", "rgba(255,0,0,0.3)");
@@ -747,7 +824,7 @@ include_once("header.php");
 						json	= JSON.parse(true_data[0]);
 						if(json.success){
 							$("#return_del_admin_div").css("backgroundColor", "rgba(0,255,0,0.3)");
-							$("#del_admin_id").css("backgroundColor", "rgba(0,255,0,0.3)");
+							$("#del_admin_id").val('');
 						}
 						else{
 							$("#return_del_admin_div").css("backgroundColor", "rgba(255,0,0,0.3)");
@@ -778,6 +855,9 @@ include_once("header.php");
 							json	= JSON.parse(true_data[0]);
 							if(json.success){
 								$("#return_update_admin_div").css("backgroundColor", "rgba(0,255,0,0.3)");
+								$("#update_admin_id").val('');
+								$("#update_admin_mdp").val('');
+								$("#update_admin_old_mdp").val('');
 							}
 							else{
 								$("#return_update_admin_div").css("backgroundColor", "rgba(255,0,0,0.3)");
@@ -819,6 +899,13 @@ include_once("header.php");
 						json	= JSON.parse(true_data[0]);
 						if(json.success){
 							$("#return_add_fournisseur_div").css("backgroundColor", "rgba(0,255,0,0.3)");
+							$("#add_fournisseur_nom").val('');
+							$("#add_fournisseur_url").val('');
+							$("#add_fournisseur_catalogue").val('');
+							$("#add_fournisseur_catalogue_tarifs").val('');
+							$("#add_fournisseur_logo").val('');
+							$("#add_fournisseur_photos").val('');
+							$("#add_fournisseur_priorite").val('');
 						}
 						else{
 							$("#return_add_fournisseur_div").css("backgroundColor", "rgba(255,0,0,0.3)");
@@ -847,9 +934,11 @@ include_once("header.php");
 						json	= JSON.parse(true_data[0]);
 						if(json.success){
 							$("#return_del_fournisseur_div").css("backgroundColor", "rgba(0,255,0,0.3)");
+							remove_selected_item('#del_fournisseur_id');
 						}
 						else{
 							$("#return_del_fournisseur_div").css("backgroundColor", "rgba(255,0,0,0.3)");
+							$("#del_fournisseur_id").val();
 						}
 						alert(json.msg);
 						$("#return_del_fournisseur_para").text(json.msg);
@@ -881,6 +970,13 @@ include_once("header.php");
 						json	= JSON.parse(true_data[0]);
 						if(json.success){
 							$("#return_update_fournisseur_div").css("backgroundColor", "rgba(0,255,0,0.3)");
+							$("#update_fournisseur_nom").val('');
+							$("#update_fournisseur_url").val('');
+							$("#update_fournisseur_catalogue").val('');
+							update_fournisseur_catalogue_tarifs : $("#update_fournisseur_catalogue_tarifs").val('');
+							$("#update_fournisseur_logo").val('');
+							$("#update_fournisseur_photos").val('');
+							$("#update_fournisseur_priorite").val('');
 						}
 						else{
 							$("#return_update_fournisseur_div").css("backgroundColor", "rgba(255,0,0,0.3)");
@@ -911,6 +1007,10 @@ include_once("header.php");
 						json	= JSON.parse(true_data[0]);
 						if(json.success){
 							$("#return_add_projet_div").css("backgroundColor", "rgba(0,255,0,0.3)");
+							$("#add_projet_photos").val('');
+							$("#add_projet_nom").val('');
+							$("#add_projet_adresse").val('');
+							$("#add_projet_description").val('');
 						}
 						else{
 							$("#return_add_projet_div").css("backgroundColor", "rgba(255,0,0,0.3)");
@@ -939,6 +1039,7 @@ include_once("header.php");
 						json	= JSON.parse(true_data[0]);
 						if(json.success){
 							$("#return_del_projet_div").css("backgroundColor", "rgba(0,255,0,0.3)");
+							remove_selected_item('#del_projet_id');
 						}
 						else{
 							$("#return_del_projet_div").css("backgroundColor", "rgba(255,0,0,0.3)");
@@ -970,6 +1071,10 @@ include_once("header.php");
 						json	= JSON.parse(true_data[0]);
 						if(json.success){
 							$("#return_update_projet_div").css("backgroundColor", "rgba(0,255,0,0.3)");
+							$("#update_projet_nom").val('');
+							$("#update_projet_adresse").val('');
+							$("#update_projet_description").val('');
+							$("#update_projet_photos").val('');
 						}
 						else{
 							$("#return_update_projet_div").css("backgroundColor", "rgba(255,0,0,0.3)");
