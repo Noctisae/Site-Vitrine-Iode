@@ -1,16 +1,33 @@
-<div class="ui grid" style="height: 54px;">
-	<div class="computer tablet only row">
-	<div class="ui fixed menu navbar page grid cut-marge">
-		<div class="left item">
-			<a href="index.php"><img src="../logos/logo iode.jpeg" class="logo"></a>
+<div class="ui grid" style="height: 115px;">
+	<div class="computer tablet only row" style="font-family:'Swiss LT'!important;">
+	<div class="ui fixed menu navbar page grid cut-marge" style="font-family:'Swiss LT'!important;">
+		<div class="left item" style="padding:0px 0px 0px 0px;width:108px;height:100px;">
+			<a href="index.php" style="width:108px;height:100px;"><img src="../logos/logo iode.jpeg" class="logo"></a>
 		</div>
 		<div class="right menu">
-			<a href="index.php" class="item index">Accueil</a>
-			<a href="references.php" class="item references">Références</a>
-			<a href="telechargements.php" class="item telechargements">Téléchargement</a>
-			<a href="contact.php" class="item contact">Contact</a>
-			<a href="equipe.php" class="item equipe">A propos de nous</a>
-			<a href="news.xml" class="item"><img src="../img/rss.jpg" style="width:50px;height:50px;"></a>
+			<div class="item index" style="text-align:center;">
+				<a href="index.php" style="margin:auto">Accueil</a>
+			</div>
+			<div class="item references" style="text-align:center;">
+				<a href="references.php" style="margin:auto">Références</a>
+			</div>
+			<div  class="item telechargements" style="text-align:center;">
+				<a href="telechargements.php" style="margin:auto">Téléchargement</a>
+			</div>
+			<div class="item contact" style="text-align:center;">
+				<a href="contact.php" style="margin:auto" >Contact</a>
+			</div>
+			<div class="item equipe" style="text-align:center;">
+				<a href="equipe.php" style="margin:auto" >A propos de nous</a>
+			</div>
+			<div class="item" style="text-align:center;">
+				<a href="news.xml" style="margin:auto"><img src="../img/rss.jpg" style="width:50px;height:50px;"></a>
+			</div>
+			
+			
+			
+			
+			
 			<?php
 			if(!empty($_SESSION['authentifie'])){
 				echo'<div class="ui form flex-centered">
@@ -27,8 +44,8 @@
 		</div>
 	</div>
 	</div>
-	<div class="mobile only row">
-		<div class="ui fixed navbar menu">
+	<div class="mobile only row" style="font-family:'Swiss LT'!important;">
+		<div class="ui fixed navbar menu" style="font-family:'Swiss LT'!important;">
 			<a href="" class="brand item">Project Name</a>
 			<div class="right menu open">
 				<a href="" class="menu item">
@@ -36,7 +53,7 @@
 				</a>
 			</div>
 		</div>
-		<div class="ui vertical navbar menu">
+		<div class="ui vertical navbar menu" style="font-family:'Swiss LT'!important;">
 			<a href="index.php" class="item index" style="margin-top: 40px;">Accueil</a>
 			<a href="equipe.php" class="item equipe">A propos de nous</a>
 			<a href="contact.php" class="item contact">Contact</a>

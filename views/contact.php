@@ -139,9 +139,10 @@ include_once("header.php");
 	 
 	if (($err_formulaire) || (!isset($_POST['envoi'])))
 	{
-		echo'<div class="ui raised very padded text segment" style="margin:auto;height:660px;margin-top:150px;">
+		echo'<div class="ui raised very padded text segment" style="margin:auto;height:800px;margin-top:150px;text-align:center">
 			<h1 class="ui header align">Nous contacter</h1>
-			<form action="contact.php" method="post" class="ui form" style="height:100%;">
+			<img src="../logos/contact.PNG" style="width:300px;height:95px;">
+			<form action="contact.php" method="post" class="ui form" style="height:100%;width:950px;text-align:left;">
 				<div class="ui horizontal segments" style="height:540px;">
 					<div class="ui segment" style="width:100%;">
 						<div class="ui form" style="height:100%;">
@@ -152,7 +153,7 @@ include_once("header.php");
 							<div class="ui submit button" style="width:100%;">Envoyer</div>
 						</div>
 					</div>
-					<div class="ui segment">
+					<div class="ui segment" style="width:100%;">
 						<div class="ui form">
 							<div class="field" style="padding-top:75px;">
 								<label>Raison Sociale *</label>
@@ -170,11 +171,8 @@ include_once("header.php");
 								<label>Téléphone *</label>
 								<input placeholder="06 00 00 00 00" type="text" id="telephone" value="'.stripslashes($telephone).'" >
 							</div>
-							<div class="field" style="text-align:center;">
-								<img src="../logos/contact.PNG" style="width:85%;height:100%;">
-							</div>
+							<img src="../logos/logo iode.jpeg" style="position:absolute;top:0px;right:0px;width:100px;height:100px;">
 						</div>
-						<img src="../logos/logo iode.jpeg" style="position:absolute;top:0px;right:0px;width:100px;height:100px;">
 					</div>
 				</div>
 			</form>

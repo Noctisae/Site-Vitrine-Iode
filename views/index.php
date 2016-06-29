@@ -64,7 +64,7 @@ background-position:center;width:20%">';
 					</div>';
 				
 				//partie Hover
-				echo'<div class="hovered_content" id="hovered_content1">
+				echo'<div class="hovered_content" id="hovered_content1" style="margin-top:0px">
 					<div class="alignement">
 					<h3 class="ui header">Les catalogues</h3>
 				';
@@ -134,7 +134,7 @@ background-position:center;width:20%">';
 					</div>';
 				
 				//partie Hover
-				echo'<div class="hovered_content" id="hovered_content2">
+				echo'<div class="hovered_content" id="hovered_content2" style="margin-top:0px">
 					<div class="alignement">
 					<br>
 					<br>
@@ -204,7 +204,7 @@ background-position:center;width:20%">';
 					</div>';
 				
 				//partie Hover
-				echo'<div class="hovered_content" id="hovered_content3">
+				echo'<div class="hovered_content" id="hovered_content3" style="margin-top:0px">
 					<div class="alignement">
 					<br>
 					<br>
@@ -274,7 +274,7 @@ background-position:center;width:20%">';
 					</div>';
 				
 				//partie Hover
-				echo'<div class="hovered_content" id="hovered_content4">
+				echo'<div class="hovered_content" id="hovered_content4" style="margin-top:0px">
 					<div class="alignement">
 					<br>
 					<br>
@@ -344,7 +344,7 @@ background-position:center;width:20%">';
 					</div>';
 				
 				//partie Hover
-				echo'<div class="hovered_content" id="hovered_content5">
+				echo'<div class="hovered_content" id="hovered_content5" style="margin-top:0px">
 					<div class="alignement">
 					<br>
 					<br>
@@ -438,7 +438,6 @@ background-position:center;width:20%">';
 		$("#hovered_content1").css("display","block");
 		$("#hovered_content1").css("width","20%");
 		$("#hovered_content1").css("height","100%");
-		$("#hovered_content1").css("margin-top","20px");
 		$("#hovered_content1").css("text-align","center");
 		$("#hovered_content1").css("color","white");
 		$("#paragraphe1").css("display","none");
@@ -453,7 +452,6 @@ background-position:center;width:20%">';
 		$("#hovered_content2").css("display","block");
 		$("#hovered_content2").css("width","20%");
 		$("#hovered_content2").css("height","100%");
-		$("#hovered_content2").css("margin-top","20px");
 		$("#hovered_content2").css("text-align","center");
 		$("#hovered_content2").css("color","white");
 		$("#paragraphe2").css("display","none");
@@ -468,7 +466,6 @@ background-position:center;width:20%">';
 		$("#hovered_content3").css("display","block");
 		$("#hovered_content3").css("width","20%");
 		$("#hovered_content3").css("height","100%");
-		$("#hovered_content3").css("margin-top","20px");
 		$("#hovered_content3").css("text-align","center");
 		$("#hovered_content3").css("color","white");
 		$("#paragraphe3").css("display","none");
@@ -483,7 +480,6 @@ background-position:center;width:20%">';
 		$("#hovered_content4").css("display","block");
 		$("#hovered_content4").css("width","20%");
 		$("#hovered_content4").css("height","100%");
-		$("#hovered_content4").css("margin-top","20px");
 		$("#hovered_content4").css("text-align","center");
 		$("#hovered_content4").css("color","white");
 		$("#paragraphe4").css("display","none");
@@ -498,7 +494,6 @@ background-position:center;width:20%">';
 		$("#hovered_content5").css("display","block");
 		$("#hovered_content5").css("width","20%");
 		$("#hovered_content5").css("height","100%");
-		$("#hovered_content5").css("margin-top","20px");
 		$("#hovered_content5").css("text-align","center");
 		$("#hovered_content5").css("color","white");
 		$("#paragraphe5").css("display","none");
