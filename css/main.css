@@ -43,6 +43,31 @@ h1,h2,h3,h4,h5,h6,p{
 	height:100%;
 }
 
+.common_hover{
+	margin : 0px 0px 0px 0px;
+	padding : 0px 0px 0px 0px;
+}
+
+.seul{
+	width:100%!important;
+}
+
+.duo{
+	width:50%!important;
+}
+
+.trio{
+	width:33.3%!important;
+}
+
+.quatuor{
+	width:25%!important;
+}
+
+.quintet{
+	width:20%!important;
+}
+
 .red-admin{
 	background-color: rgba(255,0,0,0.5)!important;
 	text-align: center;

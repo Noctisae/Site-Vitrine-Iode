@@ -236,7 +236,7 @@ function recupProjetId($id){
 
 function recupActualites(){
 	$db = getDB();
-	$query = $db->prepare('SELECT date,titre,description,images FROM Actualites');
+	$query = $db->prepare('SELECT id,date,titre,description,images FROM Actualites');
 	$query->execute();
 	$temp = $query->fetchAll();
 	return $temp;

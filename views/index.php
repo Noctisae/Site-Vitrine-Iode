@@ -45,6 +45,24 @@
 			////////////////////   	Premiere partie  	////////////////////////
 			////////////////////////////////////////////////////////////////////
 			////////////////////////////////////////////////////////////////////
+			switch (count($un)){
+				case 1:
+					$class= "seul"
+					break
+				case 2:
+					$class= "duo"
+					break
+				case 3:
+					$class= "trio"
+					break
+				case 4:
+					$class= "quatuor"
+					break
+				default:
+					$class= "quintet"
+					break
+			}
+
 				echo '<div class="cinquo cinquo1 left column" style="background-image: url(\''.$logo1.'\');-webkit-background-size:cover;
 -moz-background-size:cover;
 -o-background-size:cover;
@@ -115,7 +133,26 @@ background-position:center;width:20%">';
 			////////////////////	Deuxieme Partie 	////////////////////////
 			////////////////////////////////////////////////////////////////////
 			////////////////////////////////////////////////////////////////////
-				echo '<div class="cinquo cinquo2 left column" style="background-image: url(\''.$logo2.'\');-webkit-background-size:cover;
+							
+			switch (count($duo)){
+				case 1:
+					$class= "seul"
+					break
+				case 2:
+					$class= "duo"
+					break
+				case 3:
+					$class= "trio"
+					break
+				case 4:
+					$class= "quatuor"
+					break
+				default:
+					$class= "quintet"
+					break
+			}
+				
+					echo '<div class="cinquo cinquo2 left column" style="background-image: url(\''.$logo2.'\');-webkit-background-size:cover;
 -moz-background-size:cover;
 -o-background-size:cover;
 background-size:cover;
@@ -185,7 +222,25 @@ background-position:center;width:20%">';
 			////////////////////	Troisieme Partie 	////////////////////////
 			////////////////////////////////////////////////////////////////////
 			////////////////////////////////////////////////////////////////////
-				echo '<div class="cinquo cinquo3 left column" style="background-image: url(\''.$logo3.'\');-webkit-background-size:cover;
+			switch (count($trois)){
+				case 1:
+					$class= "seul"
+					break
+				case 2:
+					$class= "duo"
+					break
+				case 3:
+					$class= "trio"
+					break
+				case 4:
+					$class= "quatuor"
+					break
+				default:
+					$class= "quintet"
+					break
+			}
+
+			echo '<div class="cinquo cinquo3 left column" style="background-image: url(\''.$logo3.'\');-webkit-background-size:cover;
 -moz-background-size:cover;
 -o-background-size:cover;
 background-size:cover;
@@ -255,7 +310,25 @@ background-position:center;width:20%">';
 			////////////////////	Quatrieme Partie 	////////////////////////
 			////////////////////////////////////////////////////////////////////
 			////////////////////////////////////////////////////////////////////
-				echo '<div class="cinquo cinquo4 left column" style="background-image: url(\''.$logo4.'\');-webkit-background-size:cover;
+			switch (count($quatuor)){
+				case 1:
+					$class= "seul"
+					break
+				case 2:
+					$class= "duo"
+					break
+				case 3:
+					$class= "trio"
+					break
+				case 4:
+					$class= "quatuor"
+					break
+				default:
+					$class= "quintet"
+					break
+			}
+
+			echo '<div class="cinquo cinquo4 left column" style="background-image: url(\''.$logo4.'\');-webkit-background-size:cover;
 -moz-background-size:cover;
 -o-background-size:cover;
 background-size:cover;
@@ -325,7 +398,25 @@ background-position:center;width:20%">';
 			////////////////////	Cinquième Partie 	////////////////////////
 			////////////////////////////////////////////////////////////////////
 			////////////////////////////////////////////////////////////////////
-				echo '<div class="cinquo cinquo5 left column" style="background-image: url(\''.$logo5.'\');-webkit-background-size:cover;
+			switch (count($quintet)){
+				case 1:
+					$class= "seul"
+					break
+				case 2:
+					$class= "duo"
+					break
+				case 3:
+					$class= "trio"
+					break
+				case 4:
+					$class= "quatuor"
+					break
+				default:
+					$class= "quintet"
+					break
+			}
+
+			echo '<div class="cinquo cinquo5 left column" style="background-image: url(\''.$logo5.'\');-webkit-background-size:cover;
 -moz-background-size:cover;
 -o-background-size:cover;
 background-size:cover;

@@ -95,6 +95,45 @@ if(!empty($_SESSION["authentifie"])){
 				echo json_encode(array('success' => false, 'msg' => utf8_encode('Une erreur s\'est produite lors de la modification de ce projet')));
 			}
 		}
+
+		if(!empty($_POST['del_surmesure'])){
+			if(removeSurMesure()){
+				echo json_encode(array('success' => true, 'msg' => utf8_encode('Les photos du sur-mesure ont bien été supprimées ! ')));
+			}
+			else{
+				echo json_encode(array('success' => false, 'msg' => utf8_encode('Une erreur s\'est produite lors de la suppression des photos du sur-mesure')));
+			}
+			
+		}
+
+		if(!empty($_POST['add_surmesure_photos'])){
+			if(addSurMesure($_POST['add_surmesure_photos'])){
+				echo json_encode(array('success' => true, 'msg' => utf8_encode('Les photos du sur-mesure ont bien été mises à jour ! ')));
+			}
+			else{
+				echo json_encode(array('success' => false, 'msg' => utf8_encode('Une erreur s\'est produite lors de l\'ajout des photos du sur-mesure')));
+			}
+			
+		}
+
+		if(!empty($_POST['del_actualite_id'])){
+			if(delActualite($_POST['del_actualite_id'])){
+				echo json_encode(array('success' => true, 'msg' => utf8_encode('Cette actualité a bien été mise à jour !')));
+			}
+			else{
+				echo json_encode(array('success' => false, 'msg' => utf8_encode('Une erreur s\'est produite lors de la suppression de cette actualité !')));
+			}
+			
+		}
+
+		if(!empty($_POST['add_actualite_titre']) && !empty($_POST['add_actualite_date']) && !empty($_POST['add_actualite_time']) && !empty($_POST['add_actualite_description']) && !empty($_POST['add_actualite_photo'])){
+			if(addActualite($_POST['add_actualite_titre'],$_POST['add_actualite_date'],$_POST['add_actualite_time'],$_POST['add_actualite_description'],$_POST['add_actualite_photo'])){
+				echo json_encode(array('success' => true, 'msg' => utf8_encode('Cette actualité a bien été ajoutée !')));
+			}
+			else{
+				echo json_encode(array('success' => false, 'msg' => utf8_encode('Une erreur s\'est produite lors de l\'ajout de cette actualité !')));
+			}
+		}
 	}
 	
 }

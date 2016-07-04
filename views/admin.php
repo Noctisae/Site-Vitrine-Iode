@@ -448,11 +448,11 @@ include_once("header.php");
 						<h1>Gestion des actualités et du sur-mesure</h1>
 					</div>
 					<div class="column ten wide form-holder">
-						<h2 class="center aligned header form-head" style="color:black;">Mettre à jour les actualités</h2>
+						<h2 class="center aligned header form-head" style="color:black;">Ajouter une actualité</h2>
 						<div class="ui form">
 							<div class="field">
-								<label>Nom de l\'actualité</label>
-								<input type="text" required placeholder="Nouveau séminaire !" name="add_actualite_nom" id="add_actualite_nom">
+								<label>Titre de l\'actualité</label>
+								<input type="text" required placeholder="Nouveau séminaire !" name="add_actualite_titre" id="add_actualite_titre">
 							</div>
 							<div class="field">
 								<label>Date de l\'actualité</label>
@@ -460,20 +460,71 @@ include_once("header.php");
 								<input type="time" name="add_actualite_time" id="add_actualite_time">
 								</div>
 							<div class="field">
-								<label>Description du projet</label>
-								<textarea placeholder="27, rue du Léon, 29200 Brest" name="add_projet_description" id="add_projet_description"></textarea>
+								<label>Actualité</label>
+								<textarea placeholder="27, rue du Léon, 29200 Brest" name="add_actualite_description" id="add_actualite_description"></textarea>
 							</div>
 							<div class="field">
-								<input type="hidden" name="add_projet_photos" id="add_projet_photos">
+								<input type="hidden" name="add_actualite_photos" id="add_actualite_photos">
 							</div>
 							<label>Photos du projet</label>
-							<form action="/file-upload" class="dropzone" id="dropzone_photos_projets_add"></form>
+							<form action="/file-upload" class="dropzone" id="dropzone_photos_actualite_add"></form>
 							<div class="field">
-								<button id="add_projet" class="ui button large fluid green">Ajouter un nouveau projet</button>
+								<button id="add_actualite" class="ui button large fluid green">Ajouter une nouvelle actualité</button>
 							</div>
 						</div>
-						<div style="height:0px;margin-top:20px;transition: height 2s;" class="ui large fluid" id="return_add_projet_div">
-							<p id="return_add_projet_para"></p>
+						<div style="height:0px;margin-top:20px;transition: height 2s;" class="ui large fluid" id="return_add_actualite_div">
+							<p id="return_add_actualite_para"></p>
+						</div>
+					</div>
+					<div class="column ten wide form-holder">
+						<h2 class="center aligned header form-head" style="color:black;">Supprimer une actualité</h2>
+						<div class="ui form">
+							<form method="post" action="admin.php">
+								<div class="field">
+									<label>Projets</label>
+									<select class="ui search dropdown" id="del_actualite_id" name="del_actualite_id">
+										';
+
+										$actualites = recupActualites();
+										foreach ($actualites as $actualite) {
+											echo('<option value="'.$actualite['id'].'">'.$actualite['titre'].'</option>');
+										}
+										echo '
+									</select>
+								</div>
+							</form>
+							<div class="field">
+								<button id="del_actualite" class="ui button large fluid red" onClick="remove_selected_item(#del_actualite_id)">Supprimer cette actualité</button>
+							</div>
+						</div>
+						<div style="height:0px;margin-top:20px;transition: height 2s;" class="ui large fluid" id="return_del_actualite_div">
+							<p id="return_del_actualite_para"></p>
+						</div>
+					</div>
+					<div class="column ten wide form-holder">
+						<h2 class="center aligned header form-head" style="color:black;">Ajouter des photos de sur-mesure</h2>
+						<div class="ui form">
+							<div class="field">
+								<input type="hidden" name="add_surmesure_photos" id="add_surmesure_photos">
+							</div>
+							<label>Photos du Sur-Mesure</label>
+							<form action="/file-upload" class="dropzone" id="dropzone_photos_surmesure_add"></form>
+							<div class="field">
+								<button id="add_surmesure" class="ui button large fluid green">Ajouter de nouvelles photos au sur-mesure</button>
+							</div>
+						</div>
+						<div style="height:0px;margin-top:20px;transition: height 2s;" class="ui large fluid" id="return_add_surmesure_div">
+							<p id="return_add_surmesure_para"></p>
+						</div>
+					</div>
+					<div class="column ten wide form-holder">
+						<h2 class="center aligned header form-head" style="color:black;">Supprimer les photos sur le Sur-Mesure</h2>
+							<div class="field">
+								<button id="del_surmesure" class="ui button large fluid red">Supprimer toutes les photos de sur-mesure</button>
+							</div>
+						</div>
+						<div style="height:0px;margin-top:20px;transition: height 2s;" class="ui large fluid" id="return_del_surmesure_div">
+							<p id="return_del_surmesure_para"></p>
 						</div>
 					</div>
 				</div>
@@ -694,17 +745,33 @@ include_once("header.php");
 		});
 
 		//Dropzone Actualités
-		var myDropzone12 = new Dropzone("#dropzone_photos_actualites_add", { 
+		var myDropzone12 = new Dropzone("#dropzone_photos_actualite_add", { 
 			url: "../php/upload_admin_photos_actualites.php", 
 			success : function(file, response){
 				if(response.includes("Erreur: ")){
-					$("#return_update_projet_div").css("backgroundColor", "rgba(255,0,0,0.3)");
-					$("#return_update_projet_para").text(response);
-					$("#return_update_projet_div").css("height", "50px");
-					setTimeout(function(){$("#return_update_projet_div").css("height", "0px");$("#return_update_projet_para").text("");}, 10000);
+					$("#return_add_actualite_div").css("backgroundColor", "rgba(255,0,0,0.3)");
+					$("#return_add_actualite_para").text(response);
+					$("#return_add_actualite_div").css("height", "50px");
+					setTimeout(function(){$("#return_add_actualite_div").css("height", "0px");$("#return_add_actualite_para").text("");}, 10000);
 				}
 				else{
-			   		$("#update_projet_photos").val($("#update_projet_photos").val()+response);
+			   		$("#add_actualite_photos").val($("#add_actualite_photos").val()+response);
+				}
+			}
+		});
+
+		//Dropzone Sur-Mesure
+		var myDropzone13 = new Dropzone("#dropzone_photos_surmesure_add", { 
+			url: "../php/upload_admin_photos_sur_mesure.php", 
+			success : function(file, response){
+				if(response.includes("Erreur: ")){
+					$("#return_add_surmesure_div").css("backgroundColor", "rgba(255,0,0,0.3)");
+					$("#return_add_surmesure_para").text(response);
+					$("#return_add_surmesure_div").css("height", "50px");
+					setTimeout(function(){$("#return_add_surmesure_div").css("height", "0px");$("#return_add_surmesure_para").text("");}, 10000);
+				}
+				else{
+			   		$("#add_surmesure_photos").val($("#add_surmesure_photos").val()+response);
 				}
 			}
 		});
@@ -1083,6 +1150,123 @@ include_once("header.php");
 						$("#return_update_projet_para").text(json.msg);
 						$("#return_update_projet_div").css("height", "150px");
 						setTimeout(function(){$("#return_update_projet_div").css("height", "0px")}, 10000);
+					},
+					'text' 
+				);
+			});
+
+			$("#add_actualite").click(function(){
+
+				$.post(
+					'../php/upload_admin.php', 
+					{
+
+						add_actualite_titre : $("#add_actualite_titre").val(),
+						add_actualite_date : $("#add_actualite_date").val(),
+						add_actualite_time : $("#add_actualite_time").val(),
+						add_actualite_description : $("#add_actualite_description").val(),
+						add_actualite_photo : $("#add_actualite_photo").val()
+					},
+					function(data){
+						true_data = data.split("}");
+						true_data[0] = encode_utf8(true_data[0]) + '}';
+						json	= JSON.parse(true_data[0]);
+						if(json.success){
+							$("#return_add_actualite_div").css("backgroundColor", "rgba(0,255,0,0.3)");
+							$("#add_actualite_titre").val('');
+							$("#add_actualite_date").val('');
+							$("#add_actualite_time").val('');
+							$("#add_actualite_description").val('');
+							$("#add_actualite_photo").val('');
+						}
+						else{
+							$("#return_add_actualite_div").css("backgroundColor", "rgba(255,0,0,0.3)");
+						}
+						alert(json.msg);
+						$("#return_add_actualite_para").text(json.msg);
+						$("#return_add_actualite_div").css("height", "150px");
+						setTimeout(function(){$("#return_add_actualite_div").css("height", "0px")}, 10000);
+					},
+					'text' 
+				);
+			});
+
+			$("#del_actualite").click(function(){
+
+				$.post(
+					'../php/upload_admin.php', 
+					{
+
+						del_actualite_id : $("#del_actualite_id").val()
+						
+					},
+					function(data){
+						true_data = data.split("}");
+						true_data[0] = encode_utf8(true_data[0]) + '}';
+						json	= JSON.parse(true_data[0]);
+						if(json.success){
+							$("#return_del_actualite_div").css("backgroundColor", "rgba(0,255,0,0.3)");
+						}
+						else{
+							$("#return_del_actualite_div").css("backgroundColor", "rgba(255,0,0,0.3)");
+						}
+						alert(json.msg);
+						$("#return_del_actualite_para").text(json.msg);
+						$("#return_del_actualite_div").css("height", "150px");
+						setTimeout(function(){$("#return_del_actualite_div").css("height", "0px")}, 10000);
+					},
+					'text' 
+				);
+			});
+
+			$("#add_surmesure").click(function(){
+
+				$.post(
+					'../php/upload_admin.php', 
+					{
+						add_surmesure_photos : $("#add_surmesure_photos").val()
+					},
+					function(data){
+						true_data = data.split("}");
+						true_data[0] = encode_utf8(true_data[0]) + '}';
+						json	= JSON.parse(true_data[0]);
+						if(json.success){
+							$("#return_add_surmesure_div").css("backgroundColor", "rgba(0,255,0,0.3)");
+							$("#add_surmesure_photos").val('');
+						}
+						else{
+							$("#return_add_surmesure_div").css("backgroundColor", "rgba(255,0,0,0.3)");
+						}
+						alert(json.msg);
+						$("#return_add_surmesure_para").text(json.msg);
+						$("#return_add_surmesure_div").css("height", "150px");
+						setTimeout(function(){$("#return_add_surmesure_div").css("height", "0px")}, 10000);
+					},
+					'text' 
+				);
+			});
+
+			$("#del_surmesure").click(function(){
+
+				$.post(
+					'../php/upload_admin.php', 
+					{
+						del_surmesure: true
+					},
+					function(data){
+						true_data = data.split("}");
+						true_data[0] = encode_utf8(true_data[0]) + '}';
+						json	= JSON.parse(true_data[0]);
+						if(json.success){
+							$("#return_del_surmesure_para").css("backgroundColor", "rgba(0,255,0,0.3)");
+						}
+						else{
+							$("#return_del_surmesure_para").css("backgroundColor", "rgba(255,0,0,0.3)");
+						}
+						alert(json.msg);
+						$("#return_del_surmesure_para").text(json.msg);
+						$("#return_del_surmesure_div").css("height", "150px");
+						setTimeout(function(){$("#return_del_surmesure_div").css("height", "0px")}, 10000);
 					},
 					'text' 
 				);
