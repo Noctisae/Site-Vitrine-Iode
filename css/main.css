@@ -15,11 +15,16 @@
 	font-style: normal;
 }
 
+html{
+	max-height:1200px!important;
+}
+
 body {
 	padding: 0;
 	margin: 0;
 	background-color: white;
 	font-family: 'Swiss LT'!important;
+	max-height:1200px!important;
 }
 
 h1,h2,h3,h4,h5,h6,p{
@@ -49,23 +54,40 @@ h1,h2,h3,h4,h5,h6,p{
 }
 
 .seul{
-	width:100%!important;
+	width:99.9vw!important;
 }
 
 .duo{
-	width:50%!important;
+	width:49.9vw!important;
 }
 
 .trio{
-	width:33.3%!important;
+	width:33.29vw!important;
 }
 
 .quatuor{
-	width:25%!important;
+	width:24.99vw!important;
 }
 
 .quintet{
-	width:20%!important;
+	width:19.99vw!important;
+}
+
+.height_important{
+	height:100%!important;
+}
+
+div.click > .clickable {
+    position:absolute;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    text-decoration:none; /* Makes sure the link   doesn't get underlined */
+    z-index:10; /* raises anchor tag above everything else in div */
+    background-color:white; /*workaround to make clickable in IE */
+    opacity: 0; /*workaround to make clickable in IE */
+    filter: alpha(opacity=1); /*workaround to make clickable in IE */
 }
 
 
@@ -158,11 +180,22 @@ h1,h2,h3,h4,h5,h6,p{
 	z-index:1;
 }
 
+.diaporama{
+	width: 75vw!important;
+	height: 40vh!important;
+}
+
+.centered_text{
+	text-align: center;
+}
+
 .hovered_content{
 	display: none;
 	color:white;
 	background-color: rgba(64,64,64,1.0);
 	z-index:2;
+	width: 99.9vw!important;
+	height: 99.9vh!important;
 }
 
 .hovered_content_index{
@@ -170,10 +203,6 @@ h1,h2,h3,h4,h5,h6,p{
 	z-index:1;
 }
 
-.height_important{
-	height:100%!important;
-	z-index:10;
-}
 
 .alignement_index{
 	margin:auto!important;

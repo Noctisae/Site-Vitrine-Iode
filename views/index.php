@@ -26,7 +26,6 @@
 	include_once("header.php");
 
 	?>
-
 	<div class="ui page grid total" style="padding-left: 0px;padding-right: 0px;height:100%;width:100%">
 			<div class="row" style="padding : 0px;">
 			<?php
@@ -73,11 +72,12 @@
 
 						foreach ($partie_de_page as $fournisseur) {
 							echo'
-								<div class="'.$class.' height_important" id="'.$fournisseur['id'].'" style="background-image:url(\''.explode(';',$fournisseur["images"])[0].'\';-webkit-background-size:cover;
+								<div class="'.$class.' click" id="para'.$fournisseur['id'].'" style="background-image:url(\''.explode(';',$fournisseur["images"])[0].'\';-webkit-background-size:cover;
 					-moz-background-size:cover;
 					-o-background-size:cover;
 					background-size:cover;
-					background-position:center;">
+					background-position:center;z-index:10;" >
+						<a class="clickable" href="#" onclick="$(\'.ui.modal.modal\''.$fournisseur['id'].'\').modal(\'show\');"></a>
 							<div class="paragraphe paragraphe_accueil">
 									<p class="align alignement_index">
 									<a href="'.$fournisseur["url"].'" style="width:100%!important;"><img src="'.$fournisseur["logo"].'" style="width:50%;height:75px;"></a><br><br>
@@ -85,7 +85,7 @@
 								</div>
 							</div>';
 						//Modal Gallerie
-						echo '<div class="ui modal '.$fournisseur['id'].'">
+						echo '<div class="ui modal modal'.$fournisseur['id'].' centered_text">
 								<i class="close icon"></i>
 								<div class="header">
 									Galerie de '.$fournisseur['nom'].'
@@ -100,10 +100,6 @@
 											}
 										}
 						echo'		</div>	
-								</div>
-								<div class="actions">
-									<div class="ui button">Cancel</div>
-									<div class="ui button">OK</div>
 								</div>
 							</div>';
 						}
@@ -155,7 +151,8 @@
 	$(".cinquo1").hover(function(){
 		$(".cinquo1").css("width","100%");
 		$("#hovered_content1").css("display","block");
-		$("#hovered_content1").css("height","100%");
+		$("#hovered_content1").css("height","99.9vh");
+		$("#hovered_content1").css("width","99.9vw");
 		$("#hovered_content1").css("text-align","center");
 		$("#hovered_content1").css("color","white");
 		$("#paragraphe1").css("display","none");
@@ -168,7 +165,8 @@
 		$(".cinquo1").css("width","0%");
 		$(".cinquo2").css("width","100%");
 		$("#hovered_content2").css("display","block");
-		$("#hovered_content2").css("height","100%");
+		$("#hovered_content2").css("height","99.9vh");
+		$("#hovered_content2").css("width","99.9vw");
 		$("#hovered_content2").css("text-align","center");
 		$("#hovered_content2").css("color","white");
 		$("#paragraphe2").css("display","none");
@@ -181,7 +179,8 @@
 		$(".cinquo2").css("width","0%");
 		$(".cinquo3").css("width","100%");
 		$("#hovered_content3").css("display","block");
-		$("#hovered_content3").css("height","100%");
+		$("#hovered_content3").css("height","99.9vh");
+		$("#hovered_content3").css("width","99.9vw");
 		$("#hovered_content3").css("text-align","center");
 		$("#hovered_content3").css("color","white");
 		$("#paragraphe3").css("display","none");
@@ -194,7 +193,8 @@
 		$(".cinquo3").css("width","0%");
 		$(".cinquo4").css("width","100%");
 		$("#hovered_content4").css("display","block");
-		$("#hovered_content4").css("height","100%");
+		$("#hovered_content4").css("height","99.9vh");
+		$("#hovered_content4").css("width","99.9vw");
 		$("#hovered_content4").css("text-align","center");
 		$("#hovered_content4").css("color","white");
 		$("#paragraphe4").css("display","none");
@@ -205,9 +205,10 @@
 		$(".cinquo2").css("width","0%");
 		$(".cinquo3").css("width","0%");
 		$(".cinquo4").css("width","0%");
-		$(".cinquo5").css("width","100%");
+		$(".cinquo5").css("width","99vw");
 		$("#hovered_content5").css("display","block");
-		$("#hovered_content5").css("height","100%");
+		$("#hovered_content5").css("height","99.9vh");
+		$("#hovered_content5").css("width","99.9vw");
 		$("#hovered_content5").css("text-align","center");
 		$("#hovered_content5").css("color","white");
 		$("#paragraphe5").css("display","none");
@@ -218,15 +219,14 @@
 	echo'<script type="text/javascript">';
 	foreach($tous_les_fournisseurs as $partie_de_page){
 		foreach ($partie_de_page as $fournisseur) {
-			echo"$('.ui.modal.".$fournisseur['id']."').modal();";
+			echo"$('.ui.modal.modal".$fournisseur['id']."').modal();";
 		}
 	}
 
 	foreach($tous_les_fournisseurs as $partie_de_page){
 		foreach ($partie_de_page as $fournisseur) {
-			echo"$('#".$fournisseur['id']."').click(function(){
-				alert('test !');
-				$('.".$fournisseur['id']."').modal('show');    
+			echo"$('#para".$fournisseur['id']."').click(function(){
+				$('.ui.modal.modal".$fournisseur['id']."').modal('show');    
 			});";
 		}
 	}
