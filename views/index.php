@@ -85,7 +85,7 @@
 								</div>
 							</div>';
 						//Modal Gallerie
-						echo '<div class="ui modal modal'.$fournisseur['id'].' centered_text">
+						echo '<div class="ui modal centered modal'.$fournisseur['id'].' centered_text">
 								<i class="close icon"></i>
 								<div class="header">
 									Galerie de '.$fournisseur['nom'].'

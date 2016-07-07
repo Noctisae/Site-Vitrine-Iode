@@ -148,7 +148,7 @@ div.click > .clickable {
 }
 
 .centered{
-	text-align:center;
+	text-align:center!important;
 }
 
 .references-container{
