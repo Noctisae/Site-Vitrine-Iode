@@ -68,6 +68,7 @@ h1,h2,h3,h4,h5,h6,p{
 	width:20%!important;
 }
 
+
 .red-admin{
 	background-color: rgba(255,0,0,0.5)!important;
 	text-align: center;
@@ -164,6 +165,24 @@ h1,h2,h3,h4,h5,h6,p{
 	z-index:2;
 }
 
+.hovered_content_index{
+	display: none;
+	z-index:1;
+}
+
+.height_important{
+	height:100%!important;
+	z-index:10;
+}
+
+.alignement_index{
+	margin:auto!important;
+	width: 45%;
+	display: flex;
+	align-items: center;
+	justify-content:center;
+}
+
 .paragraphe{
 	margin:auto!important;
 	background-color: rgba(255,255,255,0.4);
@@ -202,6 +221,13 @@ h1,h2,h3,h4,h5,h6,p{
 	margin-top: 70px;
 }
 
+.active_special{
+	background-color : rgba(0,0,0,0.8)!important;
+}
+
+.active_special a{
+	color : white!important;
+}
 
 .mobile.row{
 	padding-top: 0px !important;

@@ -455,11 +455,6 @@ include_once("header.php");
 								<input type="text" required placeholder="Nouveau séminaire !" name="add_actualite_titre" id="add_actualite_titre">
 							</div>
 							<div class="field">
-								<label>Date de l\'actualité</label>
-								<input type="date" name="add_actualite_date" id="add_actualite_date">
-								<input type="time" name="add_actualite_time" id="add_actualite_time">
-								</div>
-							<div class="field">
 								<label>Actualité</label>
 								<textarea placeholder="27, rue du Léon, 29200 Brest" name="add_actualite_description" id="add_actualite_description"></textarea>
 							</div>
@@ -1162,8 +1157,6 @@ include_once("header.php");
 					{
 
 						add_actualite_titre : $("#add_actualite_titre").val(),
-						add_actualite_date : $("#add_actualite_date").val(),
-						add_actualite_time : $("#add_actualite_time").val(),
 						add_actualite_description : $("#add_actualite_description").val(),
 						add_actualite_photo : $("#add_actualite_photo").val()
 					},
@@ -1174,8 +1167,6 @@ include_once("header.php");
 						if(json.success){
 							$("#return_add_actualite_div").css("backgroundColor", "rgba(0,255,0,0.3)");
 							$("#add_actualite_titre").val('');
-							$("#add_actualite_date").val('');
-							$("#add_actualite_time").val('');
 							$("#add_actualite_description").val('');
 							$("#add_actualite_photo").val('');
 						}

@@ -4,7 +4,7 @@
 	var x = document.getElementsByClassName(nom.split(".")[0]);
 	var i;
 	for (i = 0; i < x.length; i++) {
-		x[i].className += " active";
+		x[i].className += " active_special";
 	}
 </script>
 <script type="text/javascript">

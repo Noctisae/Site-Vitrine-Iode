@@ -1,18 +1,7 @@
 	<?php
 	session_start();
 	include_once('../php/default.php');
-	$un = recupFournisseur(1);
-	$deux = recupFournisseur(2);
-	$trois = recupFournisseur(3);
-	$quatre = recupFournisseur(4);
-	$cinq = recupFournisseur(5);
-
-	$logo1 = explode(";",$un[0]['images'])[0];
-	error_log($logo1);
-	$logo2 = explode(";",$deux[0]['images'])[0];
-	$logo3 = explode(";",$trois[0]['images'])[0];
-	$logo4 = explode(";",$quatre[0]['images'])[0];
-	$logo5 = explode(";",$cinq[0]['images'])[0];
+	$tous_les_fournisseurs = array(recupFournisseur(1),recupFournisseur(2),recupFournisseur(3),recupFournisseur(4),recupFournisseur(5));
 	?>
 	<!DOCTYPE html>
 	<html>
@@ -39,360 +28,50 @@
 	<div class="ui page grid total" style="padding-left: 0px;padding-right: 0px;height:100%;width:100%">
 			<div class="row" style="padding : 0px;">
 			<?php
-				
-			////////////////////////////////////////////////////////////////////
-			////////////////////////////////////////////////////////////////////
-			////////////////////   	Premiere partie  	////////////////////////
-			////////////////////////////////////////////////////////////////////
-			////////////////////////////////////////////////////////////////////
-				echo '<div class="cinquo cinquo1 left column" style="background-image: url(\''.$logo1.'\');-webkit-background-size:cover;
--moz-background-size:cover;
--o-background-size:cover;
-background-size:cover;
-background-position:center;width:20%">';
+				$i = 1;
+				foreach ($tous_les_fournisseurs as $partie_de_page){
+					echo '<div class="cinquo cinquo'.$i.' left column" style="background-image: url(\''.explode(";",$tous_les_fournisseurs[($i-1)][0]['images'])[0].'\');-webkit-background-size:cover;
+		-moz-background-size:cover;
+		-o-background-size:cover;
+		background-size:cover;
+		background-position:center;width:20%">';
 
-				//Partie normale
-				echo'
-					<div class="paragraphe paragraphe_accueil" id="paragraphe1">
-						<br>				
-						<p class="align">
-							';
-						foreach ($un as $fournisseur) {
-							echo'<a href="'.$fournisseur["url"].'"><img src="'.$fournisseur["logo"].'" style="width:50%;height:75px;"></a><br><br>';	
-						}
-				echo'	</p>
-					</div>';
-				
-				//partie Hover
-				echo'<div class="hovered_content" id="hovered_content1" style="margin-top:0px">
-					<div class="alignement">
-					<h3 class="ui header">Les catalogues</h3>
-				';
-
-				foreach ($un as $fournisseur) {
+					//Partie normale
 					echo'
-
-						<h4 class="ui header">'.strtoupper($fournisseur["nom"]).'</h4>
-						<a href="'.$fournisseur["catalogue"].'">Catalogue<br><i class="big file text icon"></i></a><br><br>';
-					echo'<a href="'.$fournisseur["catalogue_tarifs"].'">Catalogue des tarifs<br><i class=" big file text icon"></i></a><br><br>';
-				}
-
-				echo'</div></div>';
-
-				echo'</div>';
-
-
-
-
-
-				//Modal Gallerie
-				echo '<div class="ui modal un">
-						<i class="close icon"></i>
-						<div class="header">
-							Catalogues des fournisseurs
-						</div>
-						<div class="content">
-							<div class="fotorama">
+						<div class="paragraphe paragraphe_accueil" id="paragraphe'.$i.'">
+							<br>				
+							<p class="align">
 								';
-								foreach ($un as $fournisseur) {
-									$temp = explode(";",$fournisseur['images']);
-									foreach ($temp as $image) {
-										echo '<img src="'.$image.'" style="width:100%;">';
-									}
+							foreach ($partie_de_page as $fournisseur) {
+								echo'<a href="'.$fournisseur["url"].'"><img src="'.$fournisseur["logo"].'" style="width:50%;height:75px;"></a><br><br>';	
+							}
+					echo'	</p>
+						</div>';
+					
+					//partie Hover
+					echo'<div class="hovered_content" id="hovered_content'.$i.'" style="margin-top:0px">
+							<div class="alignement">
+								<h3 class="ui header">Les catalogues</h3>
+					';
 
-								}
-				echo'</div>	
-						</div>
-						<div class="actions">
-							<div class="ui button">Cancel</div>
-							<div class="ui button">OK</div>
-						</div>
-					</div>';
+					foreach ($partie_de_page as $fournisseur) {
+						echo'
 
+								<h4 class="ui header">'.strtoupper($fournisseur["nom"]).'</h4>
+								<a href="'.$fournisseur["catalogue"].'">Catalogue<br><i class="big file text icon"></i></a><br><br>';
+						echo'	<a href="'.$fournisseur["catalogue_tarifs"].'">Catalogue des tarifs<br><i class=" big file text icon"></i></a><br><br>';
+					}
 
-			////////////////////////////////////////////////////////////////////
-			////////////////////////////////////////////////////////////////////
-			////////////////////	Deuxieme Partie 	////////////////////////
-			////////////////////////////////////////////////////////////////////
-			////////////////////////////////////////////////////////////////////
-				echo '<div class="cinquo cinquo2 left column" style="background-image: url(\''.$logo2.'\');-webkit-background-size:cover;
--moz-background-size:cover;
--o-background-size:cover;
-background-size:cover;
-background-position:center;width:20%">';
+					echo'	</div>
+						</div>';
 
-				//Partie normale
-				echo'
-					<div class="paragraphe paragraphe_accueil" id="paragraphe2">
-						<br>				
-						<p class="align">
-							';
-						foreach ($deux as $fournisseur) {
-							echo'<a href="'.$fournisseur["url"].'"><img src="'.$fournisseur["logo"].'" style="width:50%;height:75px;"></a><br><br>';	
-						}
-				echo'	</p>
-					</div>';
+					echo'</div>';
+
+					$i++;
+					}
 				
-				//partie Hover
-				echo'<div class="hovered_content" id="hovered_content2" style="margin-top:0px">
-					<div class="alignement">
-					<br>
-					<br>
-					<h3 class="ui header">Les catalogues</h3>
-				';
-
-				foreach ($deux as $fournisseur) {
-					echo'
-
-						<h4 class="ui header">'.strtoupper($fournisseur["nom"]).'</h4>
-						<a href="'.$fournisseur["catalogue"].'">Catalogue<br><i class="big file text icon"></i></a><br><br>';
-					echo'<a href="'.$fournisseur["catalogue_tarifs"].'">Catalogue des tarifs<br><i class=" big file text icon"></i></a><br><br>';
-				}
-
-				echo'</div></div>';
-
-				echo'</div>';
-
-
-
-
-
-				//Modal Gallerie
-				echo '<div class="ui modal deux">
-						<i class="close icon"></i>
-						<div class="header">
-							Catalogues des fournisseurs
-						</div>
-						<div class="content">
-							<div class="fotorama">
-								';
-								foreach ($deux as $fournisseur) {
-									$temp = explode(";",$fournisseur['images']);
-									foreach ($temp as $image) {
-										echo '<img src="'.$image.'" style="width:100%;">';
-									}
-
-								}
-				echo'</div>	
-						</div>
-						<div class="actions">
-							<div class="ui button">Cancel</div>
-							<div class="ui button">OK</div>
-						</div>
-					</div>';
-			////////////////////////////////////////////////////////////////////
-			////////////////////////////////////////////////////////////////////
-			////////////////////	Troisieme Partie 	////////////////////////
-			////////////////////////////////////////////////////////////////////
-			////////////////////////////////////////////////////////////////////
-				echo '<div class="cinquo cinquo3 left column" style="background-image: url(\''.$logo3.'\');-webkit-background-size:cover;
--moz-background-size:cover;
--o-background-size:cover;
-background-size:cover;
-background-position:center;width:20%">';
-
-				//Partie normale
-				echo'
-					<div class="paragraphe paragraphe_accueil" id="paragraphe3">
-						<br>				
-						<p class="align">
-							';
-						foreach ($trois as $fournisseur) {
-							echo'<a href="'.$fournisseur["url"].'"><img src="'.$fournisseur["logo"].'" style="width:50%;height:75px;"></a><br><br>';	
-						}
-				echo'	</p>
-					</div>';
-				
-				//partie Hover
-				echo'<div class="hovered_content" id="hovered_content3" style="margin-top:0px">
-					<div class="alignement">
-					<br>
-					<br>
-					<h3 class="ui header">Les catalogues</h3>
-				';
-
-				foreach ($trois as $fournisseur) {
-					echo'
-
-						<h4 class="ui header">'.strtoupper($fournisseur["nom"]).'</h4>
-						<a href="'.$fournisseur["catalogue"].'">Catalogue<br><i class="big file text icon"></i></a><br><br>';
-					echo'<a href="'.$fournisseur["catalogue_tarifs"].'">Catalogue des tarifs<br><i class=" big file text icon"></i></a><br><br>';
-				}
-
-				echo'</div></div>';
-
-				echo'</div>';
-
-
-
-
-
-				//Modal Gallerie
-				echo '<div class="ui modal trois">
-						<i class="close icon"></i>
-						<div class="header">
-							Catalogues des fournisseurs
-						</div>
-						<div class="content">
-							<div class="fotorama">
-								';
-								foreach ($trois as $fournisseur) {
-									$temp = explode(";",$fournisseur['images']);
-									foreach ($temp as $image) {
-										echo '<img src="'.$image.'" style="width:100%;">';
-									}
-
-								}
-				echo'</div>	
-						</div>
-						<div class="actions">
-							<div class="ui button">Cancel</div>
-							<div class="ui button">OK</div>
-						</div>
-					</div>';
-			////////////////////////////////////////////////////////////////////
-			////////////////////////////////////////////////////////////////////
-			////////////////////	Quatrieme Partie 	////////////////////////
-			////////////////////////////////////////////////////////////////////
-			////////////////////////////////////////////////////////////////////
-				echo '<div class="cinquo cinquo4 left column" style="background-image: url(\''.$logo4.'\');-webkit-background-size:cover;
--moz-background-size:cover;
--o-background-size:cover;
-background-size:cover;
-background-position:center;width:20%">';
-
-				//Partie normale
-				echo'
-					<div class="paragraphe paragraphe_accueil" id="paragraphe4">
-						<br>				
-						<p class="align">
-							';
-						foreach ($quatre as $fournisseur) {
-							echo'<a href="'.$fournisseur["url"].'"><img src="'.$fournisseur["logo"].'" style="width:50%;height:75px;"></a><br><br>';	
-						}
-				echo'	</p>
-					</div>';
-				
-				//partie Hover
-				echo'<div class="hovered_content" id="hovered_content4" style="margin-top:0px">
-					<div class="alignement">
-					<br>
-					<br>
-					<h3 class="ui header">Les catalogues</h3>
-				';
-
-				foreach ($quatre as $fournisseur) {
-					echo'
-
-						<h4 class="ui header">'.strtoupper($fournisseur["nom"]).'</h4>
-						<a href="'.$fournisseur["catalogue"].'">Catalogue<br><i class="big file text icon"></i></a><br><br>';
-					echo'<a href="'.$fournisseur["catalogue_tarifs"].'">Catalogue des tarifs<br><i class=" big file text icon"></i></a><br><br>';
-				}
-
-				echo'</div></div>';
-
-				echo'</div>';
-
-
-
-
-
-				//Modal Gallerie
-				echo '<div class="ui modal quatre">
-						<i class="close icon"></i>
-						<div class="header">
-							Catalogues des fournisseurs
-						</div>
-						<div class="content">
-							<div class="fotorama">
-								';
-								foreach ($quatre as $fournisseur) {
-									$temp = explode(";",$fournisseur['images']);
-									foreach ($temp as $image) {
-										echo '<img src="'.$image.'" style="width:100%;">';
-									}
-
-								}
-				echo'</div>	
-						</div>
-						<div class="actions">
-							<div class="ui button">Cancel</div>
-							<div class="ui button">OK</div>
-						</div>
-					</div>';
-			////////////////////////////////////////////////////////////////////
-			////////////////////////////////////////////////////////////////////
-			////////////////////	Cinquième Partie 	////////////////////////
-			////////////////////////////////////////////////////////////////////
-			////////////////////////////////////////////////////////////////////
-				echo '<div class="cinquo cinquo5 left column" style="background-image: url(\''.$logo5.'\');-webkit-background-size:cover;
--moz-background-size:cover;
--o-background-size:cover;
-background-size:cover;
-background-position:center;width:20%">';
-
-				//Partie normale
-				echo'
-					<div class="paragraphe paragraphe_accueil" id="paragraphe5">
-						<br>				
-						<p class="align">
-							';
-						foreach ($cinq as $fournisseur) {
-							echo'<a href="'.$fournisseur["url"].'"><img src="'.$fournisseur["logo"].'" style="width:50%;height:75px;"></a><br><br>';	
-						}
-				echo'	</p>
-					</div>';
-				
-				//partie Hover
-				echo'<div class="hovered_content" id="hovered_content5" style="margin-top:0px">
-					<div class="alignement">
-					<br>
-					<br>
-					<h3 class="ui header">Les catalogues</h3>
-				';
-
-				foreach ($cinq as $fournisseur) {
-					echo'
-
-						<h4 class="ui header">'.strtoupper($fournisseur["nom"]).'</h4>
-						<a href="'.$fournisseur["catalogue"].'">Catalogue<br><i class="big file text icon"></i></a><br><br>';
-					echo'<a href="'.$fournisseur["catalogue_tarifs"].'">Catalogue des tarifs<br><i class=" big file text icon"></i></a><br><br>';
-				}
-
-				echo'</div></div>';
-
-				echo'</div>';
-
-
-
-
-
-				//Modal Gallerie
-				echo '<div class="ui modal cinq">
-						<i class="close icon"></i>
-						<div class="header">
-							Catalogues des fournisseurs
-						</div>
-						<div class="content">
-							<div class="fotorama">
-								';
-								foreach ($cinq as $fournisseur) {
-									$temp = explode(";",$fournisseur['images']);
-									foreach ($temp as $image) {
-										echo '<img src="'.$image.'" style="width:100%;">';
-									}
-
-								}
-				echo'</div>	
-						</div>
-						<div class="actions">
-							<div class="ui button">Cancel</div>
-							<div class="ui button">OK</div>
-						</div>
-					</div>';
-
 			?>
-			</div>
+			
 
 
 	</div>

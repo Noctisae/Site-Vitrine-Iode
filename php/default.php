@@ -96,30 +96,6 @@ function removeProjet($id){
 	return true;
 }
 
-function addActualite($titre,$texte,$images){
-	$db = getDB();
-	$query = $db->prepare("INSERT INTO Actualites (Date, Texte, Titre, Images) VALUES (?,?,?,?)");
-	$query->execute(array(new DateTime(),$texte,$titre,$images));
-	updateRSS();
-	return true;
-}
-
-function updateActualite($id,$titre,$texte,$images){
-	$db = getDB();
-	$query = $db->prepare("UPDATE Actualites SET Texte=?, Titre=?, Images=? WHERE ID=?");
-	$query->execute(array($texte,$titre,$images,$id));
-	updateRSS();
-	return true;
-}
-
-function removeActualite($id){
-	$db = getDB();
-	$query = $db->prepare("DELETE FROM Actualites WHERE ID=?");
-	$query->execute(array($id));
-	updateRSS();
-	return true;
-}
-
 function updateRSS(){
 	$db = getDB();
 	$query = $db->prepare("SELECT * FROM Actualites ORDER BY Date Asc");
@@ -212,7 +188,7 @@ function modifMDP($identifiant, $mdp, $oldMDP){
 
 function recupFournisseur($place){
 	$db = getDB();
-	$query = $db->prepare("SELECT nom,url,logo,catalogue,catalogue_tarifs,images FROM Fournisseurs WHERE priorite=?");
+	$query = $db->prepare("SELECT id,nom,url,logo,catalogue,catalogue_tarifs,images FROM Fournisseurs WHERE priorite=?");
 	$query->execute(array($place));
 	$temp = $query->fetchAll();
 	return $temp;
@@ -241,5 +217,45 @@ function recupActualites(){
 	$temp = $query->fetchAll();
 	return $temp;
 }
+
+function recupSurMesure(){
+	$db = getDB();
+	$query = $db->prepare('SELECT images FROM Surmesure');
+	$query->execute();
+	$temp = $query->fetch();
+	return $temp;
+}
+
+function addSurMesure($photos){
+	$db = getDB();
+	$query = $db->prepare('UPDATE Surmesure SET images=?');
+	$query->execute(array($photos));
+	$temp = $query->fetch();
+	return $temp;
+}
+
+function removeSurMesure(){
+	$db = getDB();
+	$query = $db->prepare('DELETE FROM Surmesure');
+	$query->execute();
+	return true;
+}
+
+function delActualite($id){
+	$db = getDB();
+	$query = $db->prepare('DELETE FROM Actualites WHERE id=?');
+	$query->execute(array($id));
+	updateRSS();
+	return true;
+}
+
+function addActualite($titre,$description,$photos){
+	$db = getDB();
+	$query = $db->prepare('INSERT INTO Actualites (titre, date, description, images) VALUES (?,?,?,?) ');
+	$query->execute(array($titre,new DateTime(),$description,$photos));
+	updateRSS();
+	return true;
+}
+
 
 ?>

@@ -126,8 +126,8 @@ if(!empty($_SESSION["authentifie"])){
 			
 		}
 
-		if(!empty($_POST['add_actualite_titre']) && !empty($_POST['add_actualite_date']) && !empty($_POST['add_actualite_time']) && !empty($_POST['add_actualite_description']) && !empty($_POST['add_actualite_photo'])){
-			if(addActualite($_POST['add_actualite_titre'],$_POST['add_actualite_date'],$_POST['add_actualite_time'],$_POST['add_actualite_description'],$_POST['add_actualite_photo'])){
+		if(!empty($_POST['add_actualite_titre']) && !empty($_POST['add_actualite_description']) && !empty($_POST['add_actualite_photo'])){
+			if(addActualite($_POST['add_actualite_titre'],$_POST['add_actualite_description'],$_POST['add_actualite_photo'])){
 				echo json_encode(array('success' => true, 'msg' => utf8_encode('Cette actualité a bien été ajoutée !')));
 			}
 			else{
