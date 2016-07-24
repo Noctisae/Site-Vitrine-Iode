@@ -1,4 +1,5 @@
 <?php
+ini_set ( 'max_execution_time', 1200);
 session_start();
 include_once("default.php");
 if(!empty($_SESSION["authentifie"])){
@@ -125,7 +126,6 @@ if(!empty($_SESSION["authentifie"])){
 			}
 			
 		}
-
 		if(!empty($_POST['add_actualite_titre']) && !empty($_POST['add_actualite_description']) && !empty($_POST['add_actualite_photo'])){
 			if(addActualite($_POST['add_actualite_titre'],$_POST['add_actualite_description'],$_POST['add_actualite_photo'])){
 				echo json_encode(array('success' => true, 'msg' => utf8_encode('Cette actualité a bien été ajoutée !')));

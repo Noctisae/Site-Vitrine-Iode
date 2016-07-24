@@ -1,6 +1,3 @@
-Animations accueil
+Vérifier fonctionnement multi-fournisseurs
 
-Effacer les champs d'un upload réussi dans partie admin
-
-Formulaire actualités
-			Sur-Mesure
+Repasser responsive menu 

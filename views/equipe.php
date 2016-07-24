@@ -27,9 +27,10 @@ include_once("header.php");
 
 <div class="ui raised very padded text segment equipe-container">
 	<h1 class="ui header white-color">Équipe et philosophie</h1>
-	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam venenatis arcu et felis luctus porttitor. Donec pellentesque, diam id finibus feugiat, nulla lectus consectetur ante, sed molestie lacus purus eu sem. Donec facilisis dapibus eros ut ultrices. Nulla posuere consequat porta. In rhoncus leo sed enim maximus molestie. Fusce elementum nunc facilisis enim porttitor pulvinar. Etiam porta in libero at iaculis. Suspendisse non risus tellus. Morbi ultricies est ac libero vestibulum, sit amet fermentum tortor mattis. Integer sem magna, porta ut lacus ac, tristique dapibus diam. Mauris viverra sodales efficitur.
-
-	Donec id nisl et mi semper scelerisque eu et nisl. Ut lobortis lobortis tristique. Suspendisse mattis orci ac ligula mattis aliquam et at est. Phasellus ultricies nisi vel mi scelerisque, id pharetra turpis dapibus. Nam bibendum nisl eu posuere imperdiet. Vivamus sit amet mauris eget erat congue commodo. Nam eu tellus eleifend, vestibulum lectus sed, mattis tortor. Suspendisse malesuada ante eu augue imperdiet viverra ac sit amet arcu. </p>
+		<p>L’Agence Iode est animée par une équipe commerciale en relation directe avec des fabricants européens de référence, chacun dans son domaine d’activité.
+	Notre offre de mobilier et d’accessoires est inspirée principalement de la tendance indoor-outdoor.<br>
+	Nous répondons avec l’aide de nos partenaires (fabricants, distributeurs) aux demandes diverses de lieux professionnels, de manière personnalisée, par notre écoute et notre mobilité.
+	</p>
 	<hr>
 	<h1 class="ui header white-color">Actualités</h1>
 	<?php
@@ -37,7 +38,7 @@ include_once("header.php");
 		foreach ($actualites as $actualite) {
 			echo'
 			<h1 style="font-size:14">'.$actualite['titre'].'</h1>
-			<h3 style="font-size:14">'.$actualite['date'].'</h3>
+			<h3 style="font-size:14">'.date("d/m/Y",$actualite['date']).'</h3>
 			<div class="swiper-container">
 
 			<div class="swiper-wrapper">
@@ -77,10 +78,10 @@ include_once("header.php");
 	<h1 class="ui header white-color">Sur mesure</h1>
 	<?php
 	if(!empty($surmesure)){
-		echo'<p>
+		echo'<p>Notre offre s’appuie sur des fabricants reconnus avec un savoir-faire spécifique dans leurs domaines, ce qui nous permet de répondre à différentes demandes de personnalisation. Notre expérience depuis vingt ans sur le marché de l’indoor-outdoor  est une opportunité que nous proposons de partager ensemble.<br>
 				<div class="swiper-container">
 					<div class="swiper-wrapper">';
-					$temp = explode(";",$surmesure);
+					$temp = explode(";",$surmesure[0]);
 					foreach ($temp as $photo) {
 						if($photo != ""){
 							echo'

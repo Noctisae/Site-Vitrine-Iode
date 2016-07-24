@@ -112,11 +112,11 @@ function updateRSS(){
 	foreach ($temp as $actualite) {
 		$chaine_xml .= '
 		<item>
-			<title>'.$actualite['Titre'].'</title>
+			<title>'.$actualite['titre'].'</title>
 			<link>http://www.agenceiode.com/equipe.php</link>
 			<guid isPermaLink="true">http://www.agenceiode.com/equipe.php</guid>
-			<description>'.$actualite['Texte'].'</description>
-			<pubDate>'.$actualite['Date'].'</pubDate>
+			<description>'.$actualite['description'].'</description>
+			<pubDate>'.$actualite['date'].'</pubDate>
 		</item>';
 	}
 
@@ -228,10 +228,19 @@ function recupSurMesure(){
 
 function addSurMesure($photos){
 	$db = getDB();
-	$query = $db->prepare('UPDATE Surmesure SET images=?');
-	$query->execute(array($photos));
-	$temp = $query->fetch();
-	return $temp;
+	$temp = recupSurMesure();
+	if(count($temp) > 0){
+		error_log('On met à jour');
+		$photos = $photos . $temp[0];
+		$query = $db->prepare('UPDATE Surmesure SET images=?');
+		$query->execute(array($photos));
+	}
+	else{
+		error_log('on insère');
+		$query = $db->prepare('INSERT INTO Surmesure (images) VALUES (?)');
+		$query->execute(array($photos));
+	}
+	return true;
 }
 
 function removeSurMesure(){
@@ -252,7 +261,9 @@ function delActualite($id){
 function addActualite($titre,$description,$photos){
 	$db = getDB();
 	$query = $db->prepare('INSERT INTO Actualites (titre, date, description, images) VALUES (?,?,?,?) ');
-	$query->execute(array($titre,new DateTime(),$description,$photos));
+	$date = new DateTime();
+	error_log($date->getTimestamp());
+	$query->execute(array($titre,$date->getTimestamp(),$description,$photos));
 	updateRSS();
 	return true;
 }

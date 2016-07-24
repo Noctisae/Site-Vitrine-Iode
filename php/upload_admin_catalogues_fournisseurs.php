@@ -1,4 +1,5 @@
 <?php
+ini_set ( 'max_execution_time', 1200);
 //Début de la procédure d'upload
 session_start();
 error_log("On arrive au moins ici");

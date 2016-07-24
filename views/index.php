@@ -20,7 +20,7 @@
 		<link rel="stylesheet" type="text/css" href="../css/fotorama.css">
 
 	</head>
-	<body>
+	<body id="body_accueil">
 	<?php
 
 	include_once("header.php");

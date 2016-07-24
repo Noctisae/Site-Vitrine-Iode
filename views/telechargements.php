@@ -18,7 +18,7 @@
 		<link rel="stylesheet" type="text/css" href="../css/fotorama.css">
 
 	</head>
-	<body>
+	<body id="body_accueil">
 	<?php
 
 	include_once("header.php");
@@ -49,7 +49,7 @@
 						</div>';
 					
 					//partie Hover
-					echo'<div class="hovered_content" id="hovered_content'.$i.'" style="margin-top:0px">
+					echo'<div class="hovered_content_telechargement" id="hovered_content'.$i.'" style="margin-top:0px">
 							<div class="alignement">
 								<h3 class="ui header">Les catalogues</h3>
 					';
@@ -115,7 +115,7 @@
 	$(".cinquo1").hover(function(){
 		$(".cinquo1").css("width","100%");
 		$("#hovered_content1").css("display","block");
-		$("#hovered_content1").css("width","20%");
+		$("#hovered_content1").css("width","20%!important");
 		$("#hovered_content1").css("height","100%");
 		$("#hovered_content1").css("text-align","center");
 		$("#hovered_content1").css("color","white");
@@ -129,7 +129,7 @@
 		$(".cinquo1").css("width","0%");
 		$(".cinquo2").css("width","100%");
 		$("#hovered_content2").css("display","block");
-		$("#hovered_content2").css("width","20%");
+		$("#hovered_content2").css("width","20%!important");
 		$("#hovered_content2").css("height","100%");
 		$("#hovered_content2").css("text-align","center");
 		$("#hovered_content2").css("color","white");
@@ -143,7 +143,7 @@
 		$(".cinquo2").css("width","0%");
 		$(".cinquo3").css("width","100%");
 		$("#hovered_content3").css("display","block");
-		$("#hovered_content3").css("width","20%");
+		$("#hovered_content3").css("width","20%!important");
 		$("#hovered_content3").css("height","100%");
 		$("#hovered_content3").css("text-align","center");
 		$("#hovered_content3").css("color","white");
@@ -157,7 +157,7 @@
 		$(".cinquo3").css("width","0%");
 		$(".cinquo4").css("width","100%");
 		$("#hovered_content4").css("display","block");
-		$("#hovered_content4").css("width","20%");
+		$("#hovered_content4").css("width","20%!important");
 		$("#hovered_content4").css("height","100%");
 		$("#hovered_content4").css("text-align","center");
 		$("#hovered_content4").css("color","white");
@@ -171,7 +171,7 @@
 		$(".cinquo4").css("width","0%");
 		$(".cinquo5").css("width","100%");
 		$("#hovered_content5").css("display","block");
-		$("#hovered_content5").css("width","20%");
+		$("#hovered_content5").css("width","20%!important");
 		$("#hovered_content5").css("height","100%");
 		$("#hovered_content5").css("text-align","center");
 		$("#hovered_content5").css("color","white");

@@ -1,4 +1,5 @@
 <?php
+ini_set ( 'max_execution_time', 1200);
 session_start();
 //Début de la procédure d'upload
 if(!empty($_SESSION["authentifie"])){

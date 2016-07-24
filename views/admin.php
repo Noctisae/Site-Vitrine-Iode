@@ -39,9 +39,7 @@
 		error_log('On rentre dans la vérification des infos');
 		if(!empty($_POST["id"]) && !empty($_POST["mdp"])){
 			usleep(200000); // Protection contre brute-force, maximum 5 requetes par seconde
-			error_log('On regarde si les infos envoyées correspondent à un admin');
 			$admin = isAdmin($_POST["id"],$_POST["mdp"]);
-			error_log('maintenant, admin vaut '.$admin);
 		}
 	}
 
@@ -350,7 +348,7 @@ include_once("header.php");
 							</div>
 							<div class="field">
 								<label>Description du projet</label>
-								<textarea placeholder="27, rue du Léon, 29200 Brest" name="add_projet_description" id="add_projet_description"></textarea>
+								<textarea placeholder="27, rue du Léon, 29200 Brest" name="add_projet_description" id="add_projet_description" rows="3"></textarea>
 							</div>
 							<div class="field">
 								<input type="hidden" name="add_projet_photos" id="add_projet_photos">
@@ -394,9 +392,9 @@ include_once("header.php");
 					<h2 class="center aligned header form-head" style="color:black;">Modifier un projet</h2>
 					<div class="ui form">
 						<div class="field">
-								<label>Projets</label>
-								<p>Veuillez sélectionner le projet à modifier</p>
-								<select class="ui search dropdown" id="update_projet_id" name="update_projet_id">
+							<label>Projets</label>
+							<p>Veuillez sélectionner le projet à modifier</p>
+							<select class="ui search dropdown" id="update_projet_id" name="update_projet_id">
 									';
 
 									$projets = recupProjets();
@@ -404,24 +402,24 @@ include_once("header.php");
 										echo('<option value="'.$projet['id'].'">'.$projet['nom'].'</option>');
 									}
 									echo '
-								</select>
+							</select>
 
-							</div>
-							<div class="field">
-								<label>Nom du projet</label>
-								<input type="text" required placeholder="Projet Réverie" name="update_projet_nom" id="update_projet_nom">
-							</div>
-							<div class="field">
-								<label>Adresse du projet</label>
-								<input type="text" placeholder="27, rue du Léon, 29200 Brest" name="update_projet_adresse" id="update_projet_adresse">
-							</div>
-							<div class="field">
-								<label>Description du projet</label>
-								<input type="textarea" placeholder="27, rue du Léon, 29200 Brest" name="update_projet_description" id="update_projet_description">
-							</div>
-							<div class="field">
-								<input type="hidden" name="update_projet_photos" id="update_projet_photos">
-							</div>
+						</div>
+						<div class="field">
+							<label>Nom du projet</label>
+							<input type="text" required placeholder="Projet Réverie" name="update_projet_nom" id="update_projet_nom">
+						</div>
+						<div class="field">
+							<label>Adresse du projet</label>
+							<input type="text" placeholder="27, rue du Léon, 29200 Brest" name="update_projet_adresse" id="update_projet_adresse">
+						</div>
+						<div class="field">
+							<label>Description du projet</label>
+							<textarea placeholder="27, rue du Léon, 29200 Brest" name="update_projet_description" id="update_projet_description" rows="3"></textarea>
+						</div>
+						<div class="field">
+							<input type="hidden" name="update_projet_photos" id="update_projet_photos">
+						</div>
 						<label>Photos du projet</label>
 						<form action="/file-upload" class="dropzone" id="dropzone_photos_projets_update"></form>
 						<div class="field">
@@ -456,12 +454,12 @@ include_once("header.php");
 							</div>
 							<div class="field">
 								<label>Actualité</label>
-								<textarea placeholder="27, rue du Léon, 29200 Brest" name="add_actualite_description" id="add_actualite_description"></textarea>
+								<textarea placeholder="27, rue du Léon, 29200 Brest" name="add_actualite_description" id="add_actualite_description" rows="3"></textarea>
 							</div>
 							<div class="field">
-								<input type="hidden" name="add_actualite_photos" id="add_actualite_photos">
+								<input type="hidden" name="add_actualite_photo" id="add_actualite_photo">
 							</div>
-							<label>Photos du projet</label>
+							<label>Photos de l\'actualité</label>
 							<form action="/file-upload" class="dropzone" id="dropzone_photos_actualite_add"></form>
 							<div class="field">
 								<button id="add_actualite" class="ui button large fluid green">Ajouter une nouvelle actualité</button>
@@ -560,279 +558,266 @@ include_once("header.php");
 	
 
 	<script type="text/javascript">
-		$('.ui.checkbox').checkbox();
-		$('select.dropdown')
-			.dropdown()
-		;
-		$('.menu .item').tab();
-		Dropzone.autoDiscover = false;
-		//Dropzones ajout de fournisseur
-		var myDropzone = new Dropzone("#dropzone_catalogues_add", { 
-			url: "../php/upload_admin_catalogues_fournisseurs.php", 
-			success : function(file, response){
-				if(response.includes("Erreur: ")){
-					$("#return_add_fournisseur_div").css("backgroundColor", "rgba(255,0,0,0.3)");
-					$("#return_add_fournisseur_para").text(response);
-					$("#return_add_fournisseur_div").css("height", "50px");
-					setTimeout(function(){$("#return_add_fournisseur_div").css("height", "0px");$("#return_add_fournisseur_para").text("");}, 10000);
+		$( document ).ready(function() {
+			$('.ui.checkbox').checkbox();
+			$('select.dropdown')
+				.dropdown()
+			;
+			$('.menu .item').tab();
+			Dropzone.autoDiscover = false;
+			//Dropzones ajout de fournisseur
+			var myDropzone = new Dropzone("#dropzone_catalogues_add", { 
+				url: "../php/upload_admin_catalogues_fournisseurs.php", 
+				success : function(file, response){
+					if(response.includes("Erreur: ")){
+						$("#return_add_fournisseur_div").css("backgroundColor", "rgba(255,0,0,0.3)");
+						$("#return_add_fournisseur_para").text(response);
+						$("#return_add_fournisseur_div").css("height", "50px");
+						setTimeout(function(){$("#return_add_fournisseur_div").css("height", "0px");$("#return_add_fournisseur_para").text("");}, 10000);
+					}
+					else{
+				   		$("#add_fournisseur_catalogue").val($("#add_fournisseur_catalogue").val()+response);
+					}
 				}
-				else{
-			   		$("#add_fournisseur_catalogue").val($("#add_fournisseur_catalogue").val()+response);
-				}
-			}
-		});
+			});
 
-		var myDropzone2 = new Dropzone("#dropzone_catalogues_tarifs_add", { 
-			url: "../php/upload_admin_catalogues_tarifs_fournisseurs.php", 
-			success : function(file, response){
-				if(response.includes("Erreur: ")){
-					$("#return_add_fournisseur_div").css("backgroundColor", "rgba(255,0,0,0.3)");
-					$("#return_add_fournisseur_para").text(response);
-					$("#return_add_fournisseur_div").css("height", "50px");
-					setTimeout(function(){$("#return_add_fournisseur_div").css("height", "0px");$("#return_add_fournisseur_para").text("");}, 10000);
+			var myDropzone2 = new Dropzone("#dropzone_catalogues_tarifs_add", { 
+				url: "../php/upload_admin_catalogues_tarifs_fournisseurs.php", 
+				success : function(file, response){
+					if(response.includes("Erreur: ")){
+						$("#return_add_fournisseur_div").css("backgroundColor", "rgba(255,0,0,0.3)");
+						$("#return_add_fournisseur_para").text(response);
+						$("#return_add_fournisseur_div").css("height", "50px");
+						setTimeout(function(){$("#return_add_fournisseur_div").css("height", "0px");$("#return_add_fournisseur_para").text("");}, 10000);
+					}
+					else{
+				   		$("#add_fournisseur_catalogue_tarifs").val($("#add_fournisseur_catalogue_tarifs").val()+response);
+					}
 				}
-				else{
-			   		$("#add_fournisseur_catalogue_tarifs").val($("#add_fournisseur_catalogue_tarifs").val()+response);
-				}
-			}
-		});
+			});
 
-		var myDropzone3 = new Dropzone("#dropzone_logo_add", { 
-			url: "../php/upload_admin_logo_fournisseurs.php", 
-			success : function(file, response){
-				alert(response);
-				if(response.includes("Erreur: ")){
-					$("#return_add_fournisseur_div").css("backgroundColor", "rgba(255,0,0,0.3)");
-					$("#return_add_fournisseur_para").text(response);
-					$("#return_add_fournisseur_div").css("height", "50px");
-					setTimeout(function(){$("#return_add_fournisseur_div").css("height", "0px");$("#return_add_fournisseur_para").text("");}, 10000);
+			var myDropzone3 = new Dropzone("#dropzone_logo_add", { 
+				url: "../php/upload_admin_logo_fournisseurs.php", 
+				success : function(file, response){
+					alert(response);
+					if(response.includes("Erreur: ")){
+						$("#return_add_fournisseur_div").css("backgroundColor", "rgba(255,0,0,0.3)");
+						$("#return_add_fournisseur_para").text(response);
+						$("#return_add_fournisseur_div").css("height", "50px");
+						setTimeout(function(){$("#return_add_fournisseur_div").css("height", "0px");$("#return_add_fournisseur_para").text("");}, 10000);
+					}
+					else{
+				   		$("#add_fournisseur_logo").val($("#add_fournisseur_logo").val()+response);
+					}
 				}
-				else{
-			   		$("#add_fournisseur_logo").val($("#add_fournisseur_logo").val()+response);
-				}
-			}
-		});
+			});
 
-		var myDropzone4 = new Dropzone("#dropzone_photos_fournisseurs_add", { 
-			url: "../php/upload_admin_photos_fournisseurs.php", 
-			success : function(file, response){
-				if(response.includes("Erreur: ")){
-					$("#return_add_fournisseur_div").css("backgroundColor", "rgba(255,0,0,0.3)");
-					$("#return_add_fournisseur_para").text(response);
-					$("#return_add_fournisseur_div").css("height", "50px");
-					setTimeout(function(){$("#return_add_fournisseur_div").css("height", "0px");$("#return_add_fournisseur_para").text("");}, 10000);
+			var myDropzone4 = new Dropzone("#dropzone_photos_fournisseurs_add", { 
+				url: "../php/upload_admin_photos_fournisseurs.php", 
+				success : function(file, response){
+					if(response.includes("Erreur: ")){
+						$("#return_add_fournisseur_div").css("backgroundColor", "rgba(255,0,0,0.3)");
+						$("#return_add_fournisseur_para").text(response);
+						$("#return_add_fournisseur_div").css("height", "50px");
+						setTimeout(function(){$("#return_add_fournisseur_div").css("height", "0px");$("#return_add_fournisseur_para").text("");}, 10000);
+					}
+					else{
+				   		$("#add_fournisseur_photos").val($("#add_fournisseur_photos").val()+response);
+					}
 				}
-				else{
-			   		$("#add_fournisseur_photos").val($("#add_fournisseur_photos").val()+response);
-				}
-			}
-		});
+			});
 
-		
-		//Dropzone Update de fournisseurs
-		var myDropzone5 = new Dropzone("#dropzone_catalogues_update", { 
-			url: "../php/upload_admin_catalogues_fournisseurs.php", 
-			success : function(file, response){
-				if(response.includes("Erreur: ")){
-					$("#return_update_fournisseur_div").css("backgroundColor", "rgba(255,0,0,0.3)");
-					$("#return_update_fournisseur_para").text(response);
-					$("#return_update_fournisseur_div").css("height", "50px");
-					setTimeout(function(){$("#return_update_fournisseur_div").css("height", "0px");$("#return_update_fournisseur_para").text("");}, 10000);
-				}
-				else{
-			   		$("#update_fournisseur_catalogue").val($("#update_fournisseur_catalogue").val()+response);
-				}
-			}
-		});
-
-		var myDropzone6 = new Dropzone("#dropzone_catalogues_tarifs_update", { 
-			url: "../php/upload_admin_catalogues_tarifs_fournisseurs.php", 
-			success : function(file, response){
-				if(response.includes("Erreur: ")){
-					$("#return_update_fournisseur_div").css("backgroundColor", "rgba(255,0,0,0.3)");
-					$("#return_update_fournisseur_para").text(response);
-					$("#return_update_fournisseur_div").css("height", "50px");
-					setTimeout(function(){$("#return_update_fournisseur_div").css("height", "0px");$("#return_update_fournisseur_para").text("");}, 10000);
-				}
-				else{
-			   		$("#update_fournisseur_catalogue_tarifs").val($("#update_fournisseur_catalogue_tarifs").val()+response);
-				}
-			}
-		});
-
-		var myDropzone7 = new Dropzone("#dropzone_logo_update", { 
-			url: "../php/upload_admin_logo_fournisseurs.php", 
-			success : function(file, response){
-				if(response.includes("Erreur: ")){
-					$("#return_update_fournisseur_div").css("backgroundColor", "rgba(255,0,0,0.3)");
-					$("#return_update_fournisseur_para").text(response);
-					$("#return_update_fournisseur_div").css("height", "50px");
-					setTimeout(function(){$("#return_update_fournisseur_div").css("height", "0px");$("#return_update_fournisseur_para").text("");}, 10000);
-				}
-				else{
-			   		$("#update_fournisseur_logo").val($("#update_fournisseur_logo").val()+response);
-				}
-			}
-		});
-
-		var myDropzone8 = new Dropzone("#dropzone_photos_fournisseurs_update", { 
-			url: "../php/upload_admin_photos_fournisseurs.php", 
-			success : function(file, response){
-				if(response.includes("Erreur: ")){
-					$("#return_update_fournisseur_div").css("backgroundColor", "rgba(255,0,0,0.3)");
-					$("#return_update_fournisseur_para").text(response);
-					$("#return_update_fournisseur_div").css("height", "50px");
-					setTimeout(function(){$("#return_update_fournisseur_div").css("height", "0px");$("#return_update_fournisseur_para").text("");}, 10000);
-				}
-				else{
-			   		$("#update_fournisseur_catalogue").val($("#update_fournisseur_catalogue").val()+response);
-				}
-			}
-		});
-
-		//Dropzone ajout de projets
-		var myDropzone9 = new Dropzone("#dropzone_photos_projets_add", { 
-			url: "../php/upload_admin_photos_projets.php", 
-			success : function(file, response){
-				if(response.includes("Erreur: ")){
-					$("#return_add_projet_div").css("backgroundColor", "rgba(255,0,0,0.3)");
-					$("#return_add_projet_para").text(response);
-					$("#return_add_projet_div").css("height", "50px");
-					setTimeout(function(){$("#return_add_projet_div").css("height", "0px");$("#return_add_projet_para").text("");}, 10000);
-				}
-				else{
-			   		$("#add_projet_photos").val($("#add_projet_photos").val()+response);
-				}
-			}
-		});
-
-
-		//Dropzone update de projets
-		var myDropzone10 = new Dropzone("#dropzone_photos_projets_update", { 
-			url: "../php/upload_admin_photos_projets.php", 
-			success : function(file, response){
-				if(response.includes("Erreur: ")){
-					$("#return_update_projet_div").css("backgroundColor", "rgba(255,0,0,0.3)");
-					$("#return_update_projet_para").text(response);
-					$("#return_update_projet_div").css("height", "50px");
-					setTimeout(function(){$("#return_update_projet_div").css("height", "0px");$("#return_update_projet_para").text("");}, 10000);
-				}
-				else{
-			   		$("#update_projet_photos").val($("#update_projet_photos").val()+response);
-				}
-			}
-		});
-
-		//Dropzone ajout sur-mesure
-		var myDropzone11 = new Dropzone("#dropzone_photos_sur_mesure", { 
-			url: "../php/upload_admin_photos_sur_mesure.php", 
-			success : function(file, response){
-				if(response.includes("Erreur: ")){
-					$("#return_update_projet_div").css("backgroundColor", "rgba(255,0,0,0.3)");
-					$("#return_update_projet_para").text(response);
-					$("#return_update_projet_div").css("height", "50px");
-					setTimeout(function(){$("#return_update_projet_div").css("height", "0px");$("#return_update_projet_para").text("");}, 10000);
-				}
-				else{
-			   		$("#update_projet_photos").val($("#update_projet_photos").val()+response);
-				}
-			}
-		});
-
-		//Dropzone Actualités
-		var myDropzone12 = new Dropzone("#dropzone_photos_actualite_add", { 
-			url: "../php/upload_admin_photos_actualites.php", 
-			success : function(file, response){
-				if(response.includes("Erreur: ")){
-					$("#return_add_actualite_div").css("backgroundColor", "rgba(255,0,0,0.3)");
-					$("#return_add_actualite_para").text(response);
-					$("#return_add_actualite_div").css("height", "50px");
-					setTimeout(function(){$("#return_add_actualite_div").css("height", "0px");$("#return_add_actualite_para").text("");}, 10000);
-				}
-				else{
-			   		$("#add_actualite_photos").val($("#add_actualite_photos").val()+response);
-				}
-			}
-		});
-
-		//Dropzone Sur-Mesure
-		var myDropzone13 = new Dropzone("#dropzone_photos_surmesure_add", { 
-			url: "../php/upload_admin_photos_sur_mesure.php", 
-			success : function(file, response){
-				if(response.includes("Erreur: ")){
-					$("#return_add_surmesure_div").css("backgroundColor", "rgba(255,0,0,0.3)");
-					$("#return_add_surmesure_para").text(response);
-					$("#return_add_surmesure_div").css("height", "50px");
-					setTimeout(function(){$("#return_add_surmesure_div").css("height", "0px");$("#return_add_surmesure_para").text("");}, 10000);
-				}
-				else{
-			   		$("#add_surmesure_photos").val($("#add_surmesure_photos").val()+response);
-				}
-			}
-		});
-
-		$("#update_fournisseur_id").change(function() {
-			$.post(
-					'../php/recup_fournisseur.php',
-					{
-
-						id : $("#update_fournisseur_id").val()
-
-					},
-					function(data){
-						true_data = data.split("}");
-						true_data[0] = encode_utf8(true_data[0]) + '}';
-						json	= JSON.parse(true_data[0]);
-						if(json.success){
-							$("#return_update_fournisseur_div").css("backgroundColor", "rgba(0,255,0,0.3)");
-							$("#update_fournisseur_id").val(json.id);
-							$("#update_fournisseur_nom").val(json.nom);
-							$("#update_fournisseur_url").val(json.url);
-							$("#update_fournisseur_logo").val(json.logo);
-							$("#update_fournisseur_catalogue").val(json.catalogue);
-							$("#update_fournisseur_catalogue_tarifs").val(json_catalogue_tarifs);
-							$("#update_fournisseur_images").val(json.images);
-						}
-						else{
-							$("#return_update_fournisseur_div").css("backgroundColor", "rgba(255,0,0,0.3)");
-						}
-						$("#return_update_fournisseur_para").text(json.msg);
+			
+			//Dropzone Update de fournisseurs
+			var myDropzone5 = new Dropzone("#dropzone_catalogues_update", { 
+				url: "../php/upload_admin_catalogues_fournisseurs.php", 
+				success : function(file, response){
+					if(response.includes("Erreur: ")){
+						$("#return_update_fournisseur_div").css("backgroundColor", "rgba(255,0,0,0.3)");
+						$("#return_update_fournisseur_para").text(response);
 						$("#return_update_fournisseur_div").css("height", "50px");
-						$("#return_update_fournisseur_div").css("margin", "auto");
 						setTimeout(function(){$("#return_update_fournisseur_div").css("height", "0px");$("#return_update_fournisseur_para").text("");}, 10000);
-					},
-					'text' 
-				);
-		});
+					}
+					else{
+				   		$("#update_fournisseur_catalogue").val($("#update_fournisseur_catalogue").val()+response);
+					}
+				}
+			});
 
-		$("#update_projet_id").change(function() {
-			$.post(
-					'../php/recup_projet.php',
-					{
+			var myDropzone6 = new Dropzone("#dropzone_catalogues_tarifs_update", { 
+				url: "../php/upload_admin_catalogues_tarifs_fournisseurs.php", 
+				success : function(file, response){
+					if(response.includes("Erreur: ")){
+						$("#return_update_fournisseur_div").css("backgroundColor", "rgba(255,0,0,0.3)");
+						$("#return_update_fournisseur_para").text(response);
+						$("#return_update_fournisseur_div").css("height", "50px");
+						setTimeout(function(){$("#return_update_fournisseur_div").css("height", "0px");$("#return_update_fournisseur_para").text("");}, 10000);
+					}
+					else{
+				   		$("#update_fournisseur_catalogue_tarifs").val($("#update_fournisseur_catalogue_tarifs").val()+response);
+					}
+				}
+			});
 
-						id : $("#update_projet_id").val()
+			var myDropzone7 = new Dropzone("#dropzone_logo_update", { 
+				url: "../php/upload_admin_logo_fournisseurs.php", 
+				success : function(file, response){
+					if(response.includes("Erreur: ")){
+						$("#return_update_fournisseur_div").css("backgroundColor", "rgba(255,0,0,0.3)");
+						$("#return_update_fournisseur_para").text(response);
+						$("#return_update_fournisseur_div").css("height", "50px");
+						setTimeout(function(){$("#return_update_fournisseur_div").css("height", "0px");$("#return_update_fournisseur_para").text("");}, 10000);
+					}
+					else{
+				   		$("#update_fournisseur_logo").val($("#update_fournisseur_logo").val()+response);
+					}
+				}
+			});
 
-					},
-					function(data){
-						true_data = data.split("}");
-						true_data[0] = encode_utf8(true_data[0]) + '}';
-						json	= JSON.parse(true_data[0]);
-						if(json.success){
-							$("#return_update_projet_div").css("backgroundColor", "rgba(0,255,0,0.3)");
-							$("#update_projet_id").val(json.id);
-							$("#update_projet_nom").val(json.nom);
-							$("#update_projet_adresse").val(json.adresse);
-							$("#update_projet_description").val(json.description);
-						}
-						else{
-							$("#return_update_projet_div").css("backgroundColor", "rgba(255,0,0,0.3)");
-						}
-						$("#return_update_projet_para").text(json.msg);
-						$("#return_update_projet_div").css("height", "150px");
-						setTimeout(function(){$("#return_update_projet_div").css("height", "0px")}, 10000);
-					},
-					'text' 
-				);
+			var myDropzone8 = new Dropzone("#dropzone_photos_fournisseurs_update", { 
+				url: "../php/upload_admin_photos_fournisseurs.php", 
+				success : function(file, response){
+					if(response.includes("Erreur: ")){
+						$("#return_update_fournisseur_div").css("backgroundColor", "rgba(255,0,0,0.3)");
+						$("#return_update_fournisseur_para").text(response);
+						$("#return_update_fournisseur_div").css("height", "50px");
+						setTimeout(function(){$("#return_update_fournisseur_div").css("height", "0px");$("#return_update_fournisseur_para").text("");}, 10000);
+					}
+					else{
+				   		$("#update_fournisseur_catalogue").val($("#update_fournisseur_catalogue").val()+response);
+					}
+				}
+			});
+
+			//Dropzone ajout de projets
+			var myDropzone9 = new Dropzone("#dropzone_photos_projets_add", { 
+				url: "../php/upload_admin_photos_projets.php", 
+				success : function(file, response){
+					if(response.includes("Erreur: ")){
+						$("#return_add_projet_div").css("backgroundColor", "rgba(255,0,0,0.3)");
+						$("#return_add_projet_para").text(response);
+						$("#return_add_projet_div").css("height", "50px");
+						setTimeout(function(){$("#return_add_projet_div").css("height", "0px");$("#return_add_projet_para").text("");}, 10000);
+					}
+					else{
+				   		$("#add_projet_photos").val($("#add_projet_photos").val()+response);
+					}
+				}
+			});
+
+
+			//Dropzone update de projets
+			var myDropzone10 = new Dropzone("#dropzone_photos_projets_update", { 
+				url: "../php/upload_admin_photos_projets.php", 
+				success : function(file, response){
+					if(response.includes("Erreur: ")){
+						$("#return_update_projet_div").css("backgroundColor", "rgba(255,0,0,0.3)");
+						$("#return_update_projet_para").text(response);
+						$("#return_update_projet_div").css("height", "50px");
+						setTimeout(function(){$("#return_update_projet_div").css("height", "0px");$("#return_update_projet_para").text("");}, 10000);
+					}
+					else{
+				   		$("#update_projet_photos").val($("#update_projet_photos").val()+response);
+					}
+				}
+			});
+
+			//Dropzone Actualités
+			var myDropzone12 = new Dropzone("#dropzone_photos_actualite_add", { 
+				url: "../php/upload_admin_photos_actualites.php", 
+				success : function(file, response){
+					if(response.includes("Erreur: ")){
+						$("#return_add_actualite_div").css("backgroundColor", "rgba(255,0,0,0.3)");
+						$("#return_add_actualite_para").text(response);
+						$("#return_add_actualite_div").css("height", "50px");
+						setTimeout(function(){$("#return_add_actualite_div").css("height", "0px");$("#return_add_actualite_para").text("");}, 10000);
+					}
+					else{
+				   		$("#add_actualite_photo").val($("#add_actualite_photo").val()+response);
+					}
+				}
+			});
+
+			//Dropzone Sur-Mesure
+			var myDropzone13 = new Dropzone("#dropzone_photos_surmesure_add", { 
+				url: "../php/upload_admin_photos_sur_mesure.php", 
+				success : function(file, response){
+					if(response.includes("Erreur: ")){
+						$("#return_add_surmesure_div").css("backgroundColor", "rgba(255,0,0,0.3)");
+						$("#return_add_surmesure_para").text(response);
+						$("#return_add_surmesure_div").css("height", "50px");
+						setTimeout(function(){$("#return_add_surmesure_div").css("height", "0px");$("#return_add_surmesure_para").text("");}, 10000);
+					}
+					else{
+				   		$("#add_surmesure_photos").val($("#add_surmesure_photos").val()+response);
+					}
+				}
+			});
+
+			$("#update_fournisseur_id").change(function() {
+				$.post(
+						'../php/recup_fournisseur.php',
+						{
+
+							id : $("#update_fournisseur_id").val()
+
+						},
+						function(data){
+							true_data = data.split("}");
+							true_data[0] = encode_utf8(true_data[0]) + '}';
+							json	= JSON.parse(true_data[0]);
+							if(json.success){
+								$("#return_update_fournisseur_div").css("backgroundColor", "rgba(0,255,0,0.3)");
+								$("#update_fournisseur_id").val(json.id);
+								$("#update_fournisseur_nom").val(json.nom);
+								$("#update_fournisseur_url").val(json.url);
+								$("#update_fournisseur_logo").val(json.logo);
+								$("#update_fournisseur_catalogue").val(json.catalogue);
+								$("#update_fournisseur_catalogue_tarifs").val(json_catalogue_tarifs);
+								$("#update_fournisseur_images").val(json.images);
+							}
+							else{
+								$("#return_update_fournisseur_div").css("backgroundColor", "rgba(255,0,0,0.3)");
+							}
+							$("#return_update_fournisseur_para").text(json.msg);
+							$("#return_update_fournisseur_div").css("height", "50px");
+							$("#return_update_fournisseur_div").css("margin", "auto");
+							setTimeout(function(){$("#return_update_fournisseur_div").css("height", "0px");$("#return_update_fournisseur_para").text("");}, 10000);
+						},
+						'text' 
+					);
+			});
+
+			$("#update_projet_id").change(function() {
+				$.post(
+						'../php/recup_projet.php',
+						{
+
+							id : $("#update_projet_id").val()
+
+						},
+						function(data){
+							true_data = data.split("}");
+							true_data[0] = encode_utf8(true_data[0]) + '}';
+							json	= JSON.parse(true_data[0]);
+							if(json.success){
+								$("#return_update_projet_div").css("backgroundColor", "rgba(0,255,0,0.3)");
+								$("#update_projet_id").val(json.id);
+								$("#update_projet_nom").val(json.nom);
+								$("#update_projet_adresse").val(json.adresse);
+								$("#update_projet_description").val(json.description);
+							}
+							else{
+								$("#return_update_projet_div").css("backgroundColor", "rgba(255,0,0,0.3)");
+							}
+							$("#return_update_projet_para").text(json.msg);
+							$("#return_update_projet_div").css("height", "150px");
+							setTimeout(function(){$("#return_update_projet_div").css("height", "0px")}, 10000);
+						},
+						'text' 
+					);
+			});
+
 		});
 
 	</script>
