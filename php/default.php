@@ -229,14 +229,12 @@ function recupSurMesure(){
 function addSurMesure($photos){
 	$db = getDB();
 	$temp = recupSurMesure();
-	if(count($temp) > 0){
-		error_log('On met à jour');
-		$photos = $photos . $temp[0];
+	if(!empty($temp)){
+		$temporaire = $photos . $temp[0];
 		$query = $db->prepare('UPDATE Surmesure SET images=?');
-		$query->execute(array($photos));
+		$query->execute(array($temporaire));
 	}
 	else{
-		error_log('on insère');
 		$query = $db->prepare('INSERT INTO Surmesure (images) VALUES (?)');
 		$query->execute(array($photos));
 	}
