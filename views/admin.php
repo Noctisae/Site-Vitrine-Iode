@@ -876,7 +876,6 @@ include_once("header.php");
 						else{
 							$("#return_del_admin_div").css("backgroundColor", "rgba(255,0,0,0.3)");
 						}
-						alert(json.msg);
 						$("#return_del_admin_para").text(json.msg);
 						$("#return_del_admin_div").css("height", "150px");
 						setTimeout(function(){$("#return_del_admin_div").css("height", "0px")}, 10000);
@@ -909,7 +908,6 @@ include_once("header.php");
 							else{
 								$("#return_update_admin_div").css("backgroundColor", "rgba(255,0,0,0.3)");
 							}
-							alert(json.msg);
 							$("#return_update_admin_para").text(json.msg);
 							$("#return_update_admin_div").css("height", "150px");
 							setTimeout(function(){$("#return_update_admin_div").css("height", "0px")}, 10000);
@@ -957,9 +955,8 @@ include_once("header.php");
 						else{
 							$("#return_add_fournisseur_div").css("backgroundColor", "rgba(255,0,0,0.3)");
 						}
-						alert(json.msg);
 						$("#return_add_fournisseur_para").text(json.msg);
-						$("#return_add_fournisseur_div").css("height", "150px");
+						$("#return_add_fournisseur_div").css("height", "50px");
 						setTimeout(function(){$("#return_add_fournisseur_div").css("height", "0px")}, 10000);
 					},
 					'text' 
@@ -986,9 +983,8 @@ include_once("header.php");
 							$("#return_del_fournisseur_div").css("backgroundColor", "rgba(255,0,0,0.3)");
 							$("#del_fournisseur_id").val();
 						}
-						alert(json.msg);
 						$("#return_del_fournisseur_para").text(json.msg);
-						$("#return_del_fournisseur_div").css("height", "150px");
+						$("#return_del_fournisseur_div").css("height", "50px");
 						setTimeout(function(){$("#return_del_fournisseur_div").css("height", "0px")}, 10000);
 					},
 					'text' 
@@ -1027,9 +1023,8 @@ include_once("header.php");
 						else{
 							$("#return_update_fournisseur_div").css("backgroundColor", "rgba(255,0,0,0.3)");
 						}
-						alert(json.msg);
 						$("#return_update_fournisseur_para").text(json.msg);
-						$("#return_update_fournisseur_div").css("height", "150px");
+						$("#return_update_fournisseur_div").css("height", "50px");
 						setTimeout(function(){$("#return_update_fournisseur_div").css("height", "0px")}, 10000);
 					},
 					'text' 
@@ -1061,9 +1056,8 @@ include_once("header.php");
 						else{
 							$("#return_add_projet_div").css("backgroundColor", "rgba(255,0,0,0.3)");
 						}
-						alert(json.msg);
 						$("#return_add_projet_para").text(json.msg);
-						$("#return_add_projet_div").css("height", "150px");
+						$("#return_add_projet_div").css("height", "50px");
 						setTimeout(function(){$("#return_add_projet_div").css("height", "0px")}, 10000);
 					},
 					'text' 
@@ -1089,9 +1083,8 @@ include_once("header.php");
 						else{
 							$("#return_del_projet_div").css("backgroundColor", "rgba(255,0,0,0.3)");
 						}
-						alert(json.msg);
 						$("#return_del_projet_para").text(json.msg);
-						$("#return_del_projet_div").css("height", "150px");
+						$("#return_del_projet_div").css("height", "50px");
 						setTimeout(function(){$("#return_del_projet_div").css("height", "0px")}, 10000);
 					},
 					'text' 
@@ -1124,9 +1117,8 @@ include_once("header.php");
 						else{
 							$("#return_update_projet_div").css("backgroundColor", "rgba(255,0,0,0.3)");
 						}
-						alert(json.msg);
 						$("#return_update_projet_para").text(json.msg);
-						$("#return_update_projet_div").css("height", "150px");
+						$("#return_update_projet_div").css("height", "50px");
 						setTimeout(function(){$("#return_update_projet_div").css("height", "0px")}, 10000);
 					},
 					'text' 
@@ -1156,9 +1148,8 @@ include_once("header.php");
 						else{
 							$("#return_add_actualite_div").css("backgroundColor", "rgba(255,0,0,0.3)");
 						}
-						alert(json.msg);
 						$("#return_add_actualite_para").text(json.msg);
-						$("#return_add_actualite_div").css("height", "150px");
+						$("#return_add_actualite_div").css("height", "50px");
 						setTimeout(function(){$("#return_add_actualite_div").css("height", "0px")}, 10000);
 					},
 					'text' 
@@ -1180,13 +1171,13 @@ include_once("header.php");
 						json	= JSON.parse(true_data[0]);
 						if(json.success){
 							$("#return_del_actualite_div").css("backgroundColor", "rgba(0,255,0,0.3)");
+							$("#del_actualite_id").val('');
 						}
 						else{
 							$("#return_del_actualite_div").css("backgroundColor", "rgba(255,0,0,0.3)");
 						}
-						alert(json.msg);
 						$("#return_del_actualite_para").text(json.msg);
-						$("#return_del_actualite_div").css("height", "150px");
+						$("#return_del_actualite_div").css("height", "50px");
 						setTimeout(function(){$("#return_del_actualite_div").css("height", "0px")}, 10000);
 					},
 					'text' 
@@ -1211,9 +1202,8 @@ include_once("header.php");
 						else{
 							$("#return_add_surmesure_div").css("backgroundColor", "rgba(255,0,0,0.3)");
 						}
-						alert(json.msg);
 						$("#return_add_surmesure_para").text(json.msg);
-						$("#return_add_surmesure_div").css("height", "150px");
+						$("#return_add_surmesure_div").css("height", "50px");
 						setTimeout(function(){$("#return_add_surmesure_div").css("height", "0px")}, 10000);
 					},
 					'text' 
@@ -1237,9 +1227,8 @@ include_once("header.php");
 						else{
 							$("#return_del_surmesure_para").css("backgroundColor", "rgba(255,0,0,0.3)");
 						}
-						alert(json.msg);
 						$("#return_del_surmesure_para").text(json.msg);
-						$("#return_del_surmesure_div").css("height", "150px");
+						$("#return_del_surmesure_div").css("height", "50px");
 						setTimeout(function(){$("#return_del_surmesure_div").css("height", "0px")}, 10000);
 					},
 					'text' 
