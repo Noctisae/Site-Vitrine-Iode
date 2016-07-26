@@ -60,33 +60,98 @@ h1,h2,h3,h4,h5,h6,p{
 }
 
 .seul{
-	width:99.9vw!important;
+	width:99.999vw!important;
 }
 
 .duo{
-	width:49.9vw!important;
+	width:49.9999vw!important;
 }
 
 .trio{
-	width:33.29vw!important;
+	width:33.319999vw!important;
 }
 
 .quatuor{
-	width:24.99vw!important;
+	width:24.99999vw!important;
 }
 
 .quintet{
-	width:19.99vw!important;
+	width:19.99999vw!important;
 }
 
 .height_important{
 	height:100%!important;
 }
 
+.increment_1{
+	left:0px;
+}
+
+.increment_deux_1{
+	left:0vw;
+}
+
+.increment_deux_2{
+	left:50vw;
+}
+
+.increment_trois_1{
+	left:0vw;
+}
+
+.increment_trois_2{
+	left:33.32vw;
+}
+
+.increment_trois_3{
+	left:66.64vw;
+}
+
+.increment_quatre_1{
+	left:0vw;
+}
+
+.increment_quatre_2{
+	left:25vw;
+}
+
+.increment_quatre_3{
+	left:50vw;
+}
+
+.increment_quatre_4{
+	left:50vw;
+}
+
+.increment_cinq_1{
+	left:0vw;
+}
+
+.increment_cinq_2{
+	left:20vw;
+}
+
+.increment_cinq_3{
+	left:40vw;
+}
+
+.increment_cinq_4{
+	left:60vw;
+}
+
+.increment_cinq_5{
+	left:80vw;
+}
+
+div.click{
+	position:absolute;
+	height:100vh;
+}
+
 div.click > .clickable {
     position:absolute;
     width:100%;
-    height:100%;
+    height:100vh;
     top:0;
     left:0;
     text-decoration:none; /* Makes sure the link   doesn't get underlined */
@@ -216,6 +281,7 @@ div.click > .clickable {
 .hovered_content_index{
 	display: none;
 	z-index:1;
+	position:relative;
 }
 
 
@@ -234,7 +300,7 @@ div.click > .clickable {
 }
 
 .paragraphe_accueil{
-	margin-top: 650px!important;
+	margin-top: 500px!important;
 }
 
 .align{

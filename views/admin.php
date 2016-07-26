@@ -141,7 +141,7 @@ include_once("header.php");
 							</select>
 						</div>
 						<div class="field">
-							<button id="del_admin" class="ui button large fluid red" onClick="remove_selected_item(#del_admin_id)">Supprimer cet administrateur</button>
+							<button id="del_admin" class="ui button large fluid red">Supprimer cet administrateur</button>
 						</div>
 					</div>
 					<div style="height:0px;margin-top:20px;transition: height 2s;" class="ui large fluid" id="return_del_admin_div">
@@ -255,7 +255,7 @@ include_once("header.php");
 								</select>
 							</div>
 							<div class="field">
-								<button id="del_fournisseur" class="ui button large fluid red" onClick="remove_selected_item(#del_fournisseur_id)">Supprimer ce fournisseur</button>
+								<button id="del_fournisseur" class="ui button large fluid red">Supprimer ce fournisseur</button>
 							</div>
 					</div>
 					<div style="height:0px;margin-top:20px;transition: height 2s;" class="ui large fluid" id="return_del_fournisseur_div">
@@ -381,7 +381,7 @@ include_once("header.php");
 							</div>
 						</form>
 						<div class="field">
-							<button id="del_projet" class="ui button large fluid red" onClick="remove_selected_item(#del_projet_id)">Supprimer ce projet</button>
+							<button id="del_projet" class="ui button large fluid red"Supprimer ce projet</button>
 						</div>
 					</div>
 					<div style="height:0px;margin-top:20px;transition: height 2s;" class="ui large fluid" id="return_del_projet_div">
@@ -487,7 +487,7 @@ include_once("header.php");
 								</div>
 							</form>
 							<div class="field">
-								<button id="del_actualite" class="ui button large fluid red" onClick="remove_selected_item(#del_actualite_id)">Supprimer cette actualité</button>
+								<button id="del_actualite" class="ui button large fluid red">Supprimer cette actualité</button>
 							</div>
 						</div>
 						<div style="height:0px;margin-top:20px;transition: height 2s;" class="ui large fluid" id="return_del_actualite_div">
@@ -981,7 +981,6 @@ include_once("header.php");
 						json	= JSON.parse(true_data[0]);
 						if(json.success){
 							$("#return_del_fournisseur_div").css("backgroundColor", "rgba(0,255,0,0.3)");
-							remove_selected_item('#del_fournisseur_id');
 						}
 						else{
 							$("#return_del_fournisseur_div").css("backgroundColor", "rgba(255,0,0,0.3)");
@@ -1086,7 +1085,6 @@ include_once("header.php");
 						json	= JSON.parse(true_data[0]);
 						if(json.success){
 							$("#return_del_projet_div").css("backgroundColor", "rgba(0,255,0,0.3)");
-							remove_selected_item('#del_projet_id');
 						}
 						else{
 							$("#return_del_projet_div").css("backgroundColor", "rgba(255,0,0,0.3)");
@@ -1249,18 +1247,6 @@ include_once("header.php");
 			});
 
 		});
-	function remove_selected_item(l1) {
-		do {
-		  flag_delete = false;
-		  for (var i = 0; i < l1.options.length; i++) {
-			 if (l1.options[i].selected == true) {
-				l1.options[i] = null;
-				flag_delete = true;
-			 }
-		  }
-	   } while (flag_delete == true)
-	   return true;
-	}
 	 
 
 	function encode_utf8(s) {

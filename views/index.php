@@ -34,18 +34,23 @@
 					switch (count($partie_de_page)){
 						case 1:
 							$class= "seul";
+							$lien = "increment_";
 							break;
 						case 2:
 							$class= "duo";
+							$lien = "increment_deux_";
 							break;
 						case 3:
 							$class= "trio";
+							$lien = "increment_trois_";
 							break;
 						case 4:
 							$class= "quatuor";
+							$lien = "increment_quatre_";
 							break;
 						default:
 							$class= "quintet";
+							$lien = "increment_cinq_";
 							break;
 					}
 					echo '<div class="cinquo cinquo'.$i.' left column" style="background-image: url(\''.explode(";",$tous_les_fournisseurs[($i-1)][0]['images'])[0].'\');-webkit-background-size:cover;
@@ -69,15 +74,15 @@
 						//partie Hover
 						echo'<div class="hovered_content_index" id="hovered_content'.$i.'" style="margin-top:0px">
 						';
-
+						$j = 1;
 						foreach ($partie_de_page as $fournisseur) {
 							echo'
-								<div class="'.$class.' click" id="para'.$fournisseur['id'].'" style="background-image:url(\''.explode(';',$fournisseur["images"])[0].'\';-webkit-background-size:cover;
-					-moz-background-size:cover;
-					-o-background-size:cover;
-					background-size:cover;
-					background-position:center;z-index:10;" >
-						<a class="clickable" href="#" onclick="$(\'.ui.modal.modal\''.$fournisseur['id'].'\').modal(\'show\');"></a>
+								<div class="'.$class.' click '.$lien.$j.'" id="para'.$fournisseur['id'].'" style="background-image:url(\''.explode(';',$fournisseur["images"])[0].'\');-webkit-background-size:cover!important;
+					-moz-background-size:cover!important;
+					-o-background-size:cover!important;
+					background-size:cover!important;
+					background-position:center!important;z-index:100!important;" >
+						<a class="clickable '.$class.'" href="#" onclick="$(\'.ui.modal.modal\''.$fournisseur['id'].'\').modal(\'show\');"></a>
 							<div class="paragraphe paragraphe_accueil">
 									<p class="align alignement_index">
 									<a href="'.$fournisseur["url"].'" style="width:100%!important;"><img src="'.$fournisseur["logo"].'" style="width:50%;height:75px;"></a><br><br>
@@ -85,13 +90,15 @@
 								</div>
 							</div>';
 						//Modal Gallerie
-						echo '<div class="ui modal centered modal'.$fournisseur['id'].' centered_text">
+						echo '<div class="ui fullscreen modal centered modal'.$fournisseur['id'].' centered_text">
 								<i class="close icon"></i>
 								<div class="header">
 									Galerie de '.$fournisseur['nom'].'
 								</div>
 								<div class="content">
-									<div class="fotorama">
+									<div class="fotorama" data-nav="thumbs" data-width="100%"  data-minwidth="400"
+     data-maxwidth="1920"  data-minheight="300"
+     data-maxheight="90%" data-allowfullscreen="native" data-loop="true" data-keyboard=\'{"space": true, "home": true, "end": true, "up": true, "down": true}\' >
 										';
 										$temp = explode(";",$fournisseur['images']);
 										foreach ($temp as $image) {
@@ -102,6 +109,7 @@
 						echo'		</div>	
 								</div>
 							</div>';
+						$j++;
 						}
 
 						echo'</div></div>';
