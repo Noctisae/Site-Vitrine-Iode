@@ -1,8 +1,21 @@
 	<?php
 	session_start();
 	include_once('../php/default.php');
-
-	$tous_les_fournisseurs = array(recupFournisseur(1),recupFournisseur(2),recupFournisseur(3),recupFournisseur(4),recupFournisseur(5));
+	$affichage_fotorama = false;
+	$appel_fournisseur = explode('?',$_SERVER['REQUEST_URI'])[1];
+	if(!empty($appel_fournisseur)){
+		$id = explode('=',$appel_fournisseur)[1];
+		if(!empty($id)){
+			$fournisseur = recupFournisseurId($id);
+			if(!empty($fournisseur['nom']) && !empty($fournisseur['url']) && !empty($fournisseur['images'])){
+				$affichage_fotorama = true;
+			}
+		}
+	}
+	if($affichage_fotorama == false){
+		$tous_les_fournisseurs = array(recupFournisseur(1),recupFournisseur(2),recupFournisseur(3),recupFournisseur(4),recupFournisseur(5));
+	}
+	
 
 	?>
 	<!DOCTYPE html>
@@ -29,92 +42,91 @@
 	<div class="ui page grid total" style="padding-left: 0px;padding-right: 0px;height:100%;width:100%">
 			<div class="row" style="padding : 0px;">
 			<?php
-				$i = 1;
-				foreach ($tous_les_fournisseurs as $partie_de_page) {
-					switch (count($partie_de_page)){
-						case 1:
-							$class= "seul";
-							$lien = "increment_";
-							break;
-						case 2:
-							$class= "duo";
-							$lien = "increment_deux_";
-							break;
-						case 3:
-							$class= "trio";
-							$lien = "increment_trois_";
-							break;
-						case 4:
-							$class= "quatuor";
-							$lien = "increment_quatre_";
-							break;
-						default:
-							$class= "quintet";
-							$lien = "increment_cinq_";
-							break;
-					}
-					echo '<div class="cinquo cinquo'.$i.' left column" style="background-image: url(\''.explode(";",$tous_les_fournisseurs[($i-1)][0]['images'])[0].'\');-webkit-background-size:cover;
-					-moz-background-size:cover;
-					-o-background-size:cover;
-					background-size:cover;
-					background-position:center;width:20%">';
-
-					//Partie normale
+				if($affichage_fotorama){
 					echo'
-						<div class="paragraphe paragraphe_accueil" id="paragraphe'.$i.'">
-							<br>				
-							<p class="align">
-								';
-							foreach ($partie_de_page as $fournisseur) {
-								echo'<a href="'.$fournisseur["url"].'"><img src="'.$fournisseur["logo"].'" style="width:50%;height:75px;"></a><br><br>';	
-							}
-					echo'	</p>
-						</div>';
-
-						//partie Hover
-						echo'<div class="hovered_content_index" id="hovered_content'.$i.'" style="margin-top:0px">
-						';
-						$j = 1;
-						foreach ($partie_de_page as $fournisseur) {
-							echo'
-								<div class="'.$class.' click '.$lien.$j.'" id="para'.$fournisseur['id'].'" style="background-image:url(\''.explode(';',$fournisseur["images"])[0].'\');-webkit-background-size:cover!important;
-					-moz-background-size:cover!important;
-					-o-background-size:cover!important;
-					background-size:cover!important;
-					background-position:center!important;z-index:100!important;" >
-						<a class="clickable '.$class.'" href="#" onclick="$(\'.ui.modal.modal\''.$fournisseur['id'].'\').modal(\'show\');"></a>
-							<div class="paragraphe paragraphe_accueil">
-									<p class="align alignement_index">
-									<a href="'.$fournisseur["url"].'" style="width:100%!important;"><img src="'.$fournisseur["logo"].'" style="width:50%;height:75px;"></a><br><br>
-									</p>
-								</div>
-							</div>';
-						//Modal Gallerie
-						echo '<div class="ui fullscreen modal centered modal'.$fournisseur['id'].' centered_text">
-								<i class="close icon"></i>
-								<div class="header">
-									Galerie de '.$fournisseur['nom'].'
-								</div>
-								<div class="content">
-									<div class="fotorama" data-nav="thumbs" data-width="100%"  data-minwidth="400"
-     data-maxwidth="1920"  data-minheight="300"
-     data-maxheight="90%" data-allowfullscreen="native" data-loop="true" data-keyboard=\'{"space": true, "home": true, "end": true, "up": true, "down": true}\' >
-										';
-										$temp = explode(";",$fournisseur['images']);
-										foreach ($temp as $image) {
-											if($image != ''){
-												echo '<img src="'.$image.'" style="width:100%;">';
-											}
-										}
-						echo'		</div>	
-								</div>
-							</div>';
-						$j++;
+					<div style="width:100%;text-align:center"><h2>
+						Galerie de '.$fournisseur['nom'].'
+					</h2></div><div class="fotorama" data-nav="thumbs" data-width="100%"  data-minwidth="400"
+	     data-maxwidth="1920"  data-minheight="300"
+	     data-maxheight="75%" data-allowfullscreen="native" data-loop="true" data-keyboard=\'{"space": true, "home": true, "end": true, "up": true, "down": true}\' style="margin-top:10px;">
+											';
+					$temp = explode(";",$fournisseur['images']);
+					foreach ($temp as $image) {
+						if($image != ''){
+							echo '<img src="'.$image.'" style="width:100%;">';
 						}
-
-						echo'</div></div>';
-						$i++;
+					}
+					echo'		</div>	';
 				}
+				else{
+					$i = 1;
+					foreach ($tous_les_fournisseurs as $partie_de_page) {
+						switch (count($partie_de_page)){
+							case 1:
+								$class= "seul";
+								$lien = "increment_";
+								break;
+							case 2:
+								$class= "duo";
+								$lien = "increment_deux_";
+								break;
+							case 3:
+								$class= "trio";
+								$lien = "increment_trois_";
+								break;
+							case 4:
+								$class= "quatuor";
+								$lien = "increment_quatre_";
+								break;
+							default:
+								$class= "quintet";
+								$lien = "increment_cinq_";
+								break;
+						}
+						echo '<div class="cinquo cinquo'.$i.' left column" style="background-image: url(\''.explode(";",$tous_les_fournisseurs[($i-1)][0]['images'])[0].'\');-webkit-background-size:cover;
+						-moz-background-size:cover;
+						-o-background-size:cover;
+						background-size:cover;
+						background-position:center;width:20%">';
+
+						//Partie normale
+						echo'
+							<div class="paragraphe paragraphe_accueil" id="paragraphe'.$i.'">
+								<br>				
+								<p class="align">
+									';
+								foreach ($partie_de_page as $fournisseur) {
+									echo'<a href="'.$fournisseur["url"].'"><img src="'.$fournisseur["logo"].'" style="width:50%;height:75px;"></a><br><br>';	
+								}
+						echo'	</p>
+							</div>';
+
+							//partie Hover
+							echo'<div class="hovered_content_index" id="hovered_content'.$i.'" style="margin-top:0px">
+							';
+							$j = 1;
+							foreach ($partie_de_page as $fournisseur) {
+								echo'
+									<div class="'.$class.' click '.$lien.$j.'" id="para'.$fournisseur['id'].'" style="background-image:url(\''.explode(';',$fournisseur["images"])[0].'\');-webkit-background-size:cover!important;
+						-moz-background-size:cover!important;
+						-o-background-size:cover!important;
+						background-size:cover!important;
+						background-position:center!important;z-index:100!important;" >
+							<a class="clickable '.$class.'" href="index.php?id='.$fournisseur['id'].'" onclick="$(\'.ui.modal.modal\''.$fournisseur['id'].'\').modal(\'show\');"></a>
+								<div class="paragraphe paragraphe_accueil">
+										<p class="align alignement_index">
+										<a href="'.$fournisseur["url"].'" style="width:100%!important;"><img src="'.$fournisseur["logo"].'" style="width:50%;height:75px;"></a><br><br>
+										</p>
+									</div>
+								</div>';
+							$j++;
+							}
+
+							echo'</div></div>';
+							$i++;
+					}
+				}
+				
 			?>
 
 
@@ -224,22 +236,6 @@
 	</script>
 	
 	<?php
-	echo'<script type="text/javascript">';
-	foreach($tous_les_fournisseurs as $partie_de_page){
-		foreach ($partie_de_page as $fournisseur) {
-			echo"$('.ui.modal.modal".$fournisseur['id']."').modal();";
-		}
-	}
-
-	foreach($tous_les_fournisseurs as $partie_de_page){
-		foreach ($partie_de_page as $fournisseur) {
-			echo"$('#para".$fournisseur['id']."').click(function(){
-				$('.ui.modal.modal".$fournisseur['id']."').modal('show');    
-			});";
-		}
-	}
-			
-	echo"</script>";
 
 	include_once("footer.php");
 
