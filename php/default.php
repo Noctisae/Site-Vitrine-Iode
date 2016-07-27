@@ -122,7 +122,7 @@ function updateRSS(){
 
 	$chaine_xml .= '</channel></rss>';
 
-	$file = fopen('news.xml', 'w+'); 
+	$file = fopen('../views/news.xml', 'w+'); 
 	fwrite($file, $chaine_xml);
 	fclose($file);
 }
