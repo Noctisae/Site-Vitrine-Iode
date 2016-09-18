@@ -51,15 +51,14 @@
 					//partie Hover
 					echo'<div class="hovered_content_telechargement" id="hovered_content'.$i.'" style="margin-top:0px">
 							<div class="alignement">
-								<h3 class="ui header">Les catalogues</h3>
 					';
 
 					foreach ($partie_de_page as $fournisseur) {
 						echo'
 
-								<h4 class="ui header">'.strtoupper($fournisseur["nom"]).'</h4>
-								<a href="'.$fournisseur["catalogue"].'">Catalogue<br><i class="big file text icon"></i></a><br><br>';
-						echo'	<a href="'.$fournisseur["catalogue_tarifs"].'">Catalogue des tarifs<br><i class=" big file text icon"></i></a><br><br>';
+								<img src="'.$fournisseur["logo"].'" style="width:50%;height:75px;"/>
+								<a style="color:white;" href="'.$fournisseur["catalogue"].'">Catalogue<br><i class="big file text icon"></i></a><br><br>';
+						echo'	<a style="color:white;" href="'.$fournisseur["catalogue_tarifs"].'">Tarifs<br><i class=" big file text icon"></i></a><br><br>';
 					}
 
 					echo'	</div>

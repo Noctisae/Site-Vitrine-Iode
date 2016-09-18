@@ -14,6 +14,10 @@
 	}
 	if($affichage_fotorama == false){
 		$tous_les_fournisseurs = array(recupFournisseur(1),recupFournisseur(2),recupFournisseur(3),recupFournisseur(4),recupFournisseur(5));
+
+		$temp = array(count(recupFournisseur(1)),count(recupFournisseur(2)),count(recupFournisseur(3)),count(recupFournisseur(4)),count(recupFournisseur(5)));
+
+		$height_max = max($temp);
 	}
 	
 
@@ -44,9 +48,7 @@
 			<?php
 				if($affichage_fotorama){
 					echo'
-					<div style="width:100%;text-align:center"><h2>
-						Galerie de '.$fournisseur['nom'].'
-					</h2></div><div class="fotorama" data-nav="thumbs" data-width="100%"  data-minwidth="400"
+					<div class="fotorama" data-nav="thumbs" data-width="100%"  data-minwidth="400"
 	     data-maxwidth="1920"  data-minheight="300"
 	     data-maxheight="75%" data-allowfullscreen="native" data-loop="true" data-keyboard=\'{"space": true, "home": true, "end": true, "up": true, "down": true}\' style="margin-top:10px;">
 											';
@@ -93,10 +95,13 @@
 						echo'
 							<div class="paragraphe paragraphe_accueil" id="paragraphe'.$i.'">
 								<br>				
-								<p class="align">
+								<p class="align" id="firehover'.$i.'">
 									';
 								foreach ($partie_de_page as $fournisseur) {
-									echo'<a href="'.$fournisseur["url"].'"><img src="'.$fournisseur["logo"].'" style="width:50%;height:75px;"></a><br><br>';	
+									echo'<a href="'.$fournisseur["url"].'"><img src="'.$fournisseur["logo"].'" style="width:50%;height:60px;"></a><br><br>';	
+								}
+								if(count($fournisseur) < $height_max){
+									echo'<div style="width:50%;height:60px;"></div>';
 								}
 						echo'	</p>
 							</div>';
@@ -168,7 +173,7 @@
 		$("#paragraphe5").css("display","block");
 	}
 
-	$(".cinquo1").hover(function(){
+	$(".firehover1").hover(function(){
 		$(".cinquo1").css("width","100%");
 		$("#hovered_content1").css("display","block");
 		$("#hovered_content1").css("height","99.9vh");
@@ -181,7 +186,7 @@
 		$(".cinquo4").css("width","0%");
 		$(".cinquo5").css("width","0%");
 	},returnToNormal);
-	$(".cinquo2").hover(function(){
+	$(".firehover2").hover(function(){
 		$(".cinquo1").css("width","0%");
 		$(".cinquo2").css("width","100%");
 		$("#hovered_content2").css("display","block");
@@ -194,7 +199,7 @@
 		$(".cinquo4").css("width","0%");
 		$(".cinquo5").css("width","0%");
 	},returnToNormal);
-	$(".cinquo3").hover(function(){
+	$(".firehover3").hover(function(){
 		$(".cinquo1").css("width","0%");
 		$(".cinquo2").css("width","0%");
 		$(".cinquo3").css("width","100%");
@@ -207,7 +212,7 @@
 		$(".cinquo4").css("width","0%");
 		$(".cinquo5").css("width","0%");
 	},returnToNormal);
-	$(".cinquo4").hover(function(){
+	$(".firehover4").hover(function(){
 		$(".cinquo1").css("width","0%");
 		$(".cinquo2").css("width","0%");
 		$(".cinquo3").css("width","0%");
@@ -220,7 +225,7 @@
 		$("#paragraphe4").css("display","none");
 		$(".cinquo5").css("width","0%");
 	},returnToNormal);
-	$(".cinquo5").hover(function(){
+	$(".firehover5").hover(function(){
 		$(".cinquo1").css("width","0%");
 		$(".cinquo2").css("width","0%");
 		$(".cinquo3").css("width","0%");
