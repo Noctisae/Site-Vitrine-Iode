@@ -140,7 +140,15 @@ include_once("header.php");
 	if (($err_formulaire) || (!isset($_POST['envoi'])))
 	{
 		echo'<div class="ui raised very padded text segment" style="margin:auto;height:800px;margin-top:150px;text-align:center">
-			<img src="../logos/contact.PNG" style="width:300px;height:95px;">
+			<div style="display:flex;flex-direction: column;height:80px;justify-content: space-between;font-family: "Swiss LT"!important;">
+				<div style="display:flex;">
+					<div style="margin:auto;"><b>Nathalie Jézéquel</b><br> 06 01 83 86 52</div>
+					<div style="margin:auto;"><b>Olivier Morazé </b><br> 06 84 15 30 72</div>
+				</div>
+				<div style="display:flex;">
+					<p style="text-decoration: underline;margin:auto;height:40px;"><b>contact@agenceiode.com</b></p>
+				</div>
+			</div>
 			<form action="contact.php" method="post" class="ui form" style="height:100%;width:950px;text-align:left;">
 				<div class="ui horizontal segments" style="height:540px;">
 					<div class="ui segment" style="width:100%;">
