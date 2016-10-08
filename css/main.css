@@ -54,6 +54,13 @@ h1,h2,h3,h4,h5,h6,p{
 	height:100%;
 }
 
+.logo_fournisseur{
+	max-width: 450px!important;
+	max-height:70px!important;
+	width:100%!important;
+	height:100%;
+}
+
 .common_hover{
 	margin : 0px 0px 0px 0px;
 	padding : 0px 0px 0px 0px;
@@ -274,8 +281,8 @@ div.click > .clickable {
 	color:white;
 	background-color: rgba(64,64,64,1.0);
 	z-index:2;
-	width: 20%!important;
-	height: 100%!important;
+	width: 20vw!important;
+	height: 100vh!important;
 }
 
 .hovered_content_index{
@@ -295,7 +302,7 @@ div.click > .clickable {
 
 .paragraphe{
 	margin:auto!important;
-	background-color: rgba(255,255,255,0.6);
+	background-color: rgba(255,255,255,0.75);
 	width:100%;
 }
 
@@ -308,7 +315,7 @@ div.click > .clickable {
 }
 
 .alignement{
-	margin-top : 150px;
+	width:100%!important;
 }
 
 .flex-contain{

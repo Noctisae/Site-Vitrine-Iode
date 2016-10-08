@@ -85,7 +85,7 @@ include_once("header.php");
 					foreach ($temp as $photo) {
 						if($photo != ""){
 							echo'
-								<div class="swiper-slide centered"><img src="'.$photo.'" style="height:300px;" /></div>
+								<div class="swiper-slide centered"><img src="'.$photo.'" style="height:370px;" /></div>
 									';
 						}
 					}

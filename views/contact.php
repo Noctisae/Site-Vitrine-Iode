@@ -170,7 +170,7 @@ include_once("header.php");
 								<label>Téléphone *</label>
 								<input placeholder="06 00 00 00 00" type="text" id="telephone" value="'.stripslashes($telephone).'" >
 							</div>
-							<img src="../logos/logo iode.jpeg" style="position:absolute;top:0px;right:0px;width:100px;height:100px;">
+							<img src="../logos/logo iode.jpeg" style="position:absolute;top:0px;right:0px;width:90px;height:90px;">
 						</div>
 					</div>
 				</div>

@@ -2,6 +2,9 @@
 	session_start();
 	include_once('../php/default.php');
 	$tous_les_fournisseurs = array(recupFournisseur(1),recupFournisseur(2),recupFournisseur(3),recupFournisseur(4),recupFournisseur(5));
+	$temp = array(count(recupFournisseur(1)),count(recupFournisseur(2)),count(recupFournisseur(3)),count(recupFournisseur(4)),count(recupFournisseur(5)));
+
+	$height_max = max($temp);
 	?>
 	<!DOCTYPE html>
 	<html>
@@ -37,26 +40,24 @@
 		background-position:center;width:20%">';
 
 					//Partie normale
-					echo'
-						<div class="paragraphe paragraphe_accueil" id="paragraphe'.$i.'">
-							<br>				
-							<p class="align">
-								';
-							foreach ($partie_de_page as $fournisseur) {
-								echo'<a href="'.$fournisseur["url"].'"><img src="'.$fournisseur["logo"].'" style="width:50%;height:75px;"></a><br><br>';	
-							}
-					echo'	</p>
-						</div>';
-					
+						echo'
+						<div id="hoverr'.$i.'" style="margin:auto!important;width:100%!important;">
+							<div class="paragraphe paragraphe_accueil" id="paragraphe'.$i.'" style="margin:auto!important;text-align:center;display:flex!important;flex-direction: column;height:'.(string)(100*((int)$height_max)).'px!important">			
+									';
+								foreach ($partie_de_page as $fournisseur) {
+									echo'<a href="'.$fournisseur["url"].'" style="width:95%;height:60px;margin:auto!important"><img src="'.$fournisseur["logo"].'" style="width:80%;height:60px;"></a><br>';	
+								}
+						echo'
+							</div>';
 					//partie Hover
 					echo'<div class="hovered_content_telechargement" id="hovered_content'.$i.'" style="margin-top:0px">
-							<div class="alignement">
+							<div class="alignement" style="margin:auto!important;">
 					';
 
 					foreach ($partie_de_page as $fournisseur) {
 						echo'
 
-								<img src="'.$fournisseur["logo"].'" style="width:50%;height:75px;"/>
+								<div style="width:100%!important;background-color:rgba(255,255,255,0.75);"><img src="'.$fournisseur["logo"].'" style="width:80%;height:100px;"/></div><br>
 								<a style="color:white;" href="'.$fournisseur["catalogue"].'">Catalogue<br><i class="big file text icon"></i></a><br><br>';
 						echo'	<a style="color:white;" href="'.$fournisseur["catalogue_tarifs"].'">Tarifs<br><i class=" big file text icon"></i></a><br><br>';
 					}
@@ -64,7 +65,7 @@
 					echo'	</div>
 						</div>';
 
-					echo'</div>';
+					echo'</div></div>';
 
 					$i++;
 					}
@@ -100,20 +101,20 @@
 		$(".cinquo4").css("width","20%");
 		$(".cinquo5").css("width","20%");
 		$("#hovered_content1").css("display","none");
-		$("#paragraphe1").css("display","block");
+		$("#paragraphe1").css("display","flex");
 		$("#hovered_content2").css("display","none");
-		$("#paragraphe2").css("display","block");
+		$("#paragraphe2").css("display","flex");
 		$("#hovered_content3").css("display","none");
-		$("#paragraphe3").css("display","block");
+		$("#paragraphe3").css("display","flex");
 		$("#hovered_content4").css("display","none");
-		$("#paragraphe4").css("display","block");
+		$("#paragraphe4").css("display","flex");
 		$("#hovered_content5").css("display","none");
-		$("#paragraphe5").css("display","block");
+		$("#paragraphe5").css("display","flex");
 	}
 
-	$(".cinquo1").hover(function(){
+	$("#hoverr1").hover(function(){
 		$(".cinquo1").css("width","100%");
-		$("#hovered_content1").css("display","block");
+		$("#hovered_content1").css("display","flex");
 		$("#hovered_content1").css("width","20%!important");
 		$("#hovered_content1").css("height","100%");
 		$("#hovered_content1").css("text-align","center");
@@ -124,10 +125,10 @@
 		$(".cinquo4").css("width","0%");
 		$(".cinquo5").css("width","0%");
 	},returnToNormal);
-	$(".cinquo2").hover(function(){
+	$("#hoverr2").hover(function(){
 		$(".cinquo1").css("width","0%");
 		$(".cinquo2").css("width","100%");
-		$("#hovered_content2").css("display","block");
+		$("#hovered_content2").css("display","flex");
 		$("#hovered_content2").css("width","20%!important");
 		$("#hovered_content2").css("height","100%");
 		$("#hovered_content2").css("text-align","center");
@@ -137,11 +138,11 @@
 		$(".cinquo4").css("width","0%");
 		$(".cinquo5").css("width","0%");
 	},returnToNormal);
-	$(".cinquo3").hover(function(){
+	$("#hoverr3").hover(function(){
 		$(".cinquo1").css("width","0%");
 		$(".cinquo2").css("width","0%");
 		$(".cinquo3").css("width","100%");
-		$("#hovered_content3").css("display","block");
+		$("#hovered_content3").css("display","flex");
 		$("#hovered_content3").css("width","20%!important");
 		$("#hovered_content3").css("height","100%");
 		$("#hovered_content3").css("text-align","center");
@@ -150,12 +151,12 @@
 		$(".cinquo4").css("width","0%");
 		$(".cinquo5").css("width","0%");
 	},returnToNormal);
-	$(".cinquo4").hover(function(){
+	$("#hoverr4").hover(function(){
 		$(".cinquo1").css("width","0%");
 		$(".cinquo2").css("width","0%");
 		$(".cinquo3").css("width","0%");
 		$(".cinquo4").css("width","100%");
-		$("#hovered_content4").css("display","block");
+		$("#hovered_content4").css("display","flex");
 		$("#hovered_content4").css("width","20%!important");
 		$("#hovered_content4").css("height","100%");
 		$("#hovered_content4").css("text-align","center");
@@ -163,13 +164,13 @@
 		$("#paragraphe4").css("display","none");
 		$(".cinquo5").css("width","0%");
 	},returnToNormal);
-	$(".cinquo5").hover(function(){
+	$("#hoverr5").hover(function(){
 		$(".cinquo1").css("width","0%");
 		$(".cinquo2").css("width","0%");
 		$(".cinquo3").css("width","0%");
 		$(".cinquo4").css("width","0%");
 		$(".cinquo5").css("width","100%");
-		$("#hovered_content5").css("display","block");
+		$("#hovered_content5").css("display","flex");
 		$("#hovered_content5").css("width","20%!important");
 		$("#hovered_content5").css("height","100%");
 		$("#hovered_content5").css("text-align","center");

@@ -2,7 +2,6 @@
 	session_start();
 	include_once('../php/default.php');
 	$references = recupProjets();
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -39,7 +38,7 @@
 		foreach ($temp as $photo) {
 			if($photo != ""){
 				echo'
-					<div class="swiper-slide centered"><img src="'.$photo.'" style="height:300px;" /></div>
+					<div class="swiper-slide centered"><img src="'.$photo.'" style="height:370px;" /></div>
 				';
 			}
 		}
@@ -79,7 +78,7 @@
 		var mySwiper = new Swiper ('.swiper-container', {
 				// Optional parameters
 				loop: true,
-				height: '300px',
+				height: '370px',
 				centeredSlides: true,
 				slidesPerView: 3,
 				

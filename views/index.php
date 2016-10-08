@@ -9,6 +9,7 @@
 			$fournisseur = recupFournisseurId($id);
 			if(!empty($fournisseur['nom']) && !empty($fournisseur['url']) && !empty($fournisseur['images'])){
 				$affichage_fotorama = true;
+				$logo_header = $fournisseur["logo"];
 			}
 		}
 	}
@@ -19,7 +20,6 @@
 
 		$height_max = max($temp);
 	}
-	
 
 	?>
 	<!DOCTYPE html>
@@ -35,7 +35,6 @@
 		<link rel="stylesheet" type="text/css" href="../semantic/dist/semantic.min.css">
 		<link rel="stylesheet" type="text/css" href="../css/main.css">
 		<link rel="stylesheet" type="text/css" href="../css/fotorama.css">
-
 	</head>
 	<body id="body_accueil">
 	<?php
@@ -48,9 +47,10 @@
 			<?php
 				if($affichage_fotorama){
 					echo'
-					<div class="fotorama" data-nav="thumbs" data-width="100%"  data-minwidth="400"
-	     data-maxwidth="1920"  data-minheight="300"
-	     data-maxheight="75%" data-allowfullscreen="native" data-loop="true" data-keyboard=\'{"space": true, "home": true, "end": true, "up": true, "down": true}\' style="margin-top:10px;">
+					<div class="fotorama" data-nav="thumbs" data-width="100%" data-height="88%" data-minwidth="400"
+	     data-maxwidth="1920"  data-minheight="300" data-thumbwidth="130" data-thumbheight="130" data-navposition="bottom"
+	     data-maxheight="88%" data-allowfullscreen="native" data-loop="true" data-click="true"
+     data-swipe="true" data-arrows="true" data-keyboard=\'{"space": true, "home": true, "end": true, "up": true, "down": true}\' style="margin-top:10px;">
 											';
 					$temp = explode(";",$fournisseur['images']);
 					foreach ($temp as $image) {
@@ -89,21 +89,17 @@
 						-moz-background-size:cover;
 						-o-background-size:cover;
 						background-size:cover;
-						background-position:center;width:20%">';
+						background-position:center;width:20%;display:flex!important;">';
 
 						//Partie normale
 						echo'
-							<div class="paragraphe paragraphe_accueil" id="paragraphe'.$i.'">
-								<br>				
-								<p class="align" id="firehover'.$i.'">
+						<div id="hoverr'.$i.'" style="margin:auto!important;width:100%!important;">
+							<div class="paragraphe paragraphe_accueil" id="paragraphe'.$i.'" style="margin:auto!important;text-align:center;display:flex!important;flex-direction: column;height:'.(string)(100*((int)$height_max)).'px!important">			
 									';
 								foreach ($partie_de_page as $fournisseur) {
-									echo'<a href="'.$fournisseur["url"].'"><img src="'.$fournisseur["logo"].'" style="width:50%;height:60px;"></a><br><br>';	
+									echo'<a href="'.$fournisseur["url"].'" style="width:95%;height:60px;margin:auto!important"><img src="'.$fournisseur["logo"].'" style="width:80%;height:60px;"></a><br>';	
 								}
-								if(count($fournisseur) < $height_max){
-									echo'<div style="width:50%;height:60px;"></div>';
-								}
-						echo'	</p>
+						echo'
 							</div>';
 
 							//partie Hover
@@ -117,23 +113,22 @@
 						-o-background-size:cover!important;
 						background-size:cover!important;
 						background-position:center!important;z-index:100!important;" >
-							<a class="clickable '.$class.'" href="index.php?id='.$fournisseur['id'].'" onclick="$(\'.ui.modal.modal\''.$fournisseur['id'].'\').modal(\'show\');"></a>
-								<div class="paragraphe paragraphe_accueil">
-										<p class="align alignement_index">
-										<a href="'.$fournisseur["url"].'" style="width:100%!important;"><img src="'.$fournisseur["logo"].'" style="width:50%;height:75px;"></a><br><br>
-										</p>
-									</div>
-								</div>';
+										<a class="clickable '.$class.'" href="index.php?id='.$fournisseur['id'].'" onclick="$(\'.ui.modal.modal\''.$fournisseur['id'].'\').modal(\'show\');"></a>
+										<div class="paragraphe paragraphe_accueil">
+											<p class="align alignement_index">
+												<a href="'.$fournisseur["url"].'" style="width:100%!important;"><img src="'.$fournisseur["logo"].'" style="width:80%;height:120px!important"></a><br><br>
+											</p>
+										</div>
+									</div>';
 							$j++;
 							}
 
-							echo'</div></div>';
+							echo'</div></div></div>';
 							$i++;
 					}
 				}
 				
 			?>
-
 
 	</div>
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
@@ -162,20 +157,20 @@
 		$(".cinquo4").css("width","20%");
 		$(".cinquo5").css("width","20%");
 		$("#hovered_content1").css("display","none");
-		$("#paragraphe1").css("display","block");
+		$("#paragraphe1").css("display","flex");
 		$("#hovered_content2").css("display","none");
-		$("#paragraphe2").css("display","block");
+		$("#paragraphe2").css("display","flex");
 		$("#hovered_content3").css("display","none");
-		$("#paragraphe3").css("display","block");
+		$("#paragraphe3").css("display","flex");
 		$("#hovered_content4").css("display","none");
-		$("#paragraphe4").css("display","block");
+		$("#paragraphe4").css("display","flex");
 		$("#hovered_content5").css("display","none");
-		$("#paragraphe5").css("display","block");
+		$("#paragraphe5").css("display","flex");
 	}
 
-	$(".firehover1").hover(function(){
+	$("#hoverr1").hover(function(){
 		$(".cinquo1").css("width","100%");
-		$("#hovered_content1").css("display","block");
+		$("#hovered_content1").css("display","flex");
 		$("#hovered_content1").css("height","99.9vh");
 		$("#hovered_content1").css("width","99.9vw");
 		$("#hovered_content1").css("text-align","center");
@@ -186,10 +181,10 @@
 		$(".cinquo4").css("width","0%");
 		$(".cinquo5").css("width","0%");
 	},returnToNormal);
-	$(".firehover2").hover(function(){
+	$("#hoverr2").hover(function(){
 		$(".cinquo1").css("width","0%");
 		$(".cinquo2").css("width","100%");
-		$("#hovered_content2").css("display","block");
+		$("#hovered_content2").css("display","flex");
 		$("#hovered_content2").css("height","99.9vh");
 		$("#hovered_content2").css("width","99.9vw");
 		$("#hovered_content2").css("text-align","center");
@@ -199,11 +194,11 @@
 		$(".cinquo4").css("width","0%");
 		$(".cinquo5").css("width","0%");
 	},returnToNormal);
-	$(".firehover3").hover(function(){
+	$("#hoverr3").hover(function(){
 		$(".cinquo1").css("width","0%");
 		$(".cinquo2").css("width","0%");
 		$(".cinquo3").css("width","100%");
-		$("#hovered_content3").css("display","block");
+		$("#hovered_content3").css("display","flex");
 		$("#hovered_content3").css("height","99.9vh");
 		$("#hovered_content3").css("width","99.9vw");
 		$("#hovered_content3").css("text-align","center");
@@ -212,12 +207,12 @@
 		$(".cinquo4").css("width","0%");
 		$(".cinquo5").css("width","0%");
 	},returnToNormal);
-	$(".firehover4").hover(function(){
+	$("#hoverr4").hover(function(){
 		$(".cinquo1").css("width","0%");
 		$(".cinquo2").css("width","0%");
 		$(".cinquo3").css("width","0%");
 		$(".cinquo4").css("width","100%");
-		$("#hovered_content4").css("display","block");
+		$("#hovered_content4").css("display","flex");
 		$("#hovered_content4").css("height","99.9vh");
 		$("#hovered_content4").css("width","99.9vw");
 		$("#hovered_content4").css("text-align","center");
@@ -225,13 +220,13 @@
 		$("#paragraphe4").css("display","none");
 		$(".cinquo5").css("width","0%");
 	},returnToNormal);
-	$(".firehover5").hover(function(){
+	$("#hoverr5").hover(function(){
 		$(".cinquo1").css("width","0%");
 		$(".cinquo2").css("width","0%");
 		$(".cinquo3").css("width","0%");
 		$(".cinquo4").css("width","0%");
 		$(".cinquo5").css("width","99vw");
-		$("#hovered_content5").css("display","block");
+		$("#hovered_content5").css("display","flex");
 		$("#hovered_content5").css("height","99.9vh");
 		$("#hovered_content5").css("width","99.9vw");
 		$("#hovered_content5").css("text-align","center");
