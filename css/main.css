@@ -216,7 +216,6 @@ div.click > .clickable {
 }
 
 .equipe-container{
-	margin-top:75px!important;
 	background-color: rgba(64,64,64,1.0)!important;
 	color:white!important;
 }
@@ -378,4 +377,14 @@ div.click > .clickable {
 	margin-top: -15px !important;
 	width: 100%;
 	display: none;
+}
+
+.swiper-button-next{
+	-webkit-filter: grayscale(50%) brightness(500%) brightness(50%)!important; 
+  	filter: grayscale(50%) brightness(500%) brightness(50%)!important; 
+}
+
+.swiper-button-prev{
+	-webkit-filter: grayscale(50%) brightness(500%) brightness(50%)!important; 
+  	filter: grayscale(50%) brightness(500%) brightness(50%)!important; 
 }

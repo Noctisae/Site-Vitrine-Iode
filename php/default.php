@@ -69,6 +69,17 @@ function updateFournisseur($id,$nom,$priorite,$url,$catalogue,$catalogue_tarifs,
 
 function removeFournisseur($id){
 	$db = getDB();
+	$query = $db->prepare("SELECT images FROM Fournisseurs WHERE id=?");
+	$query->execute(array($id));
+	$temp = $query->fetchAll();
+
+	$images = explode(";",$temp);
+	foreach ($images as $image) {
+		$image = substr($image,3);
+		$image = "/home/fanch/www/iode/" + $image;
+		unlink($image);
+
+	}
 	$query = $db->prepare("DELETE FROM Fournisseurs WHERE id=?");
 	$query->execute(array($id));
 	return true;
@@ -91,6 +102,17 @@ function updateProjet($id,$nom,$adresse,$description,$photos){
 
 function removeProjet($id){
 	$db = getDB();
+	$query = $db->prepare("SELECT photos FROM Projets WHERE id=?");
+	$query->execute(array($id));
+	$temp = $query->fetchAll();
+
+	$images = explode(";",$temp);
+	foreach ($images as $image) {
+		$image = substr($image,3);
+		$image = "/home/fanch/www/iode/" + $image;
+		unlink($image);
+
+	}
 	$query = $db->prepare("DELETE FROM Projets WHERE id=?");
 	$query->execute(array($id));
 	return true;
@@ -243,6 +265,17 @@ function addSurMesure($photos){
 
 function removeSurMesure(){
 	$db = getDB();
+	$query = $db->prepare("SELECT images FROM Surmesure");
+	$query->execute(array($id));
+	$temp = $query->fetchAll();
+
+	$images = explode(";",$temp);
+	foreach ($images as $image) {
+		$image = substr($image,3);
+		$image = "/home/fanch/www/iode/" + $image;
+		unlink($image);
+
+	}
 	$query = $db->prepare('DELETE FROM Surmesure');
 	$query->execute();
 	return true;
@@ -250,6 +283,17 @@ function removeSurMesure(){
 
 function delActualite($id){
 	$db = getDB();
+	$query = $db->prepare("SELECT images FROM Actualites WHERE id=?");
+	$query->execute(array($id));
+	$temp = $query->fetchAll();
+
+	$images = explode(";",$temp);
+	foreach ($images as $image) {
+		$image = substr($image,3);
+		$image = "/home/fanch/www/iode/" + $image;
+		unlink($image);
+
+	}
 	$query = $db->prepare('DELETE FROM Actualites WHERE id=?');
 	$query->execute(array($id));
 	updateRSS();

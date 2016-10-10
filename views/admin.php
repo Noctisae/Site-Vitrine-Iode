@@ -599,7 +599,6 @@ include_once("header.php");
 			var myDropzone3 = new Dropzone("#dropzone_logo_add", { 
 				url: "../php/upload_admin_logo_fournisseurs.php", 
 				success : function(file, response){
-					alert(response);
 					if(response.includes("Erreur: ")){
 						$("#return_add_fournisseur_div").css("backgroundColor", "rgba(255,0,0,0.3)");
 						$("#return_add_fournisseur_para").text(response);
@@ -838,7 +837,6 @@ include_once("header.php");
 					function(data){
 						true_data = data.split("}");
 						true_data[0] = encode_utf8(true_data[0]) + '}';
-						alert(true_data[0]);
 						json	= JSON.parse(true_data[0]);
 						if(json.success){
 							$("#return_add_admin_div").css("backgroundColor", "rgba(0,255,0,0.3)");
@@ -938,7 +936,6 @@ include_once("header.php");
 						add_fournisseur_priorite : $("#add_fournisseur_priorite").val()
 					},
 					function(data){
-						alert(data);
 						true_data = data.split("}");
 						true_data[0] = encode_utf8(true_data[0]) + '}';
 						json	= JSON.parse(true_data[0]);
