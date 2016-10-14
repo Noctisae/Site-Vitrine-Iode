@@ -38,7 +38,7 @@ function recupAdmins(){
 
 function recupFournisseurs(){
 	$db = getDB();
-	$query = $db->prepare('SELECT id,nom FROM Fournisseurs');
+	$query = $db->prepare('SELECT id,nom,priorite FROM Fournisseurs');
 	$query->execute();
 	$temp = $query->fetchAll();
 	return $temp;

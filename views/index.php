@@ -9,7 +9,7 @@
 			$fournisseur = recupFournisseurId($id);
 			if(!empty($fournisseur['nom']) && !empty($fournisseur['url']) && !empty($fournisseur['images'])){
 				$affichage_fotorama = true;
-				$logo_header = $fournisseur["logo"];
+				$logo_header = explode(";",$fournisseur["logo"])[1];
 			}
 		}
 	}
@@ -94,10 +94,10 @@
 						//Partie normale
 						echo'
 						<div id="hoverr'.$i.'" style="margin:auto!important;width:100%!important;">
-							<div class="paragraphe paragraphe_accueil" id="paragraphe'.$i.'" style="margin:auto!important;text-align:center;display:flex!important;flex-direction: column;height:'.(string)(100*((int)$height_max)).'px!important">			
+							<div class="paragraphe paragraphe_accueil" id="paragraphe'.$i.'" style="margin:auto!important;text-align:center;display:flex!important;flex-direction: column;height:'.(string)(15*((int)$height_max)).'vh!important">			
 									';
 								foreach ($partie_de_page as $fournisseur) {
-									echo'<a href="'.$fournisseur["url"].'" style="width:95%;height:60px;margin:auto!important"><img src="'.$fournisseur["logo"].'" style="width:80%;height:60px;"></a><br>';	
+									echo'<a href="'.$fournisseur["url"].'" style="width:95%;height:60px;margin:auto!important"><img src="'.explode(";",$fournisseur["logo"])[0].'" style="width:80%;height:auto!important;"></a><br>';	
 								}
 						echo'
 							</div>';
@@ -116,7 +116,7 @@
 										<a class="clickable '.$class.'" href="index.php?id='.$fournisseur['id'].'" onclick="$(\'.ui.modal.modal\''.$fournisseur['id'].'\').modal(\'show\');"></a>
 										<div class="paragraphe paragraphe_accueil">
 											<p class="align alignement_index">
-												<a href="'.$fournisseur["url"].'" style="width:100%!important;"><img src="'.$fournisseur["logo"].'" style="width:80%;height:120px!important"></a><br><br>
+												<a href="'.$fournisseur["url"].'" style="width:100%!important;"><img src="'.explode(";",$fournisseur["logo"])[1].'" style="max-width:80%;height:auto!important"></a><br><br>
 											</p>
 										</div>
 									</div>';

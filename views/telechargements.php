@@ -45,7 +45,7 @@
 							<div class="paragraphe paragraphe_accueil" id="paragraphe'.$i.'" style="margin:auto!important;text-align:center;display:flex!important;flex-direction: column;height:'.(string)(100*((int)$height_max)).'px!important">			
 									';
 								foreach ($partie_de_page as $fournisseur) {
-									echo'<a href="'.$fournisseur["url"].'" style="width:95%;height:60px;margin:auto!important"><img src="'.$fournisseur["logo"].'" style="width:80%;height:60px;"></a><br>';	
+									echo'<a href="'.$fournisseur["url"].'" style="width:95%;height:60px;margin:auto!important"><img src="'.explode(";",$fournisseur["logo"])[0].'" style="width:80%;height:60px;"></a><br>';	
 								}
 						echo'
 							</div>';
@@ -57,7 +57,7 @@
 					foreach ($partie_de_page as $fournisseur) {
 						echo'
 
-								<div style="width:100%!important;background-color:rgba(255,255,255,0.75);"><img src="'.$fournisseur["logo"].'" style="width:80%;height:100px;"/></div><br>
+								<div style="width:100%!important;background-color:rgba(255,255,255,0.75);"><img src="'.explode(";",$fournisseur["logo"])[1].'" style="width:80%;height:100px;"/></div><br>
 								<a style="color:white;" href="'.$fournisseur["catalogue"].'">Catalogue<br><i class="big file text icon"></i></a><br><br>';
 						echo'	<a style="color:white;" href="'.$fournisseur["catalogue_tarifs"].'">Tarifs<br><i class=" big file text icon"></i></a><br><br>';
 					}

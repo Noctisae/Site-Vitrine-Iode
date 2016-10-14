@@ -34,10 +34,10 @@
 				<div style="text-align:center;display: flex;">
 					<a href="news.xml" style="margin:auto"><img src="../img/rss.jpg" style="width:50px;height:50px;"></a>
 				</div>
-				<span style="text-align:center;display: flex; width:150px!important;">
+				<!--<span style="text-align:center;display: flex; width:150px!important;">
 					<a href="https://facebook.com" style="margin:auto" target="_blank"><i class="big facebook square icon" style="margin:auto"></i></a>
 					<a href="https://twitter.com" style="margin:auto" target="_blank"><i class="big twitter square icon" style="margin:auto"></i></a>
-				</span>
+				</span>-->
 				
 				
 				
@@ -59,28 +59,44 @@
 		</div>
 	</div>
 	<div class="mobile only row" style="font-family:'Swiss LT'!important;">
-		<div class="ui fixed navbar menu" style="font-family:'Swiss LT'!important;">
-			<a href="index.php" style="width:108px;height:100px;"><img src="../logos/logo iode.jpeg" class="logo"></a>
-						<div class="right menu">
-				<div class="item index" style="text-align:center;">
-					<a href="index.php" style="margin:auto">Accueil</a>
+		<div class="ui fixed menu navbar page grid cut-marge" style="font-family:'Swiss LT'!important;">
+			<div class="left" style="padding:0px 0px 0px 0px;width:108px;height:70px;">
+				<a href="index.php" style="width:108px;height:70px;"><img src="../logos/logo iode.jpeg" class="logo"></a>
+			</div>
+			<?php 
+			if(isset($logo_header)){
+				if(!empty($logo_header)){
+					echo '<div class="left " style="padding:0px 0px 0px 0px;width:350px;height:70px;">
+							<img src="'.$logo_header.'" class="logo_fournisseur">
+						</div>';
+				}
+			}
+
+			?>
+			
+			<div class="right menu">
+				<div class="index" style="text-align:center;display: flex;">
+					<a href="index.php" style="margin:auto;font-size:15px;">Accueil</a>
 				</div>
-				<div class="item references" style="text-align:center;">
-					<a href="references.php" style="margin:auto">Références</a>
+				<div class="references" style="text-align:center;display: flex;">
+					<a href="references.php" style="margin:auto;font-size:15px;">Références</a>
 				</div>
-				<div  class="item telechargements" style="text-align:center;">
-					<a href="telechargements.php" style="margin:auto">Téléchargement</a>
+				<div  class="telechargements" style="text-align:center;display: flex;">
+					<a href="telechargements.php" style="margin:auto;font-size:15px;">Téléchargement</a>
 				</div>
-				<div class="item contact" style="text-align:center;">
-					<a href="contact.php" style="margin:auto" >Contact</a>
+				<div class="contact" style="text-align:center;display: flex;">
+					<a href="contact.php" style="margin:auto;font-size:15px;" >Contact</a>
 				</div>
-				<div class="item equipe" style="text-align:center;">
-					<a href="equipe.php" style="margin:auto" >A propos de nous</a>
+				<div class="equipe" style="text-align:center;display: flex;">
+					<a href="equipe.php" style="margin:auto;font-size:15px;" >A propos de nous</a>
 				</div>
-				<div class="item" style="text-align:center;">
+				<div style="text-align:center;display: flex;">
 					<a href="news.xml" style="margin:auto"><img src="../img/rss.jpg" style="width:50px;height:50px;"></a>
 				</div>
-				
+				<!--<span style="text-align:center;display: flex; width:150px!important;">
+					<a href="https://facebook.com" style="margin:auto" target="_blank"><i class="big facebook square icon" style="margin:auto"></i></a>
+					<a href="https://twitter.com" style="margin:auto" target="_blank"><i class="big twitter square icon" style="margin:auto"></i></a>
+				</span>-->
 				
 				
 				

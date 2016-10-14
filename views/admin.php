@@ -272,7 +272,7 @@ include_once("header.php");
 
 									$fournisseurs = recupFournisseurs();
 									foreach ($fournisseurs as $fournisseur) {
-										echo('<option value="'.$fournisseur['id'].'">'.$fournisseur['nom'].'</option>');
+										echo('<option value="'.$fournisseur['id'].'">'.$fournisseur['nom'].', partie de page '.$fournisseur['priorite'].'</option>');
 									}
 									echo '
 								</select>
