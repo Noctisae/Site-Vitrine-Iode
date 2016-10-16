@@ -57,7 +57,7 @@
 					foreach ($partie_de_page as $fournisseur) {
 						echo'
 
-								<div style="width:100%!important;background-color:rgba(255,255,255,0.75);"><img src="'.explode(";",$fournisseur["logo"])[1].'" style="width:80%;height:100px;"/></div><br>
+								<div style="width:100%!important;background-color:rgba(255,255,255,0.75);"><img src="'.explode(";",$fournisseur["logo"])[1].'" style="width:80%;height:auto!important;"/></div><br>
 								<a style="color:white;" href="'.$fournisseur["catalogue"].'">Catalogue<br><i class="big file text icon"></i></a><br><br>';
 						echo'	<a style="color:white;" href="'.$fournisseur["catalogue_tarifs"].'">Tarifs<br><i class=" big file text icon"></i></a><br><br>';
 					}

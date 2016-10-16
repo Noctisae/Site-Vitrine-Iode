@@ -9,7 +9,13 @@
 			$fournisseur = recupFournisseurId($id);
 			if(!empty($fournisseur['nom']) && !empty($fournisseur['url']) && !empty($fournisseur['images'])){
 				$affichage_fotorama = true;
-				$logo_header = explode(";",$fournisseur["logo"])[1];
+				$temp = explode(";",$fournisseur["logo"])[1];
+				if(!empty($temp)){
+					$logo_header = $temp;
+				}
+				else{
+					$logo_header = explode(";",$fournisseur["logo"])[0];
+				}
 			}
 		}
 	}
@@ -94,10 +100,10 @@
 						//Partie normale
 						echo'
 						<div id="hoverr'.$i.'" style="margin:auto!important;width:100%!important;">
-							<div class="paragraphe paragraphe_accueil" id="paragraphe'.$i.'" style="margin:auto!important;text-align:center;display:flex!important;flex-direction: column;height:'.(string)(15*((int)$height_max)).'vh!important">			
+							<div class="paragraphe paragraphe_accueil" id="paragraphe'.$i.'" style="margin:auto!important;text-align:center;display:flex!important;flex-direction: column;height:35vh!important">			
 									';
 								foreach ($partie_de_page as $fournisseur) {
-									echo'<a href="'.$fournisseur["url"].'" style="width:95%;height:60px;margin:auto!important"><img src="'.explode(";",$fournisseur["logo"])[0].'" style="width:80%;height:auto!important;"></a><br>';	
+									echo'<a href="'.$fournisseur["url"].'" style="width:95%;height:'.(float)(90.0/$height_max).'%!important;margin:auto!important;display:flex;"><img src="'.explode(";",$fournisseur["logo"])[0].'" style="width:70%;height:auto!important;margin:auto;max-height:'.(float)(35.0/$height_max).'vh!important"></a>';	
 								}
 						echo'
 							</div>';

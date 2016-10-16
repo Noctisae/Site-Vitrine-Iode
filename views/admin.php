@@ -72,6 +72,8 @@
 	<link rel="stylesheet" type="text/css" href="../semantic/dist/semantic.min.css">
 	<link rel="stylesheet" type="text/css" href="../css/main.css">
 	<link rel="stylesheet" type="text/css" href="../css/dropzone.css">
+	<link rel="stylesheet" type="text/css" href="../css/sweetalert.css">
+	<script type="text/javascript" src="../js/sweetalert.min.js"></script>
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
 	<script type="text/javascript" src="../js/jquery-migrate.min.js"></script>
 	<script type="text/javascript" src="../semantic/dist/semantic.min.js"></script>
@@ -121,9 +123,7 @@ include_once("header.php");
 								<button id="add_admin" class="ui button large fluid green">Ajouter un nouvel administrateur</button>
 							</div>
 					</div>
-					<div style="height:0px;margin-top:20px;transition: height 2s;" class="ui large fluid" id="return_add_admin_div">
-						<p id="return_add_admin_para"></p>
-					</div>
+					
 				</div>
 				<div class="column ten wide form-holder">
 					<h2 class="center aligned header form-head" style="color:black;">Supprimer un administrateur</h2>
@@ -144,9 +144,7 @@ include_once("header.php");
 							<button id="del_admin" class="ui button large fluid red">Supprimer cet administrateur</button>
 						</div>
 					</div>
-					<div style="height:0px;margin-top:20px;transition: height 2s;" class="ui large fluid" id="return_del_admin_div">
-						<p id="return_del_admin_para"></p>
-					</div>
+					
 				</div>
 				<div class="column ten wide form-holder">
 					<h2 class="center aligned header form-head" style="color:black;">Modifier votre mot de passe</h2>
@@ -170,9 +168,7 @@ include_once("header.php");
 							<button id="update_admin" class="ui button large fluid blue">Modifier mon mot de passe</button>
 						</div>
 					</div>
-					<div style="height:0px;margin-top:20px;transition: height 2s;" class="ui large fluid" id="return_update_admin_div">
-						<p id="return_update_admin_para"></p>
-					</div>
+					
 				</div>
 
 			</div>
@@ -235,9 +231,7 @@ include_once("header.php");
 							<button id="add_fournisseur" class="ui button large fluid green">Ajouter un nouveau fournisseur</button>
 						</div>
 					</div>
-					<div style="height:0px;margin-top:20px;transition: height 2s;" class="ui large fluid" id="return_add_fournisseur_div">
-						<p id="return_add_fournisseur_para"></p>
-					</div>
+					
 				</div>
 				<div class="column ten wide form-holder">
 					<h2 class="center aligned header form-head" style="color:black;">Supprimer un fournisseur</h2>
@@ -258,9 +252,7 @@ include_once("header.php");
 								<button id="del_fournisseur" class="ui button large fluid red">Supprimer ce fournisseur</button>
 							</div>
 					</div>
-					<div style="height:0px;margin-top:20px;transition: height 2s;" class="ui large fluid" id="return_del_fournisseur_div">
-						<p id="return_del_fournisseur_para"></p>
-					</div>
+					
 				</div>
 				<div class="column ten wide form-holder">
 					<h2 class="center aligned header form-head" style="color:black;">Modifier un fournisseur</h2>
@@ -311,9 +303,7 @@ include_once("header.php");
 								<button id="update_fournisseur" class="ui button large fluid blue">Modifier ce fournisseur</button>
 							</div>
 					</div>
-					<div style="height:0px;margin-top:20px;transition: height 2s;" class="ui large fluid" id="return_update_fournisseur_div">
-						<p id="return_update_fournisseur_para"></p>
-					</div>
+					
 				</div>
 			</div>
 		</div>';
@@ -359,9 +349,7 @@ include_once("header.php");
 							<button id="add_projet" class="ui button large fluid green">Ajouter un nouveau projet</button>
 						</div>
 					</div>
-					<div style="height:0px;margin-top:20px;transition: height 2s;" class="ui large fluid" id="return_add_projet_div">
-						<p id="return_add_projet_para"></p>
-					</div>
+					
 				</div>
 				<div class="column ten wide form-holder">
 					<h2 class="center aligned header form-head" style="color:black;">Supprimer un projet</h2>
@@ -384,9 +372,7 @@ include_once("header.php");
 							<button id="del_projet" class="ui button large fluid red"Supprimer ce projet</button>
 						</div>
 					</div>
-					<div style="height:0px;margin-top:20px;transition: height 2s;" class="ui large fluid" id="return_del_projet_div">
-						<p id="return_del_projet_para"></p>
-					</div>
+					
 				</div>
 				<div class="column ten wide form-holder">
 					<h2 class="center aligned header form-head" style="color:black;">Modifier un projet</h2>
@@ -426,9 +412,7 @@ include_once("header.php");
 							<button value="" id="update_projet" class="ui button large fluid blue">Modifier ce projet</button>
 						</div>
 					</div>
-					<div style="height:0px;margin-top:20px;transition: height 2s;"class="ui large fluid" id="return_update_fournisseur_div">
-						<p id="return_update_fournisseur_para"></p>
-					</div>
+					
 				</div>
 			</div>
 		</div>';
@@ -465,9 +449,7 @@ include_once("header.php");
 								<button id="add_actualite" class="ui button large fluid green">Ajouter une nouvelle actualité</button>
 							</div>
 						</div>
-						<div style="height:0px;margin-top:20px;transition: height 2s;" class="ui large fluid" id="return_add_actualite_div">
-							<p id="return_add_actualite_para"></p>
-						</div>
+						
 					</div>
 					<div class="column ten wide form-holder">
 						<h2 class="center aligned header form-head" style="color:black;">Supprimer une actualité</h2>
@@ -490,9 +472,7 @@ include_once("header.php");
 								<button id="del_actualite" class="ui button large fluid red">Supprimer cette actualité</button>
 							</div>
 						</div>
-						<div style="height:0px;margin-top:20px;transition: height 2s;" class="ui large fluid" id="return_del_actualite_div">
-							<p id="return_del_actualite_para"></p>
-						</div>
+						
 					</div>
 					<div class="column ten wide form-holder">
 						<h2 class="center aligned header form-head" style="color:black;">Ajouter des photos de sur-mesure</h2>
@@ -506,9 +486,7 @@ include_once("header.php");
 								<button id="add_surmesure" class="ui button large fluid green">Ajouter de nouvelles photos au sur-mesure</button>
 							</div>
 						</div>
-						<div style="height:0px;margin-top:20px;transition: height 2s;" class="ui large fluid" id="return_add_surmesure_div">
-							<p id="return_add_surmesure_para"></p>
-						</div>
+						
 					</div>
 					<div class="column ten wide form-holder">
 						<h2 class="center aligned header form-head" style="color:black;">Supprimer les photos sur le Sur-Mesure</h2>
@@ -516,9 +494,7 @@ include_once("header.php");
 								<button id="del_surmesure" class="ui button large fluid red">Supprimer toutes les photos de sur-mesure</button>
 							</div>
 						</div>
-						<div style="height:0px;margin-top:20px;transition: height 2s;" class="ui large fluid" id="return_del_surmesure_div">
-							<p id="return_del_surmesure_para"></p>
-						</div>
+						
 					</div>
 				</div>
 			</div>
@@ -566,14 +542,15 @@ include_once("header.php");
 			$('.menu .item').tab();
 			Dropzone.autoDiscover = false;
 			//Dropzones ajout de fournisseur
-			var myDropzone = new Dropzone("#dropzone_catalogues_add", { 
+			myDropzone = new Dropzone("#dropzone_catalogues_add", { 
 				url: "../php/upload_admin_catalogues_fournisseurs.php", 
 				success : function(file, response){
 					if(response.includes("Erreur: ")){
-						$("#return_add_fournisseur_div").css("backgroundColor", "rgba(255,0,0,0.3)");
-						$("#return_add_fournisseur_para").text(response);
-						$("#return_add_fournisseur_div").css("height", "50px");
-						setTimeout(function(){$("#return_add_fournisseur_div").css("height", "0px");$("#return_add_fournisseur_para").text("");}, 10000);
+						swal({
+							title: "Erreur lors de l'upload du catalogue du fournisseur",
+							text: response,
+							type: "error"
+						});
 					}
 					else{
 				   		$("#add_fournisseur_catalogue").val($("#add_fournisseur_catalogue").val()+response);
@@ -581,14 +558,15 @@ include_once("header.php");
 				}
 			});
 
-			var myDropzone2 = new Dropzone("#dropzone_catalogues_tarifs_add", { 
+			myDropzone2 = new Dropzone("#dropzone_catalogues_tarifs_add", { 
 				url: "../php/upload_admin_catalogues_tarifs_fournisseurs.php", 
 				success : function(file, response){
 					if(response.includes("Erreur: ")){
-						$("#return_add_fournisseur_div").css("backgroundColor", "rgba(255,0,0,0.3)");
-						$("#return_add_fournisseur_para").text(response);
-						$("#return_add_fournisseur_div").css("height", "50px");
-						setTimeout(function(){$("#return_add_fournisseur_div").css("height", "0px");$("#return_add_fournisseur_para").text("");}, 10000);
+						swal({
+							title: "Erreur lors de l'upload du catalogue de tarifs du fournisseur",
+							text: response,
+							type: "error"
+						});
 					}
 					else{
 				   		$("#add_fournisseur_catalogue_tarifs").val($("#add_fournisseur_catalogue_tarifs").val()+response);
@@ -596,14 +574,15 @@ include_once("header.php");
 				}
 			});
 
-			var myDropzone3 = new Dropzone("#dropzone_logo_add", { 
+			myDropzone3 = new Dropzone("#dropzone_logo_add", { 
 				url: "../php/upload_admin_logo_fournisseurs.php", 
 				success : function(file, response){
 					if(response.includes("Erreur: ")){
-						$("#return_add_fournisseur_div").css("backgroundColor", "rgba(255,0,0,0.3)");
-						$("#return_add_fournisseur_para").text(response);
-						$("#return_add_fournisseur_div").css("height", "50px");
-						setTimeout(function(){$("#return_add_fournisseur_div").css("height", "0px");$("#return_add_fournisseur_para").text("");}, 10000);
+						swal({
+							title: "Erreur lors de l'upload des logos du fournisseur",
+							text: response,
+							type: "error"
+						});
 					}
 					else{
 				   		$("#add_fournisseur_logo").val($("#add_fournisseur_logo").val()+response);
@@ -611,14 +590,15 @@ include_once("header.php");
 				}
 			});
 
-			var myDropzone4 = new Dropzone("#dropzone_photos_fournisseurs_add", { 
+			myDropzone4 = new Dropzone("#dropzone_photos_fournisseurs_add", { 
 				url: "../php/upload_admin_photos_fournisseurs.php", 
 				success : function(file, response){
 					if(response.includes("Erreur: ")){
-						$("#return_add_fournisseur_div").css("backgroundColor", "rgba(255,0,0,0.3)");
-						$("#return_add_fournisseur_para").text(response);
-						$("#return_add_fournisseur_div").css("height", "50px");
-						setTimeout(function(){$("#return_add_fournisseur_div").css("height", "0px");$("#return_add_fournisseur_para").text("");}, 10000);
+						swal({
+							title: "Erreur lors de l'upload des photos du fournisseur",
+							text: response,
+							type: "error"
+						});
 					}
 					else{
 				   		$("#add_fournisseur_photos").val($("#add_fournisseur_photos").val()+response);
@@ -628,14 +608,15 @@ include_once("header.php");
 
 			
 			//Dropzone Update de fournisseurs
-			var myDropzone5 = new Dropzone("#dropzone_catalogues_update", { 
+			myDropzone5 = new Dropzone("#dropzone_catalogues_update", { 
 				url: "../php/upload_admin_catalogues_fournisseurs.php", 
 				success : function(file, response){
 					if(response.includes("Erreur: ")){
-						$("#return_update_fournisseur_div").css("backgroundColor", "rgba(255,0,0,0.3)");
-						$("#return_update_fournisseur_para").text(response);
-						$("#return_update_fournisseur_div").css("height", "50px");
-						setTimeout(function(){$("#return_update_fournisseur_div").css("height", "0px");$("#return_update_fournisseur_para").text("");}, 10000);
+						swal({
+							title: "Erreur lors de l'upload du catalogue du fournisseur",
+							text: response,
+							type: "error"
+						});
 					}
 					else{
 				   		$("#update_fournisseur_catalogue").val($("#update_fournisseur_catalogue").val()+response);
@@ -643,14 +624,15 @@ include_once("header.php");
 				}
 			});
 
-			var myDropzone6 = new Dropzone("#dropzone_catalogues_tarifs_update", { 
+			myDropzone6 = new Dropzone("#dropzone_catalogues_tarifs_update", { 
 				url: "../php/upload_admin_catalogues_tarifs_fournisseurs.php", 
 				success : function(file, response){
 					if(response.includes("Erreur: ")){
-						$("#return_update_fournisseur_div").css("backgroundColor", "rgba(255,0,0,0.3)");
-						$("#return_update_fournisseur_para").text(response);
-						$("#return_update_fournisseur_div").css("height", "50px");
-						setTimeout(function(){$("#return_update_fournisseur_div").css("height", "0px");$("#return_update_fournisseur_para").text("");}, 10000);
+						swal({
+							title: "Erreur lors de l'upload du catalogue de tarifs du fournisseur",
+							text: response,
+							type: "error"
+						});
 					}
 					else{
 				   		$("#update_fournisseur_catalogue_tarifs").val($("#update_fournisseur_catalogue_tarifs").val()+response);
@@ -658,14 +640,15 @@ include_once("header.php");
 				}
 			});
 
-			var myDropzone7 = new Dropzone("#dropzone_logo_update", { 
+			myDropzone7 = new Dropzone("#dropzone_logo_update", { 
 				url: "../php/upload_admin_logo_fournisseurs.php", 
 				success : function(file, response){
 					if(response.includes("Erreur: ")){
-						$("#return_update_fournisseur_div").css("backgroundColor", "rgba(255,0,0,0.3)");
-						$("#return_update_fournisseur_para").text(response);
-						$("#return_update_fournisseur_div").css("height", "50px");
-						setTimeout(function(){$("#return_update_fournisseur_div").css("height", "0px");$("#return_update_fournisseur_para").text("");}, 10000);
+						swal({
+							title: "Erreur lors de l'upload des logos du fournisseur",
+							text: response,
+							type: "error"
+						});
 					}
 					else{
 				   		$("#update_fournisseur_logo").val($("#update_fournisseur_logo").val()+response);
@@ -673,14 +656,15 @@ include_once("header.php");
 				}
 			});
 
-			var myDropzone8 = new Dropzone("#dropzone_photos_fournisseurs_update", { 
+			myDropzone8 = new Dropzone("#dropzone_photos_fournisseurs_update", { 
 				url: "../php/upload_admin_photos_fournisseurs.php", 
 				success : function(file, response){
 					if(response.includes("Erreur: ")){
-						$("#return_update_fournisseur_div").css("backgroundColor", "rgba(255,0,0,0.3)");
-						$("#return_update_fournisseur_para").text(response);
-						$("#return_update_fournisseur_div").css("height", "50px");
-						setTimeout(function(){$("#return_update_fournisseur_div").css("height", "0px");$("#return_update_fournisseur_para").text("");}, 10000);
+						swal({
+							title: "Erreur lors de l'upload des photos du fournisseur",
+							text: response,
+							type: "error"
+						});
 					}
 					else{
 				   		$("#update_fournisseur_catalogue").val($("#update_fournisseur_catalogue").val()+response);
@@ -689,14 +673,15 @@ include_once("header.php");
 			});
 
 			//Dropzone ajout de projets
-			var myDropzone9 = new Dropzone("#dropzone_photos_projets_add", { 
+			myDropzone9 = new Dropzone("#dropzone_photos_projets_add", { 
 				url: "../php/upload_admin_photos_projets.php", 
 				success : function(file, response){
 					if(response.includes("Erreur: ")){
-						$("#return_add_projet_div").css("backgroundColor", "rgba(255,0,0,0.3)");
-						$("#return_add_projet_para").text(response);
-						$("#return_add_projet_div").css("height", "50px");
-						setTimeout(function(){$("#return_add_projet_div").css("height", "0px");$("#return_add_projet_para").text("");}, 10000);
+						swal({
+							title: "Erreur lors de l'upload des photos du projet",
+							text: response,
+							type: "error"
+						});
 					}
 					else{
 				   		$("#add_projet_photos").val($("#add_projet_photos").val()+response);
@@ -706,14 +691,15 @@ include_once("header.php");
 
 
 			//Dropzone update de projets
-			var myDropzone10 = new Dropzone("#dropzone_photos_projets_update", { 
+			myDropzone10 = new Dropzone("#dropzone_photos_projets_update", { 
 				url: "../php/upload_admin_photos_projets.php", 
 				success : function(file, response){
 					if(response.includes("Erreur: ")){
-						$("#return_update_projet_div").css("backgroundColor", "rgba(255,0,0,0.3)");
-						$("#return_update_projet_para").text(response);
-						$("#return_update_projet_div").css("height", "50px");
-						setTimeout(function(){$("#return_update_projet_div").css("height", "0px");$("#return_update_projet_para").text("");}, 10000);
+						swal({
+							title: "Erreur lors de l'upload des photos du projet",
+							text: response,
+							type: "error"
+						});
 					}
 					else{
 				   		$("#update_projet_photos").val($("#update_projet_photos").val()+response);
@@ -722,14 +708,15 @@ include_once("header.php");
 			});
 
 			//Dropzone Actualités
-			var myDropzone12 = new Dropzone("#dropzone_photos_actualite_add", { 
+			myDropzone12 = new Dropzone("#dropzone_photos_actualite_add", { 
 				url: "../php/upload_admin_photos_actualites.php", 
 				success : function(file, response){
 					if(response.includes("Erreur: ")){
-						$("#return_add_actualite_div").css("backgroundColor", "rgba(255,0,0,0.3)");
-						$("#return_add_actualite_para").text(response);
-						$("#return_add_actualite_div").css("height", "50px");
-						setTimeout(function(){$("#return_add_actualite_div").css("height", "0px");$("#return_add_actualite_para").text("");}, 10000);
+						swal({
+							title: "Erreur lors de l'upload des photos de l'actualité",
+							text: response,
+							type: "error"
+						});
 					}
 					else{
 				   		$("#add_actualite_photo").val($("#add_actualite_photo").val()+response);
@@ -738,14 +725,15 @@ include_once("header.php");
 			});
 
 			//Dropzone Sur-Mesure
-			var myDropzone13 = new Dropzone("#dropzone_photos_surmesure_add", { 
+			myDropzone13 = new Dropzone("#dropzone_photos_surmesure_add", { 
 				url: "../php/upload_admin_photos_sur_mesure.php", 
 				success : function(file, response){
 					if(response.includes("Erreur: ")){
-						$("#return_add_surmesure_div").css("backgroundColor", "rgba(255,0,0,0.3)");
-						$("#return_add_surmesure_para").text(response);
-						$("#return_add_surmesure_div").css("height", "50px");
-						setTimeout(function(){$("#return_add_surmesure_div").css("height", "0px");$("#return_add_surmesure_para").text("");}, 10000);
+						swal({
+							title: "Erreur lors de l'upload des photos du sur-mesure",
+							text: response,
+							type: "error"
+						});
 					}
 					else{
 				   		$("#add_surmesure_photos").val($("#add_surmesure_photos").val()+response);
@@ -819,9 +807,6 @@ include_once("header.php");
 
 		});
 
-	</script>
-	<script type="text/javascript">
-
 		$(document).ready(function(){
 
 			$("#add_admin").click(function(){
@@ -839,16 +824,21 @@ include_once("header.php");
 						true_data[0] = encode_utf8(true_data[0]) + '}';
 						json	= JSON.parse(true_data[0]);
 						if(json.success){
-							$("#return_add_admin_div").css("backgroundColor", "rgba(0,255,0,0.3)");
 							$("#add_admin_id").val('');
 							$("#add_admin_mdp").val('');
+							swal({
+								title: "Administrateur ajouté !",
+								text: json.msg,
+								type: "success"
+							});
 						}
 						else{
-							$("#return_add_admin_div").css("backgroundColor", "rgba(255,0,0,0.3)");
+							swal({
+								title: "Erreur lors de l'ajout de cet administrateur !",
+								text: json.msg,
+								type: "error"
+							});
 						}
-						$("#return_add_admin_para").text(json.msg);
-						$("#return_add_admin_div").css("height", "150px");
-						setTimeout(function(){$("#return_add_admin_div").css("height", "0px")}, 10000);
 					},
 					'text' 
 				);
@@ -868,15 +858,20 @@ include_once("header.php");
 						true_data[0] = encode_utf8(true_data[0]) + '}';
 						json	= JSON.parse(true_data[0]);
 						if(json.success){
-							$("#return_del_admin_div").css("backgroundColor", "rgba(0,255,0,0.3)");
 							$("#del_admin_id").val('');
+							swal({
+								title: "Administrateur supprimé !",
+								text: json.msg,
+								type: "success"
+							});
 						}
 						else{
-							$("#return_del_admin_div").css("backgroundColor", "rgba(255,0,0,0.3)");
+							swal({
+								title: "Erreur lors de la suppression de cet administrateur !",
+								text: json.msg,
+								type: "error"
+							});
 						}
-						$("#return_del_admin_para").text(json.msg);
-						$("#return_del_admin_div").css("height", "150px");
-						setTimeout(function(){$("#return_del_admin_div").css("height", "0px")}, 10000);
 					},
 					'text' 
 				);
@@ -898,17 +893,22 @@ include_once("header.php");
 							true_data[0] = encode_utf8(true_data[0]) + '}';
 							json	= JSON.parse(true_data[0]);
 							if(json.success){
-								$("#return_update_admin_div").css("backgroundColor", "rgba(0,255,0,0.3)");
 								$("#update_admin_id").val('');
 								$("#update_admin_mdp").val('');
 								$("#update_admin_old_mdp").val('');
+								swal({
+									title: "Mot de passe changé avec succés !",
+									text: json.msg,
+									type: "success"
+								});
 							}
 							else{
-								$("#return_update_admin_div").css("backgroundColor", "rgba(255,0,0,0.3)");
+								swal({
+									title: "Erreur lors de la modification de votre mot de passe !",
+									text: json.msg,
+									type: "error"
+								});
 							}
-							$("#return_update_admin_para").text(json.msg);
-							$("#return_update_admin_div").css("height", "150px");
-							setTimeout(function(){$("#return_update_admin_div").css("height", "0px")}, 10000);
 						},
 						'text' 
 					);
@@ -948,13 +948,23 @@ include_once("header.php");
 							$("#add_fournisseur_logo").val('');
 							$("#add_fournisseur_photos").val('');
 							$("#add_fournisseur_priorite").val('');
+							myDropzone.removeAllFiles();
+							myDropzone2.removeAllFiles();
+							myDropzone3.removeAllFiles();
+							myDropzone4.removeAllFiles();
+							swal({
+								title: "Fournisseur ajouté avec succès",
+								text: json.msg,
+								type: "success"
+							});
 						}
 						else{
-							$("#return_add_fournisseur_div").css("backgroundColor", "rgba(255,0,0,0.3)");
+							swal({
+								title: "Erreur lors de l'ajout de ce fournisseur",
+								text: json.msg,
+								type: "error"
+							});	
 						}
-						$("#return_add_fournisseur_para").text(json.msg);
-						$("#return_add_fournisseur_div").css("height", "50px");
-						setTimeout(function(){$("#return_add_fournisseur_div").css("height", "0px")}, 10000);
 					},
 					'text' 
 				);
@@ -974,15 +984,20 @@ include_once("header.php");
 						true_data[0] = encode_utf8(true_data[0]) + '}';
 						json	= JSON.parse(true_data[0]);
 						if(json.success){
-							$("#return_del_fournisseur_div").css("backgroundColor", "rgba(0,255,0,0.3)");
+							swal({
+								title: "Fournisseur effacé avec succès",
+								text: json.msg,
+								type: "success"
+							});
 						}
 						else{
-							$("#return_del_fournisseur_div").css("backgroundColor", "rgba(255,0,0,0.3)");
+							swal({
+								title: "Erreur lors de la suppression de ce fournisseur",
+								text: json.msg,
+								type: "error"
+							});
 							$("#del_fournisseur_id").val();
 						}
-						$("#return_del_fournisseur_para").text(json.msg);
-						$("#return_del_fournisseur_div").css("height", "50px");
-						setTimeout(function(){$("#return_del_fournisseur_div").css("height", "0px")}, 10000);
 					},
 					'text' 
 				);
@@ -1008,21 +1023,30 @@ include_once("header.php");
 						true_data[0] = encode_utf8(true_data[0]) + '}';
 						json	= JSON.parse(true_data[0]);
 						if(json.success){
-							$("#return_update_fournisseur_div").css("backgroundColor", "rgba(0,255,0,0.3)");
 							$("#update_fournisseur_nom").val('');
 							$("#update_fournisseur_url").val('');
 							$("#update_fournisseur_catalogue").val('');
-							update_fournisseur_catalogue_tarifs : $("#update_fournisseur_catalogue_tarifs").val('');
+							$("#update_fournisseur_catalogue_tarifs").val('');
 							$("#update_fournisseur_logo").val('');
 							$("#update_fournisseur_photos").val('');
 							$("#update_fournisseur_priorite").val('');
+							myDropzone5.removeAllFiles();
+							myDropzone6.removeAllFiles();
+							myDropzone7.removeAllFiles();
+							myDropzone8.removeAllFiles();
+							swal({
+								title: "Fournisseur modifié avec succès",
+								text: json.msg,
+								type: "success"
+							});
 						}
 						else{
-							$("#return_update_fournisseur_div").css("backgroundColor", "rgba(255,0,0,0.3)");
+							swal({
+								title: "Erreur lors de la modification de ce fournisseur",
+								text: json.msg,
+								type: "error"
+							});
 						}
-						$("#return_update_fournisseur_para").text(json.msg);
-						$("#return_update_fournisseur_div").css("height", "50px");
-						setTimeout(function(){$("#return_update_fournisseur_div").css("height", "0px")}, 10000);
 					},
 					'text' 
 				);
@@ -1044,18 +1068,24 @@ include_once("header.php");
 						true_data[0] = encode_utf8(true_data[0]) + '}';
 						json	= JSON.parse(true_data[0]);
 						if(json.success){
-							$("#return_add_projet_div").css("backgroundColor", "rgba(0,255,0,0.3)");
 							$("#add_projet_photos").val('');
 							$("#add_projet_nom").val('');
 							$("#add_projet_adresse").val('');
 							$("#add_projet_description").val('');
+							myDropzone9.removeAllFiles();
+							swal({
+								title: "Projet ajouté avec succès",
+								text: json.msg,
+								type: "success"
+							});
 						}
 						else{
-							$("#return_add_projet_div").css("backgroundColor", "rgba(255,0,0,0.3)");
+							swal({
+								title: "Erreur lors de l'ajout de ce projet",
+								text: json.msg,
+								type: "error"
+							});
 						}
-						$("#return_add_projet_para").text(json.msg);
-						$("#return_add_projet_div").css("height", "50px");
-						setTimeout(function(){$("#return_add_projet_div").css("height", "0px")}, 10000);
 					},
 					'text' 
 				);
@@ -1075,14 +1105,19 @@ include_once("header.php");
 						true_data[0] = encode_utf8(true_data[0]) + '}';
 						json	= JSON.parse(true_data[0]);
 						if(json.success){
-							$("#return_del_projet_div").css("backgroundColor", "rgba(0,255,0,0.3)");
+							swal({
+								title: "Projet supprimé avec succès",
+								text: json.msg,
+								type: "success"
+							});
 						}
 						else{
-							$("#return_del_projet_div").css("backgroundColor", "rgba(255,0,0,0.3)");
+							swal({
+								title: "Erreur lors de la suppression de ce projet",
+								text: json.msg,
+								type: "error"
+							});
 						}
-						$("#return_del_projet_para").text(json.msg);
-						$("#return_del_projet_div").css("height", "50px");
-						setTimeout(function(){$("#return_del_projet_div").css("height", "0px")}, 10000);
 					},
 					'text' 
 				);
@@ -1105,18 +1140,24 @@ include_once("header.php");
 						true_data[0] = encode_utf8(true_data[0]) + '}';
 						json	= JSON.parse(true_data[0]);
 						if(json.success){
-							$("#return_update_projet_div").css("backgroundColor", "rgba(0,255,0,0.3)");
 							$("#update_projet_nom").val('');
 							$("#update_projet_adresse").val('');
 							$("#update_projet_description").val('');
 							$("#update_projet_photos").val('');
+							myDropzone10.removeAllFiles();
+							swal({
+								title: "Projet modifié avec succès",
+								text: json.msg,
+								type: "success"
+							});
 						}
 						else{
-							$("#return_update_projet_div").css("backgroundColor", "rgba(255,0,0,0.3)");
+							swal({
+								title: "Erreur lors de la modification de ce projet",
+								text: json.msg,
+								type: "error"
+							});
 						}
-						$("#return_update_projet_para").text(json.msg);
-						$("#return_update_projet_div").css("height", "50px");
-						setTimeout(function(){$("#return_update_projet_div").css("height", "0px")}, 10000);
 					},
 					'text' 
 				);
@@ -1137,17 +1178,23 @@ include_once("header.php");
 						true_data[0] = encode_utf8(true_data[0]) + '}';
 						json	= JSON.parse(true_data[0]);
 						if(json.success){
-							$("#return_add_actualite_div").css("backgroundColor", "rgba(0,255,0,0.3)");
 							$("#add_actualite_titre").val('');
 							$("#add_actualite_description").val('');
 							$("#add_actualite_photo").val('');
+							myDropzone12.removeAllFiles();
+							swal({
+								title: "Actualité ajoutée avec succès",
+								text: json.msg,
+								type: "success"
+							});
 						}
 						else{
-							$("#return_add_actualite_div").css("backgroundColor", "rgba(255,0,0,0.3)");
+							swal({
+								title: "Erreur lors de l'ajout de cette actualité",
+								text: json.msg,
+								type: "error"
+							});
 						}
-						$("#return_add_actualite_para").text(json.msg);
-						$("#return_add_actualite_div").css("height", "50px");
-						setTimeout(function(){$("#return_add_actualite_div").css("height", "0px")}, 10000);
 					},
 					'text' 
 				);
@@ -1167,15 +1214,20 @@ include_once("header.php");
 						true_data[0] = encode_utf8(true_data[0]) + '}';
 						json	= JSON.parse(true_data[0]);
 						if(json.success){
-							$("#return_del_actualite_div").css("backgroundColor", "rgba(0,255,0,0.3)");
 							$("#del_actualite_id").val('');
+							swal({
+								title: "Actualité supprimée avec succès",
+								text: json.msg,
+								type: "success"
+							});
 						}
 						else{
-							$("#return_del_actualite_div").css("backgroundColor", "rgba(255,0,0,0.3)");
+							swal({
+								title: "Erreur lors de la suppression de cette actualité",
+								text: json.msg,
+								type: "error"
+							});
 						}
-						$("#return_del_actualite_para").text(json.msg);
-						$("#return_del_actualite_div").css("height", "50px");
-						setTimeout(function(){$("#return_del_actualite_div").css("height", "0px")}, 10000);
 					},
 					'text' 
 				);
@@ -1193,16 +1245,22 @@ include_once("header.php");
 						true_data[0] = encode_utf8(true_data[0]) + '}';
 						json	= JSON.parse(true_data[0]);
 						if(json.success){
-							$("#return_add_surmesure_div").css("backgroundColor", "rgba(0,255,0,0.3)");
 							$("#add_surmesure_photos").val('');
+							myDropzone13.removeAllFiles();
+							swal({
+								title: "Photos de sur-mesure ajoutées avec succès",
+								text: json.msg,
+								type: "success"
+							});
 						}
 						else{
-							$("#return_add_surmesure_div").css("backgroundColor", "rgba(255,0,0,0.3)");
+							swal({
+								title: "Erreur lors de l'ajout des photos de sur-mesure",
+								text: json.msg,
+								type: "error"
+							});
 						}
-						$("#return_add_surmesure_para").text(json.msg);
-						$("#return_add_surmesure_div").css("height", "50px");
-						setTimeout(function(){$("#return_add_surmesure_div").css("height", "0px")}, 10000);
-					},
+						},
 					'text' 
 				);
 			});
@@ -1219,14 +1277,19 @@ include_once("header.php");
 						true_data[0] = encode_utf8(true_data[0]) + '}';
 						json	= JSON.parse(true_data[0]);
 						if(json.success){
-							$("#return_del_surmesure_para").css("backgroundColor", "rgba(0,255,0,0.3)");
+							swal({
+								title: "Sur-mesure ajouté avec succès",
+								text: json.msg,
+								type: "success"
+							});
 						}
 						else{
-							$("#return_del_surmesure_para").css("backgroundColor", "rgba(255,0,0,0.3)");
+							swal({
+								title: "Erreur lors de la suppression des photos de sur-mesure",
+								text: json.msg,
+								type: "error"
+							});
 						}
-						$("#return_del_surmesure_para").text(json.msg);
-						$("#return_del_surmesure_div").css("height", "50px");
-						setTimeout(function(){$("#return_del_surmesure_div").css("height", "0px")}, 10000);
 					},
 					'text' 
 				);
