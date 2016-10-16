@@ -51,15 +51,23 @@
 							</div>';
 					//partie Hover
 					echo'<div class="hovered_content_telechargement" id="hovered_content'.$i.'" style="margin-top:0px">
-							<div class="alignement" style="margin:auto!important;">
+							<div class="alignement" style="display:flex;flex-direction: column;margin:auto!important;justify-content:space-around;">
 					';
 
 					foreach ($partie_de_page as $fournisseur) {
-						echo'
+						echo'<div>
 
-								<div style="width:100%!important;background-color:rgba(255,255,255,0.75)"><img src="'.explode(";",$fournisseur["logo"])[1].'" style="width:80%;height:auto!important;"/></div><br>
+								<div style="display:flex;flex-direction: column;width:100%!important;background-color:rgba(255,255,255,0.75);height:10vh!important"><img src="';
+													$temp = explode(";",$fournisseur["logo"])[1];
+													if(!empty($temp)){
+														$logo_1 = $temp;
+													}
+													else{
+														$logo_1 = explode(";",$fournisseur["logo"])[0];
+													}
+												echo $logo_1.'" style="width:80%;height:auto!important;max-height:9vh!important;margin:auto;"/></div><br>
 								<a style="color:white;" href="'.$fournisseur["catalogue"].'">Catalogue<br><i class="big file text icon"></i></a><br><br>';
-						echo'	<a style="color:white;" href="'.$fournisseur["catalogue_tarifs"].'">Tarifs<br><i class=" big file text icon"></i></a><br><br>';
+						echo'	<a style="color:white;" href="'.$fournisseur["catalogue_tarifs"].'">Tarifs<br><i class=" big file text icon"></i></a><br><br></div>';
 					}
 
 					echo'	</div>

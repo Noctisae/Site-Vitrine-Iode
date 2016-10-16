@@ -122,7 +122,15 @@
 										<a class="clickable '.$class.'" href="index.php?id='.$fournisseur['id'].'" onclick="$(\'.ui.modal.modal\''.$fournisseur['id'].'\').modal(\'show\');"></a>
 										<div class="paragraphe paragraphe_accueil">
 											<p class="align alignement_index">
-												<a href="'.$fournisseur["url"].'" style="width:100%!important;"><img src="'.explode(";",$fournisseur["logo"])[1].'" style="max-width:80%;height:auto!important"></a><br><br>
+												<a href="'.$fournisseur["url"].'" style="width:100%!important;margin:auto!important;text-align:center;display:flex!important;flex-direction: column;height:18vh!important"><img src="';
+													$temp = explode(";",$fournisseur["logo"])[1];
+													if(!empty($temp)){
+														$logo_1 = $temp;
+													}
+													else{
+														$logo_1 = explode(";",$fournisseur["logo"])[0];
+													}
+												echo $logo_1.'" style="max-width:80%;height:auto!important;margin:auto;max-height:75%!important"></a><br><br>
 											</p>
 										</div>
 									</div>';
