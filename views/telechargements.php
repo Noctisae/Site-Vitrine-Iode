@@ -42,10 +42,10 @@
 					//Partie normale
 						echo'
 						<div id="hoverr'.$i.'" style="margin:auto!important;width:100%!important;">
-							<div class="paragraphe paragraphe_accueil" id="paragraphe'.$i.'" style="margin:auto!important;text-align:center;display:flex!important;flex-direction: column;height:'.(string)(100*((int)$height_max)).'px!important">			
+							<div class="paragraphe paragraphe_accueil" id="paragraphe'.$i.'" style="margin:auto!important;text-align:center;display:flex!important;flex-direction: column;height:35vh!important">			
 									';
 								foreach ($partie_de_page as $fournisseur) {
-									echo'<a href="'.$fournisseur["url"].'" style="width:95%;height:60px;margin:auto!important"><img src="'.explode(";",$fournisseur["logo"])[0].'" style="width:80%;height:60px;"></a><br>';	
+									echo'<a href="'.$fournisseur["url"].'" style="width:95%;height:'.(float)(90.0/$height_max).'%!important;margin:auto!important;display:flex;"><img src="'.explode(";",$fournisseur["logo"])[0].'" style="width:70%;height:auto!important;margin:auto;max-height:'.(float)(35.0/$height_max).'vh!important"></a>';	
 								}
 						echo'
 							</div>';
@@ -57,7 +57,7 @@
 					foreach ($partie_de_page as $fournisseur) {
 						echo'
 
-								<div style="width:100%!important;background-color:rgba(255,255,255,0.75);"><img src="'.explode(";",$fournisseur["logo"])[1].'" style="width:80%;height:auto!important;"/></div><br>
+								<div style="width:100%!important;background-color:rgba(255,255,255,0.75)"><img src="'.explode(";",$fournisseur["logo"])[1].'" style="width:80%;height:auto!important;"/></div><br>
 								<a style="color:white;" href="'.$fournisseur["catalogue"].'">Catalogue<br><i class="big file text icon"></i></a><br><br>';
 						echo'	<a style="color:white;" href="'.$fournisseur["catalogue_tarifs"].'">Tarifs<br><i class=" big file text icon"></i></a><br><br>';
 					}
