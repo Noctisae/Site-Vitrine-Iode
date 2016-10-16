@@ -7,8 +7,8 @@
 			<?php 
 			if(isset($logo_header)){
 				if(!empty($logo_header)){
-					echo '<div class="left " style="padding:0px 0px 0px 0px;width:350px;height:70px;">
-							<img src="'.$logo_header.'" class="logo_fournisseur">
+					echo '<div class="left " style="padding:0px 0px 0px 0px;width:350px;margin:auto;">
+							<img src="'.$logo_header.'" class="logo_fournisseur" style="width:250px!important;height:auto!important;max-height:75px!important">
 						</div>';
 				}
 			}
