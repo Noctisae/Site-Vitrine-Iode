@@ -388,3 +388,9 @@ div.click > .clickable {
 	-webkit-filter: grayscale(50%) brightness(500%) brightness(50%)!important; 
   	filter: grayscale(50%) brightness(500%) brightness(50%)!important; 
 }
+
+@media only screen and (max-width: 1060px){
+	.div_menu{
+		width:100px!important;
+	}
+}

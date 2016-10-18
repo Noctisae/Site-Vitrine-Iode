@@ -27,7 +27,7 @@
 	<?php
 	foreach ($references as $reference) {
 		echo'
-		<div class="ui raised very padded text segment flex-contain references-container">
+		<div class="ui raised very padded text segment flex-contain references-container" style="margin-top:50px;">
 		<div class="paragraphe" style="width:100%;">
 		<h1 style="font-size:14">'.$reference['nom'].'</h1>
 		<div class="swiper-container">

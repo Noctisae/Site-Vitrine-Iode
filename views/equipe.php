@@ -25,7 +25,7 @@ include_once("header.php");
 
 ?>
 
-<div class="ui raised very padded text segment equipe-container">
+<div class="ui raised very padded text segment equipe-container" style="margin-top: 50px;">
 	<h1 class="ui header white-color">Équipe et philosophie</h1>
 		<p>L’Agence Iode est animée par une équipe commerciale en relation directe avec des fabricants européens de référence, chacun dans son domaine d’activité.
 	Notre offre de mobilier et d’accessoires est inspirée principalement de la tendance indoor-outdoor.<br>
