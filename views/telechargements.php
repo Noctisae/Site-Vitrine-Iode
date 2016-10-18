@@ -65,7 +65,7 @@
 													else{
 														$logo_1 = explode(";",$fournisseur["logo"])[0];
 													}
-												echo $logo_1.'" style="width:80%;height:auto!important;max-height:9vh!important;margin:auto;"/></div><br>
+												echo $logo_1.'" style="width:70%;height:auto!important;max-height:9vh!important;margin:auto;"/></div><br>
 								<a style="color:white;" href="'.$fournisseur["catalogue"].'">Catalogue<br><i class="big file text icon"></i></a><br><br>';
 						echo'	<a style="color:white;" href="'.$fournisseur["catalogue_tarifs"].'">Tarifs<br><i class=" big file text icon"></i></a><br><br></div>';
 					}

@@ -2,7 +2,7 @@
 	<div class="computer tablet only row" style="font-family:'Swiss LT'!important;">
 		<div class="ui fixed menu navbar page grid cut-marge" style="font-family:'Swiss LT'!important;">
 			<div class="left" style="padding:0px 0px 0px 0px;width:108px;height:70px;">
-				<a href="index.php" style="width:108px;height:70px;"><img src="../logos/logo iode.jpeg" class="logo"></a>
+				<a href="index.php" style="width:70px;height:auto;"><img src="../logos/logo iode.jpeg" class="logo"></a>
 			</div>
 			<?php 
 			if(isset($logo_header)){
