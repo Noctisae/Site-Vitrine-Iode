@@ -100,7 +100,7 @@
 						//Partie normale
 						echo'
 						<div id="hoverr'.$i.'" style="margin:auto!important;width:100%!important;">
-							<div class="paragraphe paragraphe_accueil" id="paragraphe'.$i.'" style="margin:auto!important;text-align:center;display:flex!important;flex-direction: column;height:35vh!important">			
+							<div class="paragraphe paragraphe_accueil" id="paragraphe'.$i.'" style="margin:auto!important;text-align:center;display:flex;flex-direction: column;height:35vh!important">			
 									';
 								foreach ($partie_de_page as $fournisseur) {
 									echo'<a href="'.$fournisseur["url"].'" style="width:95%;height:'.(float)(90.0/$height_max).'%!important;margin:auto!important;display:flex;"><img src="'.explode(";",$fournisseur["logo"])[0].'" style="width:70%;height:auto!important;margin:auto;max-height:'.(float)(35.0/$height_max).'vh!important"></a>';	
@@ -119,7 +119,7 @@
 						-o-background-size:cover!important;
 						background-size:cover!important;
 						background-position:center!important;z-index:100!important;" >
-										<a class="clickable '.$class.'" href="index.php?id='.$fournisseur['id'].'" onclick="$(\'.ui.modal.modal\''.$fournisseur['id'].'\').modal(\'show\');"></a>
+										<a class="clickable '.$class.'" href="index.php?id='.$fournisseur['id'].'"></a>
 										<div class="paragraphe paragraphe_accueil">
 											<p class="align alignement_index">
 												<a href="'.$fournisseur["url"].'" style="width:100%!important;margin:auto!important;text-align:center;display:flex!important;flex-direction: column;height:18vh!important"><img src="';
@@ -145,6 +145,7 @@
 			?>
 
 	</div>
+	</div>
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
 	<script type="text/javascript" src="../js/jquery-migrate.min.js"></script>
 	<script type="text/javascript" src="../semantic/dist/semantic.min.js"></script>
@@ -157,11 +158,6 @@
 		});
 		
 		$('.ui.dropdown').dropdown();
-		$('.ui.modal.un').modal();
-		$('.ui.modal.deux').modal();
-		$('.ui.modal.trois').modal();
-		$('.ui.modal.quatre').modal();
-		$('.ui.modal.cinq').modal();
 	});
 
 		var returnToNormal = function(){
