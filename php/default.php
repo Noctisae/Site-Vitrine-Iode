@@ -216,10 +216,18 @@ function recupFournisseur($place){
 	return $temp;
 }
 
-function recupFournisseurId($nom){
+function recupFournisseurId($id){
 	$db = getDB();
 	$query = $db->prepare("SELECT id,nom,url,logo,catalogue,catalogue_tarifs,images FROM Fournisseurs WHERE id=?");
-	$query->execute(array($nom));
+	$query->execute(array($id));
+	$temp = $query->fetch();
+	return $temp;
+}
+
+function recupFournisseurIdWithNameAndPhotos($nom, $photos){
+	$db = getDB();
+	$query = $db->prepare("SELECT id,nom,url,logo,catalogue,catalogue_tarifs,images FROM Fournisseurs WHERE nom=? AND images=?");
+	$query->execute(array($nom,$photos));
 	$temp = $query->fetch();
 	return $temp;
 }
@@ -232,11 +240,27 @@ function recupProjetId($id){
 	return $temp;
 }
 
+function recupProjetIdWithNameAndPhotos($nom,$photos){
+	$db = getDB();
+	$query = $db->prepare('SELECT id,nom,adresse,description,images FROM Projets WHERE nom=? AND images=?');
+	$query->execute(array($nom,$photos));
+	$temp = $query->fetch();
+	return $temp;
+}
+
 function recupActualites(){
 	$db = getDB();
 	$query = $db->prepare('SELECT id,date,titre,description,images FROM Actualites');
 	$query->execute();
 	$temp = $query->fetchAll();
+	return $temp;
+}
+
+function recupActualiteIdWithTitleAndPhotos($titre, $photos){
+	$db = getDB();
+	$query = $db->prepare("SELECT id,date,titre,description,images FROM Actualites WHERE titre=? AND images=?");
+	$query->execute(array($titre,$photos));
+	$temp = $query->fetch();
 	return $temp;
 }
 

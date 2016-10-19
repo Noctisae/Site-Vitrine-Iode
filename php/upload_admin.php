@@ -8,7 +8,7 @@ if(!empty($_SESSION["authentifie"])){
 		if(!empty($_POST['add_admin_id']) && !empty($_POST['add_admin_mdp'])){
 			error_log();
 			if(addAdmin($_POST['add_admin_id'],$_POST['add_admin_mdp'])){
-				echo json_encode(array('success' => true, 'msg' => utf8_encode('Cet administrateur a bien ete ajoute !')));
+				echo json_encode(array('success' => true, 'msg' => utf8_encode('Cet administrateur a bien ete ajoute !'), 'admin_id' => $_POST['add_admin_id']));
 			}
 			else{
 				echo json_encode(array('success' => false, 'msg' => utf8_encode('Une erreur s\'est produite lors de l\'ajout de cet administrateur !')));
@@ -38,7 +38,8 @@ if(!empty($_SESSION["authentifie"])){
 		//Gestion des fournisseurs
 		if(!empty($_POST['add_fournisseur_nom']) && !empty($_POST['add_fournisseur_url']) && !empty($_POST['add_fournisseur_catalogue']) && !empty($_POST['add_fournisseur_photos']) && !empty($_POST['add_fournisseur_priorite']) && !empty($_POST['add_fournisseur_catalogue_tarifs']) && !empty($_POST['add_fournisseur_logo'])){
 			if(addFournisseur($_POST['add_fournisseur_nom'],$_POST['add_fournisseur_priorite'],$_POST['add_fournisseur_url'],$_POST['add_fournisseur_catalogue'],$_POST['add_fournisseur_catalogue_tarifs'],$_POST['add_fournisseur_photos'],$_POST['add_fournisseur_logo'])){
-				echo json_encode(array('success' => true, 'msg' => utf8_encode('Ce fournisseur a bien ete ajoute dans la base de donnees')));
+				$fournisseur_id = recupFournisseurIdWithNameAndPhotos($_POST['add_fournisseur_nom'],$_POST['add_fournisseur_photos']);
+				echo json_encode(array('success' => true, 'msg' => utf8_encode('Ce fournisseur a bien ete ajoute dans la base de donnees'), 'fournisseur_id' => $fournisseur_id['id'], 'fournisseur_nom' => $_POST['add_fournisseur_nom']));
 			}
 			else{
 				echo json_encode(array('success' => false, 'msg' => utf8_encode('Une erreur s\'est produite lors de l\'ajout de ce fournisseur dans la base de donnees')));			
@@ -70,7 +71,8 @@ if(!empty($_SESSION["authentifie"])){
 		//Gestion des projets
 		if(!empty($_POST['add_projet_photos']) && !empty($_POST['add_projet_nom']) && !empty($_POST['add_projet_description']) && !empty($_POST['add_projet_adresse'])){
 			if(addProjet($_POST['add_projet_nom'],$_POST['add_projet_adresse'],$_POST['add_projet_description'],$_POST['add_projet_photos'])){
-				echo json_encode(array('success' => true, 'msg' => utf8_encode('Ce projet a bien ete ajoute dans la base de donnees')));
+				$projet = recupProjetIdWithNameAndPhotos($_POST['add_projet_nom'],$_POST['add_projet_photos']);
+				echo json_encode(array('success' => true, 'msg' => utf8_encode('Ce projet a bien ete ajoute dans la base de donnees'), 'projet_id' => $projet['id'], 'projet_nom' => $_POST['add_projet_nom'] ));
 			}
 			else{
 				echo json_encode(array('success' => false, 'msg' => utf8_encode('Une erreur s\'est produite lors de l\'ajout de ce projet dans la base de donnees')));
@@ -128,7 +130,8 @@ if(!empty($_SESSION["authentifie"])){
 		}
 		if(!empty($_POST['add_actualite_titre']) && !empty($_POST['add_actualite_description']) && !empty($_POST['add_actualite_photo'])){
 			if(addActualite($_POST['add_actualite_titre'],$_POST['add_actualite_description'],$_POST['add_actualite_photo'])){
-				echo json_encode(array('success' => true, 'msg' => utf8_encode('Cette actualité a bien été ajoutée !')));
+				$actualite = recupActualiteIdWithTitleAndPhotos($_POST['add_actualite_titre'], $_POST['add_actualite_photo']);
+				echo json_encode(array('success' => true, 'msg' => utf8_encode('Cette actualité a bien été ajoutée !'), 'actualite_id' => $actualite['id'] , 'actualite_titre' => $_POST['add_actualite_titre']));
 			}
 			else{
 				echo json_encode(array('success' => false, 'msg' => utf8_encode('Une erreur s\'est produite lors de l\'ajout de cette actualité !')));

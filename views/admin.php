@@ -831,6 +831,7 @@ include_once("header.php");
 								text: json.msg,
 								type: "success"
 							});
+							$("#del_admin_id").append('<option value="'+json.admin_id+'">'+json.admin_id+'</option>');
 						}
 						else{
 							swal({
@@ -864,6 +865,7 @@ include_once("header.php");
 								text: json.msg,
 								type: "success"
 							});
+							$("#del_admin_id option:selected").remove();
 						}
 						else{
 							swal({
@@ -957,6 +959,7 @@ include_once("header.php");
 								text: json.msg,
 								type: "success"
 							});
+							$("#del_fournisseur_id").append('<option value="'+json.fournisseur_id+'">'+json.fournisseur_nom+'</option>');
 						}
 						else{
 							swal({
@@ -989,6 +992,7 @@ include_once("header.php");
 								text: json.msg,
 								type: "success"
 							});
+							$("#del_fournisseur_id option:selected").remove();
 						}
 						else{
 							swal({
@@ -1078,6 +1082,7 @@ include_once("header.php");
 								text: json.msg,
 								type: "success"
 							});
+							$("#del_projet_id").append('<option value="'+json.projet_id+'">'+json.projet_nom+'</option>');
 						}
 						else{
 							swal({
@@ -1110,6 +1115,7 @@ include_once("header.php");
 								text: json.msg,
 								type: "success"
 							});
+							$("#del_projet_id option:selected").remove();
 						}
 						else{
 							swal({
@@ -1187,6 +1193,7 @@ include_once("header.php");
 								text: json.msg,
 								type: "success"
 							});
+							$("#del_actualite_id").append('<option value="'+json.actualite_id+'">'+json.actualitéalite_titre+'</option>');
 						}
 						else{
 							swal({
@@ -1214,12 +1221,12 @@ include_once("header.php");
 						true_data[0] = encode_utf8(true_data[0]) + '}';
 						json	= JSON.parse(true_data[0]);
 						if(json.success){
-							$("#del_actualite_id").val('');
 							swal({
 								title: "Actualité supprimée avec succès",
 								text: json.msg,
 								type: "success"
 							});
+							$("#del_actualite_id option:selected").remove();
 						}
 						else{
 							swal({
