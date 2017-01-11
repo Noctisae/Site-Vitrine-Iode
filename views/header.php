@@ -60,7 +60,7 @@
 	</div>
 	<div class="mobile only row" style="font-family:'Swiss LT'!important;">
 		<div class="ui fixed menu navbar page grid cut-marge menu_click" style="font-family:'Swiss LT'!important;">
-			<a href="" class="brand item">Agence Iode</a>
+			<a href="index.php" class="brand item">Agence Iode</a>
 			
 			<div class="right menu open">
 				<a href="" class="menu item">

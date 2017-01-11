@@ -117,27 +117,27 @@ include_once("header.php");
 	<script type="text/javascript" src="../semantic/dist/semantic.min.js"></script>
 	<script type="text/javascript" src="../swiper/swiper.min.js"></script>
 	<script type="text/javascript">
-		$(document).ready(function(){
-		$('.right.menu.open').on("click",function(e){
-		e.preventDefault();
-		$('.ui.vertical.menu').toggle();
-		});
-		
-		$('.ui.dropdown').dropdown();
-	});
-	</script>
-	<script type="text/javascript">
+
 		$(document).ready(function(){
 			$('.right.menu.open').on("click",function(e){
-			e.preventDefault();
-			$('.ui.vertical.menu').toggle();
+				e.preventDefault();
+				$('.ui.vertical.menu').toggle();
+			});
+		
+			$('.ui.dropdown').dropdown();
 		});
+
+		var slidesToShow = 3;
+		var width = $( window ).width();
+		if(width < 1024){
+			slidesToShow = 1;
+		}
 		var mySwiper = new Swiper ('.swiper-container', {
 				// Optional parameters
 				loop: true,
 				height: '300px',
 				centeredSlides: true,
-				slidesPerView: 3,
+				slidesPerView: slidesToShow,
 				
 				// If we need pagination
 				pagination: '.swiper-pagination',
@@ -149,7 +149,6 @@ include_once("header.php");
 				// And if we need scrollbar
 				scrollbar: '.swiper-scrollbar'
 		});
-	});
 	</script>
 <?php
 

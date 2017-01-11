@@ -15,7 +15,7 @@
 	<script type="text/javascript" src="../semantic/dist/semantic.min.js"></script>
 
 </head>
-<body style="display:flex;">
+<body style="display:flex;overflow:scroll;">
 <?php
 
 include_once("header.php");
@@ -189,13 +189,12 @@ include_once("header.php");
 
 <script type="text/javascript">
 	$(document).ready(function(){
-	$('.right.menu.open').on("click",function(e){
-	e.preventDefault();
-	$('.ui.vertical.menu').toggle();
+		$('.right.menu.open').on("click",function(e){
+		e.preventDefault();
+		$('.ui.vertical.menu').toggle();
+		});
 	});
-	
-	$('.ui.dropdown').dropdown();
-});
+
 </script>
 
 <?php

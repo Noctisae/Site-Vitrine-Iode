@@ -75,12 +75,17 @@
 			e.preventDefault();
 			$('.ui.vertical.menu').toggle();
 		});
+		var slidesToShow = 3;
+		var width = $( window ).width();
+		if(width < 1024){
+			slidesToShow = 1;
+		}
 		var mySwiper = new Swiper ('.swiper-container', {
 				// Optional parameters
 				loop: true,
 				height: '370px',
 				centeredSlides: true,
-				slidesPerView: 3,
+				slidesPerView: slidesToShow,
 				
 				// If we need pagination
 				pagination: '.swiper-pagination',

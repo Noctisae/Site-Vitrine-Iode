@@ -45,7 +45,7 @@
 							<div class="paragraphe paragraphe_accueil" id="paragraphe'.$i.'" style="margin:auto!important;text-align:center;display:flex;flex-direction: column;height:35vh!important">			
 									';
 								foreach ($partie_de_page as $fournisseur) {
-									echo'<a href="'.$fournisseur["url"].'" style="width:95%;height:'.(float)(90.0/$height_max).'%!important;margin:auto!important;display:flex;"><img src="'.explode(";",$fournisseur["logo"])[0].'" style="width:70%;height:auto!important;margin:auto;max-height:'.(float)(35.0/$height_max).'vh!important"></a>';	
+									echo'<a style="width:95%;height:'.(float)(90.0/$height_max).'%!important;margin:auto!important;display:flex;"><img src="'.explode(";",$fournisseur["logo"])[0].'" style="width:70%;height:auto!important;margin:auto;max-height:'.(float)(35.0/$height_max).'vh!important"></a>';	
 								}
 						echo'
 							</div>';
@@ -55,7 +55,7 @@
 					';
 
 					foreach ($partie_de_page as $fournisseur) {
-						echo'<div>
+						echo'<div style="max-height:'.(float)85.0/$height_max.'vh!important;">
 
 								<div style="display:flex;flex-direction: column;width:100%!important;background-color:rgba(255,255,255,0.75);height:10vh!important"><img src="';
 													$temp = explode(";",$fournisseur["logo"])[1];
@@ -65,9 +65,9 @@
 													else{
 														$logo_1 = explode(";",$fournisseur["logo"])[0];
 													}
-												echo $logo_1.'" style="width:70%;height:auto!important;max-height:9vh!important;margin:auto;"/></div><br>
-								<a style="color:white;" href="'.$fournisseur["catalogue"].'">Catalogue<br><i class="big file text icon"></i></a><br><br>';
-						echo'	<a style="color:white;" href="'.$fournisseur["catalogue_tarifs"].'">Tarifs<br><i class=" big file text icon"></i></a><br><br></div>';
+												echo $logo_1.'" style="width:70%;height:auto!important;max-height:9vh!important;margin:auto;"/></div>
+								<a style="color:white;" href="'.$fournisseur["catalogue"].'">Catalogue<br><i class="file text icon"></i></a><br>';
+						echo'	<a style="color:white;" href="'.$fournisseur["catalogue_tarifs"].'">Tarifs<br><i class=" file text icon"></i></a><br><br></div>';
 					}
 
 					echo'	</div>
@@ -95,6 +95,13 @@
 		$('.ui.vertical.menu').toggle();
 		});
 		
+		var grosseurFile = 2;
+		var width = $( window ).width();
+		if(width < 1024){
+			grosseurFile = 1;
+		}
+		$('.file').css("font-size",grosseurFile+"em");
+
 		$('.ui.dropdown').dropdown();
 	});
 
@@ -181,6 +188,89 @@
 		$("#hovered_content5").css("color","white");
 		$("#paragraphe5").css("display","none");
 	},returnToNormal);
+		$("#hoverr1").click(function(){
+		$(".cinquo1").css("width","100%");
+		$("#hovered_content1").css("display","flex");
+		$("#hovered_content1").css("height","99.9vh");
+		$("#hovered_content1").css("width","99.9vw");
+		$("#hovered_content1").css("text-align","center");
+		$("#hovered_content1").css("color","white");
+		$("#paragraphe1").css("display","none");
+		$(".cinquo2").css("width","0%");
+		$(".cinquo3").css("width","0%");
+		$(".cinquo4").css("width","0%");
+		$(".cinquo5").css("width","0%");
+	});
+	$("#hoverr2").click(function(){
+		$(".cinquo1").css("width","0%");
+		$(".cinquo2").css("width","100%");
+		$("#hovered_content2").css("display","flex");
+		$("#hovered_content2").css("height","99.9vh");
+		$("#hovered_content2").css("width","99.9vw");
+		$("#hovered_content2").css("text-align","center");
+		$("#hovered_content2").css("color","white");
+		$("#paragraphe2").css("display","none");
+		$(".cinquo3").css("width","0%");
+		$(".cinquo4").css("width","0%");
+		$(".cinquo5").css("width","0%");
+	});
+	$("#hoverr3").click(function(){
+		$(".cinquo1").css("width","0%");
+		$(".cinquo2").css("width","0%");
+		$(".cinquo3").css("width","100%");
+		$("#hovered_content3").css("display","flex");
+		$("#hovered_content3").css("height","99.9vh");
+		$("#hovered_content3").css("width","99.9vw");
+		$("#hovered_content3").css("text-align","center");
+		$("#hovered_content3").css("color","white");
+		$("#paragraphe3").css("display","none");
+		$(".cinquo4").css("width","0%");
+		$(".cinquo5").css("width","0%");
+	});
+	$("#hoverr4").click(function(){
+		$(".cinquo1").css("width","0%");
+		$(".cinquo2").css("width","0%");
+		$(".cinquo3").css("width","0%");
+		$(".cinquo4").css("width","100%");
+		$("#hovered_content4").css("display","flex");
+		$("#hovered_content4").css("height","99.9vh");
+		$("#hovered_content4").css("width","99.9vw");
+		$("#hovered_content4").css("text-align","center");
+		$("#hovered_content4").css("color","white");
+		$("#paragraphe4").css("display","none");
+		$(".cinquo5").css("width","0%");
+	});
+	$("#hoverr5").click(function(){
+		$(".cinquo1").css("width","0%");
+		$(".cinquo2").css("width","0%");
+		$(".cinquo3").css("width","0%");
+		$(".cinquo4").css("width","0%");
+		$(".cinquo5").css("width","99vw");
+		$("#hovered_content5").css("display","flex");
+		$("#hovered_content5").css("height","99.9vh");
+		$("#hovered_content5").css("width","99.9vw");
+		$("#hovered_content5").css("text-align","center");
+		$("#hovered_content5").css("color","white");
+		$("#paragraphe5").css("display","none");
+	});
+
+	$(".menu_click").click(function(){
+		$(".cinquo1").css("width","20%");
+		$(".cinquo2").css("width","20%");
+		$(".cinquo3").css("width","20%");
+		$(".cinquo4").css("width","20%");
+		$(".cinquo5").css("width","20%");
+		$("#hovered_content1").css("display","none");
+		$("#paragraphe1").css("display","flex");
+		$("#hovered_content2").css("display","none");
+		$("#paragraphe2").css("display","flex");
+		$("#hovered_content3").css("display","none");
+		$("#paragraphe3").css("display","flex");
+		$("#hovered_content4").css("display","none");
+		$("#paragraphe4").css("display","flex");
+		$("#hovered_content5").css("display","none");
+		$("#paragraphe5").css("display","flex");
+	});
 	</script>
 
 	<?php
