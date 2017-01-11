@@ -95,7 +95,7 @@
 		$('.ui.vertical.menu').toggle();
 		});
 		
-		var grosseurFile = 2;
+		var grosseurFile = 1.7;
 		var width = $( window ).width();
 		if(width < 1024){
 			grosseurFile = 1;
