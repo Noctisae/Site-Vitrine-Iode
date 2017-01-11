@@ -1,14 +1,14 @@
 <div class="ui grid">
 	<div class="computer tablet only row" style="font-family:'Swiss LT'!important;">
-		<div class="ui fixed menu navbar page grid cut-marge" style="font-family:'Swiss LT'!important;">
+		<div class="ui fixed menu navbar page grid cut-marge menu_click" style="font-family:'Swiss LT'!important;">
 			<div class="left" style="padding:0px 0px 0px 0px;width:108px;height:70px;">
 				<a href="index.php" style="width:70px;height:auto;"><img src="../logos/logo iode.jpeg" class="logo"></a>
 			</div>
 			<?php 
 			if(isset($logo_header)){
 				if(!empty($logo_header)){
-					echo '<div class="left " style="padding:0px 0px 0px 0px;width:350px;margin:auto;">
-							<img src="'.$logo_header.'" class="logo_fournisseur" style="width:250px!important;height:auto!important;max-height:75px!important">
+					echo '<div class="left " style="padding:0px 0px 0px 0px;width:150px;margin-left:30px!important;margin:auto;display:flex;">
+							<img src="'.$logo_header.'" class="logo_fournisseur" style="width:auto!important;height:auto!important;max-height:75px!important;margin:auto;">
 						</div>';
 				}
 			}
@@ -59,7 +59,7 @@
 		</div>
 	</div>
 	<div class="mobile only row" style="font-family:'Swiss LT'!important;">
-		<div class="ui fixed menu navbar page grid cut-marge" style="font-family:'Swiss LT'!important;">
+		<div class="ui fixed menu navbar page grid cut-marge menu_click" style="font-family:'Swiss LT'!important;">
 			<a href="" class="brand item">Agence Iode</a>
 			
 			<div class="right menu open">
