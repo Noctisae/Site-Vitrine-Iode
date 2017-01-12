@@ -16,7 +16,7 @@
 }
 
 html{
-	max-height:1200px!important;
+	height:100vh!important;
 }
 
 body{
@@ -24,13 +24,12 @@ body{
 	margin: 0;
 	background-color: white;
 	font-family: 'Swiss LT'!important;
-	max-height:1200px!important;
 	width: 99.9vw;
+	height:100vh!important;
 }
 
 #body_accueil{
 	overflow: hidden;
-	max-height: 1200px;
 }
 
 h1,h2,h3,h4,h5,h6,p{
