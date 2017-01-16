@@ -62,8 +62,17 @@ function addFournisseur($nom,$priorite,$url,$catalogue,$catalogue_tarifs,$images
 
 function updateFournisseur($id,$nom,$priorite,$url,$catalogue,$catalogue_tarifs,$images,$logo){
 	$db = getDB();
-	$query = $db->prepare("UPDATE Fournisseurs SET nom=?, priorité=?, url=?, catalogue=?, catalogue_tarifs=?, images=?, logo=? WHERE nom=?");
-	$query->execute(array($nom,$priorite,$url,$catalogue,$catalogue_tarifs,$images,$logo,$ancien_nom));
+	error_log("Affichage des variables recues");
+	error_log($id);
+	error_log($nom);
+	error_log($priorite);
+	error_log($url);
+	error_log($catalogue);
+	error_log($catalogue_tarifs);
+	error_log($images);
+	error_log($logo);
+	$query = $db->prepare("UPDATE Fournisseurs SET nom=?, priorite=?, url=?, catalogue=?, catalogue_tarifs=?, images=?, logo=? WHERE id=?");
+	$query->execute(array($nom,$priorite,$url,$catalogue,$catalogue_tarifs,$images,$logo,$id));
 	return true;
 }
 
@@ -218,7 +227,7 @@ function recupFournisseur($place){
 
 function recupFournisseurId($id){
 	$db = getDB();
-	$query = $db->prepare("SELECT id,nom,url,logo,catalogue,catalogue_tarifs,images FROM Fournisseurs WHERE id=?");
+	$query = $db->prepare("SELECT id,nom,url,logo,catalogue,catalogue_tarifs,images,priorite FROM Fournisseurs WHERE id=?");
 	$query->execute(array($id));
 	$temp = $query->fetch();
 	return $temp;
@@ -234,7 +243,7 @@ function recupFournisseurIdWithNameAndPhotos($nom, $photos){
 
 function recupProjetId($id){
 	$db = getDB();
-	$query = $db->prepare('SELECT id,nom,adresse,description,images FROM Projets WHERE id=?');
+	$query = $db->prepare('SELECT id,nom,adresse,description,photos FROM Projets WHERE id=?');
 	$query->execute(array($id));
 	$temp = $query->fetch();
 	return $temp;
@@ -242,7 +251,7 @@ function recupProjetId($id){
 
 function recupProjetIdWithNameAndPhotos($nom,$photos){
 	$db = getDB();
-	$query = $db->prepare('SELECT id,nom,adresse,description,images FROM Projets WHERE nom=? AND images=?');
+	$query = $db->prepare('SELECT id,nom,adresse,description,photos FROM Projets WHERE nom=? AND images=?');
 	$query->execute(array($nom,$photos));
 	$temp = $query->fetch();
 	return $temp;

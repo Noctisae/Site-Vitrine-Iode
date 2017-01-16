@@ -2,11 +2,13 @@
 ini_set ( 'max_execution_time', 1200);
 session_start();
 include_once("default.php");
+error_log("On rentre dans ce qu'il faut");
 if(!empty($_SESSION["authentifie"])){
+    error_log("testtests");
 	if($_SESSION["authentifie"]){
+            error_log("On est authentifie");
 		//Gestion des administrateurs
 		if(!empty($_POST['add_admin_id']) && !empty($_POST['add_admin_mdp'])){
-			error_log();
 			if(addAdmin($_POST['add_admin_id'],$_POST['add_admin_mdp'])){
 				echo json_encode(array('success' => true, 'msg' => utf8_encode('Cet administrateur a bien ete ajoute !'), 'admin_id' => $_POST['add_admin_id']));
 			}
@@ -58,8 +60,10 @@ if(!empty($_SESSION["authentifie"])){
 		}
 
 		if(!empty($_POST['update_fournisseur_id']) && !empty($_POST['update_fournisseur_nom']) && !empty($_POST['update_fournisseur_url']) && !empty($_POST['update_fournisseur_catalogue']) && !empty($_POST['update_fournisseur_photos']) && !empty($_POST['update_fournisseur_catalogue_tarifs']) && !empty($_POST['update_fournisseur_logo']) && !empty($_POST['update_fournisseur_priorite'])){
-			if(updateFournisseur($_POST['update_fournisseur_id'],$_POST['update_fournisseur_nom'],$_POST['update_fournisseur_priorite'],$_POST['update_fournisseur_url'],$_POST['update_fournisseur_catalogue'],$_POST['update_fournisseur_catalogue_tarifs'],$_POST['update_fournisseur_photos'],$_POST['update_fournisseur_logo'])){
-				echo json_encode(array('success' => true, 'msg' => utf8_encode('Ce fournisseur a bien ete modifie dans la base de donnees')));
+			error_log("On rentre dans le if de la fonction");
+                        if(updateFournisseur($_POST['update_fournisseur_id'],$_POST['update_fournisseur_nom'],$_POST['update_fournisseur_priorite'],$_POST['update_fournisseur_url'],$_POST['update_fournisseur_catalogue'],$_POST['update_fournisseur_catalogue_tarifs'],$_POST['update_fournisseur_photos'],$_POST['update_fournisseur_logo'])){
+				error_log("on a rÃussi");
+                                echo json_encode(array('success' => true, 'msg' => utf8_encode('Ce fournisseur a bien ete modifie dans la base de donnees')));
 			}
 			else{
 				echo json_encode(array('success' => false, 'msg' => utf8_encode('Une erreur s\'est produite lors de la modification de ce fournisseur')));

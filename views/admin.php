@@ -287,6 +287,9 @@ include_once("header.php");
 							<div class="field">
 								<input type="hidden" name="update_fournisseur_photos" id="update_fournisseur_photos">
 							</div>
+                                                        <div class="field">
+                                                                <input type="hidden" name="update_fournisseur_logo" id="update_fournisseur_logo">
+                                                        </div>
 							<div class="field">
 								<label>Priorité du fournisseur (entre 1 et 5, selon le placement sur la page d\'accueil : un fournisseur de priorité 1 sera dans le bloc le plus à gauche de la page d\'accueil, tandis qu\'un fournisseur de priorité 5 sera dans le bloc le plus à droite)</label>
 								<input type="number" min="1" max="5" name="update_fournisseur_priorite" id="update_fournisseur_priorite">
@@ -741,73 +744,88 @@ include_once("header.php");
 				}
 			});
 
-			$("#update_fournisseur_id").change(function() {
-				$.post(
-						'../php/recup_fournisseur.php',
-						{
-
-							id : $("#update_fournisseur_id").val()
-
-						},
-						function(data){
-							true_data = data.split("}");
-							true_data[0] = encode_utf8(true_data[0]) + '}';
-							json	= JSON.parse(true_data[0]);
-							if(json.success){
-								$("#return_update_fournisseur_div").css("backgroundColor", "rgba(0,255,0,0.3)");
-								$("#update_fournisseur_id").val(json.id);
-								$("#update_fournisseur_nom").val(json.nom);
-								$("#update_fournisseur_url").val(json.url);
-								$("#update_fournisseur_logo").val(json.logo);
-								$("#update_fournisseur_catalogue").val(json.catalogue);
-								$("#update_fournisseur_catalogue_tarifs").val(json_catalogue_tarifs);
-								$("#update_fournisseur_images").val(json.images);
-							}
-							else{
-								$("#return_update_fournisseur_div").css("backgroundColor", "rgba(255,0,0,0.3)");
-							}
-							$("#return_update_fournisseur_para").text(json.msg);
-							$("#return_update_fournisseur_div").css("height", "50px");
-							$("#return_update_fournisseur_div").css("margin", "auto");
-							setTimeout(function(){$("#return_update_fournisseur_div").css("height", "0px");$("#return_update_fournisseur_para").text("");}, 10000);
-						},
-						'text' 
-					);
-			});
-
-			$("#update_projet_id").change(function() {
-				$.post(
-						'../php/recup_projet.php',
-						{
-
-							id : $("#update_projet_id").val()
-
-						},
-						function(data){
-							true_data = data.split("}");
-							true_data[0] = encode_utf8(true_data[0]) + '}';
-							json	= JSON.parse(true_data[0]);
-							if(json.success){
-								$("#return_update_projet_div").css("backgroundColor", "rgba(0,255,0,0.3)");
-								$("#update_projet_id").val(json.id);
-								$("#update_projet_nom").val(json.nom);
-								$("#update_projet_adresse").val(json.adresse);
-								$("#update_projet_description").val(json.description);
-							}
-							else{
-								$("#return_update_projet_div").css("backgroundColor", "rgba(255,0,0,0.3)");
-							}
-							$("#return_update_projet_para").text(json.msg);
-							$("#return_update_projet_div").css("height", "150px");
-							setTimeout(function(){$("#return_update_projet_div").css("height", "0px")}, 10000);
-						},
-						'text' 
-					);
-			});
-
 		});
 
 		$(document).ready(function(){
+
+
+                        $("#update_projet_id").change(function() {
+                                $.post(
+                                                '../php/recup_projet.php',
+                                                {
+
+                                                        id : $("#update_projet_id").val()
+
+                                                },
+                                                function(data){
+                                                        console.log(data);
+                                                        console.log("test");
+                                                        true_data = data.split("}");
+                                                        console.log(true_data);
+                                                        true_data[0] = encode_utf8(true_data[0]) + '}';
+                                                        json    = JSON.parse(true_data[0]);
+                                                        if(json.success){
+                                                                $("#return_update_projet_div").css("backgroundColor", "rgba(0,255,0,0.3)");
+                                                                $("#update_projet_id").val(json.id);
+                                                                $("#update_projet_nom").val(json.nom);
+                                                                $("#update_projet_adresse").val(json.adresse);
+                                                                $("#update_projet_description").val(json.description);
+                                                                $("#update_projet_photos").val(json.images);
+                                                        }
+                                                        else{
+                                                                $("#return_update_projet_div").css("backgroundColor", "rgba(255,0,0,0.3)");
+                                                        }
+                                                        $("#return_update_projet_para").text(json.msg);
+                                                        $("#return_update_projet_div").css("height", "150px");
+                                                        setTimeout(function(){$("#return_update_projet_div").css("height", "0px")}, 10000);
+                                                },
+                                                "text"
+                                      );
+                        });
+
+
+
+
+			 $("#update_fournisseur_id").change(function() {
+                                $.post(
+                                                '../php/recup_fournisseur.php',
+                                                {
+
+                                                        id : $("#update_fournisseur_id").val()
+
+                                                },
+                                                function(data){
+                                                        console.log(data);
+                                                        true_data = data.split("}");
+                                                        console.log(true_data);
+                                                        true_data[0] = encode_utf8(true_data[0]) + '}';
+                                                        json    = JSON.parse(true_data[0]);
+                                                        if(json.success){
+                                                                $("#return_update_fournisseur_div").css("backgroundColor", "rgba(0,255,0,0.3)");
+                                                                $("#update_fournisseur_id").val(json.id);
+                                                                $("#update_fournisseur_nom").val(json.nom);
+                                                                $("#update_fournisseur_url").val(json.url);
+                                                                $("#update_fournisseur_logo").val(json.logo);
+                                                                $("#update_fournisseur_catalogue").val(json.catalogue);
+                                                                $("#update_fournisseur_catalogue_tarifs").val(json.catalogue_tarifs);
+                                                                $("#update_fournisseur_photos").val(json.images);
+                                                                $("#update_fournisseur_priorite").val(json.priorite);
+                                                        }
+                                                        else{
+                                                                $("#return_update_fournisseur_div").css("backgroundColor", "rgba(255,0,0,0.3)");
+                                                        }
+                                                        $("#return_update_fournisseur_para").text(json.msg);
+                                                        $("#return_update_fournisseur_div").css("height", "50px");
+                                                        $("#return_update_fournisseur_div").css("margin", "auto");
+                                                        setTimeout(function(){$("#return_update_fournisseur_div").css("height", "0px");$("#return_update_fournisseur_para").text("");}, 10000);
+                                                },
+                                                'text'
+                                        );
+                        });
+
+
+
+
 
 			$("#add_admin").click(function(){
 
