@@ -1221,7 +1221,7 @@ include_once("header.php");
 								text: json.msg,
 								type: "success"
 							});
-							$("#del_actualite_id").append('<option value="'+json.actualite_id+'">'+json.actualitéalite_titre+'</option>');
+							$("#del_actualite_id").append('<option value="'+json.actualite_id+'">'+json.actualite_titre+'</option>');
 						}
 						else{
 							swal({
