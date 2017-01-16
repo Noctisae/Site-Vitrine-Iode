@@ -94,7 +94,7 @@ function removeFournisseur($id){
 	$query->execute(array($id));
 	$temp = $query->fetchAll();
 
-	$images = explode(";",$temp);
+	$images = explode(";",$temp['images']);
 	foreach ($images as $image) {
 		$image = substr($image,3);
 		$image_a_effacer = "/home/fanch/www/iode/" + $image;
@@ -339,7 +339,7 @@ function removeSurMesure(){
 	$query->execute(array($id));
 	$temp = $query->fetchAll();
 
-	$images = explode(";",$temp);
+	$images = explode(";",$temp['images']);
 	foreach ($images as $image) {
 		$image = substr($image,3);
 		$image_a_effacer = "/home/fanch/www/iode/" + $image;
@@ -357,7 +357,7 @@ function delActualite($id){
 	$query->execute(array($id));
 	$temp = $query->fetchAll();
 
-	$images = explode(";",$temp);
+	$images = explode(";",$temp['images']);
 	foreach ($images as $image) {
 		$image = substr($image,3);
 		$image_a_effacer = "/home/fanch/www/iode/" + $image;
