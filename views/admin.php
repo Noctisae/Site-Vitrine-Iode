@@ -372,7 +372,7 @@ include_once("header.php");
 							</div>
 						</form>
 						<div class="field">
-							<button id="del_projet" class="ui button large fluid red"Supprimer ce projet</button>
+							<button id="del_projet" class="ui button large fluid red">Supprimer ce projet</button>
 						</div>
 					</div>
 					
@@ -978,6 +978,7 @@ include_once("header.php");
 								type: "success"
 							});
 							$("#del_fournisseur_id").append('<option value="'+json.fournisseur_id+'">'+json.fournisseur_nom+'</option>');
+							$("#update_fournisseur_id").append('<option value="'+json.fournisseur_id+'">'+json.fournisseur_nom+'</option>');
 						}
 						else{
 							swal({
@@ -1011,6 +1012,7 @@ include_once("header.php");
 								type: "success"
 							});
 							$("#del_fournisseur_id option:selected").remove();
+							$("#update_fournisseur_id option[value='"+json.id+"']").remove();
 						}
 						else{
 							swal({
@@ -1045,6 +1047,7 @@ include_once("header.php");
 						true_data[0] = encode_utf8(true_data[0]) + '}';
 						json	= JSON.parse(true_data[0]);
 						if(json.success){
+
 							$("#update_fournisseur_nom").val('');
 							$("#update_fournisseur_url").val('');
 							$("#update_fournisseur_catalogue").val('');
@@ -1052,6 +1055,8 @@ include_once("header.php");
 							$("#update_fournisseur_logo").val('');
 							$("#update_fournisseur_photos").val('');
 							$("#update_fournisseur_priorite").val('');
+							$("#del_fournisseur_id option[value='"+json.id+"']").text(json.nom);
+							$("#update_fournisseur_id option[value='"+json.id+"']").text(json.nom);
 							myDropzone5.removeAllFiles();
 							myDropzone6.removeAllFiles();
 							myDropzone7.removeAllFiles();
@@ -1094,13 +1099,15 @@ include_once("header.php");
 							$("#add_projet_nom").val('');
 							$("#add_projet_adresse").val('');
 							$("#add_projet_description").val('');
+							alert(json.projet_id);
+							$("#del_projet_id").append('<option value="'+json.projet_id+'">'+json.projet_nom+'</option>');
+							$("#update_projet_id").append('<option value="'+json.projet_id+'">'+json.projet_nom+'</option>');
 							myDropzone9.removeAllFiles();
 							swal({
 								title: "Projet ajouté avec succès",
 								text: json.msg,
 								type: "success"
 							});
-							$("#del_projet_id").append('<option value="'+json.projet_id+'">'+json.projet_nom+'</option>');
 						}
 						else{
 							swal({
@@ -1134,6 +1141,7 @@ include_once("header.php");
 								type: "success"
 							});
 							$("#del_projet_id option:selected").remove();
+							$("#update_projet_id option[value='"+json.id+"']").remove();
 						}
 						else{
 							swal({
@@ -1168,6 +1176,8 @@ include_once("header.php");
 							$("#update_projet_adresse").val('');
 							$("#update_projet_description").val('');
 							$("#update_projet_photos").val('');
+							$("#del_projet_id option[value='"+json.id+"']").text(json.nom);
+							$("#update_projet_id option[value='"+json.id+"']").text(json.nom);
 							myDropzone10.removeAllFiles();
 							swal({
 								title: "Projet modifié avec succès",

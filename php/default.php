@@ -85,8 +85,8 @@ function removeFournisseur($id){
 	$images = explode(";",$temp);
 	foreach ($images as $image) {
 		$image = substr($image,3);
-		$image = "/home/fanch/www/iode/" + $image;
-		unlink($image);
+		$image_a_effacer = "/home/fanch/www/iode/" + $image;
+		unlink($image_a_effacer);
 
 	}
 	$query = $db->prepare("DELETE FROM Fournisseurs WHERE id=?");
@@ -113,13 +113,13 @@ function removeProjet($id){
 	$db = getDB();
 	$query = $db->prepare("SELECT photos FROM Projets WHERE id=?");
 	$query->execute(array($id));
-	$temp = $query->fetchAll();
+	$temp = $query->fetch();
 
-	$images = explode(";",$temp);
+	$images = explode(";",$temp['photos']);
 	foreach ($images as $image) {
 		$image = substr($image,3);
-		$image = "/home/fanch/www/iode/" + $image;
-		unlink($image);
+		$image_a_effacer = "/home/fanch/www/iode/" + $image;
+		unlink($image_a_effacer);
 
 	}
 	$query = $db->prepare("DELETE FROM Projets WHERE id=?");
@@ -251,7 +251,7 @@ function recupProjetId($id){
 
 function recupProjetIdWithNameAndPhotos($nom,$photos){
 	$db = getDB();
-	$query = $db->prepare('SELECT id,nom,adresse,description,photos FROM Projets WHERE nom=? AND images=?');
+	$query = $db->prepare('SELECT id,nom,adresse,description,photos FROM Projets WHERE nom=? AND photos=?');
 	$query->execute(array($nom,$photos));
 	$temp = $query->fetch();
 	return $temp;
@@ -305,8 +305,8 @@ function removeSurMesure(){
 	$images = explode(";",$temp);
 	foreach ($images as $image) {
 		$image = substr($image,3);
-		$image = "/home/fanch/www/iode/" + $image;
-		unlink($image);
+		$image_a_effacer = "/home/fanch/www/iode/" + $image;
+		unlink($image_a_effacer);
 
 	}
 	$query = $db->prepare('DELETE FROM Surmesure');
@@ -323,8 +323,8 @@ function delActualite($id){
 	$images = explode(";",$temp);
 	foreach ($images as $image) {
 		$image = substr($image,3);
-		$image = "/home/fanch/www/iode/" + $image;
-		unlink($image);
+		$image_a_effacer = "/home/fanch/www/iode/" + $image;
+		unlink($image_a_effacer);
 
 	}
 	$query = $db->prepare('DELETE FROM Actualites WHERE id=?');

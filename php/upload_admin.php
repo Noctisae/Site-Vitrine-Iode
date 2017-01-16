@@ -51,7 +51,7 @@ if(!empty($_SESSION["authentifie"])){
 
 		if(!empty($_POST['del_fournisseur_id'])){
 			if(removeFournisseur($_POST['del_fournisseur_id'])){
-				echo json_encode(array('success' => true, 'msg' => utf8_encode('Ce fournisseur a bien ete supprime de la base de donnees')));
+				echo json_encode(array('success' => true, 'msg' => utf8_encode('Ce fournisseur a bien ete supprime de la base de donnees'), 'id' => $_POST['del_fournisseur_id']));
 			}
 			else{
 				echo json_encode(array('success' => false, 'msg' => utf8_encode('une erreur s\'est produite lors de la suppression de ce fournisseur')));			
@@ -63,7 +63,7 @@ if(!empty($_SESSION["authentifie"])){
 			error_log("On rentre dans le if de la fonction");
                         if(updateFournisseur($_POST['update_fournisseur_id'],$_POST['update_fournisseur_nom'],$_POST['update_fournisseur_priorite'],$_POST['update_fournisseur_url'],$_POST['update_fournisseur_catalogue'],$_POST['update_fournisseur_catalogue_tarifs'],$_POST['update_fournisseur_photos'],$_POST['update_fournisseur_logo'])){
 				error_log("on a rÃussi");
-                                echo json_encode(array('success' => true, 'msg' => utf8_encode('Ce fournisseur a bien ete modifie dans la base de donnees')));
+                                echo json_encode(array('success' => true, 'msg' => utf8_encode('Ce fournisseur a bien ete modifie dans la base de donnees'), 'id' => $_POST['update_fournisseur_id'], 'nom' => $_POST['update_fournisseur_nom']));
 			}
 			else{
 				echo json_encode(array('success' => false, 'msg' => utf8_encode('Une erreur s\'est produite lors de la modification de ce fournisseur')));
@@ -76,6 +76,7 @@ if(!empty($_SESSION["authentifie"])){
 		if(!empty($_POST['add_projet_photos']) && !empty($_POST['add_projet_nom']) && !empty($_POST['add_projet_description']) && !empty($_POST['add_projet_adresse'])){
 			if(addProjet($_POST['add_projet_nom'],$_POST['add_projet_adresse'],$_POST['add_projet_description'],$_POST['add_projet_photos'])){
 				$projet = recupProjetIdWithNameAndPhotos($_POST['add_projet_nom'],$_POST['add_projet_photos']);
+				error_log($projet);
 				echo json_encode(array('success' => true, 'msg' => utf8_encode('Ce projet a bien ete ajoute dans la base de donnees'), 'projet_id' => $projet['id'], 'projet_nom' => $_POST['add_projet_nom'] ));
 			}
 			else{
@@ -86,7 +87,7 @@ if(!empty($_SESSION["authentifie"])){
 
 		if(!empty($_POST['del_projet_id'])){
 			if(removeProjet($_POST['del_projet_id'])){
-				echo json_encode(array('success' => true, 'msg' => utf8_encode('Ce projet a bien ete supprime de la base de donnees')));
+				echo json_encode(array('success' => true, 'msg' => utf8_encode('Ce projet a bien ete supprime de la base de donnees'), 'id' => $_POST['del_projet_id']));
 			}
 			else{
 				echo json_encode(array('success' => false, 'msg' => utf8_encode('Une erreur s\'est produite lors de la suppression de ce projet')));
@@ -96,7 +97,7 @@ if(!empty($_SESSION["authentifie"])){
 
 		if(!empty($_POST['update_projet_id']) && !empty($_POST['update_projet_nom']) && !empty($_POST['update_projet_adresse']) && !empty($_POST['update_projet_photos']) && !empty($_POST['update_projet_description'])){
 			if(updateProjet($_POST['update_projet_id'],$_POST['update_projet_nom'],$_POST['update_projet_adresse'],$_POST['update_projet_description'],$_POST['update_projet_photos'])){
-				echo json_encode(array('success' => true, 'msg' => utf8_encode('Ce projet a bien ete modifie dans la base de donnees')));
+				echo json_encode(array('success' => true, 'msg' => utf8_encode('Ce projet a bien ete modifie dans la base de donnees'),'id' => $_POST['update_projet_id'], 'nom' => $_POST['update_projet_nom']));
 			}
 			else{
 				echo json_encode(array('success' => false, 'msg' => utf8_encode('Une erreur s\'est produite lors de la modification de ce projet')));
