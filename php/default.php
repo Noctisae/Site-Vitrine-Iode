@@ -25,6 +25,9 @@ function recupCatalogues(){
 	$query = $db->prepare('SELECT catalogue FROM Fournisseurs');
 	$query->execute();
 	$temp = $query->fetchAll();
+	if(empty($temp)){
+		$temp = [];
+	}
 	return $temp;
 }
 
@@ -33,6 +36,9 @@ function recupAdmins(){
 	$query = $db->prepare('SELECT identifiant FROM Admin');
 	$query->execute();
 	$temp = $query->fetchAll();
+	if(empty($temp)){
+		$temp = [];
+	}
 	return $temp;
 }
 
@@ -41,6 +47,9 @@ function recupFournisseurs(){
 	$query = $db->prepare('SELECT id,nom,priorite FROM Fournisseurs');
 	$query->execute();
 	$temp = $query->fetchAll();
+	if(empty($temp)){
+		$temp = [];
+	}
 	return $temp;
 }
 
@@ -49,6 +58,9 @@ function recupProjets(){
 	$query = $db->prepare('SELECT id,nom, adresse, photos, description FROM Projets');
 	$query->execute();
 	$temp = $query->fetchAll();
+	if(empty($temp)){
+		$temp = [];
+	}
 	return $temp;
 }
 
@@ -156,6 +168,7 @@ function updateRSS(){
 	$file = fopen('../views/news.xml', 'w+'); 
 	fwrite($file, $chaine_xml);
 	fclose($file);
+	return true;
 }
 
 function isAdmin($id, $mdp){
@@ -222,6 +235,9 @@ function recupFournisseur($place){
 	$query = $db->prepare("SELECT id,nom,url,logo,catalogue,catalogue_tarifs,images FROM Fournisseurs WHERE priorite=?");
 	$query->execute(array($place));
 	$temp = $query->fetchAll();
+	if(empty($temp)){
+		$temp = [];
+	}
 	return $temp;
 }
 
@@ -230,6 +246,9 @@ function recupFournisseurId($id){
 	$query = $db->prepare("SELECT id,nom,url,logo,catalogue,catalogue_tarifs,images,priorite FROM Fournisseurs WHERE id=?");
 	$query->execute(array($id));
 	$temp = $query->fetch();
+	if(empty($temp)){
+		$temp = [];
+	}
 	return $temp;
 }
 
@@ -238,6 +257,9 @@ function recupFournisseurIdWithNameAndPhotos($nom, $photos){
 	$query = $db->prepare("SELECT id,nom,url,logo,catalogue,catalogue_tarifs,images FROM Fournisseurs WHERE nom=? AND images=?");
 	$query->execute(array($nom,$photos));
 	$temp = $query->fetch();
+	if(empty($temp)){
+		$temp = [];
+	}
 	return $temp;
 }
 
@@ -246,6 +268,9 @@ function recupProjetId($id){
 	$query = $db->prepare('SELECT id,nom,adresse,description,photos FROM Projets WHERE id=?');
 	$query->execute(array($id));
 	$temp = $query->fetch();
+	if(empty($temp)){
+		$temp = [];
+	}
 	return $temp;
 }
 
@@ -254,6 +279,9 @@ function recupProjetIdWithNameAndPhotos($nom,$photos){
 	$query = $db->prepare('SELECT id,nom,adresse,description,photos FROM Projets WHERE nom=? AND photos=?');
 	$query->execute(array($nom,$photos));
 	$temp = $query->fetch();
+	if(empty($temp)){
+		$temp = [];
+	}
 	return $temp;
 }
 
@@ -262,6 +290,9 @@ function recupActualites(){
 	$query = $db->prepare('SELECT id,date,titre,description,images FROM Actualites');
 	$query->execute();
 	$temp = $query->fetchAll();
+	if(empty($temp)){
+		$temp = [];
+	}
 	return $temp;
 }
 
@@ -270,6 +301,9 @@ function recupActualiteIdWithTitleAndPhotos($titre, $photos){
 	$query = $db->prepare("SELECT id,date,titre,description,images FROM Actualites WHERE titre=? AND images=?");
 	$query->execute(array($titre,$photos));
 	$temp = $query->fetch();
+	if(empty($temp)){
+		$temp = [];
+	}
 	return $temp;
 }
 
@@ -278,6 +312,9 @@ function recupSurMesure(){
 	$query = $db->prepare('SELECT images FROM Surmesure');
 	$query->execute();
 	$temp = $query->fetch();
+	if(empty($temp)){
+		$temp = [];
+	}
 	return $temp;
 }
 
