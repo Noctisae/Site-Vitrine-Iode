@@ -97,7 +97,7 @@ include_once("header.php");
 		//////////////////////////////////////////////////////////////////////////////////////////////////
 		echo'
 
-		<div class="ui fluid four item tabular menu" style="margin-top:100px;">
+		<div class="ui fluid four item tabular menu menu-adaptive" style="margin-top:100px;">
 			<a class="item active" data-tab="admin">Administrateurs</a>
 			<a class="item" data-tab="fournisseurs">Fournisseurs</a>
 			<a class="item" data-tab="Projets">Projets</a>
@@ -507,7 +507,7 @@ include_once("header.php");
 		echo'
 		<div class="ui raised very padded text segment form-holder-connexion marge">
 			<div class="ui one column center aligned grid mid">
-				<div class="column six wide">
+				<div class="column connexion wide">
 					<h2 class="center aligned header form-head">Se connecter</h2>
 					<div class="ui form">
 						<form method="post" action="admin.php">

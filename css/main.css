@@ -388,8 +388,21 @@ div.click > .clickable {
   	filter: grayscale(50%) brightness(500%) brightness(50%)!important; 
 }
 
+.connexion{
+	width: 37,5%!important;
+}
+
 @media only screen and (max-width: 1060px){
 	.div_menu{
 		width:100px!important;
+	}
+
+
+	.connexion{
+		width: 100%!important;
+	}
+
+	.menu-adaptive{
+		font-size: 10px;
 	}
 }
